@@ -36,6 +36,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.stream.StreamSource;
 
 import org.prolobjectlink.db.XmlParser;
+import org.prolobjectlink.db.spi.PersistenceXmlParser;
 import org.prolobjectlink.db.xml.AbstractXmlParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -43,8 +44,20 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * @deprecated Use {@link PersistenceXmlParser} instead.
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+@Deprecated
 public final class JPAPersistenceXmlParser extends AbstractXmlParser implements XmlParser {
 
+	/**
+	 * @deprecated Use {@link PersistenceXmlParser} instead.
+	 * @author Jose Zalacain
+	 * @since 1.0
+	 */
+	@Deprecated
 	public Map<String, PersistenceUnitInfo> parsePersistenceXml(URL persistenceXml) {
 
 		JPAPersistenceSchemaVersion schemaVersion;

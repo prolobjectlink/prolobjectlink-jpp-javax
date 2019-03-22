@@ -30,15 +30,20 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 import javax.persistence.spi.PersistenceProvider;
 import javax.persistence.spi.PersistenceUnitInfo;
+import javax.persistence.spi.PersistenceUnitTransactionType;
 import javax.persistence.spi.ProviderUtil;
 
 import org.prolobjectlink.AbstractWrapper;
 import org.prolobjectlink.db.DatabaseEngine;
+import org.prolobjectlink.db.DatabaseUnitInfo;
 import org.prolobjectlink.db.Protocol;
-import org.prolobjectlink.db.jpa.spi.JPAPersistenceXmlParser;
 import org.prolobjectlink.db.memory.MemoryHierarchical;
 import org.prolobjectlink.db.persistent.EmbeddedHierarchical;
 import org.prolobjectlink.db.persistent.RemoteHierarchical;
+import org.prolobjectlink.db.spi.PersistenceSchemaVersion;
+import org.prolobjectlink.db.spi.PersistenceVersion;
+import org.prolobjectlink.db.spi.PersistenceXmlParser;
+import org.prolobjectlink.db.spi.PersistenceUnitInformation;
 import org.prolobjectlink.logging.LoggerUtils;
 
 /**
@@ -52,7 +57,8 @@ import org.prolobjectlink.logging.LoggerUtils;
 public abstract class JpaAbstractProvider extends AbstractWrapper implements PersistenceProvider {
 
 	protected final ProviderUtil providerUtil = new JpaProviderUtil();
-	protected final JPAPersistenceXmlParser p = new JPAPersistenceXmlParser();
+//	protected final JPAPersistenceXmlParser p = new JPAPersistenceXmlParser();
+	protected final PersistenceXmlParser p = new PersistenceXmlParser();
 
 	protected static final String SECRET = "javax.persistence.jdbc.password";
 	protected static final String DRIVER = "javax.persistence.jdbc.driver";
@@ -63,13 +69,34 @@ public abstract class JpaAbstractProvider extends AbstractWrapper implements Per
 	protected Map<String, EntityManagerFactory> entityManagerFactories = new LinkedHashMap<String, EntityManagerFactory>();
 
 	protected final void assertPersistenceUnitExistenceInMapLoadedFromXml(String emName,
-			Map<String, PersistenceUnitInfo> m) {
+			Map<String, DatabaseUnitInfo> m) {
 		if (m.get(emName) == null) {
 			throw new PersistenceException("There are not persistence unit named " + emName);
 		}
 	}
 
-	private DatabaseEngine createDatabaseEngine(PersistenceUnitInfo info, Map<?, ?> map) {
+	protected final DatabaseUnitInfo getPersistenceUnitInformation(PersistenceUnitInfo info) {
+		String unitName = info.getPersistenceUnitName();
+		URL unitRootUrl = info.getPersistenceUnitRootUrl();
+		String versionXml = info.getPersistenceXMLSchemaVersion();
+		PersistenceSchemaVersion xmlVersion = new PersistenceSchemaVersion(versionXml, "UTF-8");
+		PersistenceUnitTransactionType transactionType = info.getTransactionType();
+		String xmlPersistenceVersion = "2.0";
+		String xmlPersistenceXmlns = "http://java.sun.com/xml/ns/persistence";
+		String xmlPersistenceXmlnsXsi = "http://www.w3.org/2001/XMLSchema-instance";
+		String xmlPersistenceXsiSchemalocation = "http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd";
+		PersistenceVersion persistenceVersion = new PersistenceVersion(xmlPersistenceVersion, xmlPersistenceXmlns,
+				xmlPersistenceXmlnsXsi, xmlPersistenceXsiSchemalocation);
+		PersistenceUnitInformation unit = new PersistenceUnitInformation(unitRootUrl, xmlVersion,
+				persistenceVersion, unitName, transactionType);
+
+		// TODO add all persistence unit information
+		unit.setValidationMode(info.getValidationMode().toString());
+
+		return unit;
+	}
+
+	private DatabaseEngine createDatabaseEngine(DatabaseUnitInfo info, Map<?, ?> map) {
 		try {
 			DatabaseEngine database = null;
 			String urlString = "" + info.getProperties().get(URL) + "";
@@ -89,7 +116,7 @@ public abstract class JpaAbstractProvider extends AbstractWrapper implements Per
 		return null;
 	}
 
-	private DatabaseEngine generateSchema0(PersistenceUnitInfo info, Map map) {
+	private DatabaseEngine generateSchema0(DatabaseUnitInfo info, Map map) {
 		DatabaseEngine database = createDatabaseEngine(info, map);
 		assert database != null;
 		database.getSchema().flush();
@@ -100,28 +127,36 @@ public abstract class JpaAbstractProvider extends AbstractWrapper implements Per
 		EntityManagerFactory emf = entityManagerFactories.get(emName);
 		if (emf == null) {
 			ClassLoader loader = Thread.currentThread().getContextClassLoader();
-			Map<String, PersistenceUnitInfo> m = p.parsePersistenceXml(loader.getResource(XML));
+			Map<String, DatabaseUnitInfo> m = p.parsePersistenceXml(loader.getResource(XML));
 			assertPersistenceUnitExistenceInMapLoadedFromXml(emName, m);
 			emf = createContainerEntityManagerFactory(m.get(emName), map);
 		}
 		return emf;
 	}
 
-	public final EntityManagerFactory createContainerEntityManagerFactory(PersistenceUnitInfo info, Map map) {
+	public final EntityManagerFactory createContainerEntityManagerFactory(DatabaseUnitInfo info, Map map) {
 		DatabaseEngine database = createDatabaseEngine(info, map);
 		assert database != null;
 		return new JpaEntityManagerFactory(database, info.getProperties());
 	}
 
-	public final void generateSchema(PersistenceUnitInfo info, Map map) {
+	public final EntityManagerFactory createContainerEntityManagerFactory(PersistenceUnitInfo info, Map map) {
+		return createContainerEntityManagerFactory(getPersistenceUnitInformation(info), map);
+	}
+
+	public final void generateSchema(DatabaseUnitInfo info, Map map) {
 		generateSchema0(info, map);
+	}
+
+	public final void generateSchema(PersistenceUnitInfo info, Map map) {
+		generateSchema0(getPersistenceUnitInformation(info), map);
 	}
 
 	public final boolean generateSchema(String persistenceUnitName, Map map) {
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		Map<String, PersistenceUnitInfo> m = p.parsePersistenceXml(loader.getResource(XML));
+		Map<String, DatabaseUnitInfo> m = p.parsePersistenceXml(loader.getResource(XML));
 		assertPersistenceUnitExistenceInMapLoadedFromXml(persistenceUnitName, m);
-		PersistenceUnitInfo unit = m.get(persistenceUnitName);
+		DatabaseUnitInfo unit = m.get(persistenceUnitName);
 		DatabaseEngine database = generateSchema0(unit, map);
 		return database.exist();
 	}
