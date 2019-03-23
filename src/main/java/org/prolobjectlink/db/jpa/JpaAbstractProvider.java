@@ -30,7 +30,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 import javax.persistence.spi.PersistenceProvider;
 import javax.persistence.spi.PersistenceUnitInfo;
-import javax.persistence.spi.PersistenceUnitTransactionType;
 import javax.persistence.spi.ProviderUtil;
 
 import org.prolobjectlink.AbstractWrapper;
@@ -41,9 +40,9 @@ import org.prolobjectlink.db.memory.MemoryHierarchical;
 import org.prolobjectlink.db.persistent.EmbeddedHierarchical;
 import org.prolobjectlink.db.persistent.RemoteHierarchical;
 import org.prolobjectlink.db.spi.PersistenceSchemaVersion;
+import org.prolobjectlink.db.spi.PersistenceUnitInformation;
 import org.prolobjectlink.db.spi.PersistenceVersion;
 import org.prolobjectlink.db.spi.PersistenceXmlParser;
-import org.prolobjectlink.db.spi.PersistenceUnitInformation;
 import org.prolobjectlink.logging.LoggerUtils;
 
 /**
@@ -80,15 +79,15 @@ public abstract class JpaAbstractProvider extends AbstractWrapper implements Per
 		URL unitRootUrl = info.getPersistenceUnitRootUrl();
 		String versionXml = info.getPersistenceXMLSchemaVersion();
 		PersistenceSchemaVersion xmlVersion = new PersistenceSchemaVersion(versionXml, "UTF-8");
-		PersistenceUnitTransactionType transactionType = info.getTransactionType();
+		String transactionType = info.getTransactionType().toString();
 		String xmlPersistenceVersion = "2.0";
 		String xmlPersistenceXmlns = "http://java.sun.com/xml/ns/persistence";
 		String xmlPersistenceXmlnsXsi = "http://www.w3.org/2001/XMLSchema-instance";
 		String xmlPersistenceXsiSchemalocation = "http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd";
 		PersistenceVersion persistenceVersion = new PersistenceVersion(xmlPersistenceVersion, xmlPersistenceXmlns,
 				xmlPersistenceXmlnsXsi, xmlPersistenceXsiSchemalocation);
-		PersistenceUnitInformation unit = new PersistenceUnitInformation(unitRootUrl, xmlVersion,
-				persistenceVersion, unitName, transactionType);
+		PersistenceUnitInformation unit = new PersistenceUnitInformation(unitRootUrl, xmlVersion, persistenceVersion,
+				unitName, transactionType);
 
 		// TODO add all persistence unit information
 		unit.setValidationMode(info.getValidationMode().toString());
