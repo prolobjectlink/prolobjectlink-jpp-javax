@@ -81,8 +81,6 @@
 		<!-- <maven.compiler.target>1.5</maven.compiler.target> -->
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<jetty.version>6.1.11</jetty.version>
-		<tomcat.version>8.5.23</tomcat.version>
 		<asm.version>5.0.3</asm.version>
 	</properties>
 
@@ -106,6 +104,11 @@
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
 			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.3</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
