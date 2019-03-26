@@ -77,11 +77,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- <maven.compiler.source>1.5</maven.compiler.source> -->
-		<!-- <maven.compiler.target>1.5</maven.compiler.target> -->
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<asm.version>5.0.3</asm.version>
+		<maven.compiler.source>1.5</maven.compiler.source>
+		<maven.compiler.target>1.5</maven.compiler.target>
+		<javax.transaction.version>1.1</javax.transaction.version>
+		<javax.persistence.version>2.2</javax.persistence.version>
+		<javax.jdo.version>2.3-20090302111651</javax.jdo.version>
+		<javax.servlet.version>3.1.0</javax.servlet.version>
 	</properties>
 
 	<dependencies>
@@ -93,22 +94,23 @@
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>transaction-api</artifactId>
-			<version>1.1</version>
+			<version>${javax.transaction.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.jdo</groupId>
 			<artifactId>jdo2-api</artifactId>
-			<version>2.3-20090302111651</version>
+			<version>${javax.jdo.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version>
+			<version>${javax.persistence.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.3</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
