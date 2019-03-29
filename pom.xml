@@ -80,8 +80,7 @@
 		<maven.compiler.source>1.5</maven.compiler.source>
 		<maven.compiler.target>1.5</maven.compiler.target>
 		<javax.transaction.version>1.1</javax.transaction.version>
-		<javax.persistence.version>2.2</javax.persistence.version>
-		<javax.jdo.version>2.3-20090302111651</javax.jdo.version>
+		<javax.persistence.version>2.1.0</javax.persistence.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
 	</properties>
 
@@ -96,14 +95,14 @@
 			<artifactId>transaction-api</artifactId>
 			<version>${javax.transaction.version}</version>
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>javax.persistence</groupId> -->
+		<!-- <artifactId>javax.persistence-api</artifactId> -->
+		<!-- <version>${javax.persistence.version}</version> -->
+		<!-- </dependency> -->
 		<dependency>
-			<groupId>javax.jdo</groupId>
-			<artifactId>jdo2-api</artifactId>
-			<version>${javax.jdo.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
 			<version>${javax.persistence.version}</version>
 		</dependency>
 		<dependency>
@@ -118,7 +117,6 @@
 			<version>[4.10, )</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
