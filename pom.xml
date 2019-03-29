@@ -18,8 +18,9 @@
 
 	<licenses>
 		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<name>CDDL + GPLv2 with classpath exception</name>
+			<url>https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html</url>
+			<distribution>repo</distribution>
 		</license>
 	</licenses>
 
@@ -175,7 +176,7 @@
 					<canUpdateDescription>true</canUpdateDescription>
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>apache_v2</licenseName>
+					<licenseName>cddl_v1</licenseName>
 					<!-- <dryRun>true</dryRun> -->
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
 					<excludes>
