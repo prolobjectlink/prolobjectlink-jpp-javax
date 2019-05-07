@@ -46,7 +46,7 @@ import org.prolobjectlink.db.persistent.RemoteHierarchical;
 import org.prolobjectlink.db.spi.PersistenceSchemaVersion;
 import org.prolobjectlink.db.spi.PersistenceUnitInformation;
 import org.prolobjectlink.db.spi.PersistenceVersion;
-import org.prolobjectlink.db.spi.PersistenceXmlParser;
+import org.prolobjectlink.db.xml.PersistenceXmlParser;
 import org.prolobjectlink.logging.LoggerUtils;
 
 /**

@@ -40,8 +40,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.stream.StreamSource;
 
 import org.prolobjectlink.db.XmlParser;
-import org.prolobjectlink.db.spi.PersistenceXmlParser;
 import org.prolobjectlink.db.xml.AbstractXmlParser;
+import org.prolobjectlink.db.xml.PersistenceXmlParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
