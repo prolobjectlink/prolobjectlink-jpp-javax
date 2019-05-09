@@ -136,9 +136,9 @@ public abstract class JPAPersistenceProvider implements PersistenceProvider {
 			Class<?> clazz = JavaReflect.classForName(className);
 			registerEntities(managerFactory, prologProvider, url, clazz);
 			registerNamedQueries(managerFactory, prologProvider, url, clazz);
-			registerNamedNativedQueries(managerFactory, prologProvider, url, clazz);
+			registerNamedNativeQueries(managerFactory, prologProvider, url, clazz);
 			registerNamedEntitiesGraph(managerFactory, prologProvider, url, clazz);
-			registerSqlResultSetMapping(managerFactory, prologProvider, url, clazz);
+			registerSQLResultSetMapping(managerFactory, prologProvider, url, clazz);
 			registerNamedStoredProcedureQueries(managerFactory, objectDriverClass, prologProvider, url, clazz);
 		}
 		return managerFactory;
@@ -188,7 +188,7 @@ public abstract class JPAPersistenceProvider implements PersistenceProvider {
 		}
 	}
 
-	private void registerNamedNativedQueries(EntityManagerFactory managerFactory, PrologProvider provider, String url,
+	private void registerNamedNativeQueries(EntityManagerFactory managerFactory, PrologProvider provider, String url,
 			Class<?> clazz) {
 		if (clazz.isAnnotationPresent(NamedNativeQuery.class)) {
 			addNamedNativeQuery(managerFactory, provider, url, clazz.getAnnotation(NamedNativeQuery.class));
@@ -200,7 +200,7 @@ public abstract class JPAPersistenceProvider implements PersistenceProvider {
 		}
 	}
 
-	private void registerSqlResultSetMapping(EntityManagerFactory managerFactory, PrologProvider provider, String url,
+	private void registerSQLResultSetMapping(EntityManagerFactory managerFactory, PrologProvider provider, String url,
 			Class<?> clazz) {
 		if (clazz.isAnnotationPresent(SqlResultSetMapping.class)) {
 			addSqlResultSetMapping(managerFactory, provider, url, clazz.getAnnotation(SqlResultSetMapping.class),

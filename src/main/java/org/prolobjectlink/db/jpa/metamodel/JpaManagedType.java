@@ -212,7 +212,7 @@ public abstract class JpaManagedType<X> extends JpaType<X> implements ManagedTyp
 	}
 
 	public final CollectionAttribute<? super X, ?> getCollection(String name) {
-		return getCollection(name);
+		return getCollection(name, null);
 	}
 
 	public final CollectionAttribute<X, ?> getDeclaredCollection(String name) {
