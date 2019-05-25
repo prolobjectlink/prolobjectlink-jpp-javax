@@ -62,7 +62,6 @@ import org.prolobjectlink.db.jpa.criteria.predicate.JpaNullPredicate;
 public final class JpaSubQuery<T> extends JpaAbstractQuery<T> implements Subquery<T>, Selection<T>, Expression<T> {
 
 	protected String alias;
-	protected boolean distinct;
 	protected Selection<?> selection;
 	protected AbstractQuery<T> parent;
 	protected Set<From<?, ?>> joins = new LinkedHashSet<From<?, ?>>();
@@ -74,7 +73,6 @@ public final class JpaSubQuery<T> extends JpaAbstractQuery<T> implements Subquer
 			Metamodel metamodel, Class<T> resultType, AbstractQuery<T> parent) {
 		super(restriction, metamodel, distinct, resultType, new HashSet<Root<?>>(), new ArrayList<Expression<?>>());
 		this.selection = selection;
-		this.distinct = distinct;
 		this.parent = parent;
 		this.alias = alias;
 	}

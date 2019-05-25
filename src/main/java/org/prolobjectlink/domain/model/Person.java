@@ -23,7 +23,6 @@
  */
 package org.prolobjectlink.domain.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -45,7 +44,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @TableGenerator(name = "colSeq", allocationSize = 1000)
-public class Person implements Serializable {
+public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "colSeq")
