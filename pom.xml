@@ -6,7 +6,7 @@
 	<artifactId>prolobjectlink-jpp-javax</artifactId>
 	<version>1.0.0</version>
 	<name>prolobjectlink-jpp-javax</name>
-	<description>JavaX Data Object (JDO) and JavaX Persistence API (JPA) adaptation of Java Prolog Persistence</description>
+	<description>JavaX Persistence API (JPA) adaptation of Java Prolog Persistence</description>
 
 	<url>https://github.com/prolobjectlink/${project.name}</url>
 	<inceptionYear>2012</inceptionYear>
@@ -142,6 +142,18 @@
 		</pluginManagement>
 
 		<plugins>
+			<plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+				<skipStaging>true</skipStaging>
+                        </configuration>
+                    </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
