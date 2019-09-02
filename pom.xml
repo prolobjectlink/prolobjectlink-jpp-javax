@@ -90,10 +90,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<javax.persistence.version>2.1.0</javax.persistence.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
+		<javax.mail.version>1.4.7</javax.mail.version>
+		<javax.validation.version>1.1.0.Final</javax.validation.version>
+		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
+		<template.version>1.7</template.version>
 	</properties>
 
 	<dependencies>
@@ -115,10 +119,42 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${javax.mail.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${javax.validation.version}</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>jaxen</groupId> -->
+		<!-- <artifactId>jaxen</artifactId> -->
+		<!-- <version>1.1.1</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>io.marioslab.basis</groupId>
+			<artifactId>template</artifactId>
+			<version>${template.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>[4.10, )</version>
-			<scope>test</scope>
+
 		</dependency>
 	</dependencies>
 
@@ -142,18 +178,7 @@
 		</pluginManagement>
 
 		<plugins>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-					<skipStaging>true</skipStaging>
-				</configuration>
-			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -184,6 +209,43 @@
 						<id>attach-sources</id>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pdf-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<id>site-pdf</id>
+						<phase>site</phase>
+						<goals>
+							<goal>pdf</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/doc</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assembly/dist.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>create-archive</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -227,40 +289,45 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pdf-plugin</artifactId>
-				<version>1.2</version>
-				<executions>
-					<execution>
-						<id>site-pdf</id>
-						<phase>site</phase>
-						<goals>
-							<goal>pdf</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.basedir}/doc</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<threshold>Normal</threshold>
+					<effort>Default</effort>
+					<excludeFilterFile>${basedir}/findbugs-exclude-filter.xml</excludeFilterFile>
+				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.5.3</version>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.4</version>
 				<configuration>
-					<descriptors>
-						<descriptor>src/assembly/dist.xml</descriptor>
-					</descriptors>
+					<tags>
+						<tag>TODO</tag>
+						<tag>FIXME</tag>
+					</tags>
 				</configuration>
-				<executions>
-					<execution>
-						<id>create-archive</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>clirr-maven-plugin</artifactId>
+				<version>2.2.2</version>
+				<configuration>
+					<comparisonArtifacts>
+						<comparisonArtifact>
+							<groupId>commons-lang</groupId>
+							<artifactId>commons-lang</artifactId>
+							<version>2.6</version>
+						</comparisonArtifact>
+					</comparisonArtifacts>
+					<minSeverity>info</minSeverity>
+				</configuration>
 			</plugin>
 			<!-- <plugin> -->
 			<!-- <groupId>de.jflex</groupId> -->
@@ -313,44 +380,15 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.3.1</version>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
 				<configuration>
-					<threshold>Normal</threshold>
-					<effort>Default</effort>
-					<excludeFilterFile>${basedir}/findbugs-exclude-filter.xml</excludeFilterFile>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>taglist-maven-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<tags>
-						<tag>TODO</tag>
-						<tag>FIXME</tag>
-					</tags>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>javancss-maven-plugin</artifactId>
-				<version>2.0</version>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>clirr-maven-plugin</artifactId>
-				<version>2.2.2</version>
-				<configuration>
-					<comparisonArtifacts>
-						<comparisonArtifact>
-							<groupId>commons-lang</groupId>
-							<artifactId>commons-lang</artifactId>
-							<version>2.6</version>
-						</comparisonArtifact>
-					</comparisonArtifacts>
-					<minSeverity>info</minSeverity>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<skipStaging>true</skipStaging>
 				</configuration>
 			</plugin>
 		</plugins>

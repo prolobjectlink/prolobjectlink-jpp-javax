@@ -21,28 +21,19 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.web.servlet;
+package org.prolobjectlink.web.application;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.File;
+import java.util.List;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+public interface ControllerGenerator extends WebApplication {
 
-@WebServlet
-public class HomeServlet extends HttpServlet implements Servlet {
+	public List<ServletUrlMapping> getMappings();
 
-	private static final long serialVersionUID = 7313381101418470194L;
+	public Class<?> getControllerRuntimeClass();
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setStatus(HttpServletResponse.SC_OK);
-		PrintWriter out = resp.getWriter();
-		out.print("<h1>Hello World</h1>");
-	}
+	public String getCurrentPath();
+
+	public File getWebDirectory();
 
 }
