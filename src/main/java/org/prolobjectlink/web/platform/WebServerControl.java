@@ -2,7 +2,7 @@
  * #%L
  * prolobjectlink-jpp-javax
  * %%
- * Copyright (C) 2012 - 2019 Prolobjectlink Project
+ * Copyright (C) 2019 Prolobjectlink Project
  * %%
  * COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
  * 
@@ -21,14 +21,29 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.web.application;
+package org.prolobjectlink.web.platform;
 
-import java.util.List;
+import org.prolobjectlink.db.DatabaseServer;
 
-public interface ControllerGenerator extends WebApplication {
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public interface WebServerControl extends WebPlatform {
 
-	public List<ServletUrlMapping> getMappings();
+	static final String embeddedWarfileName = "/embedded.war";
 
-	public Class<?> getControllerRuntimeClass();
+	public DatabaseServer getDatabaseServer();
+
+	public WebServer getWebServer();
+
+	public void run(String[] args);
+
+	public void stop();
+
+	public void restart();
+
+	public void start();
 
 }

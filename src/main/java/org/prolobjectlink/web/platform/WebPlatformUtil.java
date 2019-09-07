@@ -21,14 +21,34 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.web.application;
+package org.prolobjectlink.web.platform;
 
-import java.util.List;
+public class WebPlatformUtil {
 
-public interface ControllerGenerator extends WebApplication {
+	public static boolean runOnOsX() {
+		return getOsName().equals("Mac OS X") || getOsName().equals("Darwin");
+	}
 
-	public List<ServletUrlMapping> getMappings();
+	public static boolean runOnWindows() {
+		return getOsName().startsWith("Windows");
+	}
 
-	public Class<?> getControllerRuntimeClass();
+	public static boolean runOnLinux() {
+		return getOsName().equals("Linux");
+	}
+
+	public static String getOsName() {
+		String os = System.getProperty("os.name");
+		if (os == null)
+			return "unknow";
+		return os;
+	}
+
+	public final String getArch() {
+		return System.getProperty("os.arch");
+	}
+
+	private WebPlatformUtil() {
+	}
 
 }

@@ -23,8 +23,24 @@
  */
 package org.prolobjectlink.web.application;
 
+import java.io.File;
+
 public interface WebApplication {
 
 	public static final String ROOT = "web";
+	
+	public static final String DRIVER = "javax.persistence.jdbc.driver";
+	public static final String URL = "javax.persistence.jdbc.url";
+	public static final String USER = "javax.persistence.jdbc.user";
+	public static final String PWD = "javax.persistence.jdbc.password";
+	
+	public static final String DEFAULT_PROVIDER = "org.hibernate.jpa.HibernatePersistenceProvider";
+	public static final String DEFAULT_DRIVER = "org.postgresql.Driver";
+	public static final String DEFAULT_USER = "sa";
+	public static final String DEFAULT_PWD = "";
+
+	public String getCurrentPath();
+
+	public File getWebDirectory();
 
 }

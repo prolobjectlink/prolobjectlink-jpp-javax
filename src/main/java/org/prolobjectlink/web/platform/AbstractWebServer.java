@@ -2,7 +2,7 @@
  * #%L
  * prolobjectlink-jpp-javax
  * %%
- * Copyright (C) 2012 - 2019 Prolobjectlink Project
+ * Copyright (C) 2019 Prolobjectlink Project
  * %%
  * COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
  * 
@@ -21,14 +21,28 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.web.application;
+package org.prolobjectlink.web.platform;
 
-import java.util.List;
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public abstract class AbstractWebServer implements WebServer {
 
-public interface ControllerGenerator extends WebApplication {
+	private final int serverPort;
 
-	public List<ServletUrlMapping> getMappings();
+	public AbstractWebServer(int serverPort) {
+		this.serverPort = serverPort;
+	}
 
-	public Class<?> getControllerRuntimeClass();
+	public final int getPort() {
+		return serverPort;
+	}
+
+	public final void restart() {
+		stop();
+		start();
+	}
 
 }

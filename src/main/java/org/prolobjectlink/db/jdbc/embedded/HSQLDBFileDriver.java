@@ -21,14 +21,37 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.web.application;
+package org.prolobjectlink.db.jdbc.embedded;
 
-import java.util.List;
+import java.sql.SQLException;
 
-public interface ControllerGenerator extends WebApplication {
+import org.hsqldb.jdbcDriver;
+import org.prolobjectlink.db.jdbc.EmbeddedDriver;
 
-	public List<ServletUrlMapping> getMappings();
+public final class HSQLDBFileDriver extends EmbeddedDriver {
 
-	public Class<?> getControllerRuntimeClass();
+	public static final String name = "HSQLDB (File)";
+	private static final String prefix = "jdbc:hsqldb:file:";
+	private static final String driver = jdbcDriver.class.getName();
+
+	// public HSQLDBFileDriver(String dbpath, String dbname) {
+	// super(driver, prefix, dbpath, dbname);
+	// }
+
+	public HSQLDBFileDriver(String dbpath, String dbname, String dbuser, String dbpwd) {
+		super(name, driver, prefix, dbpath, dbname, dbuser, dbpwd);
+	}
+
+	@Override
+	public String getDbURL() {
+		// jdbc:hsqldb:file:[PATH_TO_DB_FILES]/MYDATABASE
+		return dbprefix + dbpath + "/" + dbname;
+	}
+
+	@Override
+	public boolean createDB() throws SQLException {
+		// do nothing
+		return true;
+	}
 
 }

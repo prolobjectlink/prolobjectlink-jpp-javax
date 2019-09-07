@@ -32,7 +32,7 @@ import javax.persistence.Query;
 import javax.persistence.SynchronizationType;
 
 import org.prolobjectlink.db.DatabaseEngine;
-import org.prolobjectlink.db.common.AbstractEntityManager;
+import org.prolobjectlink.db.em.AbstractEntityManager;
 
 public final class JpaEntityManager extends AbstractEntityManager implements EntityManager {
 

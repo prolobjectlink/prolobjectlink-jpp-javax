@@ -2,7 +2,7 @@
  * #%L
  * prolobjectlink-jpp-javax
  * %%
- * Copyright (C) 2012 - 2019 Prolobjectlink Project
+ * Copyright (C) 2019 Prolobjectlink Project
  * %%
  * COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
  * 
@@ -21,14 +21,19 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.web.application;
+package org.prolobjectlink.web.platform;
 
-import java.util.List;
+import org.prolobjectlink.PlatformConsole;
 
-public interface ControllerGenerator extends WebApplication {
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public interface WebPlatform extends PlatformConsole {
 
-	public List<ServletUrlMapping> getMappings();
+	public void openBrowser(String url);
 
-	public Class<?> getControllerRuntimeClass();
+	public Process run(String cmd);
 
 }

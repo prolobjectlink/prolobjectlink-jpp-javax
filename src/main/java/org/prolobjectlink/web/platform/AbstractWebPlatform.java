@@ -2,7 +2,7 @@
  * #%L
  * prolobjectlink-jpp-javax
  * %%
- * Copyright (C) 2012 - 2019 Prolobjectlink Project
+ * Copyright (C) 2019 Prolobjectlink Project
  * %%
  * COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
  * 
@@ -21,14 +21,36 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.web.application;
+package org.prolobjectlink.web.platform;
 
-import java.util.List;
+import java.io.IOException;
 
-public interface ControllerGenerator extends WebApplication {
+import org.prolobjectlink.AbstractPlatform;
+import org.prolobjectlink.Platform;
+import org.prolobjectlink.logging.LoggerConstants;
+import org.prolobjectlink.logging.LoggerUtils;
 
-	public List<ServletUrlMapping> getMappings();
+/**
+ * 
+ * @author Jose Zalacain
+ * @since 1.0
+ */
+public abstract class AbstractWebPlatform extends AbstractPlatform implements Platform {
 
-	public Class<?> getControllerRuntimeClass();
+	protected boolean started;
+	protected final Runtime runtime;
+
+	public AbstractWebPlatform() {
+		runtime = Runtime.getRuntime();
+	}
+
+	public final Process run(String cmd) {
+		try {
+			return runtime.exec(cmd);
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		throw new RuntimeException("Can't run process " + cmd);
+	}
 
 }

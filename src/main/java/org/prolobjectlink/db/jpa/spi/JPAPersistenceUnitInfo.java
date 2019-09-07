@@ -151,16 +151,20 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 		return Thread.currentThread().getContextClassLoader();
 	}
 
-	void setProperty(String name, String value) {
+	public void addManagedClass(String clazz) {
+		managedClasses.add(clazz);
+	}
+
+	public void setProperty(String name, String value) {
 		properties.put(name, value);
+	}
+
+	public void setPersistenceProviderClassName(String persistenceProviderClassName) {
+		this.persistenceProviderClassName = persistenceProviderClassName;
 	}
 
 	void setExcludeUnlistedClasses(boolean excludeUnlistedClasses) {
 		this.excludeUnlistedClasses = excludeUnlistedClasses;
-	}
-
-	void addManagedClass(String clazz) {
-		managedClasses.add(clazz);
 	}
 
 	void addJarFileUrl(URL jarFileUrl) {
@@ -177,10 +181,6 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 
 	void setPersistenceDescription(String persistenceDescription) {
 		this.persistenceDescription = persistenceDescription;
-	}
-
-	void setPersistenceProviderClassName(String persistenceProviderClassName) {
-		this.persistenceProviderClassName = persistenceProviderClassName;
 	}
 
 	String getPersistenceJtaDataSource() {

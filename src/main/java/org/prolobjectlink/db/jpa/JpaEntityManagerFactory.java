@@ -32,7 +32,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.SynchronizationType;
 
 import org.prolobjectlink.db.DatabaseEngine;
-import org.prolobjectlink.db.common.AbstractEntityManagerFactory;
+import org.prolobjectlink.db.em.AbstractEntityManagerFactory;
 
 /**
  * EntityManagerFactory implementation

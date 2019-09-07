@@ -25,8 +25,6 @@ package org.prolobjectlink.web.application;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.CodeSource;
-import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,21 +44,19 @@ import org.prolobjectlink.db.DatabaseClass;
 import org.prolobjectlink.db.DynamicClassLoader;
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.db.util.JavaReflect;
-import org.prolobjectlink.logging.LoggerConstants;
-import org.prolobjectlink.logging.LoggerUtils;
 import org.prolobjectlink.prolog.PrologClause;
 import org.prolobjectlink.prolog.PrologEngine;
 import org.prolobjectlink.prolog.PrologProvider;
 
-public abstract class AbstractGenerator implements ControllerGenerator {
+public abstract class AbstractControllerGenerator extends AbstractWebApplication implements ControllerGenerator {
 
 	private final List<ServletUrlMapping> mappings;
 
-	protected AbstractGenerator() {
+	protected AbstractControllerGenerator() {
 		this(new Settings().load().getProvider());
 	}
 
-	protected AbstractGenerator(PrologProvider provider) {
+	protected AbstractControllerGenerator(PrologProvider provider) {
 		mappings = new ArrayList<ServletUrlMapping>();
 		String controller = "controller.pl";
 		File appRoot = getWebDirectory();
@@ -158,35 +154,8 @@ public abstract class AbstractGenerator implements ControllerGenerator {
 		}
 	}
 
-	public final File getWebDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + ROOT);
-			} else {
-				// development mode
-				appRoot = new File(ROOT);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
 	public final List<ServletUrlMapping> getMappings() {
 		return mappings;
-	}
-
-	public final String getCurrentPath() {
-		Class<?> c = AbstractGenerator.class;
-		ProtectionDomain d = c.getProtectionDomain();
-		CodeSource s = d.getCodeSource();
-		return s.getLocation().getPath();
 	}
 
 }

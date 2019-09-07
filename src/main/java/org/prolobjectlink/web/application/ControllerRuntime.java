@@ -93,7 +93,7 @@ public class ControllerRuntime {
 	private static File getControllerFile(String application) throws IOException {
 		File controller = null;
 		File dist = getDistributionFolder();
-		String relative = AbstractGenerator.ROOT + File.separator + application + "/controller.pl";
+		String relative = AbstractControllerGenerator.ROOT + File.separator + application + "/controller.pl";
 		if (!dist.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
 			// production mode
 			controller = new File(dist.getCanonicalPath() + File.separator + relative);

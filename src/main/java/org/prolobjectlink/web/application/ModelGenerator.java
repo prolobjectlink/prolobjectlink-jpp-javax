@@ -25,10 +25,10 @@ package org.prolobjectlink.web.application;
 
 import java.util.List;
 
-public interface ControllerGenerator extends WebApplication {
+import javax.persistence.spi.PersistenceUnitInfo;
 
-	public List<ServletUrlMapping> getMappings();
+public interface ModelGenerator extends WebApplication {
 
-	public Class<?> getControllerRuntimeClass();
+	public List<PersistenceUnitInfo> getPersistenceUnit();
 
 }
