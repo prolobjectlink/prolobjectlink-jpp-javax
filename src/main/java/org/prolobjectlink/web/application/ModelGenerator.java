@@ -29,6 +29,6 @@ import javax.persistence.spi.PersistenceUnitInfo;
 
 public interface ModelGenerator extends WebApplication {
 
-	public List<PersistenceUnitInfo> getPersistenceUnit();
+	public List<PersistenceUnitInfo> getPersistenceUnits();
 
 }

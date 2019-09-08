@@ -28,7 +28,7 @@ package org.prolobjectlink.web.platform;
  * @author Jose Zalacain
  * @since 1.0
  */
-public abstract class AbstractWebServer implements WebServer {
+public abstract class AbstractWebServer extends AbstractWebPlatform implements WebServer {
 
 	private final int serverPort;
 

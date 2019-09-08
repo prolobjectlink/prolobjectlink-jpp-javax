@@ -26,19 +26,28 @@ package org.prolobjectlink.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
-public abstract class DataBaseDriver {
+import org.prolobjectlink.web.application.WebApplication;
 
-	protected String dbengine;
+public abstract class DatabaseDriver {
+
 	protected String dbdirver;
 	protected String dbprefix;
 	protected String dbname;
 	protected String dbuser;
 	protected String dbpwd;
 
-	public DataBaseDriver(String dbengine, String dbdirver, String dbprefix, String dbname, String dbuser,
-			String dbpwd) {
-		this.dbengine = dbengine;
+	public DatabaseDriver(Properties properties) {
+		String url = properties.getProperty(WebApplication.URL);
+		this.dbdirver = properties.getProperty(WebApplication.DRIVER);
+		this.dbprefix = url.substring(0, url.lastIndexOf(':') + 1);
+		this.dbname = url.substring(url.lastIndexOf('/') + 1);
+		this.dbuser = properties.getProperty(WebApplication.USER);
+		this.dbpwd = properties.getProperty(WebApplication.PWD);
+	}
+
+	public DatabaseDriver(String dbdirver, String dbprefix, String dbname, String dbuser, String dbpwd) {
 		this.dbdirver = dbdirver;
 		this.dbprefix = dbprefix;
 		this.dbname = dbname;
@@ -104,7 +113,7 @@ public abstract class DataBaseDriver {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DataBaseDriver other = (DataBaseDriver) obj;
+		DatabaseDriver other = (DatabaseDriver) obj;
 		if (dbdirver == null) {
 			if (other.dbdirver != null)
 				return false;
@@ -130,7 +139,7 @@ public abstract class DataBaseDriver {
 
 	public abstract String getDbURL();
 
-	public abstract boolean createDB() throws SQLException;
+	public abstract boolean createDatabase() throws SQLException;
 
 	public final boolean getDbPing() {
 		return getDbConnection() != null;

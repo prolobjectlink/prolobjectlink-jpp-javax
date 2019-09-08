@@ -23,20 +23,25 @@
  */
 package org.prolobjectlink.db.jdbc;
 
-import org.prolobjectlink.db.DataBaseDriver;
+import java.util.Properties;
 
-public abstract class RemoteDriver extends DataBaseDriver {
+import org.prolobjectlink.db.DatabaseDriver;
+import org.prolobjectlink.web.application.WebApplication;
+
+public abstract class RemoteDriver extends DatabaseDriver {
 
 	protected String dbhost;
 	protected String dbport;
 
-	public String getDbhost() {
-		return dbhost;
+	public RemoteDriver(Properties properties) {
+		super(properties);
+		String url = properties.getProperty(WebApplication.URL);
+		this.dbhost = url.substring(url.indexOf("//") + 2, url.lastIndexOf('/'));
 	}
 
-	public RemoteDriver(String dbengine, String dbdirver, String dbprefix, String dbhost, String dbname, String dbport,
-			String dbuser, String dbpwd) {
-		super(dbengine, dbdirver, dbprefix, dbname, dbuser, dbpwd);
+	public RemoteDriver(String dbdirver, String dbprefix, String dbhost, String dbname, String dbport, String dbuser,
+			String dbpwd) {
+		super(dbdirver, dbprefix, dbname, dbuser, dbpwd);
 		this.dbhost = dbhost;
 		this.dbport = dbport;
 	}
@@ -65,9 +70,14 @@ public abstract class RemoteDriver extends DataBaseDriver {
 		if (dbhost == null) {
 			if (other.dbhost != null)
 				return false;
-		} else if (!dbhost.equals(other.dbhost))
+		} else if (!dbhost.equals(other.dbhost)) {
 			return false;
+		}
 		return true;
+	}
+
+	public String getDbhost() {
+		return dbhost;
 	}
 
 	public abstract String getDbURL();

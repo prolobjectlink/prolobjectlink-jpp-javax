@@ -23,15 +23,20 @@
  */
 package org.prolobjectlink.db.jdbc;
 
-import org.prolobjectlink.db.DataBaseDriver;
+import java.util.Properties;
 
-public abstract class EmbeddedDriver extends DataBaseDriver {
+import org.prolobjectlink.db.DatabaseDriver;
+
+public abstract class EmbeddedDriver extends DatabaseDriver {
 
 	protected String dbpath;
 
-	public EmbeddedDriver(String dbengine, String dbdirver, String dbprefix, String dbpath, String dbname,
-			String dbuser, String dbpwd) {
-		super(dbengine, dbdirver, dbprefix, dbname, dbuser, dbpwd);
+	public EmbeddedDriver(Properties properties) {
+		super(properties);
+	}
+
+	public EmbeddedDriver(String dbdirver, String dbprefix, String dbpath, String dbname, String dbuser, String dbpwd) {
+		super(dbdirver, dbprefix, dbname, dbuser, dbpwd);
 		this.dbpath = dbpath;
 	}
 
@@ -63,8 +68,9 @@ public abstract class EmbeddedDriver extends DataBaseDriver {
 		if (dbpath == null) {
 			if (other.dbpath != null)
 				return false;
-		} else if (!dbpath.equals(other.dbpath))
+		} else if (!dbpath.equals(other.dbpath)) {
 			return false;
+		}
 		return true;
 	}
 

@@ -25,6 +25,7 @@ package org.prolobjectlink.db;
 
 import java.util.Map;
 
+import org.prolobjectlink.web.application.ModelGenerator;
 import org.prolobjectlink.web.platform.WebServerControl;
 
 /**
@@ -34,6 +35,14 @@ import org.prolobjectlink.web.platform.WebServerControl;
  * @since 1.0
  */
 public interface DatabaseConsole {
+
+	/**
+	 * Create an instance of the model generator for the current platform.
+	 * 
+	 * @return an instance of the model generator
+	 * @since 1.0
+	 */
+	public ModelGenerator getModelGeneratorInstance();
 
 	/**
 	 * Return an integer that represent the default port for http web server control

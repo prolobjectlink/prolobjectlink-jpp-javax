@@ -27,17 +27,36 @@ import java.io.File;
 
 public interface WebApplication {
 
-	public static final String ROOT = "web";
-	
+	/**
+	 * Automatically validates or exports schema DDL to the database when the
+	 * SessionFactory is created. With create-drop, the database schema will be
+	 * dropped when the SessionFactory is closed explicitly. e.g. validate | update
+	 * | create | create-drop
+	 */
+	public static final String HBM2DDL = "hibernate.hbm2ddl.auto";
+	public static final String DEFAULT_HBM2DDL = "create";
+
+	public static final String SQLSHOW = "hibernate.show_sql";
+	public static final String DEFAULT_SQLSHOW = "true";
+
+	public static final String SQLFORMAT = "hibernate.format_sql";
+	public static final String DEFAULT_SQLFORMAT = "true";
+
+	public static final String DATABASE_ACTION = "javax.persistence.schema-generation.database.action";
+	public static final String SCRIPT_ACTION = "javax.persistence.schema-generation.scripts.action";
+
 	public static final String DRIVER = "javax.persistence.jdbc.driver";
 	public static final String URL = "javax.persistence.jdbc.url";
 	public static final String USER = "javax.persistence.jdbc.user";
 	public static final String PWD = "javax.persistence.jdbc.password";
-	
+
 	public static final String DEFAULT_PROVIDER = "org.hibernate.jpa.HibernatePersistenceProvider";
 	public static final String DEFAULT_DRIVER = "org.postgresql.Driver";
+	public static final String DEFAULT_ACTION = "drop-and-create";
 	public static final String DEFAULT_USER = "sa";
 	public static final String DEFAULT_PWD = "";
+
+	public static final String ROOT = "web";
 
 	public String getCurrentPath();
 

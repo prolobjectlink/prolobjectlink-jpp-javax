@@ -23,41 +23,8 @@
  */
 package org.prolobjectlink.web.application;
 
-import java.io.File;
-import java.io.IOException;
-import java.security.CodeSource;
-import java.security.ProtectionDomain;
+import org.prolobjectlink.web.platform.AbstractWebPlatform;
 
-import org.prolobjectlink.logging.LoggerConstants;
-import org.prolobjectlink.logging.LoggerUtils;
-
-public abstract class AbstractWebApplication implements WebApplication {
-
-	public final File getWebDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + ROOT);
-			} else {
-				// development mode
-				appRoot = new File(ROOT);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final String getCurrentPath() {
-		Class<?> c = AbstractControllerGenerator.class;
-		ProtectionDomain d = c.getProtectionDomain();
-		CodeSource s = d.getCodeSource();
-		return s.getLocation().getPath();
-	}
+public abstract class AbstractWebApplication extends AbstractWebPlatform implements WebApplication {
 
 }

@@ -27,6 +27,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import org.postgresql.Driver;
 import org.prolobjectlink.db.jdbc.RemoteDriver;
@@ -39,13 +40,18 @@ import org.prolobjectlink.db.jdbc.RemoteDriver;
  */
 public class PostgreSQLDriver extends RemoteDriver {
 
-//	private static final String port = ":5432";
+	private static final String port = "5432";
 	public static final String name = "PostgreSQL";
-	private static final String prefix = "jdbc:postgresql:";
+	public static final String prefix = "jdbc:postgresql:";
 	private static final String driver = Driver.class.getName();
 
+	public PostgreSQLDriver(Properties properties) {
+		super(properties);
+		this.dbport = port;
+	}
+
 	public PostgreSQLDriver(String dbhost, String dbport, String dbname, String dbuser, String dbpwd) {
-		super(name, driver, prefix, dbhost, dbname, dbport, dbuser, dbpwd);
+		super(driver, prefix, dbhost, dbname, dbport, dbuser, dbpwd);
 	}
 
 	@Override
@@ -54,7 +60,7 @@ public class PostgreSQLDriver extends RemoteDriver {
 	}
 
 	@Override
-	public boolean createDB() throws SQLException {
+	public boolean createDatabase() throws SQLException {
 		try {
 			Class.forName(getDbdirver());
 		} catch (ClassNotFoundException e) {

@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,6 +46,8 @@ import org.prolobjectlink.prolog.ArrayIterator;
 import org.prolobjectlink.prolog.PrologIndicator;
 import org.prolobjectlink.prolog.PrologQuery;
 import org.prolobjectlink.prolog.PrologTerm;
+import org.prolobjectlink.web.application.ModelGenerator;
+import org.prolobjectlink.web.application.ModelProcessor;
 import org.prolobjectlink.web.platform.WebServerControl;
 
 public abstract class AbstractDatabaseConsole implements DatabaseConsole {
@@ -105,7 +108,9 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 		stdout.println("	-p	print in a file a snapshot of currents predicates");
 		stdout.println("	-g	generate all java class path wrapper procedures");
 		stdout.println("	-s	generate .project file for Prolog Development Tool");
+		stdout.println("	-m	generate mode jar file for all web applications");
 		stdout.println("	-z	start the embedded web server");
+		stdout.println("	-j	generate model jar to prolog");
 	}
 
 	public final void run(String[] args) {
@@ -198,6 +203,26 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 				WebServerControl control = getWebServerControl(port);
 				control.run(new String[] { arg });
 				control.openBrowser(uri);
+			} else if (m.containsKey("-m")) {
+				stdout.println("Generating web applications models");
+				PrologProgrammer p = engine.getProgrammer();
+				ModelGenerator g = getModelGeneratorInstance();
+				ModelProcessor processor = new ModelProcessor(stdout, p, g);
+				processor.processModel();
+				stdout.println("Generation OK");
+				System.exit(0);
+			} else if (m.containsKey("-j")) {
+				String file = m.get("-j");
+				try {
+					JarFile jarFile = new JarFile(file);
+					PrologProgrammer p = engine.getProgrammer();
+					p.codingModel(stdout, jarFile, false);
+					jarFile.close();
+				} catch (IOException e) {
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					System.exit(1);
+				}
+				System.exit(0);
 			} else {
 				printUsage();
 				System.exit(1);

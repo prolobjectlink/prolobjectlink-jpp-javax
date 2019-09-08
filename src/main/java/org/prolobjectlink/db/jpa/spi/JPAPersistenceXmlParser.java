@@ -127,7 +127,7 @@ public final class JPAPersistenceXmlParser extends AbstractXmlParser implements 
 					} else if (nodeName.equals(PERSISTENCE_JAR_FILE)) {
 						persistenceUnitInfo.addJarFileUrl(new URL(nodeContent));
 					} else if (nodeName.equals(PERSISTENCE_CLASS)) {
-						persistenceUnitInfo.addManagedClass(nodeContent);
+						persistenceUnitInfo.addManagedClassName(nodeContent);
 					} else if (nodeName.equals(PERSISTENCE_EXCLUDE_UNLISTED_CLASSES)) {
 						persistenceUnitInfo.setExcludeUnlistedClasses(Boolean.valueOf(nodeContent));
 					} else if (nodeName.equals(PERSISTENCE_SHARED_CACHE_MODE)) {

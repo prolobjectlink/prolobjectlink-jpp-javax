@@ -23,12 +23,21 @@
  */
 package org.prolobjectlink.db.jpa.spi;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarOutputStream;
 
 import javax.persistence.SharedCacheMode;
 import javax.persistence.ValidationMode;
@@ -37,7 +46,11 @@ import javax.persistence.spi.PersistenceUnitInfo;
 import javax.persistence.spi.PersistenceUnitTransactionType;
 import javax.sql.DataSource;
 
+import org.prolobjectlink.db.DynamicClassLoader;
+
 public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
+
+	private static final String CLASS = ".class";
 
 	private static final String ALL = "ALL";
 	private static final String NONE = "NONE";
@@ -60,9 +73,11 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 
 	//
 	private final List<URL> jarFileUrls = new ArrayList<URL>();
-	private final List<String> managedClasses = new ArrayList<String>();
 	private final Properties properties = new JPAPersistenceProperties();
 	private final List<String> mappingFileNames = new ArrayList<String>();
+	private final List<Class<?>> managedClasses = new ArrayList<Class<?>>();
+	private final List<String> managedClassesNames = new ArrayList<String>();
+	private final List<byte[]> managedClassesByteCode = new ArrayList<byte[]>();
 	private final Set<ClassTransformer> classTransformers = new HashSet<ClassTransformer>();
 
 	//
@@ -116,7 +131,7 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 	}
 
 	public List<String> getManagedClassNames() {
-		return managedClasses;
+		return managedClassesNames;
 	}
 
 	public boolean excludeUnlistedClasses() {
@@ -151,8 +166,8 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 		return Thread.currentThread().getContextClassLoader();
 	}
 
-	public void addManagedClass(String clazz) {
-		managedClasses.add(clazz);
+	public void addManagedClassName(String clazz) {
+		managedClassesNames.add(clazz);
 	}
 
 	public void setProperty(String name, String value) {
@@ -161,6 +176,22 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 
 	public void setPersistenceProviderClassName(String persistenceProviderClassName) {
 		this.persistenceProviderClassName = persistenceProviderClassName;
+	}
+
+	public List<Class<?>> getManagedClasses() {
+		return managedClasses;
+	}
+
+	public void addManagedClass(Class<?> clazz) {
+		managedClasses.add(clazz);
+	}
+
+	public List<byte[]> getManagedClassesByteCode() {
+		return managedClassesByteCode;
+	}
+
+	public void addManagedClass(byte[] bytecode) {
+		managedClassesByteCode.add(bytecode);
 	}
 
 	void setExcludeUnlistedClasses(boolean excludeUnlistedClasses) {
@@ -227,10 +258,6 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 		}
 	}
 
-	public final Set<ClassTransformer> getClassTransformers() {
-		return classTransformers;
-	}
-
 	@Override
 	public String toString() {
 		return "JPAPersistenceUnitInfo [unitName=" + unitName + "]";
@@ -256,9 +283,87 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 		if (unitName == null) {
 			if (other.unitName != null)
 				return false;
-		} else if (!unitName.equals(other.unitName))
+		} else if (!unitName.equals(other.unitName)) {
 			return false;
+		}
 		return true;
+	}
+
+	public final Set<ClassTransformer> getClassTransformers() {
+		return classTransformers;
+	}
+
+	public void writeByteCode(String directory) throws IOException {
+		for (int i = 0; i < managedClassesByteCode.size(); i++) {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			String name = managedClassesNames.get(i);
+			byte[] bytecode = managedClassesByteCode.get(i);
+			baos.write(bytecode, 0, bytecode.length);
+			File dotClass = new File(directory + name + CLASS);
+			baos.writeTo(new FileOutputStream(dotClass));
+		}
+	}
+
+	public void writePersistenceXml(StringBuilder builder) {
+		builder.append('\n');
+		builder.append('\t');
+		builder.append("<persistence-unit name=\"" + unitName + "\" transaction-type=\"" + transactionType + "\">");
+		builder.append('\n');
+		builder.append('\t');
+		builder.append('\t');
+		builder.append("<provider>" + persistenceProviderClassName + "</provider>");
+		builder.append('\n');
+		builder.append('\t');
+		builder.append('\t');
+		for (String managedClassName : managedClassesNames) {
+			builder.append("<class>" + managedClassName + "</class>");
+			builder.append('\n');
+			builder.append('\t');
+			builder.append('\t');
+		}
+		builder.append("<properties>");
+		Iterator<Entry<Object, Object>> i = properties.entrySet().iterator();
+		while (i.hasNext()) {
+			builder.append('\n');
+			builder.append('\t');
+			builder.append('\t');
+			builder.append('\t');
+			Entry<Object, Object> entry = i.next();
+			builder.append("<property name=\"" + entry.getKey() + "\" value=\"" + entry.getValue() + "\"/>");
+		}
+		builder.append('\n');
+		builder.append('\t');
+		builder.append('\t');
+		builder.append("</properties>");
+		builder.append('\n');
+		builder.append('\t');
+		builder.append("</persistence-unit>");
+		builder.append('\n');
+	}
+
+	public void jar(JarOutputStream out, String directory) throws IOException {
+		for (String fileName : managedClassesNames) {
+			byte[] buffer = new byte[1024];
+			File file = new File(directory + fileName + CLASS);
+			JarEntry jarEntry = new JarEntry(fileName.replace('.', '/') + CLASS);
+			jarEntry.setTime(file.lastModified());
+			out.putNextEntry(jarEntry);
+			FileInputStream in = null;
+			try {
+				in = new FileInputStream(file);
+				while (true) {
+					int nRead = in.read(buffer, 0, buffer.length);
+					if (nRead <= 0)
+						break;
+					out.write(buffer, 0, nRead);
+				}
+			} finally {
+				if (in != null) {
+					in.close();
+				}
+			}
+		}
+
 	}
 
 }

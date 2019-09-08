@@ -27,6 +27,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import org.prolobjectlink.db.jdbc.RemoteDriver;
 
@@ -40,13 +41,18 @@ import com.mysql.jdbc.Driver;
  */
 public class MySQLDriver extends RemoteDriver {
 
-	// private static final String port = ":3306";
+	private static final String port = "3306";
 	public static final String name = "MySQL";
-	private static final String prefix = "jdbc:mysql:";
+	public static final String prefix = "jdbc:mysql:";
 	private static final String driver = Driver.class.getName();
 
+	public MySQLDriver(Properties properties) {
+		super(properties);
+		this.dbport = port;
+	}
+
 	public MySQLDriver(String dbhost, String dbport, String dbname, String dbuser, String dbpwd) {
-		super(name, driver, prefix, dbhost, dbname, dbport, dbuser, dbpwd);
+		super(driver, prefix, dbhost, dbname, dbport, dbuser, dbpwd);
 	}
 
 	@Override
@@ -55,7 +61,7 @@ public class MySQLDriver extends RemoteDriver {
 	}
 
 	@Override
-	public boolean createDB() throws SQLException {
+	public boolean createDatabase() throws SQLException {
 		try {
 			Class.forName(getDbdirver());
 		} catch (ClassNotFoundException e) {

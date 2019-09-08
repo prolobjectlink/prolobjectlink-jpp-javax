@@ -24,6 +24,7 @@
 package org.prolobjectlink.db.jdbc.embedded;
 
 import java.sql.SQLException;
+import java.util.Properties;
 
 import org.hsqldb.jdbcDriver;
 import org.prolobjectlink.db.jdbc.EmbeddedDriver;
@@ -31,15 +32,15 @@ import org.prolobjectlink.db.jdbc.EmbeddedDriver;
 public final class HSQLDBFileDriver extends EmbeddedDriver {
 
 	public static final String name = "HSQLDB (File)";
-	private static final String prefix = "jdbc:hsqldb:file:";
+	public static final String prefix = "jdbc:hsqldb:file:";
 	private static final String driver = jdbcDriver.class.getName();
 
-	// public HSQLDBFileDriver(String dbpath, String dbname) {
-	// super(driver, prefix, dbpath, dbname);
-	// }
+	public HSQLDBFileDriver(Properties properties) {
+		super(properties);
+	}
 
 	public HSQLDBFileDriver(String dbpath, String dbname, String dbuser, String dbpwd) {
-		super(name, driver, prefix, dbpath, dbname, dbuser, dbpwd);
+		super(driver, prefix, dbpath, dbname, dbuser, dbpwd);
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public final class HSQLDBFileDriver extends EmbeddedDriver {
 	}
 
 	@Override
-	public boolean createDB() throws SQLException {
+	public boolean createDatabase() throws SQLException {
 		// do nothing
 		return true;
 	}

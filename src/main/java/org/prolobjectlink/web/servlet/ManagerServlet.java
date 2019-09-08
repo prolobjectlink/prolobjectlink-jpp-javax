@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
  * prolobjectlink-jpp-javax
  * %%
- * Copyright (C) 2019 Prolobjectlink Project
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
  * %%
  * COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
  * 
@@ -21,14 +21,28 @@
  * <http://www.gnu.org/licenses/gpl-1.0.html>.
  * #L%
  */
-package org.prolobjectlink.domain.model.view;
+package org.prolobjectlink.web.servlet;
 
-import org.prolobjectlink.domain.model.Employee;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-public class AnEmployeeView extends Employee {
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-	public AnEmployeeView(long salary) {
-		super(salary);
+@WebServlet
+public class ManagerServlet extends HttpServlet implements Servlet {
+
+	private static final long serialVersionUID = 7313381101418470194L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setStatus(HttpServletResponse.SC_OK);
+		PrintWriter out = resp.getWriter();
+		out.print("<h1>Database Server</h1>");
 	}
 
 }
