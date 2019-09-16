@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -102,6 +103,7 @@ public class EntityField extends DatabaseField {
 
 		if (isPrimaryKey()) {
 			fv.visitAnnotation(Type.getDescriptor(Id.class), true).visitEnd();
+			fv.visitAnnotation(Type.getDescriptor(GeneratedValue.class), true).visitEnd();
 		}
 		if (isOneToOne()) {
 			fv.visitAnnotation(Type.getDescriptor(OneToOne.class), true).visitEnd();

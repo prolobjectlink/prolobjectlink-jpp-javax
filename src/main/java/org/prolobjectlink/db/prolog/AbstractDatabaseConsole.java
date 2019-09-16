@@ -205,13 +205,13 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 				control.openBrowser(uri);
 			} else if (m.containsKey("-m")) {
 				stdout.println("Generating web applications models");
-				PrologProgrammer p = engine.getProgrammer();
 				ModelGenerator g = getModelGeneratorInstance();
-				ModelProcessor processor = new ModelProcessor(stdout, p, g);
+				ModelProcessor processor = new ModelProcessor(g);
 				processor.processModel();
 				stdout.println("Generation OK");
 				System.exit(0);
 			} else if (m.containsKey("-j")) {
+				stdout.println("Coding web applications models");
 				String file = m.get("-j");
 				try {
 					JarFile jarFile = new JarFile(file);
@@ -222,6 +222,7 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 					System.exit(1);
 				}
+				stdout.println("Coding OK");
 				System.exit(0);
 			} else {
 				printUsage();

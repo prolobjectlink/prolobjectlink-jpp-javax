@@ -166,7 +166,9 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 				PrologTerm className = head.getArgument(0);
 				PrologTerm classFields = head.getArgument(2);
 				String name = (String) converter.toObject(className);
-				EntityClass entity = new EntityClass(name, "", schema);
+				// we use the entity class comment to pass the
+				// persistence unit name that match with application name
+				EntityClass entity = new EntityClass(name, appName, schema);
 				PrologList fields = (PrologList) classFields;
 
 				for (PrologTerm field : fields) {
@@ -209,7 +211,9 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 						if (linkedClass != null) {
 							attribute = entity.addField(fname, "", position++, c, linkedClass);
 						} else {
-							EntityClass type = new EntityClass(ftype, "", schema);
+							// we use the entity class comment to pass the persistence unit name
+							// that match with application name
+							EntityClass type = new EntityClass(ftype, appName, schema);
 							attribute = entity.addField(fname, "", position++, Object.class);
 							pending.put(fname, type);
 						}

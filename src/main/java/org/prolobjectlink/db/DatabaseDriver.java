@@ -141,7 +141,7 @@ public abstract class DatabaseDriver {
 
 	public abstract boolean createDatabase() throws SQLException;
 
-	public final boolean getDbPing() {
+	public final boolean getDatabasePing() {
 		return getDbConnection() != null;
 	}
 

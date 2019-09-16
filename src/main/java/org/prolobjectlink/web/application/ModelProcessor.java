@@ -29,7 +29,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
@@ -38,21 +37,16 @@ import java.util.jar.Manifest;
 import javax.persistence.spi.PersistenceUnitInfo;
 
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceUnitInfo;
-import org.prolobjectlink.db.prolog.PrologProgrammer;
 import org.prolobjectlink.logging.LoggerConstants;
 import org.prolobjectlink.logging.LoggerUtils;
 
 public class ModelProcessor extends AbstractWebApplication {
 
-	private final PrintWriter stdout;
-	private final PrologProgrammer programmer;
 	private final ModelGenerator modelGenerator;
 	private final String temp = System.getProperty("java.io.tmpdir");
 
-	public ModelProcessor(PrintWriter stdout, PrologProgrammer programmer, ModelGenerator modelGenerator) {
+	public ModelProcessor(ModelGenerator modelGenerator) {
 		this.modelGenerator = modelGenerator;
-		this.programmer = programmer;
-		this.stdout = stdout;
 	}
 
 	public void processModel() {
@@ -63,9 +57,9 @@ public class ModelProcessor extends AbstractWebApplication {
 		StringBuilder builder = new StringBuilder();
 		builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		builder.append('\n');
-		builder.append("<persistence version=\"2.1\"\r\n"
+		builder.append("<persistence version=\"1.0\"\r\n"
 				+ "	xmlns=\"http://java.sun.com/xml/ns/persistence\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n"
-				+ "	xsi:schemaLocation=\"http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_1.xsd\">");
+				+ "	xsi:schemaLocation=\"http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd\">");
 		builder.append('\n');
 
 		try {
@@ -80,10 +74,6 @@ public class ModelProcessor extends AbstractWebApplication {
 				jpaUnit.writeByteCode(temp);
 				jpaUnit.jar(out, temp);
 			}
-
-			// write persistence.xml footer
-			builder.append('\n');
-			builder.append("</persistence>");
 
 			// write persistence.xml footer
 			builder.append('\n');

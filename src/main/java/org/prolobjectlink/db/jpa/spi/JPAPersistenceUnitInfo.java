@@ -46,7 +46,7 @@ import javax.persistence.spi.PersistenceUnitInfo;
 import javax.persistence.spi.PersistenceUnitTransactionType;
 import javax.sql.DataSource;
 
-import org.prolobjectlink.db.DynamicClassLoader;
+import org.prolobjectlink.web.application.DaoGenerator;
 
 public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 
@@ -295,11 +295,17 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 
 	public void writeByteCode(String directory) throws IOException {
 		for (int i = 0; i < managedClassesByteCode.size(); i++) {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			String name = managedClassesNames.get(i);
+			DaoGenerator generator = new DaoGenerator(name, unitName);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			byte[] bytecode = managedClassesByteCode.get(i);
 			baos.write(bytecode, 0, bytecode.length);
 			File dotClass = new File(directory + name + CLASS);
+			baos.writeTo(new FileOutputStream(dotClass));
+			baos = new ByteArrayOutputStream();
+			bytecode = generator.compile();
+			baos.write(bytecode, 0, bytecode.length);
+			dotClass = new File(directory + name + "Dao" + CLASS);
 			baos.writeTo(new FileOutputStream(dotClass));
 		}
 	}
@@ -342,15 +348,20 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 	}
 
 	public void jar(JarOutputStream out, String directory) throws IOException {
+		List<String> all = new ArrayList<>(managedClasses.size());
 		for (String fileName : managedClassesNames) {
+			all.add(fileName + "Dao");
+			all.add(fileName);
+		}
+		for (String fileName : all) {
 			byte[] buffer = new byte[1024];
-			File file = new File(directory + fileName + CLASS);
+			File model = new File(directory + fileName + CLASS);
 			JarEntry jarEntry = new JarEntry(fileName.replace('.', '/') + CLASS);
-			jarEntry.setTime(file.lastModified());
+			jarEntry.setTime(model.lastModified());
 			out.putNextEntry(jarEntry);
 			FileInputStream in = null;
 			try {
-				in = new FileInputStream(file);
+				in = new FileInputStream(model);
 				while (true) {
 					int nRead = in.read(buffer, 0, buffer.length);
 					if (nRead <= 0)
@@ -362,6 +373,7 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 					in.close();
 				}
 			}
+			model.deleteOnExit();
 		}
 
 	}

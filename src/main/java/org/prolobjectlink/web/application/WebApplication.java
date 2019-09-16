@@ -34,7 +34,7 @@ public interface WebApplication {
 	 * | create | create-drop
 	 */
 	public static final String HBM2DDL = "hibernate.hbm2ddl.auto";
-	public static final String DEFAULT_HBM2DDL = "create";
+	public static final String DEFAULT_HBM2DDL = "update";
 
 	public static final String SQLSHOW = "hibernate.show_sql";
 	public static final String DEFAULT_SQLSHOW = "true";
