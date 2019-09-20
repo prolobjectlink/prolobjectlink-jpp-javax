@@ -127,6 +127,17 @@ public abstract class AbstractControllerGenerator extends AbstractWebApplication
 					mw.visitMaxs(3, 3);
 					mw.visitEnd();
 
+					// doPost Method
+					mw = ca.visitMethod(Opcodes.ACC_PROTECTED, "doPost", methodDesc, null, exceptions);
+					mw.visitCode();
+					mw.visitVarInsn(Opcodes.ALOAD, 1);
+					mw.visitVarInsn(Opcodes.ALOAD, 2);
+					mw.visitMethodInsn(Opcodes.INVOKESTATIC, Type.getInternalName(getControllerRuntimeClass()), "run",
+							runMethodDesc, false);
+					mw.visitInsn(Opcodes.RETURN);
+					mw.visitMaxs(3, 3);
+					mw.visitEnd();
+
 					ca.visitEnd();
 
 					byte[] byteCode = cw.toByteArray();

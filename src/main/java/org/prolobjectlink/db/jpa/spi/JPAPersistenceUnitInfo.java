@@ -296,7 +296,8 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 	public void writeByteCode(String directory) throws IOException {
 		for (int i = 0; i < managedClassesByteCode.size(); i++) {
 			String name = managedClassesNames.get(i);
-			DaoGenerator generator = new DaoGenerator(name, unitName);
+			Class<?> cls = managedClasses.get(i);
+			DaoGenerator generator = new DaoGenerator(cls, unitName);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			byte[] bytecode = managedClassesByteCode.get(i);
 			baos.write(bytecode, 0, bytecode.length);
