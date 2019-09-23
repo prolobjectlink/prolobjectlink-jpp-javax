@@ -463,6 +463,44 @@
 <th>File</th>
 <th>Line</th></tr>
 <tr class="b">
+<td>org\prolobjectlink\db\entity\EntityClass.java</td>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#300">300</a></td></tr>
+<tr class="a">
+<td>org\prolobjectlink\db\entity\EntityClass.java</td>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#338">338</a></td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, &quot;delete&quot;, Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
+		mv.visitCode();
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), &quot;&lt;init&gt;&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitLdcInsn(getComment());
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), &quot;&lt;init&gt;&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
+				&quot;createEntityManagerFactory&quot;, Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		mv.visitVarInsn(Opcodes.ASTORE, 1); // emf
+		mv.visitVarInsn(Opcodes.ALOAD, 1); // emf
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class),
+				&quot;createEntityManager&quot;, Type.getMethodDescriptor(emType), true);
+		mv.visitVarInsn(Opcodes.ASTORE, 2); // em
+		mv.visitVarInsn(Opcodes.ALOAD, 2);// em
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;getTransaction&quot;,
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), &quot;begin&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;remove&quot;,</pre></div></td></tr></table>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
 <td>org\prolobjectlink\web\application\DaoGenerator.java</td>
 <td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#369">369</a></td></tr>
 <tr class="a">
@@ -808,6 +846,54 @@
 <th>Line</th></tr>
 <tr class="b">
 <td>org\prolobjectlink\web\application\DaoGenerator.java</td>
+<td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#256">256</a></td></tr>
+<tr class="a">
+<td>org\prolobjectlink\web\application\DaoGenerator.java</td>
+<td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#440">440</a></td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, &quot;queryOne&quot;, Type.getMethodDescriptor(objType, stringType), null, null);
+		mv.visitCode();
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, &quot;em&quot;, Type.getDescriptor(EntityManager.class));
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;getTransaction&quot;,
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), &quot;begin&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, &quot;em&quot;, Type.getDescriptor(EntityManager.class));
+
+		//
+		mv.visitVarInsn(Opcodes.ALOAD, 1);</pre></div></td></tr></table>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
+<td>org\prolobjectlink\web\application\DaoGenerator.java</td>
+<td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#212">212</a></td></tr>
+<tr class="a">
+<td>org\prolobjectlink\web\application\DaoGenerator.java</td>
+<td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#306">306</a></td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, &quot;retrieveAll&quot;, Type.getMethodDescriptor(listType, intType, intType),
+				null, null);
+		mv.visitCode();
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, &quot;em&quot;, Type.getDescriptor(EntityManager.class));
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;getTransaction&quot;,
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), &quot;begin&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, &quot;em&quot;, Type.getDescriptor(EntityManager.class));</pre></div></td></tr></table>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
+<td>org\prolobjectlink\web\application\DaoGenerator.java</td>
 <td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#137">137</a></td></tr>
 <tr class="a">
 <td>org\prolobjectlink\web\application\DaoGenerator.java</td>
@@ -1002,6 +1088,55 @@
 <th>File</th>
 <th>Line</th></tr>
 <tr class="b">
+<td>org\prolobjectlink\db\entity\EntityClass.java</td>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#326">326</a></td></tr>
+<tr class="a">
+<td>org\prolobjectlink\db\entity\EntityClass.java</td>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#401">401</a></td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;remove&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;getTransaction&quot;,
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), &quot;commit&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record update method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, &quot;toString&quot;, Type.getMethodDescriptor(stringType), null, null);</pre></div></td></tr></table>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
+<td>org\prolobjectlink\db\entity\EntityClass.java</td>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#286">286</a></td></tr>
+<tr class="a">
+<td>org\prolobjectlink\web\application\DaoGenerator.java</td>
+<td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#76">76</a></td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>		Type stringType = Type.getType(String.class);
+		Type objType = Type.getType(Object.class);
+		Type classType = Type.getType(Class.class);
+		Type emType = Type.getType(EntityManager.class);
+		Type txType = Type.getType(EntityTransaction.class);
+		Type emfType = Type.getType(EntityManagerFactory.class);
+
+		Type builderType = Type.getType(CriteriaBuilder.class);
+		Type rootType = Type.getType(Root.class);
+		Type queryType = Type.getType(TypedQuery.class);
+		Type criteriaType = Type.getType(CriteriaQuery.class);
+		Type selectionType = Type.getType(Selection.class);</pre></div></td></tr></table>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
 <td>org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java</td>
 <td><a href="./xref/org/prolobjectlink/db/prolog/AbstractDatabaseConsole.html#71">71</a></td></tr>
 <tr class="a">
@@ -1035,8 +1170,8 @@
 <td>org\prolobjectlink\db\jpa\criteria\JpaCollectionJoin.java</td>
 <td><a href="./xref/org/prolobjectlink/db/jpa/criteria/JpaCollectionJoin.html#38">38</a></td></tr>
 <tr class="a">
-<td>org\prolobjectlink\db\jpa\criteria\JpaSetJoin.java</td>
-<td><a href="./xref/org/prolobjectlink/db/jpa/criteria/JpaSetJoin.html#38">38</a></td></tr>
+<td>org\prolobjectlink\db\jpa\criteria\JpaListJoin.java</td>
+<td><a href="./xref/org/prolobjectlink/db/jpa/criteria/JpaListJoin.html#38">38</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>	public JpaSetJoin(String alias, Class&lt;? extends X&gt; javaType, Expression&lt;X&gt; expression, Metamodel metamodel,
@@ -1075,7 +1210,31 @@
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		String url = dbprefix + &quot;//&quot; + dbhost + &quot;:&quot; + dbport + &quot;/&quot; + &quot;postgres&quot;;</pre></div></td></tr></table></div>
+		String url = dbprefix + &quot;//&quot; + dbhost + &quot;:&quot; + dbport + &quot;/&quot; + &quot;postgres&quot;;</pre></div></td></tr></table>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
+<td>org\prolobjectlink\db\entity\EntityClass.java</td>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#327">327</a></td></tr>
+<tr class="a">
+<td>org\prolobjectlink\db\entity\EntityClass.java</td>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#365">365</a></td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>		mv.visitInsn(Opcodes.POP);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;getTransaction&quot;,
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), &quot;commit&quot;,
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record update method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, &quot;delete&quot;, Type.getMethodDescriptor(Type.VOID_TYPE), null, null);</pre></div></td></tr></table></div>
                   </div>
             </div>
           </div>

@@ -22,10 +22,22 @@
 package org.prolobjectlink.db.entity;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
 
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -263,6 +275,167 @@ public class EntityClass extends DatabaseClass {
 			field.createGetter(ca, internalName, typeDescriptor, type);
 			field.createSetter(ca, internalName, typeDescriptor, type);
 		}
+
+//		Type modelType = Type.getType(getJavaClass());
+		Type mapType = Type.getType(Map.class);
+		Type intType = Type.getType(int.class);
+		Type charType = Type.getType(char.class);
+		Type listType = Type.getType(List.class);
+		Type integerType = Type.getType(Integer.class);
+		Type stringType = Type.getType(String.class);
+		Type stringBuilderType = Type.getType(StringBuilder.class);
+		Type objType = Type.getType(Object.class);
+		Type classType = Type.getType(Class.class);
+		Type emType = Type.getType(EntityManager.class);
+		Type txType = Type.getType(EntityTransaction.class);
+		Type emfType = Type.getType(EntityManagerFactory.class);
+
+		Type builderType = Type.getType(CriteriaBuilder.class);
+		Type rootType = Type.getType(Root.class);
+		Type queryType = Type.getType(TypedQuery.class);
+		Type criteriaType = Type.getType(CriteriaQuery.class);
+		Type selectionType = Type.getType(Selection.class);
+
+		// active record create method
+		MethodVisitor mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "create", Type.getMethodDescriptor(Type.VOID_TYPE), null,
+				null);
+		mv.visitCode();
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitLdcInsn(getComment());
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
+				"createEntityManagerFactory", Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		mv.visitVarInsn(Opcodes.ASTORE, 1); // emf
+		mv.visitVarInsn(Opcodes.ALOAD, 1); // emf
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class),
+				"createEntityManager", Type.getMethodDescriptor(emType), true);
+		mv.visitVarInsn(Opcodes.ASTORE, 2); // em
+		mv.visitVarInsn(Opcodes.ALOAD, 2);// em
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "begin",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "persist",
+				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record update method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "update", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
+		mv.visitCode();
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitLdcInsn(getComment());
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
+				"createEntityManagerFactory", Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		mv.visitVarInsn(Opcodes.ASTORE, 1); // emf
+		mv.visitVarInsn(Opcodes.ALOAD, 1); // emf
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class),
+				"createEntityManager", Type.getMethodDescriptor(emType), true);
+		mv.visitVarInsn(Opcodes.ASTORE, 2); // em
+		mv.visitVarInsn(Opcodes.ALOAD, 2);// em
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "begin",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "merge",
+				Type.getMethodDescriptor(objType, objType), true);
+		mv.visitInsn(Opcodes.POP);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record update method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
+		mv.visitCode();
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitLdcInsn(getComment());
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
+				"createEntityManagerFactory", Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		mv.visitVarInsn(Opcodes.ASTORE, 1); // emf
+		mv.visitVarInsn(Opcodes.ALOAD, 1); // emf
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class),
+				"createEntityManager", Type.getMethodDescriptor(emType), true);
+		mv.visitVarInsn(Opcodes.ASTORE, 2); // em
+		mv.visitVarInsn(Opcodes.ALOAD, 2);// em
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "begin",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
+				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record update method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
+		mv.visitCode();
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(StringBuilder.class));
+		mv.visitInsn(Opcodes.DUP);
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(StringBuilder.class), "<init>",
+				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+		mv.visitLdcInsn(getShortName() + "[");
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.class), "append",
+				Type.getMethodDescriptor(stringBuilderType, objType), false);
+		for (DatabaseField field : fields.values()) {
+			mv.visitLdcInsn(" " + field.getName() + "=");
+			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.class), "append",
+					Type.getMethodDescriptor(stringBuilderType, objType), false);
+			mv.visitVarInsn(Opcodes.ALOAD, 0);
+			mv.visitFieldInsn(Opcodes.GETFIELD, internalName, field.getName(), Type.getDescriptor(field.getType()));
+			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.class), "append",
+					Type.getMethodDescriptor(stringBuilderType, objType), false);
+		}
+		mv.visitLdcInsn(" ]");
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.class), "append",
+				Type.getMethodDescriptor(stringBuilderType, objType), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.class), "toString",
+				Type.getMethodDescriptor(stringType), false);
+		mv.visitInsn(Opcodes.ARETURN);
+		mv.visitMaxs(2, 1);
+		mv.visitEnd();
 
 		ca.visitEnd();
 
