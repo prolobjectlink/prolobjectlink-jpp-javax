@@ -24,18 +24,12 @@ package org.prolobjectlink.db.entity;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.objectweb.asm.ClassWriter;
@@ -128,6 +122,10 @@ public class EntityClass extends DatabaseClass {
 	public DatabaseField addField(DatabaseField field) {
 		fields.put(field.getName(), field);
 		return field;
+	}
+
+	public String getPersistenceUnit() {
+		return comment;
 	}
 
 	@Override
@@ -276,25 +274,13 @@ public class EntityClass extends DatabaseClass {
 			field.createSetter(ca, internalName, typeDescriptor, type);
 		}
 
-//		Type modelType = Type.getType(getJavaClass());
 		Type mapType = Type.getType(Map.class);
-		Type intType = Type.getType(int.class);
-		Type charType = Type.getType(char.class);
-		Type listType = Type.getType(List.class);
-		Type integerType = Type.getType(Integer.class);
-		Type stringType = Type.getType(String.class);
-		Type stringBuilderType = Type.getType(StringBuilder.class);
 		Type objType = Type.getType(Object.class);
-		Type classType = Type.getType(Class.class);
+		Type stringType = Type.getType(String.class);
 		Type emType = Type.getType(EntityManager.class);
 		Type txType = Type.getType(EntityTransaction.class);
 		Type emfType = Type.getType(EntityManagerFactory.class);
-
-		Type builderType = Type.getType(CriteriaBuilder.class);
-		Type rootType = Type.getType(Root.class);
-		Type queryType = Type.getType(TypedQuery.class);
-		Type criteriaType = Type.getType(CriteriaQuery.class);
-		Type selectionType = Type.getType(Selection.class);
+		Type stringBuilderType = Type.getType(StringBuilder.class);
 
 		// active record create method
 		MethodVisitor mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "create", Type.getMethodDescriptor(Type.VOID_TYPE), null,
@@ -304,7 +290,7 @@ public class EntityClass extends DatabaseClass {
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitLdcInsn(getComment());
+		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
@@ -341,7 +327,7 @@ public class EntityClass extends DatabaseClass {
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitLdcInsn(getComment());
+		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
@@ -379,7 +365,7 @@ public class EntityClass extends DatabaseClass {
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitLdcInsn(getComment());
+		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
