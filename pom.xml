@@ -18,8 +18,8 @@
 
 	<licenses>
 		<license>
-			<name>CDDL + GPLv2 with classpath exception</name>
-			<url>https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html</url>
+			<name>GNU LGPL 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -278,7 +278,7 @@
 					<canUpdateDescription>true</canUpdateDescription>
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>cddl_v1</licenseName>
+					<licenseName>lgpl_v2_1</licenseName>
 					<!-- <dryRun>true</dryRun> -->
 					<licenseFile>LICENSE.md</licenseFile>
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>

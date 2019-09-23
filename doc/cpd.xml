@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
 <duplication lines="103" tokens="522">
-<file line="114" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
-<file line="120" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
+<file line="112" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
+<file line="118" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -112,8 +112,8 @@
 </codefragment>
 </duplication>
 <duplication lines="19" tokens="218">
-<file line="371" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="406" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="369" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="404" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryAll", Type.getMethodDescriptor(listType, stringType), null, null);
@@ -139,8 +139,8 @@
 </codefragment>
 </duplication>
 <duplication lines="17" tokens="187">
-<file line="371" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="442" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="369" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="440" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType, stringType, intType, intType), null, null);
@@ -164,8 +164,8 @@
 </codefragment>
 </duplication>
 <duplication lines="20" tokens="179">
-<file line="239" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="387" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="237" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="385" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitVarInsn(Opcodes.ASTORE, 2);
@@ -192,8 +192,8 @@
 </codefragment>
 </duplication>
 <duplication lines="36" tokens="177">
-<file line="69" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
-<file line="315" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
+<file line="67" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
+<file line="313" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -236,9 +236,9 @@
 </codefragment>
 </duplication>
 <duplication lines="13" tokens="168">
-<file line="138" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="163" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="188" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="136" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="161" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="186" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "update", Type.getMethodDescriptor(Type.VOID_TYPE, objType), null,
@@ -258,8 +258,8 @@
 </codefragment>
 </duplication>
 <duplication lines="16" tokens="167">
-<file line="258" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="308" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="256" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="306" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType, intType, intType),
@@ -282,8 +282,8 @@
 </codefragment>
 </duplication>
 <duplication lines="18" tokens="153">
-<file line="390" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="425" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="388" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="423" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType), true);
@@ -308,8 +308,8 @@
 </codefragment>
 </duplication>
 <duplication lines="28" tokens="150">
-<file line="198" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaCriteriaQuery.java"/>
-<file line="262" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSubQuery.java"/>
+<file line="196" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaCriteriaQuery.java"/>
+<file line="260" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSubQuery.java"/>
 <codefragment>
 <![CDATA[
 			b.append("SELECT " + alias + " ");
@@ -344,8 +344,8 @@
 </codefragment>
 </duplication>
 <duplication lines="17" tokens="144">
-<file line="242" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="425" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="240" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="423" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType), true);
@@ -369,8 +369,8 @@
 </codefragment>
 </duplication>
 <duplication lines="14" tokens="143">
-<file line="139" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="371" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="137" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="369" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryOne", Type.getMethodDescriptor(objType, stringType), null, null);
@@ -391,8 +391,8 @@
 </codefragment>
 </duplication>
 <duplication lines="14" tokens="134">
-<file line="150" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="175" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="148" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="173" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
@@ -413,8 +413,8 @@
 </codefragment>
 </duplication>
 <duplication lines="13" tokens="133">
-<file line="139" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="258" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="137" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="256" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType), null, null);
@@ -434,8 +434,8 @@
 </codefragment>
 </duplication>
 <duplication lines="10" tokens="131">
-<file line="139" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="214" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="137" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="212" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveOne", Type.getMethodDescriptor(objType, intType), null, null);
@@ -452,8 +452,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="130">
-<file line="46" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaLocate.java"/>
-<file line="46" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSubstring.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaLocate.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSubstring.java"/>
 <codefragment>
 <![CDATA[
 		return "JpaSubstring [length=" + length + ", operator=" + operator + ", right=" + right + ", metamodel="
@@ -481,8 +481,8 @@
 </codefragment>
 </duplication>
 <duplication lines="24" tokens="123">
-<file line="230" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
-<file line="55" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaPath.java"/>
+<file line="228" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
+<file line="53" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaPath.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -513,8 +513,8 @@
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="122">
-<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaKeys.java"/>
-<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaValues.java"/>
+<file line="42" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaKeys.java"/>
+<file line="42" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaValues.java"/>
 <codefragment>
 <![CDATA[
 		return "JpaValues [map=" + map + ", metamodel=" + metamodel + ", distinct=" + distinct + ", expression="
@@ -542,8 +542,8 @@
 </codefragment>
 </duplication>
 <duplication lines="13" tokens="121">
-<file line="151" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="202" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="149" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="200" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitInsn(Opcodes.POP);
@@ -563,8 +563,8 @@
 </codefragment>
 </duplication>
 <duplication lines="9" tokens="115">
-<file line="74" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
-<file line="96" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
+<file line="72" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
+<file line="94" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
 <codefragment>
 <![CDATA[
 		ObjectConverter<PrologTerm> converter = database.getConverter();
@@ -580,8 +580,8 @@
 </codefragment>
 </duplication>
 <duplication lines="18" tokens="109">
-<file line="73" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
-<file line="78" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
+<file line="71" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
+<file line="76" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -606,10 +606,10 @@
 </codefragment>
 </duplication>
 <duplication lines="8" tokens="109">
-<file line="40" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaCollectionJoin.java"/>
-<file line="40" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaListJoin.java"/>
-<file line="40" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaMapJoin.java"/>
-<file line="40" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSetJoin.java"/>
+<file line="38" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaCollectionJoin.java"/>
+<file line="38" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaListJoin.java"/>
+<file line="38" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaMapJoin.java"/>
+<file line="38" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSetJoin.java"/>
 <codefragment>
 <![CDATA[
 	public JpaSetJoin(String alias, Class<? extends X> javaType, Expression<X> expression, Metamodel metamodel,
@@ -624,8 +624,8 @@
 </codefragment>
 </duplication>
 <duplication lines="17" tokens="105">
-<file line="54" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jdbc\remote\MySQLDriver.java"/>
-<file line="53" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jdbc\remote\PostgreSQLDriver.java"/>
+<file line="52" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jdbc\remote\MySQLDriver.java"/>
+<file line="51" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jdbc\remote\PostgreSQLDriver.java"/>
 <codefragment>
 <![CDATA[
 	public PostgreSQLDriver(String dbhost, String dbport, String dbname, String dbuser, String dbpwd) {
