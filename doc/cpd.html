@@ -464,10 +464,10 @@
 <th>Line</th></tr>
 <tr class="b">
 <td>org\prolobjectlink\db\entity\EntityClass.java</td>
-<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#300">300</a></td></tr>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#286">286</a></td></tr>
 <tr class="a">
 <td>org\prolobjectlink\db\entity\EntityClass.java</td>
-<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#338">338</a></td></tr>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#324">324</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, &quot;delete&quot;, Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
@@ -476,7 +476,7 @@
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), &quot;&lt;init&gt;&quot;,
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitLdcInsn(getComment());
+		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), &quot;&lt;init&gt;&quot;,
@@ -1089,10 +1089,10 @@
 <th>Line</th></tr>
 <tr class="b">
 <td>org\prolobjectlink\db\entity\EntityClass.java</td>
-<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#326">326</a></td></tr>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#312">312</a></td></tr>
 <tr class="a">
 <td>org\prolobjectlink\db\entity\EntityClass.java</td>
-<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#401">401</a></td></tr>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#387">387</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;remove&quot;,
@@ -1108,30 +1108,6 @@
 
 		// active record update method
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, &quot;toString&quot;, Type.getMethodDescriptor(stringType), null, null);</pre></div></td></tr></table>
-<table border="0" class="table table-striped">
-<tr class="a">
-<th>File</th>
-<th>Line</th></tr>
-<tr class="b">
-<td>org\prolobjectlink\db\entity\EntityClass.java</td>
-<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#286">286</a></td></tr>
-<tr class="a">
-<td>org\prolobjectlink\web\application\DaoGenerator.java</td>
-<td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#76">76</a></td></tr>
-<tr class="b"><td colspan='2'>
-<div>
-<pre>		Type stringType = Type.getType(String.class);
-		Type objType = Type.getType(Object.class);
-		Type classType = Type.getType(Class.class);
-		Type emType = Type.getType(EntityManager.class);
-		Type txType = Type.getType(EntityTransaction.class);
-		Type emfType = Type.getType(EntityManagerFactory.class);
-
-		Type builderType = Type.getType(CriteriaBuilder.class);
-		Type rootType = Type.getType(Root.class);
-		Type queryType = Type.getType(TypedQuery.class);
-		Type criteriaType = Type.getType(CriteriaQuery.class);
-		Type selectionType = Type.getType(Selection.class);</pre></div></td></tr></table>
 <table border="0" class="table table-striped">
 <tr class="a">
 <th>File</th>
@@ -1217,10 +1193,10 @@
 <th>Line</th></tr>
 <tr class="b">
 <td>org\prolobjectlink\db\entity\EntityClass.java</td>
-<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#327">327</a></td></tr>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#313">313</a></td></tr>
 <tr class="a">
 <td>org\prolobjectlink\db\entity\EntityClass.java</td>
-<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#365">365</a></td></tr>
+<td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#351">351</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>		mv.visitInsn(Opcodes.POP);

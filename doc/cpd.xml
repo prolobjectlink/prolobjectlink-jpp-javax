@@ -112,9 +112,9 @@
 </codefragment>
 </duplication>
 <duplication lines="26" tokens="332">
-<file line="300" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="338" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="376" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="286" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="324" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="362" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
@@ -123,7 +123,7 @@
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitLdcInsn(getComment());
+		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
@@ -655,8 +655,8 @@
 </codefragment>
 </duplication>
 <duplication lines="13" tokens="113">
-<file line="326" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="401" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="312" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="387" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
@@ -672,26 +672,6 @@
 
 		// active record update method
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
-]]>
-</codefragment>
-</duplication>
-<duplication lines="12" tokens="113">
-<file line="286" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="76" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<codefragment>
-<![CDATA[
-		Type stringType = Type.getType(String.class);
-		Type objType = Type.getType(Object.class);
-		Type classType = Type.getType(Class.class);
-		Type emType = Type.getType(EntityManager.class);
-		Type txType = Type.getType(EntityTransaction.class);
-		Type emfType = Type.getType(EntityManagerFactory.class);
-
-		Type builderType = Type.getType(CriteriaBuilder.class);
-		Type rootType = Type.getType(Root.class);
-		Type queryType = Type.getType(TypedQuery.class);
-		Type criteriaType = Type.getType(CriteriaQuery.class);
-		Type selectionType = Type.getType(Selection.class);
 ]]>
 </codefragment>
 </duplication>
@@ -765,8 +745,8 @@
 </codefragment>
 </duplication>
 <duplication lines="12" tokens="100">
-<file line="327" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="365" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="313" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="351" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitInsn(Opcodes.POP);
