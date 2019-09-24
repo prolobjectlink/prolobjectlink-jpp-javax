@@ -47,9 +47,13 @@ public class ControllerRuntime {
 
 	public static void run(String application, String procedure, Object[] arguments, OutputStream out)
 			throws IOException {
-		File controllerPath = getControllerFile(application);
 		PrologProvider provider = new Settings().load().getProvider();
-		PrologEngine engine = provider.newEngine(controllerPath.getCanonicalPath());
+		File controllerFolder = getControllerFolder(application);
+		File[] controllers = controllerFolder.listFiles();
+		PrologEngine engine = provider.newEngine();
+		for (File controller : controllers) {
+			engine.include(controller.getCanonicalPath());
+		}
 		PrologJavaConverter converter = provider.getJavaConverter();
 		PrologTerm[] parameters = converter.toTermsArray(arguments);
 		PrologTerm[] finalArgs = new PrologTerm[parameters.length + 1];
@@ -88,10 +92,10 @@ public class ControllerRuntime {
 		return pdk.getParentFile();
 	}
 
-	private static File getControllerFile(String application) throws IOException {
+	private static File getControllerFolder(String application) throws IOException {
 		File controller = null;
 		File dist = getDistributionFolder();
-		String relative = AbstractControllerGenerator.ROOT + File.separator + application + "/controller.pl";
+		String relative = AbstractControllerGenerator.ROOT + File.separator + application + "/controller";
 		if (!dist.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
 			// production mode
 			controller = new File(dist.getCanonicalPath() + File.separator + relative);

@@ -106,7 +106,8 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 		stdout.println("	-p	print in a file a snapshot of currents predicates");
 		stdout.println("	-g	generate all java class path wrapper procedures");
 		stdout.println("	-s	generate .project file for Prolog Development Tool");
-		stdout.println("	-m	generate mode jar file for all web applications");
+		stdout.println("	-m	generate model jar file for all web applications");
+		stdout.println("	-c	generate controllers for all web applications");
 		stdout.println("	-z	start the embedded web server");
 		stdout.println("	-j	generate model jar to prolog");
 	}
@@ -215,6 +216,20 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 					JarFile jarFile = new JarFile(file);
 					PrologProgrammer p = engine.getProgrammer();
 					p.codingModel(stdout, jarFile, false);
+					jarFile.close();
+				} catch (IOException e) {
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					System.exit(1);
+				}
+				stdout.println("Coding OK");
+				System.exit(0);
+			} else if (m.containsKey("-c")) {
+				stdout.println("Coding web applications models");
+				String file = m.get("-c");
+				try {
+					JarFile jarFile = new JarFile(file);
+					PrologProgrammer p = engine.getProgrammer();
+					p.codingController(stdout, jarFile, false);
 					jarFile.close();
 				} catch (IOException e) {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
