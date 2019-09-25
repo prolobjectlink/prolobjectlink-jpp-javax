@@ -28,6 +28,7 @@ import java.security.CodeSource;
 import java.security.ProtectionDomain;
 import java.util.List;
 import java.util.Map;
+import java.util.function.UnaryOperator;
 
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.prolog.PrologClause;
@@ -45,8 +46,9 @@ import io.marioslab.basis.template.TemplateLoader.FileTemplateLoader;
 
 public class ControllerRuntime {
 
-	public static void run(String application, String procedure, Object[] arguments, OutputStream out)
-			throws IOException {
+	public static void run(final String protocol, final String host, final int port, final String application,
+			String procedure, Object[] arguments, OutputStream out) throws IOException {
+
 		PrologProvider provider = new Settings().load().getProvider();
 		File controllerFolder = getControllerFolder(application);
 		File[] controllers = controllerFolder.listFiles();
@@ -80,6 +82,17 @@ public class ControllerRuntime {
 				Template template = loader.load(viewPath.getCanonicalPath());
 				TemplateContext context = new TemplateContext();
 				context.set(x.getName(), result.get(x.getName()));
+
+				// to resolve template path
+				context.set("path", new UnaryOperator<String>() {
+
+					@Override
+					public String apply(String t) {
+						return protocol + "://" + host + "/" + application + "/" + t;
+					}
+
+				});
+
 				template.render(context, out);
 			}
 		}
