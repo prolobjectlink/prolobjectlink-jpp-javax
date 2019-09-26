@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2019-09-25T19:14:30.804">
+<pmd version="4.2.5" timestamp="2019-09-29T20:46:28.755">
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\AbstractEntityManager.java">
 <violation beginline="74" endline="74" begincolumn="43" endcolumn="61" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.db.entity" class="AbstractEntityManager" variable="synchronizationType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'synchronizationType'.
@@ -134,7 +134,7 @@ Avoid unused local variables such as 'parameterMode'.
 </violation>
 </file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java">
-<violation beginline="160" endline="162" begincolumn="57" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.db.prolog" class="AbstractDatabaseConsole" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="162" endline="164" begincolumn="57" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.db.prolog" class="AbstractDatabaseConsole" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
@@ -340,51 +340,51 @@ These nested if statements could be combined
 </violation>
 </file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractModelGenerator.java">
-<violation beginline="64" endline="64" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="MAP" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="68" endline="68" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="MAP" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'MAP'.
 </violation>
-<violation beginline="65" endline="65" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="SET" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="69" endline="69" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="SET" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'SET'.
 </violation>
-<violation beginline="66" endline="66" begincolumn="37" endcolumn="40" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="LIST" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="70" endline="70" begincolumn="37" endcolumn="40" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="LIST" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'LIST'.
 </violation>
-<violation beginline="67" endline="67" begincolumn="37" endcolumn="46" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="COLLECTION" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="71" endline="71" begincolumn="37" endcolumn="46" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="COLLECTION" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'COLLECTION'.
 </violation>
-<violation beginline="199" endline="199" begincolumn="60" endcolumn="72" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="220" endline="220" begincolumn="60" endcolumn="72" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedKeyType'.
 </violation>
-<violation beginline="200" endline="200" begincolumn="60" endcolumn="74" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="221" endline="221" begincolumn="60" endcolumn="74" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedValueType'.
 </violation>
 </file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java">
-<violation beginline="131" endline="133" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="130" endline="132" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="141" endline="142" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="140" endline="141" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="150" endline="151" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="149" endline="150" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="159" endline="160" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="158" endline="159" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="168" endline="169" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="167" endline="168" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="177" endline="178" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="176" endline="177" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="182" endline="188" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+<violation beginline="181" endline="187" begincolumn="25" endcolumn="25" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
 </violation>
-<violation beginline="186" endline="187" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="185" endline="186" begincolumn="35" endcolumn="33" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="209" endline="209" begincolumn="43" endcolumn="52" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="run" variable="serverArgs" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="208" endline="208" begincolumn="43" endcolumn="52" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="run" variable="serverArgs" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'serverArgs'.
 </violation>
 </file>

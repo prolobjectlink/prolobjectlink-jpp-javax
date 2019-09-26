@@ -58,18 +58,18 @@
 	</issueManagement>
 
 	<repositories>
-        <repository>
-            <id>ossrh</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+		<repository>
+			<id>ossrh</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<distributionManagement>
 		<snapshotRepository>
@@ -85,7 +85,7 @@
 			<url>dav:https://webdav.opendrive.com/Public%20Folder/${project.name}</url>
 		</site>
 	</distributionManagement>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
@@ -97,10 +97,11 @@
 		<javax.mail.version>1.4.7</javax.mail.version>
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
 		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
-		<hsqldb.version>2.3.4</hsqldb.version>
+		<hsqldb.version>2.2.8</hsqldb.version>
 		<mysql.version>5.1.17</mysql.version>
 		<template.version>1.7</template.version>
 		<hibernate.version>4.3.9.Final</hibernate.version>
+		<jasperreports.version>4.7.0</jasperreports.version>
 	</properties>
 
 	<dependencies>
@@ -147,6 +148,11 @@
 			<groupId>io.marioslab.basis</groupId>
 			<artifactId>template</artifactId>
 			<version>${template.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasperreports.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>

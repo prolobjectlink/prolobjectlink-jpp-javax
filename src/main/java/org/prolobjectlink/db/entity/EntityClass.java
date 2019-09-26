@@ -316,6 +316,12 @@ public class EntityClass extends DatabaseClass {
 				Type.getMethodDescriptor(txType), true);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 1);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitInsn(Opcodes.RETURN);
 		mv.visitMaxs(4, 3);
 		mv.visitEnd();
@@ -354,11 +360,17 @@ public class EntityClass extends DatabaseClass {
 				Type.getMethodDescriptor(txType), true);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 1);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitInsn(Opcodes.RETURN);
 		mv.visitMaxs(4, 3);
 		mv.visitEnd();
 
-		// active record update method
+		// active record delete method
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
 		mv.visitCode();
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
@@ -384,18 +396,27 @@ public class EntityClass extends DatabaseClass {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "detach",
 				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "flush",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
 				Type.getMethodDescriptor(txType), true);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 1);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitInsn(Opcodes.RETURN);
 		mv.visitMaxs(4, 3);
 		mv.visitEnd();
 
-		// active record update method
+		// active record to string method
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
 		mv.visitCode();
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(StringBuilder.class));

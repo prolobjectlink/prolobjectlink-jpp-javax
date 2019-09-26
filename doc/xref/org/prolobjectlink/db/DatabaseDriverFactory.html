@@ -48,11 +48,11 @@
 <a class="jxr_linenumber" name="38" href="#38">38</a>  		Properties properties = unit.getProperties();
 <a class="jxr_linenumber" name="39" href="#39">39</a>  		String url = properties.getProperty(WebApplication.URL);
 <a class="jxr_linenumber" name="40" href="#40">40</a>  		String prefix = url.substring(0, url.lastIndexOf(':') + 1);
-<a class="jxr_linenumber" name="41" href="#41">41</a>  		<strong class="jxr_keyword">if</strong> (prefix.equals(PostgreSQLDriver.prefix)) {
+<a class="jxr_linenumber" name="41" href="#41">41</a>  		<strong class="jxr_keyword">if</strong> (prefix.matches(PostgreSQLDriver.prefix + <span class="jxr_string">".*"</span>)) {
 <a class="jxr_linenumber" name="42" href="#42">42</a>  			driver = <strong class="jxr_keyword">new</strong> <a href="../../../org/prolobjectlink/db/jdbc/remote/PostgreSQLDriver.html">PostgreSQLDriver</a>(properties);
-<a class="jxr_linenumber" name="43" href="#43">43</a>  		} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (prefix.equals(MySQLDriver.prefix)) {
+<a class="jxr_linenumber" name="43" href="#43">43</a>  		} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (prefix.matches(MySQLDriver.prefix + <span class="jxr_string">".*"</span>)) {
 <a class="jxr_linenumber" name="44" href="#44">44</a>  			driver = <strong class="jxr_keyword">new</strong> <a href="../../../org/prolobjectlink/db/jdbc/remote/MySQLDriver.html">MySQLDriver</a>(properties);
-<a class="jxr_linenumber" name="45" href="#45">45</a>  		} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (prefix.equals(HSQLDBFileDriver.prefix)) {
+<a class="jxr_linenumber" name="45" href="#45">45</a>  		} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (prefix.matches(HSQLDBFileDriver.prefix + <span class="jxr_string">".*"</span>)) {
 <a class="jxr_linenumber" name="46" href="#46">46</a>  			driver = <strong class="jxr_keyword">new</strong> <a href="../../../org/prolobjectlink/db/jdbc/embedded/HSQLDBFileDriver.html">HSQLDBFileDriver</a>(properties);
 <a class="jxr_linenumber" name="47" href="#47">47</a>  		} <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="48" href="#48">48</a>  			<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> SQLException(<span class="jxr_string">"The specified prefix not have equivalent driver &lt;"</span> + prefix + <span class="jxr_string">"&gt;"</span>);

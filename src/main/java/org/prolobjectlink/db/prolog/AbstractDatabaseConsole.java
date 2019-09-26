@@ -44,6 +44,7 @@ import org.prolobjectlink.prolog.ArrayIterator;
 import org.prolobjectlink.prolog.PrologIndicator;
 import org.prolobjectlink.prolog.PrologQuery;
 import org.prolobjectlink.prolog.PrologTerm;
+import org.prolobjectlink.web.application.ApplicationGenerator;
 import org.prolobjectlink.web.application.ModelGenerator;
 import org.prolobjectlink.web.application.ModelProcessor;
 import org.prolobjectlink.web.platform.WebServerControl;
@@ -110,6 +111,7 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 		stdout.println("	-c	generate controllers for all web applications");
 		stdout.println("	-z	start the embedded web server");
 		stdout.println("	-j	generate model jar to prolog");
+		stdout.println("	-b	generate web application");
 	}
 
 	public final void run(String[] args) {
@@ -224,7 +226,7 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 				stdout.println("Coding OK");
 				System.exit(0);
 			} else if (m.containsKey("-c")) {
-				stdout.println("Coding web applications models");
+				stdout.println("Coding applications controllers");
 				String file = m.get("-c");
 				try {
 					JarFile jarFile = new JarFile(file);
@@ -236,6 +238,13 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 					System.exit(1);
 				}
 				stdout.println("Coding OK");
+				System.exit(0);
+			} else if (m.containsKey("-b")) {
+				stdout.println("Generating new application");
+				String name = m.get("-b");
+				ApplicationGenerator g = new ApplicationGenerator();
+				g.generate(name);
+				stdout.println("Generated OK");
 				System.exit(0);
 			} else {
 				printUsage();
@@ -295,6 +304,17 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 			} catch (IOException e) {
 				Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 				System.exit(1);
+			} catch (NullPointerException e) {
+				Runtime rt = Runtime.getRuntime();
+				try {
+					if (System.getProperty("os.name").toLowerCase().indexOf("windows") > -1)
+						rt.exec("FOR /F \"tokens=1,2 delims= \" %%G IN ('jps -l') DO IF %%H==org.prolobjectlink.db.prolog.jpl.swi.SwiPrologDatabaseConsole taskkill /F /PID %%G");
+					else
+						rt.exec("kill $(jps -l | grep org.prolobjectlink.db.prolog.jpl.swi.SwiPrologDatabaseConsole | awk '{print $1}')");
+				} catch (IOException e1) {
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					System.exit(1);
+				}
 			}
 
 		} else {

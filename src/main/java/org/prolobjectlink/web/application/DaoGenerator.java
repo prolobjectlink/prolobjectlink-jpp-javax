@@ -170,8 +170,11 @@ public class DaoGenerator {
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitVarInsn(Opcodes.ALOAD, 1);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "detach",
 				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "flush",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -219,8 +222,6 @@ public class DaoGenerator {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		Character v = Character.toLowerCase(cls.getSimpleName().charAt(0));
 		mv.visitLdcInsn("select " + v + " from " + cls.getSimpleName() + " " + v + " where " + v + "." + id + " = ?1");
 		mv.visitLdcInsn(modelType);
@@ -239,8 +240,6 @@ public class DaoGenerator {
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getSingleResult",
 				Type.getMethodDescriptor(objType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -263,8 +262,6 @@ public class DaoGenerator {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getCriteriaBuilder",
 				Type.getMethodDescriptor(builderType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 1);
@@ -289,8 +286,6 @@ public class DaoGenerator {
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getResultList",
 				Type.getMethodDescriptor(listType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 4);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -314,8 +309,6 @@ public class DaoGenerator {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getCriteriaBuilder",
 				Type.getMethodDescriptor(builderType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
@@ -352,8 +345,6 @@ public class DaoGenerator {
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getResultList",
 				Type.getMethodDescriptor(listType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 7);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -376,8 +367,6 @@ public class DaoGenerator {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitVarInsn(Opcodes.ALOAD, 1);
 		mv.visitLdcInsn(modelType);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "createQuery",
@@ -387,8 +376,6 @@ public class DaoGenerator {
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getSingleResult",
 				Type.getMethodDescriptor(objType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -411,8 +398,6 @@ public class DaoGenerator {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitVarInsn(Opcodes.ALOAD, 1);
 		mv.visitLdcInsn(modelType);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "createQuery",
@@ -422,8 +407,6 @@ public class DaoGenerator {
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getResultList",
 				Type.getMethodDescriptor(listType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -447,8 +430,6 @@ public class DaoGenerator {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitVarInsn(Opcodes.ALOAD, 1);
 		mv.visitLdcInsn(modelType);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "createQuery",
@@ -468,8 +449,6 @@ public class DaoGenerator {
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getResultList",
 				Type.getMethodDescriptor(listType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 5);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -479,6 +458,25 @@ public class DaoGenerator {
 		mv.visitVarInsn(Opcodes.ALOAD, 5);
 		mv.visitInsn(Opcodes.ARETURN);
 		mv.visitMaxs(3, 6);
+		mv.visitEnd();
+
+		// dao close method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "close", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
+		mv.visitCode();
+//		mv.visitVarInsn(Opcodes.ALOAD, 0);
+//		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
+//		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class),
+//				"getEntityManagerFactory", Type.getMethodDescriptor(emfType), true);
+//		mv.visitVarInsn(Opcodes.ASTORE, 1);// emf
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+//		mv.visitVarInsn(Opcodes.ALOAD, 1);// emf
+//		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
+//				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(1, 2);
 		mv.visitEnd();
 
 		ca.visitEnd();

@@ -45,7 +45,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import org.prolobjectlink.db.DatabaseServer;
-import org.prolobjectlink.logging.LoggerUtils;
 import org.prolobjectlink.prolog.ArrayIterator;
 
 /**
@@ -216,87 +215,85 @@ public abstract class AbstractWebControl extends AbstractWebPlatform implements 
 			}
 		});
 
-		if (!SystemTray.isSupported()) {
-			LoggerUtils.info(getClass(), "SystemTray is not supported");
-			return;
-		}
+		if (SystemTray.isSupported()) {
+			SystemTray tray = SystemTray.getSystemTray();
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+			Image image = toolkit.getImage("trayIcon.png");
 
-		SystemTray tray = SystemTray.getSystemTray();
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Image image = toolkit.getImage("trayIcon.png");
+			PopupMenu menu = new PopupMenu();
 
-		PopupMenu menu = new PopupMenu();
-
-		MenuItem openItem = new MenuItem("Explorer");
-		openItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				openBrowser(url);
-			}
-		});
-		menu.add(openItem);
-
-		MenuItem startItem = new MenuItem("Start");
-		startItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					databaseServer.startup();
-				} catch (ClassNotFoundException e1) {
-					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-				} catch (IOException e1) {
-					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+			MenuItem openItem = new MenuItem("Explorer");
+			openItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					openBrowser(url);
 				}
-				webServer.start();
-			}
-		});
-		menu.add(startItem);
+			});
+			menu.add(openItem);
 
-		MenuItem stopItem = new MenuItem("Stop");
-		startItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				databaseServer.shutdown();
-				webServer.stop();
-			}
-		});
-		menu.add(stopItem);
+			MenuItem startItem = new MenuItem("Start");
+			startItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						databaseServer.startup();
+					} catch (ClassNotFoundException e1) {
+						Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					} catch (IOException e1) {
+						Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					}
+					webServer.start();
+				}
+			});
+			menu.add(startItem);
 
-		MenuItem configItem = new MenuItem("Config.");
-		startItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Configuration");
-			}
-		});
-		menu.add(configItem);
+			MenuItem stopItem = new MenuItem("Stop");
+			startItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					databaseServer.shutdown();
+					webServer.stop();
+				}
+			});
+			menu.add(stopItem);
 
-		MenuItem helpItem = new MenuItem("Help");
-		helpItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Help");
-			}
-		});
-		menu.add(helpItem);
+			MenuItem configItem = new MenuItem("Config.");
+			startItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "Configuration");
+				}
+			});
+			menu.add(configItem);
 
-		MenuItem aboutItem = new MenuItem("About");
-		aboutItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "About");
-			}
-		});
-		menu.add(aboutItem);
+			MenuItem helpItem = new MenuItem("Help");
+			helpItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "Help");
+				}
+			});
+			menu.add(helpItem);
 
-		MenuItem closeItem = new MenuItem("Close");
-		closeItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		menu.add(closeItem);
+			MenuItem aboutItem = new MenuItem("About");
+			aboutItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "About");
+				}
+			});
+			menu.add(aboutItem);
 
-		TrayIcon icon = new TrayIcon(image, "Prolobjectlink Server", menu);
-		icon.setImageAutoSize(true);
-		try {
-			tray.add(icon);
-		} catch (AWTException e) {
-			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+			MenuItem closeItem = new MenuItem("Close");
+			closeItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
+			menu.add(closeItem);
+
+			TrayIcon icon = new TrayIcon(image, "Prolobjectlink Server", menu);
+			icon.setImageAutoSize(true);
+			try {
+				tray.add(icon);
+			} catch (AWTException e) {
+				Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+			}
+
 		}
 
 	}

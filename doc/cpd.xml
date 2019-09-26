@@ -113,8 +113,8 @@
 </duplication>
 <duplication lines="26" tokens="332">
 <file line="286" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="324" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="362" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="330" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="374" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
@@ -142,13 +142,13 @@
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "detach",
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="19" tokens="218">
-<file line="369" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="404" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="17" tokens="218">
+<file line="360" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="391" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryAll", Type.getMethodDescriptor(listType, stringType), null, null);
@@ -161,8 +161,6 @@
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitVarInsn(Opcodes.ALOAD, 1);
 		mv.visitLdcInsn(modelType);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "createQuery",
@@ -173,9 +171,9 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="17" tokens="187">
-<file line="369" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="440" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="15" tokens="187">
+<file line="360" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="423" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType, stringType, intType, intType), null, null);
@@ -188,8 +186,6 @@
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitVarInsn(Opcodes.ALOAD, 1);
 		mv.visitLdcInsn(modelType);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "createQuery",
@@ -198,9 +194,61 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="20" tokens="179">
-<file line="237" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="385" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="18" tokens="183">
+<file line="313" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="403" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<codefragment>
+<![CDATA[
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 1);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record to string method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="18" tokens="180">
+<file line="313" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="357" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<codefragment>
+<![CDATA[
+		mv.visitInsn(Opcodes.POP);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 1);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record delete method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="18" tokens="179">
+<file line="238" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="374" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitVarInsn(Opcodes.ASTORE, 2);
@@ -208,8 +256,6 @@
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getSingleResult",
 				Type.getMethodDescriptor(objType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -273,7 +319,7 @@
 <duplication lines="13" tokens="168">
 <file line="136" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <file line="161" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="186" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="189" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "update", Type.getMethodDescriptor(Type.VOID_TYPE, objType), null,
@@ -292,9 +338,9 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="16" tokens="167">
-<file line="256" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="306" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="14" tokens="167">
+<file line="255" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="301" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType, intType, intType),
@@ -308,23 +354,19 @@
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getCriteriaBuilder",
 				Type.getMethodDescriptor(builderType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="18" tokens="153">
-<file line="388" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="423" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="16" tokens="153">
+<file line="377" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="408" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -378,15 +420,13 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="17" tokens="144">
-<file line="240" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="423" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="15" tokens="144">
+<file line="241" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="408" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 3);
-		//
-
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
@@ -403,9 +443,9 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="14" tokens="143">
+<duplication lines="12" tokens="143">
 <file line="137" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="369" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="360" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryOne", Type.getMethodDescriptor(objType, stringType), null, null);
@@ -418,38 +458,52 @@
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitVarInsn(Opcodes.ALOAD, 1);
 		mv.visitLdcInsn(modelType);
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="14" tokens="134">
-<file line="148" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="173" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="11" tokens="133">
+<file line="255" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="360" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
-				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryOne", Type.getMethodDescriptor(objType, stringType), null, null);
+		mv.visitCode();
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
 				Type.getMethodDescriptor(txType), true);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "begin",
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitInsn(Opcodes.RETURN);
-		mv.visitMaxs(2, 2);
-		mv.visitEnd();
-
-		// dao update method
-		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "update", Type.getMethodDescriptor(Type.VOID_TYPE, objType), null,
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
+		mv.visitVarInsn(Opcodes.ALOAD, 1);
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="13" tokens="133">
+<duplication lines="11" tokens="133">
+<file line="215" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="301" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<codefragment>
+<![CDATA[
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType, intType, intType),
+				null, null);
+		mv.visitCode();
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "begin",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
+]]>
+</codefragment>
+</duplication>
+<duplication lines="11" tokens="133">
 <file line="137" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="256" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="255" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType), null, null);
@@ -462,15 +516,13 @@
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
 		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-
-		//
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getCriteriaBuilder",
 ]]>
 </codefragment>
 </duplication>
 <duplication lines="10" tokens="131">
 <file line="137" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="212" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="215" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveOne", Type.getMethodDescriptor(objType, intType), null, null);
@@ -512,6 +564,27 @@
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+]]>
+</codefragment>
+</duplication>
+<duplication lines="13" tokens="124">
+<file line="149" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="177" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<codefragment>
+<![CDATA[
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 0);
+		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(2, 2);
+		mv.visitEnd();
+
+		// dao update method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "update", Type.getMethodDescriptor(Type.VOID_TYPE, objType), null,
 ]]>
 </codefragment>
 </duplication>
@@ -578,7 +651,7 @@
 </duplication>
 <duplication lines="13" tokens="121">
 <file line="149" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="200" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="203" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitInsn(Opcodes.POP);
@@ -614,30 +687,9 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="13" tokens="113">
-<file line="312" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="387" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<codefragment>
-<![CDATA[
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
-				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
-		mv.visitVarInsn(Opcodes.ALOAD, 2);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
-				Type.getMethodDescriptor(txType), true);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitInsn(Opcodes.RETURN);
-		mv.visitMaxs(4, 3);
-		mv.visitEnd();
-
-		// active record update method
-		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
-]]>
-</codefragment>
-</duplication>
 <duplication lines="18" tokens="109">
-<file line="71" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
-<file line="76" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
+<file line="72" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
+<file line="75" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -701,26 +753,6 @@
 			e.printStackTrace();
 		}
 		String url = dbprefix + "//" + dbhost + ":" + dbport + "/" + "postgres";
-]]>
-</codefragment>
-</duplication>
-<duplication lines="12" tokens="100">
-<file line="313" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="351" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<codefragment>
-<![CDATA[
-		mv.visitInsn(Opcodes.POP);
-		mv.visitVarInsn(Opcodes.ALOAD, 2);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
-				Type.getMethodDescriptor(txType), true);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitInsn(Opcodes.RETURN);
-		mv.visitMaxs(4, 3);
-		mv.visitEnd();
-
-		// active record update method
-		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
 ]]>
 </codefragment>
 </duplication>

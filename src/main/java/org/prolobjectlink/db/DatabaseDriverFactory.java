@@ -38,11 +38,11 @@ public class DatabaseDriverFactory {
 		Properties properties = unit.getProperties();
 		String url = properties.getProperty(WebApplication.URL);
 		String prefix = url.substring(0, url.lastIndexOf(':') + 1);
-		if (prefix.equals(PostgreSQLDriver.prefix)) {
+		if (prefix.matches(PostgreSQLDriver.prefix + ".*")) {
 			driver = new PostgreSQLDriver(properties);
-		} else if (prefix.equals(MySQLDriver.prefix)) {
+		} else if (prefix.matches(MySQLDriver.prefix + ".*")) {
 			driver = new MySQLDriver(properties);
-		} else if (prefix.equals(HSQLDBFileDriver.prefix)) {
+		} else if (prefix.matches(HSQLDBFileDriver.prefix + ".*")) {
 			driver = new HSQLDBFileDriver(properties);
 		} else {
 			throw new SQLException("The specified prefix not have equivalent driver <" + prefix + ">");

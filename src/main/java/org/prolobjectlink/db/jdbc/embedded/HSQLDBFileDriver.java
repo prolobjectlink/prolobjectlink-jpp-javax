@@ -35,6 +35,8 @@ public final class HSQLDBFileDriver extends EmbeddedDriver {
 
 	public HSQLDBFileDriver(Properties properties) {
 		super(properties);
+		dbpath = properties.get("javax.persistence.jdbc.url").toString();
+		dbprefix = prefix;
 	}
 
 	public HSQLDBFileDriver(String dbpath, String dbname, String dbuser, String dbpwd) {
@@ -44,7 +46,7 @@ public final class HSQLDBFileDriver extends EmbeddedDriver {
 	@Override
 	public String getDbURL() {
 		// jdbc:hsqldb:file:[PATH_TO_DB_FILES]/MYDATABASE
-		return dbprefix + dbpath + "/" + dbname;
+		return dbprefix + dbpath;
 	}
 
 	@Override

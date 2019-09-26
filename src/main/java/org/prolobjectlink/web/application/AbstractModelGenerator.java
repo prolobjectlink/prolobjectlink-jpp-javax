@@ -22,6 +22,7 @@
 package org.prolobjectlink.web.application;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,9 +42,12 @@ import org.prolobjectlink.db.DynamicClassLoader;
 import org.prolobjectlink.db.ObjectConverter;
 import org.prolobjectlink.db.entity.EntityClass;
 import org.prolobjectlink.db.etc.Settings;
+import org.prolobjectlink.db.jdbc.embedded.HSQLDBFileDriver;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceUnitInfo;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceVersion;
+import org.prolobjectlink.logging.LoggerConstants;
+import org.prolobjectlink.logging.LoggerUtils;
 import org.prolobjectlink.prolog.IndicatorError;
 import org.prolobjectlink.prolog.PrologClause;
 import org.prolobjectlink.prolog.PrologEngine;
@@ -120,6 +124,23 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 			Object jpaUser = databaseEngine.query("user(X)").oneResult().get(0);
 			Object jpaPwd = databaseEngine.query("password(X)").oneResult().get(0);
 			Object jpaUrl = databaseEngine.query("url(X)").oneResult().get(0);
+
+			// for embedded databases
+			if (jpaUrl.toString().contains(HSQLDBFileDriver.prefix)) {
+				String rectify = jpaUrl.toString().replace(HSQLDBFileDriver.prefix, "");
+				try {
+					File[] roots = File.listRoots();
+					for (File root : roots) {
+						String str = getDBDirectory().getCanonicalPath();
+						if (str.startsWith(root.getCanonicalPath())) {
+							jpaUrl = new String(HSQLDBFileDriver.prefix + str + "/hsqldb" + rectify)
+									.replace(root.getCanonicalPath(), "/").replace(File.separatorChar, '/');
+						}
+					}
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				}
+			}
 
 			String modelPath = appPath + separator + model;
 			PrologEngine modelEngine = provider.newEngine(modelPath);

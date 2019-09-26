@@ -28,7 +28,6 @@ import java.security.CodeSource;
 import java.security.ProtectionDomain;
 import java.util.List;
 import java.util.Map;
-import java.util.function.UnaryOperator;
 
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.prolog.PrologClause;
@@ -38,6 +37,7 @@ import org.prolobjectlink.prolog.PrologProvider;
 import org.prolobjectlink.prolog.PrologQuery;
 import org.prolobjectlink.prolog.PrologTerm;
 import org.prolobjectlink.prolog.PrologVariable;
+import org.prolobjectlink.web.function.PathFuntion;
 
 import io.marioslab.basis.template.Template;
 import io.marioslab.basis.template.TemplateContext;
@@ -84,14 +84,7 @@ public class ControllerRuntime {
 				context.set(x.getName(), result.get(x.getName()));
 
 				// to resolve template path
-				context.set("path", new UnaryOperator<String>() {
-
-					@Override
-					public String apply(String t) {
-						return protocol + "://" + host + "/" + application + "/" + t;
-					}
-
-				});
+				context.set("path", new PathFuntion(application, protocol, host));
 
 				template.render(context, out);
 			}
