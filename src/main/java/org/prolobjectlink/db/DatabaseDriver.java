@@ -26,6 +26,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import org.hsqldb.HsqlException;
 import org.prolobjectlink.web.application.WebApplication;
 
 public abstract class DatabaseDriver {
@@ -153,10 +154,8 @@ public abstract class DatabaseDriver {
 			Class.forName(dbdirver);
 			c = DriverManager.getConnection(getDbURL(), dbuser, dbpwd);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return c;

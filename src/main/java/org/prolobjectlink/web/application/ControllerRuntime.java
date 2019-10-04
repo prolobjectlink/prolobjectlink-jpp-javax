@@ -54,7 +54,7 @@ public class ControllerRuntime {
 		File[] controllers = controllerFolder.listFiles();
 		PrologEngine engine = provider.newEngine();
 		for (File controller : controllers) {
-			engine.include(controller.getCanonicalPath());
+			engine.consult(controller.getCanonicalPath());
 		}
 		PrologJavaConverter converter = provider.getJavaConverter();
 		PrologTerm[] parameters = converter.toTermsArray(arguments);
@@ -89,6 +89,7 @@ public class ControllerRuntime {
 				template.render(context, out);
 			}
 		}
+		engine.dispose();
 	}
 
 	private static File getDistributionFolder() {

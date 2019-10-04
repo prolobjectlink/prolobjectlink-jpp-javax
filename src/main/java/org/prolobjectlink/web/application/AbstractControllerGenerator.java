@@ -120,7 +120,7 @@ public abstract class AbstractControllerGenerator extends AbstractWebApplication
 						Type respType = Type.getType(HttpServletResponse.class);
 						String methodDesc = Type.getMethodDescriptor(Type.VOID_TYPE, reqType, respType);
 						String runMethodDesc = Type.getMethodDescriptor(Type.VOID_TYPE, reqType, respType);
-						
+
 						MethodVisitor mw = ca.visitMethod(Opcodes.ACC_PROTECTED, "doGet", methodDesc, null, exceptions);
 						mw.visitCode();
 						mw.visitVarInsn(Opcodes.ALOAD, 1);
@@ -166,7 +166,11 @@ public abstract class AbstractControllerGenerator extends AbstractWebApplication
 
 				}
 
+				prologEngine.dispose();
+
 			}
+
+			engine.dispose();
 
 		}
 	}

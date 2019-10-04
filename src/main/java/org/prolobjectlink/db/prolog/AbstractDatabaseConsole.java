@@ -112,6 +112,7 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 		stdout.println("	-z	start the embedded web server");
 		stdout.println("	-j	generate model jar to prolog");
 		stdout.println("	-b	generate web application");
+		stdout.println("	-u	generate web HTML views");
 	}
 
 	public final void run(String[] args) {
@@ -232,6 +233,20 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 					JarFile jarFile = new JarFile(file);
 					PrologProgrammer p = engine.getProgrammer();
 					p.codingController(stdout, jarFile, false);
+					jarFile.close();
+				} catch (IOException e) {
+					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					System.exit(1);
+				}
+				stdout.println("Coding OK");
+				System.exit(0);
+			} else if (m.containsKey("-u")) {
+				stdout.println("Coding applications views");
+				String file = m.get("-u");
+				try {
+					JarFile jarFile = new JarFile(file);
+					PrologProgrammer p = engine.getProgrammer();
+					p.codingView(stdout, jarFile, false);
 					jarFile.close();
 				} catch (IOException e) {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);

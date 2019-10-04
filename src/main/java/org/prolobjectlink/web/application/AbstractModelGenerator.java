@@ -301,6 +301,7 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 				}
 			}
 
+			modelEngine.dispose();
 			l.add(info);
 
 		}
