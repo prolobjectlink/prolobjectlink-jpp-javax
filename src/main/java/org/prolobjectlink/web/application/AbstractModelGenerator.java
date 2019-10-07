@@ -46,6 +46,7 @@ import org.prolobjectlink.db.jdbc.embedded.HSQLDBFileDriver;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceUnitInfo;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceVersion;
+import org.prolobjectlink.db.util.JavaReflect;
 import org.prolobjectlink.logging.LoggerConstants;
 import org.prolobjectlink.logging.LoggerUtils;
 import org.prolobjectlink.prolog.IndicatorError;
@@ -175,6 +176,8 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 			Map<String, EntityClass> pending = new HashMap<String, EntityClass>();
 			Map<String, EntityClass> processed = new HashMap<String, EntityClass>();
 
+			Class<?> ppc = JavaReflect.classForName("" + jpaProvider + "");
+
 			for (PrologClause clause : modelEngine) {
 
 				int position = 0;
@@ -187,7 +190,7 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 				String name = (String) converter.toObject(className);
 				// we use the entity class comment to pass the
 				// persistence unit name that match with application name
-				EntityClass entity = new EntityClass(name, appName, schema);
+				EntityClass entity = new EntityClass(name, appName, schema, ppc);
 				PrologList fields = (PrologList) classFields;
 
 				for (PrologTerm field : fields) {
@@ -232,7 +235,7 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 						} else {
 							// we use the entity class comment to pass the persistence unit name
 							// that match with application name
-							EntityClass type = new EntityClass(ftype, appName, schema);
+							EntityClass type = new EntityClass(ftype, appName, schema, ppc);
 							attribute = entity.addField(fname, "", position++, Object.class);
 							pending.put(fname, type);
 						}

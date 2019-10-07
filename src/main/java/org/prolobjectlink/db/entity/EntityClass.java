@@ -31,7 +31,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -44,18 +43,23 @@ import org.prolobjectlink.db.Schema;
 
 public class EntityClass extends DatabaseClass {
 
+	private final Class<?> ppc;
+
 	private static final long serialVersionUID = -4814556384681246762L;
 
-	public EntityClass(Class<?> javaClass, String comment, Schema schema) {
+	public EntityClass(Class<?> javaClass, String comment, Schema schema, Class<?> ppc) {
 		super(javaClass, comment, schema);
+		this.ppc = ppc;
 	}
 
-	public EntityClass(String name, String comment, Class<?> javaClass, Schema schema) {
+	public EntityClass(String name, String comment, Class<?> javaClass, Schema schema, Class<?> ppc) {
 		super(name, comment, javaClass, schema);
+		this.ppc = ppc;
 	}
 
-	public EntityClass(String name, String comment, Schema schema) {
+	public EntityClass(String name, String comment, Schema schema, Class<?> ppc) {
 		super(name, comment, schema);
+		this.ppc = ppc;
 	}
 
 	@Override
@@ -286,17 +290,17 @@ public class EntityClass extends DatabaseClass {
 		MethodVisitor mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "create", Type.getMethodDescriptor(Type.VOID_TYPE), null,
 				null);
 		mv.visitCode();
-		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(ppc));
 		mv.visitInsn(Opcodes.DUP);
-		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(ppc), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
 		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
-				"createEntityManagerFactory", Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(ppc), "createEntityManagerFactory",
+				Type.getMethodDescriptor(emfType, stringType, mapType), false);
 		mv.visitVarInsn(Opcodes.ASTORE, 1); // emf
 		mv.visitVarInsn(Opcodes.ALOAD, 1); // emf
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class),
@@ -329,17 +333,17 @@ public class EntityClass extends DatabaseClass {
 		// active record update method
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "update", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
 		mv.visitCode();
-		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(ppc));
 		mv.visitInsn(Opcodes.DUP);
-		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(ppc), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
 		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
-				"createEntityManagerFactory", Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(ppc), "createEntityManagerFactory",
+				Type.getMethodDescriptor(emfType, stringType, mapType), false);
 		mv.visitVarInsn(Opcodes.ASTORE, 1); // emf
 		mv.visitVarInsn(Opcodes.ALOAD, 1); // emf
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class),
@@ -373,17 +377,17 @@ public class EntityClass extends DatabaseClass {
 		// active record delete method
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
 		mv.visitCode();
-		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(ppc));
 		mv.visitInsn(Opcodes.DUP);
-		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
+		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(ppc), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
 		mv.visitLdcInsn(getPersistenceUnit());
 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
 		mv.visitInsn(Opcodes.DUP);
 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
-				"createEntityManagerFactory", Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(ppc), "createEntityManagerFactory",
+				Type.getMethodDescriptor(emfType, stringType, mapType), false);
 		mv.visitVarInsn(Opcodes.ASTORE, 1); // emf
 		mv.visitVarInsn(Opcodes.ALOAD, 1); // emf
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class),

@@ -54,7 +54,7 @@ public class ControllerRuntime {
 		File[] controllers = controllerFolder.listFiles();
 		PrologEngine engine = provider.newEngine();
 		for (File controller : controllers) {
-			engine.consult(controller.getCanonicalPath());
+			engine.include(controller.getCanonicalPath());
 		}
 		PrologJavaConverter converter = provider.getJavaConverter();
 		PrologTerm[] parameters = converter.toTermsArray(arguments);

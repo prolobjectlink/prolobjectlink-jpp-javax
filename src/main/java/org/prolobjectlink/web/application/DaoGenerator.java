@@ -36,7 +36,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 
-import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
@@ -48,10 +47,12 @@ public class DaoGenerator {
 
 	private final Class<?> cls;
 	private final String unit;
+	private final Class<?> ppc;
 
-	public DaoGenerator(Class<?> cls, String unit) {
-		this.cls = cls;
+	public DaoGenerator(Class<?> cls, Class<?> ppc, String unit) {
 		this.unit = unit;
+		this.cls = cls;
+		this.ppc = ppc;
 	}
 
 	public String generate() {
@@ -109,9 +110,9 @@ public class DaoGenerator {
 		con.visitMethodInsn(Opcodes.INVOKESPECIAL, superclass, "<init>", Type.getMethodDescriptor(Type.VOID_TYPE),
 				false);
 
-		con.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HibernatePersistenceProvider.class));
+		con.visitTypeInsn(Opcodes.NEW, Type.getInternalName(ppc));
 		con.visitInsn(Opcodes.DUP);
-		con.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HibernatePersistenceProvider.class), "<init>",
+		con.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(ppc), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
 		con.visitLdcInsn(unit);
 		con.visitTypeInsn(Opcodes.NEW, Type.getInternalName(HashMap.class));
@@ -119,8 +120,8 @@ public class DaoGenerator {
 		con.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(HashMap.class), "<init>",
 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
 
-		con.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(HibernatePersistenceProvider.class),
-				"createEntityManagerFactory", Type.getMethodDescriptor(emfType, stringType, mapType), false);
+		con.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(ppc), "createEntityManagerFactory",
+				Type.getMethodDescriptor(emfType, stringType, mapType), false);
 
 		con.visitVarInsn(Opcodes.ASTORE, 1);
 		con.visitVarInsn(Opcodes.ALOAD, 0);

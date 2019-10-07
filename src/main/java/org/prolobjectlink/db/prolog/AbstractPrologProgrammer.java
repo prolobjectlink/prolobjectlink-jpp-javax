@@ -70,33 +70,37 @@ public abstract class AbstractPrologProgrammer extends AbstractProgrammer implem
 
 	public final void codingProcedures(PrintWriter programmer, String fileName, String clsName, Class<?> cls) {
 
+		String modelName = fileName.replace('/', '_');
+
 		String id = null;
 		StringBuilder create = new StringBuilder();
 		StringBuilder update = new StringBuilder();
+		StringBuilder code = new StringBuilder();
 		Field[] fields = cls.getDeclaredFields();
 		ArrayIterator<Field> i = new ArrayIterator<>(fields);
 		if (i.hasNext()) {
 			while (i.hasNext()) {
 				Field field = i.next();
-				String name = field.getName().toUpperCase();
+				String fieldname = fromCamelCase(field.getName());
+				String FIELDNAME = field.getName().toUpperCase();
 				if (field.isAnnotationPresent(Id.class)) {
-					id = name;
+					id = FIELDNAME;
 				} else {
-					create.append(name);
+					create.append(FIELDNAME);
+					code.append("\t" + modelName + "_set_" + fieldname + "(ENTITY, " + FIELDNAME + "),\n");
 					if (i.hasNext()) {
 						create.append(',');
 						create.append(' ');
 					}
 				}
-				update.append(name);
+				update.append(FIELDNAME);
 				if (i.hasNext()) {
 					update.append(',');
 					update.append(' ');
 				}
 			}
-		}
 
-		String modelName = fileName.replace('/', '_');
+		}
 
 		programmer.print(modelName + "_new(_) :- \n");
 		programmer.print("\trender('view/" + modelName + "/new.html').\n\n");
@@ -139,21 +143,13 @@ public abstract class AbstractPrologProgrammer extends AbstractProgrammer implem
 		programmer.print(modelName + "_update(" + update + ", ENTITY) :- \n");
 		programmer.print("\tinteger_parse_int(" + id + ", A),\n");
 		programmer.print("\t" + modelName + "_retrieve_one(A, ENTITY),\n");
-		programmer.print("\t" + modelName + "_set_street(ENTITY, STREET),\n");
-		programmer.print("\t" + modelName + "_set_state(ENTITY, STATE),\n");
-		programmer.print("\t" + modelName + "_set_zip(ENTITY, ZIP),\n");
-		programmer.print("\t" + modelName + "_set_city(ENTITY, CITY),\n");
-		programmer.print("\t" + modelName + "_set_country(ENTITY, COUNTRY),\n");
+		programmer.print(code);
 		programmer.print("\t" + modelName + "_update(ENTITY),\n");
 		programmer.print("\trender('view/" + modelName + "/show.html').\n\n");
 
 		programmer.print(modelName + "_create(" + create + ", ENTITY) :- \n");
 		programmer.print("\t" + modelName + "(ENTITY),\n");
-		programmer.print("\t" + modelName + "_set_street(ENTITY, STREET),\n");
-		programmer.print("\t" + modelName + "_set_state(ENTITY, STATE),\n");
-		programmer.print("\t" + modelName + "_set_zip(ENTITY, ZIP),\n");
-		programmer.print("\t" + modelName + "_set_city(ENTITY, CITY),\n");
-		programmer.print("\t" + modelName + "_set_country(ENTITY, COUNTRY),\n");
+		programmer.print(code);
 		programmer.print("\t" + modelName + "_create(ENTITY),\n");
 		programmer.print("\trender('view/" + modelName + "/show.html').\n\n");
 

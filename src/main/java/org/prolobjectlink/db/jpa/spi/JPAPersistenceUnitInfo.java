@@ -44,6 +44,7 @@ import javax.persistence.spi.PersistenceUnitInfo;
 import javax.persistence.spi.PersistenceUnitTransactionType;
 import javax.sql.DataSource;
 
+import org.prolobjectlink.db.util.JavaReflect;
 import org.prolobjectlink.web.application.DaoGenerator;
 
 public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
@@ -292,10 +293,11 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 	}
 
 	public void writeByteCode(String directory) throws IOException {
+		Class<?> ppc = JavaReflect.classForName(persistenceProviderClassName);
 		for (int i = 0; i < managedClassesByteCode.size(); i++) {
 			String name = managedClassesNames.get(i);
 			Class<?> cls = managedClasses.get(i);
-			DaoGenerator generator = new DaoGenerator(cls, unitName);
+			DaoGenerator generator = new DaoGenerator(cls, ppc, unitName);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			byte[] bytecode = managedClassesByteCode.get(i);
 			baos.write(bytecode, 0, bytecode.length);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2019-10-06T21:18:18.301">
+<pmd version="4.2.5" timestamp="2019-10-07T18:40:52.018">
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\DatabaseDriver.java">
 <violation beginline="29" endline="29" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.prolobjectlink.db" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'org.hsqldb.HsqlException'
@@ -345,22 +345,22 @@ These nested if statements could be combined
 </violation>
 </file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractModelGenerator.java">
-<violation beginline="68" endline="68" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="MAP" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="69" endline="69" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="MAP" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'MAP'.
 </violation>
-<violation beginline="69" endline="69" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="SET" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="70" endline="70" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="SET" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'SET'.
 </violation>
-<violation beginline="70" endline="70" begincolumn="37" endcolumn="40" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="LIST" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="71" endline="71" begincolumn="37" endcolumn="40" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="LIST" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'LIST'.
 </violation>
-<violation beginline="71" endline="71" begincolumn="37" endcolumn="46" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="COLLECTION" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+<violation beginline="72" endline="72" begincolumn="37" endcolumn="46" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="COLLECTION" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'COLLECTION'.
 </violation>
-<violation beginline="220" endline="220" begincolumn="60" endcolumn="72" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="223" endline="223" begincolumn="60" endcolumn="72" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedKeyType'.
 </violation>
-<violation beginline="221" endline="221" begincolumn="60" endcolumn="74" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="224" endline="224" begincolumn="60" endcolumn="74" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedValueType'.
 </violation>
 </file>
