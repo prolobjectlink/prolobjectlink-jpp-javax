@@ -35,6 +35,7 @@ import javax.persistence.OneToOne;
 
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
+import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.signature.SignatureVisitor;
@@ -132,6 +133,99 @@ public class EntityField extends DatabaseField {
 
 	public final boolean isCollection(Class<?> clazz) {
 		return clazz.isAssignableFrom(Collection.class);
+	}
+
+	@Override
+	public void generateSetter(StringBuilder buffer) {
+		String fieldName = getName();
+		char n = Character.toUpperCase(fieldName.charAt(0));
+		String fname = n + fieldName.substring(1);
+		buffer.append('\t');
+		buffer.append(Modifier.PUBLIC);
+		buffer.append(' ');
+		buffer.append("void");
+		buffer.append(' ');
+		buffer.append("set");
+		buffer.append(fname);
+		buffer.append('(');
+		buffer.append(getType().getSimpleName());
+		if (hasLinkedTypeName()) {
+			buffer.append('<');
+			buffer.append(getLinkedTypeShortName());
+			buffer.append('>');
+		}
+		buffer.append(' ');
+		buffer.append(fieldName);
+		buffer.append(')');
+		buffer.append('{');
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("this");
+		buffer.append(".");
+		buffer.append(fieldName);
+		buffer.append(' ');
+		buffer.append('=');
+		buffer.append(' ');
+		buffer.append(fieldName);
+		buffer.append(';');
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('}');
+		buffer.append('\n');
+		buffer.append('\n');
+	}
+
+	@Override
+	public void createSetter(ClassVisitor cv, String className, String type, Class<?> c) {
+
+		// for jpl 3.x.x compatibility
+		// not support wrapper class in
+		// method calling
+
+		String supportedType = type;
+		if (supportedType.equals(Type.getDescriptor(Integer.class))) {
+			supportedType = Type.getDescriptor(int.class);
+			String methodName = "set" + getName().substring(0, 1).toUpperCase() + getName().substring(1);
+			MethodVisitor mv = cv.visitMethod(Opcodes.ACC_PUBLIC, methodName, "(" + supportedType + ")V", null, null);
+			mv.visitCode();
+			mv.visitVarInsn(Opcodes.ALOAD, 0);
+			mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(Integer.class));
+			mv.visitInsn(Opcodes.DUP);
+			mv.visitVarInsn(Opcodes.ILOAD, 1);
+			mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(Integer.class), "<init>",
+					Type.getMethodDescriptor(Type.VOID_TYPE, Type.getType(int.class)), false);
+			mv.visitFieldInsn(Opcodes.PUTFIELD, className, getName(), type);
+			mv.visitInsn(Opcodes.RETURN);
+			mv.visitMaxs(4, 2);
+			mv.visitEnd();
+		} else if (supportedType.equals(Type.getDescriptor(Float.class))) {
+			supportedType = Type.getDescriptor(float.class);
+			String methodName = "set" + getName().substring(0, 1).toUpperCase() + getName().substring(1);
+			MethodVisitor mv = cv.visitMethod(Opcodes.ACC_PUBLIC, methodName, "(" + supportedType + ")V", null, null);
+			mv.visitCode();
+			mv.visitVarInsn(Opcodes.ALOAD, 0);
+			mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(Float.class));
+			mv.visitInsn(Opcodes.DUP);
+			mv.visitVarInsn(Opcodes.FLOAD, 1);
+			mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(Float.class), "<init>",
+					Type.getMethodDescriptor(Type.VOID_TYPE, Type.getType(float.class)), false);
+			mv.visitFieldInsn(Opcodes.PUTFIELD, className, getName(), type);
+			mv.visitInsn(Opcodes.RETURN);
+			mv.visitMaxs(4, 2);
+			mv.visitEnd();
+		} else {
+			String methodName = "set" + getName().substring(0, 1).toUpperCase() + getName().substring(1);
+			MethodVisitor mv = cv.visitMethod(Opcodes.ACC_PUBLIC, methodName, "(" + type + ")V", null, null);
+			mv.visitCode();
+			mv.visitVarInsn(Opcodes.ALOAD, 0);
+			mv.visitVarInsn(Type.getType(c).getOpcode(Opcodes.ILOAD), Type.getType(c).getSize());
+			mv.visitFieldInsn(Opcodes.PUTFIELD, className, getName(), type);
+			mv.visitInsn(Opcodes.RETURN);
+			mv.visitMaxs(2, 2);
+			mv.visitEnd();
+		}
+
 	}
 
 }

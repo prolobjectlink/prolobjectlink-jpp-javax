@@ -87,7 +87,18 @@ public abstract class AbstractPrologProgrammer extends AbstractProgrammer implem
 					id = FIELDNAME;
 				} else {
 					create.append(FIELDNAME);
-					code.append("\t" + modelName + "_set_" + fieldname + "(ENTITY, " + FIELDNAME + "),\n");
+					Class<?> type = field.getType();
+					if (type == Integer.class || type == int.class) {
+						code.append("\tinteger_parse_int(" + FIELDNAME + ", " + FIELDNAME + "_INT_VALUE),\n");
+						code.append(
+								"\t" + modelName + "_set_" + fieldname + "(ENTITY, " + FIELDNAME + "_INT_VALUE),\n");
+					} else if (type == Float.class || type == float.class) {
+						code.append("\tfloat_parse_float(" + FIELDNAME + ", " + FIELDNAME + "_FLOAT_VALUE),\n");
+						code.append(
+								"\t" + modelName + "_set_" + fieldname + "(ENTITY, " + FIELDNAME + "_FLOAT_VALUE),\n");
+					} else {
+						code.append("\t" + modelName + "_set_" + fieldname + "(ENTITY, " + FIELDNAME + "),\n");
+					}
 					if (i.hasNext()) {
 						create.append(',');
 						create.append(' ');
