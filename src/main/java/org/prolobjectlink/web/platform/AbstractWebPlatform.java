@@ -58,6 +58,26 @@ public abstract class AbstractWebPlatform extends AbstractPlatform implements Pl
 		throw new RuntimeException("Can't run process " + cmd);
 	}
 
+	public final File getBinDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "bin");
+			} else {
+				// development mode
+				appRoot = new File("lib");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
 	public final File getWebDirectory() {
 		File appRoot = null;
 		String folder = getCurrentPath();
@@ -117,7 +137,7 @@ public abstract class AbstractWebPlatform extends AbstractPlatform implements Pl
 		}
 		return appRoot;
 	}
-	
+
 	public final File getDBDirectory() {
 		File appRoot = null;
 		String folder = getCurrentPath();

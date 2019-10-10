@@ -100,7 +100,6 @@
 		<hsqldb.version>2.3.4</hsqldb.version>
 		<mysql.version>5.1.17</mysql.version>
 		<template.version>1.7</template.version>
-		<hibernate.version>4.3.9.Final</hibernate.version>
 		<jasperreports.version>4.7.0</jasperreports.version>
 	</properties>
 
@@ -153,12 +152,6 @@
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
 			<version>${jasperreports.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hsqldb</groupId>

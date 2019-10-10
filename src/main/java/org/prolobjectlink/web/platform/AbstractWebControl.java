@@ -233,23 +233,47 @@ public abstract class AbstractWebControl extends AbstractWebPlatform implements 
 			MenuItem startItem = new MenuItem("Start");
 			startItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-//					try {
-//						databaseServer.startup();
-//					} catch (ClassNotFoundException e1) {
-//						Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-//					} catch (IOException e1) {
-//						Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-//					}
-					webServer.start();
+					try {
+						if (runOnWindows()) {
+							runtime.exec(getBinDirectory().getCanonicalPath() + "/" + "start.bat");
+						} else {
+							runtime.exec(getBinDirectory().getCanonicalPath() + "/" + "start.sh");
+						}
+					} catch (IOException e1) {
+						Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					}
 				}
 			});
 			menu.add(startItem);
+			
+			MenuItem restartItem = new MenuItem("Restart");
+			restartItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						if (runOnWindows()) {
+							runtime.exec(getBinDirectory().getCanonicalPath() + "/" + "restart.bat");
+						} else {
+							runtime.exec(getBinDirectory().getCanonicalPath() + "/" + "restart.sh");
+						}
+					} catch (IOException e1) {
+						Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					}
+				}
+			});
+			menu.add(restartItem);
 
 			MenuItem stopItem = new MenuItem("Stop");
-			startItem.addActionListener(new ActionListener() {
+			stopItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-//					databaseServer.shutdown();
-					webServer.stop();
+					try {
+						if (runOnWindows()) {
+							runtime.exec(getBinDirectory().getCanonicalPath() + "/" + "stop.bat");
+						} else {
+							runtime.exec(getBinDirectory().getCanonicalPath() + "/" + "stop.sh");
+						}
+					} catch (IOException e1) {
+						Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+					}
 				}
 			});
 			menu.add(stopItem);
