@@ -37,6 +37,7 @@ import org.prolobjectlink.prolog.PrologProvider;
 import org.prolobjectlink.prolog.PrologQuery;
 import org.prolobjectlink.prolog.PrologTerm;
 import org.prolobjectlink.prolog.PrologVariable;
+import org.prolobjectlink.web.function.AssetFuntion;
 import org.prolobjectlink.web.function.PathFuntion;
 
 import io.marioslab.basis.template.Template;
@@ -85,6 +86,7 @@ public class ControllerRuntime {
 
 				// to resolve template path
 				context.set("path", new PathFuntion(application, protocol, host));
+				context.set("asset", new AssetFuntion(getMiscFolder()));
 
 				template.render(context, out);
 			}
@@ -97,6 +99,20 @@ public class ControllerRuntime {
 		File plk = new File(folder);
 		File pdk = plk.getParentFile();
 		return pdk.getParentFile();
+	}
+
+	private static File getMiscFolder() throws IOException {
+		File misc = null;
+		File dist = getDistributionFolder();
+		String relative = "misc";
+		if (!dist.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+			// production mode
+			misc = new File(dist.getCanonicalPath() + File.separator + relative);
+		} else {
+			// development mode
+			misc = new File(relative);
+		}
+		return misc;
 	}
 
 	private static File getControllerFolder(String application) throws IOException {

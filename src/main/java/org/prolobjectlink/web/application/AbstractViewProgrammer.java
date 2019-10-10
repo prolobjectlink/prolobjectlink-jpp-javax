@@ -84,7 +84,7 @@ public abstract class AbstractViewProgrammer extends AbstractPrologProgrammer im
 							String htmlTag = "<html>\n";
 							String headTag = "\t<head>\n";
 							String metaTag = "\t\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n";
-
+							String bootstrap = "\t\t<script src=\"{{ asset(\"js/bootstrap.js\") }}\"></script>\n";
 							String headEndTag = "\t</head>\n";
 							String bodyTag = "\t<body>\n";
 							String bodyEndTag = "\t</body>\n";
@@ -95,6 +95,7 @@ public abstract class AbstractViewProgrammer extends AbstractPrologProgrammer im
 							editWriter.write(headTag);
 							editWriter.write(metaTag);
 							editWriter.write("\t\t<title>Edit</title>\n");
+							editWriter.write(bootstrap);
 							editWriter.write(headEndTag);
 							editWriter.write(bodyTag);
 							editWriter.write("\t\t<h1>Edit</h1>\n");
@@ -107,6 +108,7 @@ public abstract class AbstractViewProgrammer extends AbstractPrologProgrammer im
 							listWriter.write(headTag);
 							listWriter.write(metaTag);
 							listWriter.write("\t\t<title>List</title>\n");
+							listWriter.write(bootstrap);
 							listWriter.write(headEndTag);
 							listWriter.write(bodyTag);
 							listWriter.write("\t\t<h1>List</h1>\n");
@@ -118,6 +120,7 @@ public abstract class AbstractViewProgrammer extends AbstractPrologProgrammer im
 							_newWriter.write(headTag);
 							_newWriter.write(metaTag);
 							_newWriter.write("\t\t<title>Create</title>\n");
+							_newWriter.write(bootstrap);
 							_newWriter.write(headEndTag);
 							_newWriter.write(bodyTag);
 							_newWriter.write("\t\t<h1>Create</h1>\n");
@@ -130,6 +133,7 @@ public abstract class AbstractViewProgrammer extends AbstractPrologProgrammer im
 							showWriter.write(headTag);
 							showWriter.write(metaTag);
 							showWriter.write("\t\t<title>Details</title>\n");
+							showWriter.write(bootstrap);
 							showWriter.write(headEndTag);
 							showWriter.write(bodyTag);
 							showWriter.write("\t\t<h1>Details</h1>\n");

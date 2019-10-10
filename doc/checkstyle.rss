@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2012 - 2019 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 266,
-             Errors: 22973,
+      <title>File: 267,
+             Errors: 23051,
              Warnings: 0,
              Infos: 0
       </title>
@@ -52,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  115
+                  133
                 </td>
               </tr>
                           <tr>
@@ -1060,7 +1060,7 @@
                   0
                 </td>
                 <td>
-                  28
+                  27
                 </td>
               </tr>
                           <tr>
@@ -1117,6 +1117,20 @@
                 </td>
                 <td>
                   30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/prolobjectlink/prolobjectlink-jpp-javax/checkstyle.html#org.prolobjectlink.web.function.AssetFuntion.java">org/prolobjectlink/web/function/AssetFuntion.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  51
                 </td>
               </tr>
                           <tr>
@@ -1662,7 +1676,7 @@
                   0
                 </td>
                 <td>
-                  318
+                  328
                 </td>
               </tr>
                           <tr>
