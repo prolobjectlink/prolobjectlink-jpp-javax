@@ -1,0 +1,84 @@
+<!--
+  #%L
+  prolobjectlink-jpp-javax
+  %%
+  Copyright (C) 2012 - 2019 Prolobjectlink Project
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation, either version 2.1 of the
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Lesser Public License for more details.
+  
+  You should have received a copy of the GNU General Lesser Public
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  #L%
+  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Prolobjectlink Application Server</title>
+
+	<!-- Bootstrap core JS and CSS -->
+  <script src="{{ asset("js/jquery-3.4.1.min.js") }}"></script>
+  <script src="{{ asset("js/bootstrap.min.js") }}"></script>
+  <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet">
+  <link href="{{ asset("css/fontawesome-all.min.css") }}" rel="stylesheet">
+  
+  <!-- Custom scripts for all pages and styles for this template-->
+  <script src="{{ asset("js/prolobjectlink.min.js") }}"></script>
+  <link href="{{ asset("css/prolobjectlink.min.css") }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="masthead">
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-12 my-auto">
+          <div class="masthead-content text-white py-5 py-md-0">
+            <h1 class="mb-3">Prolobjectlink</h1>
+            <h2 class="mb-3"><strong>Application Server</strong></h2>
+            <form class="user">
+                    <div class="form-group">
+                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                      </div>
+                    </div>
+                    <a href="{{ path("manager") }}" class="btn btn-light btn-user btn-block">
+                      Login
+                    </a>
+                  </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+

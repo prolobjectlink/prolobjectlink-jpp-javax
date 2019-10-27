@@ -78,7 +78,7 @@ public abstract class AbstractWebPlatform extends AbstractPlatform implements Pl
 		return appRoot;
 	}
 
-	public final File getWebDirectory() {
+	public final File getDBDirectory() {
 		File appRoot = null;
 		String folder = getCurrentPath();
 		File plk = new File(folder);
@@ -87,10 +87,10 @@ public abstract class AbstractWebPlatform extends AbstractPlatform implements Pl
 		try {
 			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
 				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + WebApplication.ROOT);
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "db");
 			} else {
 				// development mode
-				appRoot = new File(WebApplication.ROOT);
+				appRoot = new File("db");
 			}
 		} catch (IOException e) {
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
@@ -118,6 +118,26 @@ public abstract class AbstractWebPlatform extends AbstractPlatform implements Pl
 		return appRoot;
 	}
 
+	public final File getMiscDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "misc");
+			} else {
+				// development mode
+				appRoot = new File("misc");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
 	public final File getPrtDirectory() {
 		File appRoot = null;
 		String folder = getCurrentPath();
@@ -137,8 +157,8 @@ public abstract class AbstractWebPlatform extends AbstractPlatform implements Pl
 		}
 		return appRoot;
 	}
-
-	public final File getDBDirectory() {
+	
+	public final File getRootDirectory() {
 		File appRoot = null;
 		String folder = getCurrentPath();
 		File plk = new File(folder);
@@ -147,10 +167,30 @@ public abstract class AbstractWebPlatform extends AbstractPlatform implements Pl
 		try {
 			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
 				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + "db");
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "root");
 			} else {
 				// development mode
-				appRoot = new File("db");
+				appRoot = new File("root");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final File getWebDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + WebApplication.ROOT);
+			} else {
+				// development mode
+				appRoot = new File(WebApplication.ROOT);
 			}
 		} catch (IOException e) {
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);

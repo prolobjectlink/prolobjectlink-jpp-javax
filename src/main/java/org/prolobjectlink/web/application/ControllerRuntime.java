@@ -30,6 +30,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.prolobjectlink.db.etc.Settings;
+import org.prolobjectlink.logging.LoggerConstants;
+import org.prolobjectlink.logging.LoggerUtils;
 import org.prolobjectlink.prolog.PrologClause;
 import org.prolobjectlink.prolog.PrologEngine;
 import org.prolobjectlink.prolog.PrologJavaConverter;
@@ -37,8 +39,12 @@ import org.prolobjectlink.prolog.PrologProvider;
 import org.prolobjectlink.prolog.PrologQuery;
 import org.prolobjectlink.prolog.PrologTerm;
 import org.prolobjectlink.prolog.PrologVariable;
-import org.prolobjectlink.web.function.AssetFuntion;
-import org.prolobjectlink.web.function.PathFuntion;
+import org.prolobjectlink.web.function.AssetFunction;
+import org.prolobjectlink.web.function.ImportFunction;
+import org.prolobjectlink.web.function.LaunchFunction;
+import org.prolobjectlink.web.function.MD5Function;
+import org.prolobjectlink.web.function.PathFunction;
+import org.prolobjectlink.web.function.SHAFunction;
 
 import io.marioslab.basis.template.Template;
 import io.marioslab.basis.template.TemplateContext;
@@ -79,19 +85,59 @@ public class ControllerRuntime {
 				String slash = File.separator;
 				String page = WebApplication.ROOT + slash + application + slash + view;
 				File viewPath = getViewFile(page);
+
+				// Engine and context
 				TemplateLoader loader = new FileTemplateLoader();
 				Template template = loader.load(viewPath.getCanonicalPath());
 				TemplateContext context = new TemplateContext();
+
+				// variables
 				context.set(x.getName(), result.get(x.getName()));
 
-				// to resolve template path
-				context.set("path", new PathFuntion(application, protocol, host));
-				context.set("asset", new AssetFuntion(getMiscFolder()));
+				// functions
+				context.set("path", new PathFunction(application, protocol, host));
+				context.set("import", new ImportFunction(getWebLocation(), application));
+				context.set("asset", new AssetFunction(protocol, host));
+				context.set("launch", new LaunchFunction(protocol, host));
+				context.set("md5", new MD5Function());
+				context.set("sha", new SHAFunction());
 
+				// render
 				template.render(context, out);
+
 			}
 		}
 		engine.dispose();
+	}
+
+	private static String getWebLocation() {
+		String appRoot = getWebDirectory().getAbsolutePath();
+		try {
+			appRoot = getWebDirectory().getCanonicalPath();
+		} catch (IOException e) {
+			LoggerUtils.error(ControllerRuntime.class, LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	private static File getWebDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + WebApplication.ROOT);
+			} else {
+				// development mode
+				appRoot = new File(WebApplication.ROOT);
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(ControllerRuntime.class, LoggerConstants.IO, e);
+		}
+		return appRoot;
 	}
 
 	private static File getDistributionFolder() {
@@ -99,20 +145,6 @@ public class ControllerRuntime {
 		File plk = new File(folder);
 		File pdk = plk.getParentFile();
 		return pdk.getParentFile();
-	}
-
-	private static File getMiscFolder() throws IOException {
-		File misc = null;
-		File dist = getDistributionFolder();
-		String relative = "misc";
-		if (!dist.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-			// production mode
-			misc = new File(dist.getCanonicalPath() + File.separator + relative);
-		} else {
-			// development mode
-			misc = new File(relative);
-		}
-		return misc;
 	}
 
 	private static File getControllerFolder(String application) throws IOException {

@@ -111,6 +111,162 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="71" tokens="397">
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSServlet.java"/>
+<codefragment>
+<![CDATA[
+public class BootstrapCSSServlet extends HttpServlet implements Servlet {
+
+	private static final long serialVersionUID = 7313381101418470194L;
+
+	public final File getMiscDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "misc");
+			} else {
+				// development mode
+				appRoot = new File("misc");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final String getCurrentPath() {
+		Class<?> c = AbstractControllerGenerator.class;
+		ProtectionDomain d = c.getProtectionDomain();
+		CodeSource s = d.getCodeSource();
+		return s.getLocation().getPath();
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		FileReader reader = null;
+		BufferedReader buffer = null;
+		StringBuilder scriptCode = new StringBuilder();
+		File jquery = new File(getMiscDirectory() + "/css/bootstrap.min.css");
+		String script = jquery.getAbsolutePath();
+		try {
+			script = jquery.getCanonicalPath();
+			reader = new FileReader(script);
+			buffer = new BufferedReader(reader);
+			String line = buffer.readLine();
+			while (line != null) {
+				scriptCode.append(line);
+				line = buffer.readLine();
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				}
+			}
+			if (buffer != null) {
+				try {
+					buffer.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				}
+			}
+		}
+		resp.setStatus(HttpServletResponse.SC_OK);
+		PrintWriter out = resp.getWriter();
+		out.print("" + scriptCode + "");
+	}
+
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="69" tokens="363">
+<file line="93" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="93" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
+<codefragment>
+<![CDATA[
+				appRoot = new File("etc");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final File getLibDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "lib");
+			} else {
+				// development mode
+				appRoot = new File("lib");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final File getMiscDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "misc");
+			} else {
+				// development mode
+				appRoot = new File("misc");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final File getPrtDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "prt");
+			} else {
+				// development mode
+				appRoot = new File("prt");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final File getWebDirectory() {
+]]>
+</codefragment>
+</duplication>
 <duplication lines="26" tokens="326">
 <file line="290" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <file line="334" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
@@ -146,6 +302,111 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="48" tokens="291">
+<file line="64" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\PersistenceServlet.java"/>
+<file line="64" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ProviderServlet.java"/>
+<codefragment>
+<![CDATA[
+		Template template = loader.load("/org/prolobjectlink/web/html/provider.html");
+		TemplateContext context = new TemplateContext();
+
+		File lib = getLibDirectory();
+		List<ProviderEntry> providers = new ArrayList<ProviderEntry>();
+		ClassLoader l = Thread.currentThread().getContextClassLoader();
+		File[] jars = lib.listFiles(new JarFileFilter());
+		for (File file : jars) {
+			JarFile jarFile = new JarFile(file);
+			Enumeration<JarEntry> entries = jarFile.entries();
+			while (entries.hasMoreElements()) {
+				JarEntry jarEntry = entries.nextElement();
+				if (isValidJarEntry(jarEntry.getName())) {
+					String jarEntryName = jarEntry.getName();
+					String className = jarEntryName.substring(0, jarEntryName.length() - 6);
+					try {
+						Class<?> runtimeClass = l.loadClass(className.replace('/', '.'));
+						if (!runtimeClass.isInterface() && PersistenceProvider.class.isAssignableFrom(runtimeClass)) {
+							ProviderEntry e = new ProviderEntry(runtimeClass.getName());
+							providers.add(e);
+						}
+					} catch (ClassNotFoundException e) {
+						// do nothing
+					} catch (java.lang.NoClassDefFoundError e) {
+						// do nothing
+					} catch (java.lang.IllegalAccessError e) {
+						// do nothing
+					}
+				}
+			}
+			jarFile.close();
+		}
+
+		// variables
+		context.set("providers", providers);
+
+		// functions
+		context.set("path", new PathFunction("pas", protocol, host));
+		context.set("asset", new AssetFunction(protocol, host));
+
+		// render
+		template.render(context, resp.getOutputStream());
+
+		// response
+		resp.setStatus(HttpServletResponse.SC_OK);
+	}
+
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="41" tokens="225">
+<file line="61" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="41" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
+<codefragment>
+<![CDATA[
+	public final File getBinDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "bin");
+			} else {
+				// development mode
+				appRoot = new File("lib");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final File getDBDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "db");
+			} else {
+				// development mode
+				appRoot = new File("db");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+	
+	public final File getETCDirectory() {
+]]>
+</codefragment>
+</duplication>
 <duplication lines="17" tokens="218">
 <file line="361" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <file line="392" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
@@ -168,6 +429,134 @@
 		mv.visitVarInsn(Opcodes.ASTORE, 2);
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(TypedQuery.class), "getResultList",
+]]>
+</codefragment>
+</duplication>
+<duplication lines="37" tokens="208">
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinMapServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSDatatableMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinMapServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryDatatableMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryEasingMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinMapServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSMinServlet.java"/>
+<file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSServlet.java"/>
+<codefragment>
+<![CDATA[
+public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
+
+	private static final long serialVersionUID = 7313381101418470194L;
+
+	public final File getMiscDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "misc");
+			} else {
+				// development mode
+				appRoot = new File("misc");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final String getCurrentPath() {
+		Class<?> c = AbstractControllerGenerator.class;
+		ProtectionDomain d = c.getProtectionDomain();
+		CodeSource s = d.getCodeSource();
+		return s.getLocation().getPath();
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		FileReader reader = null;
+		BufferedReader buffer = null;
+		StringBuilder scriptCode = new StringBuilder();
+		File jquery = new File(getMiscDirectory() + "/js/prolobjectlink.js");
+]]>
+</codefragment>
+</duplication>
+<duplication lines="35" tokens="188">
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinMapServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSDatatableMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinMapServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryDatatableMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryEasingMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinMapServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSMinServlet.java"/>
+<file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSServlet.java"/>
+<codefragment>
+<![CDATA[
+		File jquery = new File(getMiscDirectory() + "/js/prolobjectlink.js");
+		String script = jquery.getAbsolutePath();
+		try {
+			script = jquery.getCanonicalPath();
+			reader = new FileReader(script);
+			buffer = new BufferedReader(reader);
+			String line = buffer.readLine();
+			while (line != null) {
+				scriptCode.append(line);
+				line = buffer.readLine();
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				}
+			}
+			if (buffer != null) {
+				try {
+					buffer.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				}
+			}
+		}
+		resp.setStatus(HttpServletResponse.SC_OK);
+		PrintWriter out = resp.getWriter();
+		out.print("" + scriptCode + "");
+	}
+
+}
 ]]>
 </codefragment>
 </duplication>
@@ -194,6 +583,48 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="34" tokens="185">
+<file line="173" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="153" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
+<codefragment>
+<![CDATA[
+				appRoot = new File("prt");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final File getWebDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + WebApplication.ROOT);
+			} else {
+				// development mode
+				appRoot = new File(WebApplication.ROOT);
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final String getCurrentPath() {
+		Class<?> c = AbstractControllerGenerator.class;
+		ProtectionDomain d = c.getProtectionDomain();
+		CodeSource s = d.getCodeSource();
+		return s.getLocation().getPath();
+	}
+]]>
+</codefragment>
+</duplication>
 <duplication lines="18" tokens="183">
 <file line="317" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <file line="407" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
@@ -217,6 +648,46 @@
 
 		// active record to string method
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="32" tokens="180">
+<file line="50" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
+<file line="92" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
+<codefragment>
+<![CDATA[
+				String path = "/js/" + file.getName();
+				FileReader reader = null;
+				BufferedReader buffer = null;
+				StringBuilder scriptCode = new StringBuilder();
+				String script = file.getAbsolutePath();
+				try {
+					script = file.getCanonicalPath();
+					reader = new FileReader(script);
+					buffer = new BufferedReader(reader);
+					String line = buffer.readLine();
+					while (line != null) {
+						scriptCode.append(line);
+						line = buffer.readLine();
+					}
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				} finally {
+					if (reader != null) {
+						try {
+							reader.close();
+						} catch (IOException e) {
+							LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+						}
+					}
+					if (buffer != null) {
+						try {
+							buffer.close();
+						} catch (IOException e) {
+							LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+						}
+					}
+				}
 ]]>
 </codefragment>
 </duplication>
@@ -420,6 +891,40 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="26" tokens="146">
+<file line="56" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
+<file line="83" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<codefragment>
+<![CDATA[
+			script = jquery.getCanonicalPath();
+			reader = new FileReader(script);
+			buffer = new BufferedReader(reader);
+			String line = buffer.readLine();
+			while (line != null) {
+				scriptCode.append(line);
+				line = buffer.readLine();
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				}
+			}
+			if (buffer != null) {
+				try {
+					buffer.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				}
+			}
+		}
+]]>
+</codefragment>
+</duplication>
 <duplication lines="15" tokens="144">
 <file line="242" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
 <file line="409" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
@@ -463,41 +968,25 @@
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="11" tokens="133">
-<file line="256" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="361" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<duplication lines="14" tokens="140">
+<file line="68" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ConnectorsServlet.java"/>
+<file line="68" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\PersistenceServlet.java"/>
 <codefragment>
 <![CDATA[
-		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryOne", Type.getMethodDescriptor(objType, stringType), null, null);
-		mv.visitCode();
-		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
-				Type.getMethodDescriptor(txType), true);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "begin",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-		mv.visitVarInsn(Opcodes.ALOAD, 1);
-]]>
-</codefragment>
-</duplication>
-<duplication lines="11" tokens="133">
-<file line="216" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="302" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<codefragment>
-<![CDATA[
-		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType, intType, intType),
-				null, null);
-		mv.visitCode();
-		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
-				Type.getMethodDescriptor(txType), true);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "begin",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitFieldInsn(Opcodes.GETFIELD, internalName, "em", Type.getDescriptor(EntityManager.class));
+		List<ProviderEntry> providers = new ArrayList<ProviderEntry>();
+		ClassLoader l = Thread.currentThread().getContextClassLoader();
+		File[] jars = lib.listFiles(new JarFileFilter());
+		for (File file : jars) {
+			JarFile jarFile = new JarFile(file);
+			Enumeration<JarEntry> entries = jarFile.entries();
+			while (entries.hasMoreElements()) {
+				JarEntry jarEntry = entries.nextElement();
+				if (isValidJarEntry(jarEntry.getName())) {
+					String jarEntryName = jarEntry.getName();
+					String className = jarEntryName.substring(0, jarEntryName.length() - 6);
+					try {
+						Class<?> runtimeClass = l.loadClass(className.replace('/', '.'));
+						if (!runtimeClass.isInterface() && PersistenceProvider.class.isAssignableFrom(runtimeClass)) {
 ]]>
 </codefragment>
 </duplication>
@@ -687,6 +1176,62 @@
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="21" tokens="113">
+<file line="121" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="48" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<codefragment>
+<![CDATA[
+	public final File getMiscDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "misc");
+			} else {
+				// development mode
+				appRoot = new File("misc");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+
+	public final String getCurrentPath() {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="19" tokens="109">
+<file line="1465" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\io\ServerFile.java"/>
+<file line="161" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<codefragment>
+<![CDATA[
+	public final File getRootDirectory() {
+		File appRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				appRoot = new File(prt.getCanonicalPath() + File.separator + "root");
+			} else {
+				// development mode
+				appRoot = new File("root");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return appRoot;
+	}
+]]>
+</codefragment>
+</duplication>
 <duplication lines="18" tokens="109">
 <file line="72" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
 <file line="75" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
@@ -728,6 +1273,62 @@
 	}
 
 }
+]]>
+</codefragment>
+</duplication>
+<duplication lines="21" tokens="108">
+<file line="36" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\ApplicationEntry.java"/>
+<file line="42" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\DatabaseEntry.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Long getSize() {
+		return size;
+	}
+
+	public Date getModify() {
+		return modify;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((modify == null) ? 0 : modify.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((size == null) ? 0 : size.hashCode());
+]]>
+</codefragment>
+</duplication>
+<duplication lines="19" tokens="107">
+<file line="68" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\ApplicationEntry.java"/>
+<file line="75" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\DatabaseEntry.java"/>
+<codefragment>
+<![CDATA[
+		DatabaseEntry other = (DatabaseEntry) obj;
+		if (modify == null) {
+			if (other.modify != null)
+				return false;
+		} else if (!modify.equals(other.modify)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (size == null) {
+			if (other.size != null)
+				return false;
+		} else if (!size.equals(other.size)) {
+			return false;
+		}
 ]]>
 </codefragment>
 </duplication>
