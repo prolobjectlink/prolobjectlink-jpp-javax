@@ -78,7 +78,12 @@ public class ModelProcessor extends AbstractWebApplication {
 			builder.append("</persistence>");
 
 			// write to persistence.xml file
-			String persistenceXml = temp + "persistence.xml";
+			String persistenceXml = temp;
+			if (runOnLinux() || runOnOsX()) {
+				persistenceXml = temp + File.separator + "persistence.xml";
+			} else if (runOnWindows()) {
+				persistenceXml = temp + "persistence.xml";
+			}
 			FileWriter writer = new FileWriter(persistenceXml);
 			writer.write("" + builder + "");
 			writer.close();

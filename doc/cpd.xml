@@ -190,83 +190,6 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="69" tokens="363">
-<file line="93" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
-<file line="93" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
-<codefragment>
-<![CDATA[
-				appRoot = new File("etc");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getLibDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + "lib");
-			} else {
-				// development mode
-				appRoot = new File("lib");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getMiscDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + "misc");
-			} else {
-				// development mode
-				appRoot = new File("misc");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getPrtDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + "prt");
-			} else {
-				// development mode
-				appRoot = new File("prt");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getWebDirectory() {
-]]>
-</codefragment>
-</duplication>
 <duplication lines="29" tokens="326">
 <file line="290" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <file line="334" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
@@ -358,55 +281,6 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 	}
 
 }
-]]>
-</codefragment>
-</duplication>
-<duplication lines="41" tokens="225">
-<file line="61" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
-<file line="41" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
-<codefragment>
-<![CDATA[
-	public final File getBinDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + "bin");
-			} else {
-				// development mode
-				appRoot = new File("lib");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getDBDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + "db");
-			} else {
-				// development mode
-				appRoot = new File("db");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-	
-	public final File getETCDirectory() {
 ]]>
 </codefragment>
 </duplication>
@@ -616,48 +490,6 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "createQuery",
 				Type.getMethodDescriptor(queryType, stringType, classType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 4);
-]]>
-</codefragment>
-</duplication>
-<duplication lines="34" tokens="185">
-<file line="173" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
-<file line="153" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
-<codefragment>
-<![CDATA[
-				appRoot = new File("prt");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getWebDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + WebApplication.ROOT);
-			} else {
-				// development mode
-				appRoot = new File(WebApplication.ROOT);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final String getCurrentPath() {
-		Class<?> c = AbstractControllerGenerator.class;
-		ProtectionDomain d = c.getProtectionDomain();
-		CodeSource s = d.getCodeSource();
-		return s.getLocation().getPath();
-	}
 ]]>
 </codefragment>
 </duplication>
@@ -1187,7 +1019,7 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="113">
-<file line="121" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="121" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
 <file line="48" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
 <codefragment>
 <![CDATA[

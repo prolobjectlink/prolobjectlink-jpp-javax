@@ -546,87 +546,6 @@
 <th>File</th>
 <th>Line</th></tr>
 <tr class="b">
-<td>org\prolobjectlink\web\platform\AbstractWebPlatform.java</td>
-<td><a href="./xref/org/prolobjectlink/web/platform/AbstractWebPlatform.html#93">93</a></td></tr>
-<tr class="a">
-<td>org\prolobjectlink\web\servlet\AbstractServlet.java</td>
-<td><a href="./xref/org/prolobjectlink/web/servlet/AbstractServlet.html#93">93</a></td></tr>
-<tr class="b"><td colspan='2'>
-<div>
-<pre>				appRoot = new File(&quot;etc&quot;);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getLibDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains(&quot;prolobjectlink-jpp-javax&quot;)) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + &quot;lib&quot;);
-			} else {
-				// development mode
-				appRoot = new File(&quot;lib&quot;);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getMiscDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains(&quot;prolobjectlink-jpp-javax&quot;)) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + &quot;misc&quot;);
-			} else {
-				// development mode
-				appRoot = new File(&quot;misc&quot;);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getPrtDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains(&quot;prolobjectlink-jpp-javax&quot;)) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + &quot;prt&quot;);
-			} else {
-				// development mode
-				appRoot = new File(&quot;prt&quot;);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getWebDirectory() {</pre></div></td></tr></table>
-<table border="0" class="table table-striped">
-<tr class="a">
-<th>File</th>
-<th>Line</th></tr>
-<tr class="b">
 <td>org\prolobjectlink\db\entity\EntityClass.java</td>
 <td><a href="./xref/org/prolobjectlink/db/entity/EntityClass.html#290">290</a></td></tr>
 <tr class="a">
@@ -728,59 +647,6 @@
 <th>File</th>
 <th>Line</th></tr>
 <tr class="b">
-<td>org\prolobjectlink\web\platform\AbstractWebPlatform.java</td>
-<td><a href="./xref/org/prolobjectlink/web/platform/AbstractWebPlatform.html#61">61</a></td></tr>
-<tr class="a">
-<td>org\prolobjectlink\web\servlet\AbstractServlet.java</td>
-<td><a href="./xref/org/prolobjectlink/web/servlet/AbstractServlet.html#41">41</a></td></tr>
-<tr class="b"><td colspan='2'>
-<div>
-<pre>	public final File getBinDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains(&quot;prolobjectlink-jpp-javax&quot;)) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + &quot;bin&quot;);
-			} else {
-				// development mode
-				appRoot = new File(&quot;lib&quot;);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getDBDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains(&quot;prolobjectlink-jpp-javax&quot;)) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + &quot;db&quot;);
-			} else {
-				// development mode
-				appRoot = new File(&quot;db&quot;);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-	
-	public final File getETCDirectory() {</pre></div></td></tr></table>
-<table border="0" class="table table-striped">
-<tr class="a">
-<th>File</th>
-<th>Line</th></tr>
-<tr class="b">
 <td>org\prolobjectlink\web\application\DaoGenerator.java</td>
 <td><a href="./xref/org/prolobjectlink/web/application/DaoGenerator.html#361">361</a></td></tr>
 <tr class="a">
@@ -813,8 +679,8 @@
 <td>org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java</td>
 <td><a href="./xref/org/prolobjectlink/web/servlet/misc/BootstrapCSSDatatableMinServlet.html#44">44</a></td></tr>
 <tr class="a">
-<td>org\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java</td>
-<td><a href="./xref/org/prolobjectlink/web/servlet/misc/FontawesomeCSSMinServlet.html#44">44</a></td></tr>
+<td>org\prolobjectlink\web\servlet\misc\BootstrapJSMinServlet.java</td>
+<td><a href="./xref/org/prolobjectlink/web/servlet/misc/BootstrapJSMinServlet.html#44">44</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
@@ -899,8 +765,8 @@
 <td>org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java</td>
 <td><a href="./xref/org/prolobjectlink/web/servlet/misc/BootstrapCSSDatatableMinServlet.html#80">80</a></td></tr>
 <tr class="a">
-<td>org\prolobjectlink\web\servlet\misc\JQueryMinMapServlet.java</td>
-<td><a href="./xref/org/prolobjectlink/web/servlet/misc/JQueryMinMapServlet.html#80">80</a></td></tr>
+<td>org\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java</td>
+<td><a href="./xref/org/prolobjectlink/web/servlet/misc/FontawesomeCSSMinServlet.html#80">80</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>		File jquery = new File(getMiscDirectory() + &quot;/js/prolobjectlink.js&quot;);
@@ -965,52 +831,6 @@
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), &quot;createQuery&quot;,
 				Type.getMethodDescriptor(queryType, stringType, classType), true);
 		mv.visitVarInsn(Opcodes.ASTORE, 4);</pre></div></td></tr></table>
-<table border="0" class="table table-striped">
-<tr class="a">
-<th>File</th>
-<th>Line</th></tr>
-<tr class="b">
-<td>org\prolobjectlink\web\platform\AbstractWebPlatform.java</td>
-<td><a href="./xref/org/prolobjectlink/web/platform/AbstractWebPlatform.html#173">173</a></td></tr>
-<tr class="a">
-<td>org\prolobjectlink\web\servlet\AbstractServlet.java</td>
-<td><a href="./xref/org/prolobjectlink/web/servlet/AbstractServlet.html#153">153</a></td></tr>
-<tr class="b"><td colspan='2'>
-<div>
-<pre>				appRoot = new File(&quot;prt&quot;);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final File getWebDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains(&quot;prolobjectlink-jpp-javax&quot;)) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + WebApplication.ROOT);
-			} else {
-				// development mode
-				appRoot = new File(WebApplication.ROOT);
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final String getCurrentPath() {
-		Class&lt;?&gt; c = AbstractControllerGenerator.class;
-		ProtectionDomain d = c.getProtectionDomain();
-		CodeSource s = d.getCodeSource();
-		return s.getLocation().getPath();
-	}</pre></div></td></tr></table>
 <table border="0" class="table table-striped">
 <tr class="a">
 <th>File</th>
@@ -1290,8 +1110,8 @@
 <td>org\prolobjectlink\web\application\AbstractMiscGenerator.java</td>
 <td><a href="./xref/org/prolobjectlink/web/application/AbstractMiscGenerator.html#56">56</a></td></tr>
 <tr class="a">
-<td>org\prolobjectlink\web\servlet\misc\FontawesomeCSSServlet.java</td>
-<td><a href="./xref/org/prolobjectlink/web/servlet/misc/FontawesomeCSSServlet.html#83">83</a></td></tr>
+<td>org\prolobjectlink\web\servlet\misc\PopperServlet.java</td>
+<td><a href="./xref/org/prolobjectlink/web/servlet/misc/PopperServlet.html#83">83</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>			script = jquery.getCanonicalPath();
@@ -1620,11 +1440,11 @@
 <th>File</th>
 <th>Line</th></tr>
 <tr class="b">
-<td>org\prolobjectlink\web\platform\AbstractWebPlatform.java</td>
-<td><a href="./xref/org/prolobjectlink/web/platform/AbstractWebPlatform.html#121">121</a></td></tr>
+<td>org\prolobjectlink\web\servlet\AbstractServlet.java</td>
+<td><a href="./xref/org/prolobjectlink/web/servlet/AbstractServlet.html#121">121</a></td></tr>
 <tr class="a">
-<td>org\prolobjectlink\web\servlet\misc\JQueryServlet.java</td>
-<td><a href="./xref/org/prolobjectlink/web/servlet/misc/JQueryServlet.html#48">48</a></td></tr>
+<td>org\prolobjectlink\web\servlet\misc\JQueryMinServlet.java</td>
+<td><a href="./xref/org/prolobjectlink/web/servlet/misc/JQueryMinServlet.html#48">48</a></td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>	public final File getMiscDirectory() {
