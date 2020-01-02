@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2019-11-17T06:50:52.899">
+<pmd version="4.2.5" timestamp="2020-01-02T11:49:29.524">
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\DatabaseDriver.java">
 <violation beginline="29" endline="29" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.prolobjectlink.db" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'org.hsqldb.HsqlException'
@@ -415,11 +415,6 @@ Avoid empty catch blocks
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DatabaseServlet.java">
 <violation beginline="85" endline="87" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="DatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
-</violation>
-</file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ModelServlet.java">
-<violation beginline="28" endline="28" begincolumn="1" endcolumn="24" rule="UnusedImports" ruleset="Import Statement Rules" package="org.prolobjectlink.web.servlet.admin" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'java.util.Arrays'
 </violation>
 </file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\PersistenceServlet.java">

@@ -400,11 +400,17 @@ public class EntityClass extends DatabaseClass {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "detach",
+		
+		////////////////////////////////////////////////////////////////////////////////
+		
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
 				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
-		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "flush",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+//		mv.visitVarInsn(Opcodes.ALOAD, 0);
+//		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "flush",
+//				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		
+		////////////////////////////////////////////////////////////////////////////////
+		
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
 				Type.getMethodDescriptor(txType), true);

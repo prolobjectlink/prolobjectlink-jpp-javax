@@ -267,7 +267,7 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="26" tokens="326">
+<duplication lines="29" tokens="326">
 <file line="290" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <file line="334" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
 <file line="378" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
@@ -298,7 +298,10 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "detach",
+		
+		////////////////////////////////////////////////////////////////////////////////
+		
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
 ]]>
 </codefragment>
 </duplication>
@@ -497,6 +500,39 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="25" tokens="193">
+<file line="316" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="406" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<codefragment>
+<![CDATA[
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
+				Type.getMethodDescriptor(Type.VOID_TYPE, objType), true);
+//		mv.visitVarInsn(Opcodes.ALOAD, 0);
+//		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "flush",
+//				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		
+		////////////////////////////////////////////////////////////////////////////////
+		
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
+				Type.getMethodDescriptor(txType), true);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 2);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitVarInsn(Opcodes.ALOAD, 1);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
+				Type.getMethodDescriptor(Type.VOID_TYPE), true);
+		mv.visitInsn(Opcodes.RETURN);
+		mv.visitMaxs(4, 3);
+		mv.visitEnd();
+
+		// active record to string method
+		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
+]]>
+</codefragment>
+</duplication>
 <duplication lines="35" tokens="188">
 <file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
 <file line="80" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinMapServlet.java"/>
@@ -622,32 +658,6 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 		CodeSource s = d.getCodeSource();
 		return s.getLocation().getPath();
 	}
-]]>
-</codefragment>
-</duplication>
-<duplication lines="18" tokens="183">
-<file line="317" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="407" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<codefragment>
-<![CDATA[
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitVarInsn(Opcodes.ALOAD, 2);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
-				Type.getMethodDescriptor(txType), true);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.class), "commit",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitVarInsn(Opcodes.ALOAD, 2);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "close",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitVarInsn(Opcodes.ALOAD, 1);
-		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.class), "close",
-				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		mv.visitInsn(Opcodes.RETURN);
-		mv.visitMaxs(4, 3);
-		mv.visitEnd();
-
-		// active record to string method
-		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "toString", Type.getMethodDescriptor(stringType), null, null);
 ]]>
 </codefragment>
 </duplication>

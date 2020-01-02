@@ -410,60 +410,66 @@
 <a class="jxr_linenumber" name="400" href="#400">400</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), <strong class="jxr_keyword">true</strong>);
 <a class="jxr_linenumber" name="401" href="#401">401</a> 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 <a class="jxr_linenumber" name="402" href="#402">402</a> 		mv.visitVarInsn(Opcodes.ALOAD, 0);
-<a class="jxr_linenumber" name="403" href="#403">403</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"detach"</span>,
-<a class="jxr_linenumber" name="404" href="#404">404</a> 				Type.getMethodDescriptor(Type.VOID_TYPE, objType), <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="405" href="#405">405</a> 		mv.visitVarInsn(Opcodes.ALOAD, 0);
-<a class="jxr_linenumber" name="406" href="#406">406</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"flush"</span>,
-<a class="jxr_linenumber" name="407" href="#407">407</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="408" href="#408">408</a> 		mv.visitVarInsn(Opcodes.ALOAD, 2);
-<a class="jxr_linenumber" name="409" href="#409">409</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"getTransaction"</span>,
-<a class="jxr_linenumber" name="410" href="#410">410</a> 				Type.getMethodDescriptor(txType), <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="411" href="#411">411</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"commit"</span>,
-<a class="jxr_linenumber" name="412" href="#412">412</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="413" href="#413">413</a> 		mv.visitVarInsn(Opcodes.ALOAD, 2);
-<a class="jxr_linenumber" name="414" href="#414">414</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"close"</span>,
-<a class="jxr_linenumber" name="415" href="#415">415</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="416" href="#416">416</a> 		mv.visitVarInsn(Opcodes.ALOAD, 1);
-<a class="jxr_linenumber" name="417" href="#417">417</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"close"</span>,
+<a class="jxr_linenumber" name="403" href="#403">403</a> 		
+<a class="jxr_linenumber" name="404" href="#404">404</a> 		<em class="jxr_comment">////////////////////////////////////////////////////////////////////////////////</em>
+<a class="jxr_linenumber" name="405" href="#405">405</a> 		
+<a class="jxr_linenumber" name="406" href="#406">406</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"remove"</span>,
+<a class="jxr_linenumber" name="407" href="#407">407</a> 				Type.getMethodDescriptor(Type.VOID_TYPE, objType), <strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="408" href="#408">408</a> <em class="jxr_comment">//		mv.visitVarInsn(Opcodes.ALOAD, 0);</em>
+<a class="jxr_linenumber" name="409" href="#409">409</a> <em class="jxr_comment">//		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "flush",</em>
+<a class="jxr_linenumber" name="410" href="#410">410</a> <em class="jxr_comment">//				Type.getMethodDescriptor(Type.VOID_TYPE), true);</em>
+<a class="jxr_linenumber" name="411" href="#411">411</a> 		
+<a class="jxr_linenumber" name="412" href="#412">412</a> 		<em class="jxr_comment">////////////////////////////////////////////////////////////////////////////////</em>
+<a class="jxr_linenumber" name="413" href="#413">413</a> 		
+<a class="jxr_linenumber" name="414" href="#414">414</a> 		mv.visitVarInsn(Opcodes.ALOAD, 2);
+<a class="jxr_linenumber" name="415" href="#415">415</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"getTransaction"</span>,
+<a class="jxr_linenumber" name="416" href="#416">416</a> 				Type.getMethodDescriptor(txType), <strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="417" href="#417">417</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityTransaction.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"commit"</span>,
 <a class="jxr_linenumber" name="418" href="#418">418</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), <strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="419" href="#419">419</a> 		mv.visitInsn(Opcodes.RETURN);
-<a class="jxr_linenumber" name="420" href="#420">420</a> 		mv.visitMaxs(4, 3);
-<a class="jxr_linenumber" name="421" href="#421">421</a> 		mv.visitEnd();
-<a class="jxr_linenumber" name="422" href="#422">422</a> 
-<a class="jxr_linenumber" name="423" href="#423">423</a> 		<em class="jxr_comment">// active record to string method</em>
-<a class="jxr_linenumber" name="424" href="#424">424</a> 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, <span class="jxr_string">"toString"</span>, Type.getMethodDescriptor(stringType), <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="425" href="#425">425</a> 		mv.visitCode();
-<a class="jxr_linenumber" name="426" href="#426">426</a> 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="427" href="#427">427</a> 		mv.visitInsn(Opcodes.DUP);
-<a class="jxr_linenumber" name="428" href="#428">428</a> 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"&lt;init&gt;"</span>,
-<a class="jxr_linenumber" name="429" href="#429">429</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
-<a class="jxr_linenumber" name="430" href="#430">430</a> 		mv.visitLdcInsn(getShortName() + <span class="jxr_string">"["</span>);
-<a class="jxr_linenumber" name="431" href="#431">431</a> 		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
-<a class="jxr_linenumber" name="432" href="#432">432</a> 				Type.getMethodDescriptor(stringBuilderType, objType), false);
-<a class="jxr_linenumber" name="433" href="#433">433</a> 		<strong class="jxr_keyword">for</strong> (DatabaseField field : fields.values()) {
-<a class="jxr_linenumber" name="434" href="#434">434</a> 			mv.visitLdcInsn(<span class="jxr_string">" "</span> + field.getName() + <span class="jxr_string">"="</span>);
-<a class="jxr_linenumber" name="435" href="#435">435</a> 			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
-<a class="jxr_linenumber" name="436" href="#436">436</a> 					Type.getMethodDescriptor(stringBuilderType, objType), false);
-<a class="jxr_linenumber" name="437" href="#437">437</a> 			mv.visitVarInsn(Opcodes.ALOAD, 0);
-<a class="jxr_linenumber" name="438" href="#438">438</a> 			mv.visitFieldInsn(Opcodes.GETFIELD, internalName, field.getName(), Type.getDescriptor(field.getType()));
-<a class="jxr_linenumber" name="439" href="#439">439</a> 			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
-<a class="jxr_linenumber" name="440" href="#440">440</a> 					Type.getMethodDescriptor(stringBuilderType, objType), false);
-<a class="jxr_linenumber" name="441" href="#441">441</a> 		}
-<a class="jxr_linenumber" name="442" href="#442">442</a> 		mv.visitLdcInsn(<span class="jxr_string">" ]"</span>);
-<a class="jxr_linenumber" name="443" href="#443">443</a> 		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
-<a class="jxr_linenumber" name="444" href="#444">444</a> 				Type.getMethodDescriptor(stringBuilderType, objType), false);
-<a class="jxr_linenumber" name="445" href="#445">445</a> 		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"toString"</span>,
-<a class="jxr_linenumber" name="446" href="#446">446</a> 				Type.getMethodDescriptor(stringType), false);
-<a class="jxr_linenumber" name="447" href="#447">447</a> 		mv.visitInsn(Opcodes.ARETURN);
-<a class="jxr_linenumber" name="448" href="#448">448</a> 		mv.visitMaxs(2, 1);
-<a class="jxr_linenumber" name="449" href="#449">449</a> 		mv.visitEnd();
-<a class="jxr_linenumber" name="450" href="#450">450</a> 
-<a class="jxr_linenumber" name="451" href="#451">451</a> 		ca.visitEnd();
-<a class="jxr_linenumber" name="452" href="#452">452</a> 
-<a class="jxr_linenumber" name="453" href="#453">453</a> 		<strong class="jxr_keyword">return</strong> cw.toByteArray();
-<a class="jxr_linenumber" name="454" href="#454">454</a> 	}
-<a class="jxr_linenumber" name="455" href="#455">455</a> 
-<a class="jxr_linenumber" name="456" href="#456">456</a> }
+<a class="jxr_linenumber" name="419" href="#419">419</a> 		mv.visitVarInsn(Opcodes.ALOAD, 2);
+<a class="jxr_linenumber" name="420" href="#420">420</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"close"</span>,
+<a class="jxr_linenumber" name="421" href="#421">421</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), <strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="422" href="#422">422</a> 		mv.visitVarInsn(Opcodes.ALOAD, 1);
+<a class="jxr_linenumber" name="423" href="#423">423</a> 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManagerFactory.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"close"</span>,
+<a class="jxr_linenumber" name="424" href="#424">424</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), <strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="425" href="#425">425</a> 		mv.visitInsn(Opcodes.RETURN);
+<a class="jxr_linenumber" name="426" href="#426">426</a> 		mv.visitMaxs(4, 3);
+<a class="jxr_linenumber" name="427" href="#427">427</a> 		mv.visitEnd();
+<a class="jxr_linenumber" name="428" href="#428">428</a> 
+<a class="jxr_linenumber" name="429" href="#429">429</a> 		<em class="jxr_comment">// active record to string method</em>
+<a class="jxr_linenumber" name="430" href="#430">430</a> 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, <span class="jxr_string">"toString"</span>, Type.getMethodDescriptor(stringType), <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="431" href="#431">431</a> 		mv.visitCode();
+<a class="jxr_linenumber" name="432" href="#432">432</a> 		mv.visitTypeInsn(Opcodes.NEW, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="433" href="#433">433</a> 		mv.visitInsn(Opcodes.DUP);
+<a class="jxr_linenumber" name="434" href="#434">434</a> 		mv.visitMethodInsn(Opcodes.INVOKESPECIAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"&lt;init&gt;"</span>,
+<a class="jxr_linenumber" name="435" href="#435">435</a> 				Type.getMethodDescriptor(Type.VOID_TYPE), false);
+<a class="jxr_linenumber" name="436" href="#436">436</a> 		mv.visitLdcInsn(getShortName() + <span class="jxr_string">"["</span>);
+<a class="jxr_linenumber" name="437" href="#437">437</a> 		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
+<a class="jxr_linenumber" name="438" href="#438">438</a> 				Type.getMethodDescriptor(stringBuilderType, objType), false);
+<a class="jxr_linenumber" name="439" href="#439">439</a> 		<strong class="jxr_keyword">for</strong> (DatabaseField field : fields.values()) {
+<a class="jxr_linenumber" name="440" href="#440">440</a> 			mv.visitLdcInsn(<span class="jxr_string">" "</span> + field.getName() + <span class="jxr_string">"="</span>);
+<a class="jxr_linenumber" name="441" href="#441">441</a> 			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
+<a class="jxr_linenumber" name="442" href="#442">442</a> 					Type.getMethodDescriptor(stringBuilderType, objType), false);
+<a class="jxr_linenumber" name="443" href="#443">443</a> 			mv.visitVarInsn(Opcodes.ALOAD, 0);
+<a class="jxr_linenumber" name="444" href="#444">444</a> 			mv.visitFieldInsn(Opcodes.GETFIELD, internalName, field.getName(), Type.getDescriptor(field.getType()));
+<a class="jxr_linenumber" name="445" href="#445">445</a> 			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
+<a class="jxr_linenumber" name="446" href="#446">446</a> 					Type.getMethodDescriptor(stringBuilderType, objType), false);
+<a class="jxr_linenumber" name="447" href="#447">447</a> 		}
+<a class="jxr_linenumber" name="448" href="#448">448</a> 		mv.visitLdcInsn(<span class="jxr_string">" ]"</span>);
+<a class="jxr_linenumber" name="449" href="#449">449</a> 		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"append"</span>,
+<a class="jxr_linenumber" name="450" href="#450">450</a> 				Type.getMethodDescriptor(stringBuilderType, objType), false);
+<a class="jxr_linenumber" name="451" href="#451">451</a> 		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(StringBuilder.<strong class="jxr_keyword">class</strong>), <span class="jxr_string">"toString"</span>,
+<a class="jxr_linenumber" name="452" href="#452">452</a> 				Type.getMethodDescriptor(stringType), false);
+<a class="jxr_linenumber" name="453" href="#453">453</a> 		mv.visitInsn(Opcodes.ARETURN);
+<a class="jxr_linenumber" name="454" href="#454">454</a> 		mv.visitMaxs(2, 1);
+<a class="jxr_linenumber" name="455" href="#455">455</a> 		mv.visitEnd();
+<a class="jxr_linenumber" name="456" href="#456">456</a> 
+<a class="jxr_linenumber" name="457" href="#457">457</a> 		ca.visitEnd();
+<a class="jxr_linenumber" name="458" href="#458">458</a> 
+<a class="jxr_linenumber" name="459" href="#459">459</a> 		<strong class="jxr_keyword">return</strong> cw.toByteArray();
+<a class="jxr_linenumber" name="460" href="#460">460</a> 	}
+<a class="jxr_linenumber" name="461" href="#461">461</a> 
+<a class="jxr_linenumber" name="462" href="#462">462</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

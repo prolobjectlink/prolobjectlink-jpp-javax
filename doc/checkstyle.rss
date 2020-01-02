@@ -6,10 +6,10 @@
     <link>https://github.com/prolobjectlink/prolobjectlink-jpp-javax</link>
     <description>prolobjectlink-jpp-javax - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2012 - 2019 Prolobjectlink Project</copyright>
+    <copyright>&#169;2012 - 2020 Prolobjectlink Project</copyright>
     <item>
       <title>File: 313,
-             Errors: 28032,
+             Errors: 28043,
              Warnings: 0,
              Infos: 0
       </title>
@@ -1480,7 +1480,7 @@
                   0
                 </td>
                 <td>
-                  540
+                  552
                 </td>
               </tr>
                           <tr>
@@ -3216,7 +3216,7 @@
                   0
                 </td>
                 <td>
-                  76
+                  75
                 </td>
               </tr>
                           <tr>
