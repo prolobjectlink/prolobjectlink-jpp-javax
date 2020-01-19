@@ -368,13 +368,13 @@
                       <td>{{value.getSize()}}</td>
                       <td>{{value.getModify()}}</td>
                       <td>
-								<a href="{{ path(""+value.getName()+"") }}" class="btn btn-info btn-circle btn-sm">
+								<a href="{{ launch(""+value.getName()+":index") }}" class="btn btn-info btn-circle btn-sm">
                     				<i class="fas fa-info-circle"></i>
                   				</a>
-                  				<a href="{{ path(""+value.getName()+"") }}" class="btn btn-warning btn-circle btn-sm">
+                  				<a href="{{ launch(""+value.getName()+":index") }}" class="btn btn-warning btn-circle btn-sm">
                     				<i class="fas fa-exclamation-triangle"></i>
                   				</a>
-								<a href="{{ path(""+value.getName()+"") }}"class="btn btn-danger btn-circle btn-sm">
+								<a href="{{ launch(""+value.getName()+":index") }}"class="btn btn-danger btn-circle btn-sm">
                     				<i class="fas fa-trash"></i>
                   				</a>
 					</td>

@@ -63,14 +63,25 @@ public class ModelProcessor extends AbstractWebApplication {
 		try {
 
 			String prolobjectlinkJpxModelJar = "prolobjectlink-jpx-model.jar";
-			FileOutputStream stream = new FileOutputStream(temp + prolobjectlinkJpxModelJar);
+			FileOutputStream stream = null;
+			if (runOnLinux() || runOnOsX()) {
+				stream = new FileOutputStream(temp + File.separator + prolobjectlinkJpxModelJar);
+			} else if (runOnWindows()) {
+				stream = new FileOutputStream(temp + prolobjectlinkJpxModelJar);
+			}
+
 			JarOutputStream out = new JarOutputStream(stream, new Manifest());
 
 			for (PersistenceUnitInfo unit : units) {
 				JPAPersistenceUnitInfo jpaUnit = (JPAPersistenceUnitInfo) unit;
 				jpaUnit.writePersistenceXml(builder);
-				jpaUnit.writeByteCode(temp);
-				jpaUnit.jar(out, temp);
+				if (runOnLinux() || runOnOsX()) {
+					jpaUnit.writeByteCode(temp + File.separator);
+					jpaUnit.jar(out, temp + File.separator);
+				} else if (runOnWindows()) {
+					jpaUnit.writeByteCode(temp);
+					jpaUnit.jar(out, temp);
+				}
 			}
 
 			// write persistence.xml footer
@@ -106,7 +117,12 @@ public class ModelProcessor extends AbstractWebApplication {
 
 			// copy from temp directory to lib folder
 			String jarInLib = getLibDirectory() + File.separator + prolobjectlinkJpxModelJar;
-			FileInputStream fips = new FileInputStream(temp + prolobjectlinkJpxModelJar);
+			FileInputStream fips = null;
+			if (runOnLinux() || runOnOsX()) {
+				fips = new FileInputStream(temp + File.separator + prolobjectlinkJpxModelJar);
+			} else if (runOnWindows()) {
+				fips = new FileInputStream(temp + prolobjectlinkJpxModelJar);
+			}
 			FileOutputStream fops = new FileOutputStream(jarInLib);
 			copy(fips, fops);
 

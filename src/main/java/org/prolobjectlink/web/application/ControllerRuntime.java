@@ -41,7 +41,6 @@ import org.prolobjectlink.prolog.PrologTerm;
 import org.prolobjectlink.prolog.PrologVariable;
 import org.prolobjectlink.web.function.AssetFunction;
 import org.prolobjectlink.web.function.ImportFunction;
-import org.prolobjectlink.web.function.LaunchFunction;
 import org.prolobjectlink.web.function.MD5Function;
 import org.prolobjectlink.web.function.PathFunction;
 import org.prolobjectlink.web.function.SHAFunction;
@@ -98,7 +97,6 @@ public class ControllerRuntime {
 				context.set("path", new PathFunction(application, protocol, host));
 				context.set("import", new ImportFunction(getWebLocation(), application));
 				context.set("asset", new AssetFunction(protocol, host));
-				context.set("launch", new LaunchFunction(protocol, host));
 				context.set("md5", new MD5Function());
 				context.set("sha", new SHAFunction());
 

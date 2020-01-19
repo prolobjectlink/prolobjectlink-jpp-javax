@@ -34,7 +34,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.prolobjectlink.web.entry.ApplicationEntry;
 import org.prolobjectlink.web.function.AssetFunction;
+import org.prolobjectlink.web.function.LaunchFunction;
 import org.prolobjectlink.web.function.PathFunction;
+import org.prolobjectlink.web.function.RemoveFunction;
 import org.prolobjectlink.web.servlet.AbstractServlet;
 
 import io.marioslab.basis.template.Template;
@@ -60,6 +62,7 @@ public class ApplicationServlet extends AbstractServlet implements Servlet {
 		TemplateContext context = new TemplateContext();
 
 		File webapps = getWebDirectory();
+		File database = getDBDirectory();
 		File[] apps = webapps.listFiles();
 		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
 		for (File file : apps) {
@@ -77,7 +80,10 @@ public class ApplicationServlet extends AbstractServlet implements Servlet {
 		context.set("applications", applications);
 
 		// functions
+		context.set("remove",
+				new RemoveFunction(webapps.getAbsolutePath(), database.getAbsolutePath(), protocol, host));
 		context.set("path", new PathFunction("pas", protocol, host));
+		context.set("launch", new LaunchFunction(protocol, host));
 		context.set("asset", new AssetFunction(protocol, host));
 
 		// render

@@ -36,6 +36,7 @@ public final class ApplicationGenerator extends AbstractWebApplication implement
 		PrintWriter b = null;
 		PrintWriter c = null;
 		PrintWriter d = null;
+		PrintWriter i = null;
 
 		try {
 
@@ -51,15 +52,31 @@ public final class ApplicationGenerator extends AbstractWebApplication implement
 			File viewFolder = new File(webdir + File.separator + name + "/view");
 			viewFolder.mkdir();
 
+			// web index controller file
+			File index = new File(controllerFolder.getCanonicalPath() + File.separator + name + "_index_controller.pl");
+			i = new PrintWriter(index);
+			i.println(":-multifile(index/1).");
+			i.println();
+			i.println(":-consult('../../../misc/pl/http.pl').");
+			i.println();
+			i.println("index(_) :- ");
+			i.print("	render('index.html').");
+
 			// web file
 			a = new PrintWriter(new File(webdir + File.separator + name + "/controller.pl"));
-			b = new PrintWriter(new File(webdir + File.separator + name + "/database.pl"));
-			c = new PrintWriter(new File(webdir + File.separator + name + "/index.html"));
-			d = new PrintWriter(new File(webdir + File.separator + name + "/model.pl"));
+			a.print(name + "_controller('controller/" + name + "_index_controller.pl').");
 
-			a.write("");
-			b.write("");
-			c.write("");
+			b = new PrintWriter(new File(webdir + File.separator + name + "/database.pl"));
+			b.println("provider('org.hibernate.jpa.HibernatePersistenceProvider').");
+			b.println("url('jdbc:hsqldb:file:/" + name + "').");
+			b.println("driver('org.hsqldb.jdbc.JDBCDriver').");
+			b.println("password('').");
+			b.println("user('sa').");
+
+			c = new PrintWriter(new File(webdir + File.separator + name + "/index.html"));
+			c.write("Hello World");
+
+			d = new PrintWriter(new File(webdir + File.separator + name + "/model.pl"));
 			d.write("");
 
 		} catch (IOException e) {
@@ -76,6 +93,9 @@ public final class ApplicationGenerator extends AbstractWebApplication implement
 			}
 			if (d != null) {
 				d.close();
+			}
+			if (i != null) {
+				i.close();
 			}
 		}
 

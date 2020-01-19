@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2012 - 2020 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 313,
-             Errors: 28049,
+      <title>File: 314,
+             Errors: 28190,
              Warnings: 0,
              Infos: 0
       </title>
@@ -52,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  160
+                  158
                 </td>
               </tr>
                           <tr>
@@ -402,7 +402,7 @@
                   0
                 </td>
                 <td>
-                  88
+                  106
                 </td>
               </tr>
                           <tr>
@@ -472,7 +472,7 @@
                   0
                 </td>
                 <td>
-                  55
+                  75
                 </td>
               </tr>
                           <tr>
@@ -528,7 +528,7 @@
                   0
                 </td>
                 <td>
-                  313
+                  327
                 </td>
               </tr>
                           <tr>
@@ -1074,7 +1074,7 @@
                   0
                 </td>
                 <td>
-                  45
+                  50
                 </td>
               </tr>
                           <tr>
@@ -2013,6 +2013,20 @@
                 </td>
                 <td>
                   2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/prolobjectlink/prolobjectlink-jpp-javax/checkstyle.html#org.prolobjectlink.web.function.RemoveFunction.java">org/prolobjectlink/web/function/RemoveFunction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  85
                 </td>
               </tr>
                           <tr>
@@ -3244,7 +3258,7 @@
                   0
                 </td>
                 <td>
-                  23
+                  24
                 </td>
               </tr>
                           <tr>

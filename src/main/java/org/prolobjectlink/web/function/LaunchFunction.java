@@ -21,9 +21,9 @@
  */
 package org.prolobjectlink.web.function;
 
-import java.util.function.BinaryOperator;
+import java.util.function.UnaryOperator;
 
-public class LaunchFunction implements BinaryOperator<String> {
+public class LaunchFunction implements UnaryOperator<String> {
 
 	private final String protocol;
 	private final String host;
@@ -34,7 +34,9 @@ public class LaunchFunction implements BinaryOperator<String> {
 	}
 
 	@Override
-	public String apply(String arg0, String arg1) {
+	public String apply(String application) {
+		String arg0 = application.split(":")[0];
+		String arg1 = application.split(":")[1];
 		return protocol + "://" + host + "/" + arg0 + "/" + arg1;
 	}
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2020-01-02T15:05:26.373">
+<pmd version="4.2.5" timestamp="2020-01-19T20:15:52.383">
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\DatabaseDriver.java">
 <violation beginline="29" endline="29" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.prolobjectlink.db" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'org.hsqldb.HsqlException'
@@ -357,11 +357,19 @@ Avoid unused private fields such as 'LIST'.
 <violation beginline="72" endline="72" begincolumn="37" endcolumn="46" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="COLLECTION" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'COLLECTION'.
 </violation>
-<violation beginline="223" endline="223" begincolumn="60" endcolumn="72" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="233" endline="233" begincolumn="60" endcolumn="72" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedKeyType'.
 </violation>
-<violation beginline="224" endline="224" begincolumn="60" endcolumn="74" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="234" endline="234" begincolumn="60" endcolumn="74" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedValueType'.
+</violation>
+</file>
+<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\function\RemoveFunction.java">
+<violation beginline="49" endline="49" begincolumn="22" endcolumn="28" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.function" class="RemoveFunction" method="apply" variable="appPath" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'appPath'.
+</violation>
+<violation beginline="69" endline="71" begincolumn="82" endcolumn="41" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.function" class="RemoveFunction" method="apply" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
 </violation>
 </file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\io\ServerFile.java">

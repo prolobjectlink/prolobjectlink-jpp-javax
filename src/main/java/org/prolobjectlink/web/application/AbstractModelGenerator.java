@@ -129,17 +129,27 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 			// for embedded databases
 			if (jpaUrl.toString().contains(HSQLDBFileDriver.prefix)) {
 				String rectify = jpaUrl.toString().replace(HSQLDBFileDriver.prefix, "");
-				try {
-					File[] roots = File.listRoots();
-					for (File root : roots) {
+				if (runOnLinux() || runOnOsX()) {
+					try {
 						String str = getDBDirectory().getCanonicalPath();
-						if (str.startsWith(root.getCanonicalPath())) {
-							jpaUrl = new String(HSQLDBFileDriver.prefix + str + "/hsqldb" + rectify)
-									.replace(root.getCanonicalPath(), "/").replace(File.separatorChar, '/');
-						}
+						jpaUrl = new String(HSQLDBFileDriver.prefix + str + "/hsqldb" + rectify)
+								.replace(File.separatorChar, '/');
+					} catch (IOException e) {
+						LoggerUtils.error(getClass(), LoggerConstants.IO, e);
 					}
-				} catch (IOException e) {
-					LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+				} else if (runOnWindows()) {
+					try {
+						File[] roots = File.listRoots();
+						for (File root : roots) {
+							String str = getDBDirectory().getCanonicalPath();
+							if (str.startsWith(root.getCanonicalPath())) {
+								jpaUrl = new String(HSQLDBFileDriver.prefix + str + "/hsqldb" + rectify)
+										.replace(root.getCanonicalPath(), "/").replace(File.separatorChar, '/');
+							}
+						}
+					} catch (IOException e) {
+						LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+					}
 				}
 			}
 
