@@ -349,7 +349,7 @@ public final class JPAPersistenceUnitInfo implements PersistenceUnitInfo {
 	}
 
 	public void jar(JarOutputStream out, String directory) throws IOException {
-		List<String> all = new ArrayList<>(managedClasses.size());
+		List<String> all = new ArrayList<String>(managedClasses.size());
 		for (String fileName : managedClassesNames) {
 			all.add(fileName + "Dao");
 			all.add(fileName);

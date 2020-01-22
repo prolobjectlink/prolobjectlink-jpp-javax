@@ -39,7 +39,7 @@ public abstract class AbstractMiscGenerator extends AbstractWebApplication imple
 
 	public AbstractMiscGenerator() {
 
-		mappings = new ArrayList<>();
+		mappings = new ArrayList<ServletUrlMapping>();
 
 		String misc = getMiscDirectory().getAbsolutePath();
 

@@ -21,12 +21,18 @@
  */
 package org.prolobjectlink.db;
 
+import java.io.File;
+import java.io.IOException;
+import java.security.CodeSource;
+import java.security.ProtectionDomain;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.hsqldb.HsqlException;
+import org.prolobjectlink.logging.LoggerConstants;
+import org.prolobjectlink.logging.LoggerUtils;
+import org.prolobjectlink.web.application.AbstractControllerGenerator;
 import org.prolobjectlink.web.application.WebApplication;
 
 public abstract class DatabaseDriver {
@@ -159,6 +165,33 @@ public abstract class DatabaseDriver {
 			e.printStackTrace();
 		}
 		return c;
+	}
+
+	public final File getDBDirectory() {
+		File dbRoot = null;
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		File prt = pdk.getParentFile();
+		try {
+			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
+				// production mode
+				dbRoot = new File(prt.getCanonicalPath() + File.separator + "db");
+			} else {
+				// development mode
+				dbRoot = new File("db");
+			}
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		}
+		return dbRoot;
+	}
+
+	public final String getCurrentPath() {
+		Class<?> c = AbstractControllerGenerator.class;
+		ProtectionDomain d = c.getProtectionDomain();
+		CodeSource s = d.getCodeSource();
+		return s.getLocation().getPath();
 	}
 
 }

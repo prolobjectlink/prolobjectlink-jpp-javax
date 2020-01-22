@@ -29,6 +29,8 @@ import java.util.Properties;
 
 import org.postgresql.Driver;
 import org.prolobjectlink.db.jdbc.RemoteDriver;
+import org.prolobjectlink.logging.LoggerConstants;
+import org.prolobjectlink.logging.LoggerUtils;
 
 /**
  * jdbc:postgresql://localhost:5432/MYDATABASE
@@ -62,7 +64,7 @@ public class PostgreSQLDriver extends RemoteDriver {
 		try {
 			Class.forName(getDbdirver());
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), LoggerConstants.CLASS_NOT_FOUND, e);
 		}
 		String url = dbprefix + "//" + dbhost + ":" + dbport + "/" + "postgres";
 		Connection connection = DriverManager.getConnection(url, getDbuser(), getDbpwd());

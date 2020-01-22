@@ -21,16 +21,9 @@
  */
 package org.prolobjectlink.db.jdbc;
 
-import java.io.File;
-import java.io.IOException;
-import java.security.CodeSource;
-import java.security.ProtectionDomain;
 import java.util.Properties;
 
 import org.prolobjectlink.db.DatabaseDriver;
-import org.prolobjectlink.logging.LoggerConstants;
-import org.prolobjectlink.logging.LoggerUtils;
-import org.prolobjectlink.web.application.AbstractControllerGenerator;
 
 public abstract class EmbeddedDriver extends DatabaseDriver {
 
@@ -77,33 +70,6 @@ public abstract class EmbeddedDriver extends DatabaseDriver {
 			return false;
 		}
 		return true;
-	}
-
-	public final static File getPrtDirectory() {
-		File appRoot = null;
-		String folder = getCurrentPath();
-		File plk = new File(folder);
-		File pdk = plk.getParentFile();
-		File prt = pdk.getParentFile();
-		try {
-			if (!prt.getCanonicalPath().contains("prolobjectlink-jpp-javax")) {
-				// production mode
-				appRoot = new File(prt.getCanonicalPath() + File.separator + "db");
-			} else {
-				// development mode
-				appRoot = new File("db");
-			}
-		} catch (IOException e) {
-			LoggerUtils.error(EmbeddedDriver.class, LoggerConstants.IO, e);
-		}
-		return appRoot;
-	}
-
-	public final static String getCurrentPath() {
-		Class<?> c = AbstractControllerGenerator.class;
-		ProtectionDomain d = c.getProtectionDomain();
-		CodeSource s = d.getCodeSource();
-		return s.getLocation().getPath();
 	}
 
 	public abstract String getDbURL();

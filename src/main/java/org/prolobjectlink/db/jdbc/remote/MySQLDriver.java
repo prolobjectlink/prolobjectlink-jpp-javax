@@ -28,6 +28,8 @@ import java.sql.Statement;
 import java.util.Properties;
 
 import org.prolobjectlink.db.jdbc.RemoteDriver;
+import org.prolobjectlink.logging.LoggerConstants;
+import org.prolobjectlink.logging.LoggerUtils;
 
 import com.mysql.jdbc.Driver;
 
@@ -63,7 +65,7 @@ public class MySQLDriver extends RemoteDriver {
 		try {
 			Class.forName(getDbdirver());
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), LoggerConstants.CLASS_NOT_FOUND, e);
 		}
 		String url = dbprefix + "//" + dbhost + ":" + dbport + "/" + "mysql";
 		Connection connection = DriverManager.getConnection(url, getDbuser(), getDbpwd());

@@ -77,7 +77,7 @@ public abstract class AbstractPrologProgrammer extends AbstractProgrammer implem
 		StringBuilder update = new StringBuilder();
 		StringBuilder code = new StringBuilder();
 		Field[] fields = cls.getDeclaredFields();
-		ArrayIterator<Field> i = new ArrayIterator<>(fields);
+		ArrayIterator<Field> i = new ArrayIterator<Field>(fields);
 		if (i.hasNext()) {
 			while (i.hasNext()) {
 				Field field = i.next();
@@ -99,11 +99,13 @@ public abstract class AbstractPrologProgrammer extends AbstractProgrammer implem
 					} else {
 						code.append("\t" + modelName + "_set_" + fieldname + "(ENTITY, " + FIELDNAME + "),\n");
 					}
-					if (i.hasNext()) {
-						create.append(',');
-						create.append(' ');
-					}
 				}
+
+				if (i.hasNext()) {
+					create.append(',');
+					create.append(' ');
+				}
+
 				update.append(FIELDNAME);
 				if (i.hasNext()) {
 					update.append(',');

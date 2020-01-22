@@ -24,6 +24,9 @@ package org.prolobjectlink.web.application;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import org.prolobjectlink.logging.LoggerConstants;
 import org.prolobjectlink.logging.LoggerUtils;
@@ -79,8 +82,15 @@ public final class ApplicationGenerator extends AbstractWebApplication implement
 			d = new PrintWriter(new File(webdir + File.separator + name + "/model.pl"));
 			d.write("");
 
+			String db = getDBDirectory().getCanonicalPath() + "/hsqldb";
+			String url = "jdbc:hsqldb:file:" + db + "/" + name;
+			Connection connection = DriverManager.getConnection(url, "sa", "");
+			connection.close();
+
 		} catch (IOException e) {
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+		} catch (SQLException e) {
+			LoggerUtils.error(getClass(), LoggerConstants.RUNTIME_ERROR, e);
 		} finally {
 			if (a != null) {
 				a.close();

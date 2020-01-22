@@ -38,6 +38,85 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 
 	private static final long serialVersionUID = 4877024796708886136L;
 
+	public final String getUserName() {
+		return System.getProperty("user.name");
+	}
+
+	public final String getJavaVersion() {
+		return System.getProperty("java.version");
+	}
+
+	public final String getJavaVendor() {
+		return System.getProperty("java.vendor");
+	}
+
+	public final String getJavaName() {
+		return System.getProperty("java.vm.name");
+	}
+
+	public final String getJavaHome() {
+		return System.getProperty("java.home");
+	}
+
+	public final boolean runOnOsX() {
+		return getOsName().equals("Mac OS X") || getOsName().equals("Darwin");
+	}
+
+	public final boolean runOnWindows() {
+		return getOsName().startsWith("Windows");
+	}
+
+	public final boolean runOnLinux() {
+		return getOsName().equals("Linux");
+	}
+
+	public final String getOsName() {
+		String os = System.getProperty("os.name");
+		if (os == null)
+			return "unknow";
+		return os;
+	}
+
+	public String getClassPath() {
+		return System.getenv("java.class.path");
+	}
+
+	public final String getPath() {
+		return System.getenv("Path");
+	}
+
+	public final String getPathSeparator() {
+		return System.getProperty("path.separator");
+	}
+
+	public final String getPathExt() {
+		return System.getenv("PATHEXT");
+	}
+
+	public final Runtime getRuntime() {
+		return Runtime.getRuntime();
+	}
+
+	public final String getUserHome() {
+		return System.getProperty("user.home");
+	}
+
+	public final String getUserDir() {
+		return System.getProperty("user.dir");
+	}
+
+	public final String getWorkDir() {
+		return System.getProperty("user.dir");
+	}
+
+	public final String getTempDir() {
+		return System.getProperty("java.io.tmpdir");
+	}
+
+	public final String getArch() {
+		return System.getProperty("os.arch");
+	}
+
 	public final File getBinDirectory() {
 		File appRoot = null;
 		String folder = getCurrentPath();
@@ -77,7 +156,7 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 		}
 		return appRoot;
 	}
-	
+
 	public final File getETCDirectory() {
 		File appRoot = null;
 		String folder = getCurrentPath();

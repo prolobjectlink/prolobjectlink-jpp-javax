@@ -21,17 +21,21 @@
  */
 package org.prolobjectlink.web.servlet.admin;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.prolobjectlink.db.file.LogFileFilter;
 import org.prolobjectlink.web.function.AssetFunction;
 import org.prolobjectlink.web.function.PathFunction;
+import org.prolobjectlink.web.servlet.AbstractServlet;
 
 import io.marioslab.basis.template.Template;
 import io.marioslab.basis.template.TemplateContext;
@@ -39,7 +43,7 @@ import io.marioslab.basis.template.TemplateLoader;
 import io.marioslab.basis.template.TemplateLoader.ClasspathTemplateLoader;
 
 @WebServlet
-public class LogsServlet extends HttpServlet implements Servlet {
+public class LogsServlet extends AbstractServlet implements Servlet {
 
 	private static final long serialVersionUID = 7313381101418470194L;
 
@@ -55,8 +59,24 @@ public class LogsServlet extends HttpServlet implements Servlet {
 		Template template = loader.load("/org/prolobjectlink/web/html/logs.html");
 		TemplateContext context = new TemplateContext();
 
+		File temp = new File(getTempDir());
+		LogFileFilter filter = new LogFileFilter();
+		File[] logs = temp.listFiles(filter);
+		StringBuilder builder = new StringBuilder();
+		for (File x : logs) {
+			FileReader reader = new FileReader(x.getCanonicalPath());
+			BufferedReader buffer = new BufferedReader(reader);
+			String line = buffer.readLine();
+			while (line != null) {
+				builder.append(line);
+				builder.append('\n');
+				line = buffer.readLine();
+			}
+			buffer.close();
+		}
+
 		// variables
-		context.set("var", System.currentTimeMillis());
+		context.set("log", builder.toString());
 
 		// functions
 		context.set("path", new PathFunction("pas", protocol, host));

@@ -55,9 +55,6 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 		Template template = loader.load("/org/prolobjectlink/web/html/welcome.html");
 		TemplateContext context = new TemplateContext();
 
-		// variables
-		context.set("var", System.currentTimeMillis());
-
 		// functions
 		context.set("path", new PathFunction("pas", protocol, host));
 		context.set("asset", new AssetFunction(protocol, host));
