@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2020-02-12T16:03:25.946">
+<pmd version="4.2.5" timestamp="2020-02-22T11:19:03.686">
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\AbstractEntityManager.java">
 <violation beginline="74" endline="74" begincolumn="43" endcolumn="61" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.db.entity" class="AbstractEntityManager" variable="synchronizationType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'synchronizationType'.
@@ -401,11 +401,6 @@ Avoid empty catch blocks
 Avoid unused local variables such as 'serverArgs'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ApplicationServlet.java">
-<violation beginline="64" endline="64" begincolumn="22" endcolumn="29" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.web.servlet.admin" class="ApplicationServlet" method="doGet" variable="database" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
-Avoid unused local variables such as 'database'.
-</violation>
-</file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ConnectorsServlet.java">
 <violation beginline="85" endline="87" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="ConnectorsServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
@@ -424,11 +419,6 @@ Avoid empty if statements
 </file>
 <file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java">
 <violation beginline="125" endline="127" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="DeleteDatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
-Avoid empty if statements
-</violation>
-</file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ExportDatabaseServlet.java">
-<violation beginline="92" endline="94" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="ExportDatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
@@ -452,6 +442,11 @@ Avoid empty catch blocks
 </violation>
 <violation beginline="89" endline="91" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="ProviderServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
+</violation>
+</file>
+<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\UploadDatabaseServlet.java">
+<violation beginline="85" endline="87" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="UploadDatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
 </violation>
 </file>
 </pmd>

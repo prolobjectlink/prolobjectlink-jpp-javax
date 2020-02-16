@@ -200,6 +200,90 @@ public class ExportApplicationServlet extends AbstractServlet implements Servlet
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="76" tokens="449">
+<file line="47" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DatabaseServlet.java"/>
+<file line="47" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\UploadDatabaseServlet.java"/>
+<codefragment>
+<![CDATA[
+public class UploadDatabaseServlet extends AbstractServlet implements Servlet {
+
+	private static final long serialVersionUID = 7313381101418470194L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		// request information
+		String protocol = req.getScheme();
+		String host = req.getHeader("host");
+
+		// Engine and context
+		TemplateLoader loader = new ClasspathTemplateLoader();
+		Template template = loader.load("/org/prolobjectlink/web/html/databases.html");
+		TemplateContext context = new TemplateContext();
+
+		File db = getDBDirectory();
+		File[] dbs = db.listFiles();
+		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
+		for (File file : dbs) {
+			if (file.isDirectory()) {
+				if (file.getName().equals("hsqldb")) {
+					File[] scripts = file.listFiles(new FileFilter() {
+
+						@Override
+						public boolean accept(File arg0) {
+							return arg0.getName().endsWith(".script");
+						}
+
+					});
+					for (File x : scripts) {
+						String type = "HSQLDB";
+						long size = x.length();
+						long modified = x.lastModified();
+						String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
+						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+						databases.add(e);
+					}
+				} else if (file.getName().equals("pdb")) {
+
+				} else if (file.getName().equals("odb")) {
+					File[] scripts = file.listFiles(new FileFilter() {
+
+						@Override
+						public boolean accept(File arg0) {
+							return arg0.getName().endsWith(".odb");
+						}
+
+					});
+					for (File x : scripts) {
+						String type = "ODB";
+						long size = x.length();
+						long modified = x.lastModified();
+						String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
+						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+						databases.add(e);
+					}
+				}
+			}
+		}
+
+		// variables
+		context.set("databases", databases);
+
+		// functions
+		context.set("path", new PathFunction("pas", protocol, host));
+		context.set("asset", new AssetFunction(protocol, host));
+
+		// render
+		template.render(context, resp.getOutputStream());
+
+		// response
+		resp.setStatus(HttpServletResponse.SC_OK);
+	}
+
+}
+]]>
+</codefragment>
+</duplication>
 <duplication lines="71" tokens="397">
 <file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
 <file line="44" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSServlet.java"/>
@@ -276,136 +360,6 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 	}
 
 }
-]]>
-</codefragment>
-</duplication>
-<duplication lines="59" tokens="378">
-<file line="105" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java"/>
-<file line="72" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ExportDatabaseServlet.java"/>
-<codefragment>
-<![CDATA[
-		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
-		for (File file : dbs) {
-			if (file.isDirectory()) {
-				if (file.getName().equals("hsqldb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
-
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".script");
-						}
-
-					});
-					for (File x : scripts) {
-						String type = "HSQLDB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
-					}
-				} else if (file.getName().equals("pdb")) {
-
-				} else if (file.getName().equals("odb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
-
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".odb");
-						}
-
-					});
-					for (File x : scripts) {
-						String type = "ODB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
-					}
-				}
-			}
-		}
-
-		// variables
-		context.set("databases", databases);
-
-		// functions
-		context.set("path", new PathFunction("pas", protocol, host));
-		context.set("launch", new LaunchFunction(protocol, host));
-		context.set("asset", new AssetFunction(protocol, host));
-
-		// render
-		template.render(context, resp.getOutputStream());
-
-		// response
-		resp.setStatus(HttpServletResponse.SC_OK);
-	}
-
-}
-]]>
-</codefragment>
-</duplication>
-<duplication lines="55" tokens="371">
-<file line="59" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DatabaseServlet.java"/>
-<file line="66" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ExportDatabaseServlet.java"/>
-<codefragment>
-<![CDATA[
-		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/org/prolobjectlink/web/html/databases.html");
-		TemplateContext context = new TemplateContext();
-
-		File db = getDBDirectory();
-		File[] dbs = db.listFiles();
-		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
-		for (File file : dbs) {
-			if (file.isDirectory()) {
-				if (file.getName().equals("hsqldb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
-
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".script");
-						}
-
-					});
-					for (File x : scripts) {
-						String type = "HSQLDB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
-					}
-				} else if (file.getName().equals("pdb")) {
-
-				} else if (file.getName().equals("odb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
-
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".odb");
-						}
-
-					});
-					for (File x : scripts) {
-						String type = "ODB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
-					}
-				}
-			}
-		}
-
-		// variables
-		context.set("databases", databases);
-
-		// functions
-		context.set("path", new PathFunction("pas", protocol, host));
-		context.set("launch", new LaunchFunction(protocol, host));
 ]]>
 </codefragment>
 </duplication>
@@ -612,6 +566,60 @@ public class ManagerServlet extends HttpServlet implements Servlet {
 		// response
 		resp.setStatus(HttpServletResponse.SC_OK);
 
+	}
+
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="46" tokens="236">
+<file line="47" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ApplicationServlet.java"/>
+<file line="47" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\UploadApplicationServlet.java"/>
+<codefragment>
+<![CDATA[
+public class UploadApplicationServlet extends AbstractServlet implements Servlet {
+
+	private static final long serialVersionUID = 7313381101418470194L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		// request information
+		String protocol = req.getScheme();
+		String host = req.getHeader("host");
+
+		// Engine and context
+		TemplateLoader loader = new ClasspathTemplateLoader();
+		Template template = loader.load("/org/prolobjectlink/web/html/applications.html");
+		TemplateContext context = new TemplateContext();
+
+		File webapps = getWebDirectory();
+		File[] apps = webapps.listFiles();
+		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
+		for (File file : apps) {
+			// check application
+			if (file.isDirectory()) {
+				long size = file.length();
+				String name = file.getName();
+				long modified = file.lastModified();
+				ApplicationEntry e = new ApplicationEntry(name, size, modified);
+				applications.add(e);
+			}
+		}
+
+		// variables
+		context.set("applications", applications);
+
+		// functions
+		context.set("path", new PathFunction("pas", protocol, host));
+		context.set("launch", new LaunchFunction(protocol, host));
+		context.set("asset", new AssetFunction(protocol, host));
+
+		// render
+		template.render(context, resp.getOutputStream());
+
+		// response
+		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 
 }
@@ -1071,7 +1079,7 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="28" tokens="151">
-<file line="66" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ApplicationServlet.java"/>
+<file line="65" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ApplicationServlet.java"/>
 <file line="106" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteApplicationServlet.java"/>
 <codefragment>
 <![CDATA[
@@ -1238,6 +1246,42 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 					try {
 						Class<?> runtimeClass = l.loadClass(className.replace('/', '.'));
 						if (!runtimeClass.isInterface() && PersistenceProvider.class.isAssignableFrom(runtimeClass)) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="28" tokens="140">
+<file line="206" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="277" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
+<codefragment>
+<![CDATA[
+	}
+
+	public final synchronized long copy(InputStream in, OutputStream out) {
+		long copied = 0;
+		try {
+			long length = MAX_IO_BUFFER_SIZE;
+			int len = (int) Math.min(length, IO_BUFFER_SIZE);
+			byte[] buffer = new byte[len];
+			while (length > 0) {
+				len = in.read(buffer, 0, len);
+				if (len < 0) {
+					break;
+				}
+				if (out != null) {
+					out.write(buffer, 0, len);
+				}
+				copied += len;
+				length -= len;
+				len = (int) Math.min(length, IO_BUFFER_SIZE);
+			}
+			return copied;
+		} catch (Exception e) {
+			LoggerUtils.error(getClass(), "Some error occurss on copy", e);
+		}
+		return copied;
+	}
+
+}
 ]]>
 </codefragment>
 </duplication>
@@ -1521,7 +1565,7 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="113">
-<file line="200" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
+<file line="205" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
 <file line="48" path="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
 <codefragment>
 <![CDATA[

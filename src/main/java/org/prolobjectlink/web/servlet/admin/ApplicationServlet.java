@@ -61,7 +61,6 @@ public class ApplicationServlet extends AbstractServlet implements Servlet {
 		TemplateContext context = new TemplateContext();
 
 		File webapps = getWebDirectory();
-		File database = getDBDirectory();
 		File[] apps = webapps.listFiles();
 		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
 		for (File file : apps) {

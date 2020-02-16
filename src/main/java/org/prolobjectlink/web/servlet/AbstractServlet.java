@@ -23,6 +23,8 @@ package org.prolobjectlink.web.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
 
@@ -36,7 +38,10 @@ import org.prolobjectlink.web.application.WebApplication;
 
 public class AbstractServlet extends HttpServlet implements Servlet {
 
+	protected static final String CONTENT_TYPE = "application/x-download";
 	private static final long serialVersionUID = 4877024796708886136L;
+	protected static final long MAX_IO_BUFFER_SIZE = Long.MAX_VALUE;
+	protected static final int IO_BUFFER_SIZE = 4 * 1024;
 
 	public final String getUserName() {
 		return System.getProperty("user.name");
@@ -129,7 +134,7 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 				appRoot = new File(prt.getCanonicalPath() + File.separator + "bin");
 			} else {
 				// development mode
-				appRoot = new File("lib");
+				appRoot = new File("bin");
 			}
 		} catch (IOException e) {
 			LoggerUtils.error(getClass(), LoggerConstants.IO, e);
@@ -269,6 +274,31 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 			return false;
 		}
 		return true;
+	}
+
+	public final synchronized long copy(InputStream in, OutputStream out) {
+		long copied = 0;
+		try {
+			long length = MAX_IO_BUFFER_SIZE;
+			int len = (int) Math.min(length, IO_BUFFER_SIZE);
+			byte[] buffer = new byte[len];
+			while (length > 0) {
+				len = in.read(buffer, 0, len);
+				if (len < 0) {
+					break;
+				}
+				if (out != null) {
+					out.write(buffer, 0, len);
+				}
+				copied += len;
+				length -= len;
+				len = (int) Math.min(length, IO_BUFFER_SIZE);
+			}
+			return copied;
+		} catch (Exception e) {
+			LoggerUtils.error(getClass(), "Some error occurss on copy", e);
+		}
+		return copied;
 	}
 
 }

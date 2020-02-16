@@ -52,6 +52,7 @@ public class DocumentsServlet extends HttpServlet implements Servlet {
 			out.append(line);
 			line = buffer.readLine();
 		}
+		buffer.close();
 		out.close();
 	}
 

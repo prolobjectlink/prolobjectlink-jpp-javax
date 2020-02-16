@@ -21,28 +21,29 @@
  */
 package org.prolobjectlink.web.servlet.admin;
 
+import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.prolobjectlink.web.entry.DatabaseEntry;
-import org.prolobjectlink.web.function.AssetFunction;
-import org.prolobjectlink.web.function.LaunchFunction;
-import org.prolobjectlink.web.function.PathFunction;
+import org.prolobjectlink.db.file.HSQLFileFilter;
+import org.prolobjectlink.db.file.ODBFileFilter;
+import org.prolobjectlink.db.file.PDBFileFilter;
 import org.prolobjectlink.web.servlet.AbstractServlet;
-
-import io.marioslab.basis.template.Template;
-import io.marioslab.basis.template.TemplateContext;
-import io.marioslab.basis.template.TemplateLoader;
-import io.marioslab.basis.template.TemplateLoader.ClasspathTemplateLoader;
 
 @WebServlet
 public class ExportDatabaseServlet extends AbstractServlet implements Servlet {
@@ -52,79 +53,106 @@ public class ExportDatabaseServlet extends AbstractServlet implements Servlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// request information
-		String protocol = req.getScheme();
-		String host = req.getHeader("host");
-
 		String pathInfo = req.getPathInfo();
 		if (pathInfo != null) {
 			pathInfo = pathInfo.substring(1);
-			System.out.println(pathInfo);
 		}
-
-		// Engine and context
-		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/org/prolobjectlink/web/html/databases.html");
-		TemplateContext context = new TemplateContext();
 
 		File db = getDBDirectory();
 		File[] dbs = db.listFiles();
-		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
+		File zipFile = new File(getTempDir() + pathInfo + ".zip");
 		for (File file : dbs) {
 			if (file.isDirectory()) {
 				if (file.getName().equals("hsqldb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
+					HSQLFileFilter filter = new HSQLFileFilter(pathInfo);
+					File[] scripts = file.listFiles(filter);
 
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".script");
+					InputStream in = null;
+					OutputStream out = null;
+					ZipOutputStream zipOut = null;
+
+					for (File x : scripts) {
+
+						if (!x.getName().endsWith(".tmp")) {
+
+							if (!zipFile.exists()) {
+								File parent = zipFile.getParentFile();
+								if (parent != null) {
+									parent.mkdirs();
+								}
+							}
+
+							//
+							out = new FileOutputStream(zipFile);
+							zipOut = new ZipOutputStream(out);
+							zipOut.setComment(pathInfo + " database dackup");
+
+							String path = x.getPath();
+							String dbdir = db.getCanonicalPath();
+							String relative = path.replace(dbdir + File.separator, "");
+							relative = relative.replace(File.separator, "/");
+							in = new FileInputStream(x);
+							ZipEntry entry = new ZipEntry(relative);
+							zipOut.putNextEntry(entry);
+							copy(in, zipOut);
+							zipOut.closeEntry();
+
 						}
 
-					});
-					for (File x : scripts) {
-						String type = "HSQLDB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
 					}
+
+					if (zipOut != null) {
+						zipOut.close();
+					}
+					if (out != null) {
+						out.close();
+					}
+					if (in != null) {
+						in.close();
+					}
+
 				} else if (file.getName().equals("pdb")) {
-
-				} else if (file.getName().equals("odb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
-
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".odb");
-						}
-
-					});
+					PDBFileFilter filter = new PDBFileFilter(pathInfo);
+					File[] scripts = file.listFiles(filter);
 					for (File x : scripts) {
-						String type = "ODB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
+						System.out.println(x.getCanonicalPath());
+					}
+				} else if (file.getName().equals("odb")) {
+					ODBFileFilter filter = new ODBFileFilter(pathInfo);
+					File[] scripts = file.listFiles(filter);
+					for (File x : scripts) {
+						System.out.println(x.getCanonicalPath());
 					}
 				}
 			}
 		}
 
-		// variables
-		context.set("databases", databases);
+		ServletOutputStream outputStream = resp.getOutputStream();
+		resp.setContentType(CONTENT_TYPE);
+		resp.setContentLength((int) zipFile.length());
+		resp.setHeader("Content-Disposition", "attachment; filename=" + pathInfo + ".zip");
 
-		// functions
-		context.set("path", new PathFunction("pas", protocol, host));
-		context.set("launch", new LaunchFunction(protocol, host));
-		context.set("asset", new AssetFunction(protocol, host));
+		byte[] buffer = new byte[8 * 1024]; // 8k buffer
+		FileInputStream input = new FileInputStream(zipFile);
+		DataInputStream inputStream = new DataInputStream(input);
+		int length = 0;
 
-		// render
-		template.render(context, resp.getOutputStream());
+		try {
+			while ((inputStream != null) && ((length = inputStream.read(buffer)) != -1)) {
+				outputStream.write(buffer, 0, length);
+			}
+		} catch (Exception e) {
+			StringWriter stringWriter = new StringWriter();
+			PrintWriter printWriter = new PrintWriter(stringWriter);
+			e.printStackTrace(printWriter);
+			resp.setContentType("text/plain");
+			resp.getOutputStream().print(stringWriter.toString());
+		} finally {
+			inputStream.close();
+			outputStream.flush();
+			outputStream.close();
+		}
 
-		// response
-		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 
 }
