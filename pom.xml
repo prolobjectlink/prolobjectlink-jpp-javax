@@ -113,7 +113,7 @@
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>[1.0-SNAPSHOT, )</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
@@ -422,6 +422,20 @@
 					<skipStaging>true</skipStaging>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -543,6 +557,21 @@
 			<!-- </comparisonArtifacts> -->
 			<!-- <minSeverity>info</minSeverity> -->
 			<!-- </configuration> -->
+			<!-- </plugin> -->
+
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-gpg-plugin</artifactId> -->
+			<!-- <version>1.5</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>sign-artifacts</id> -->
+			<!-- <phase>verify</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>sign</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
 			<!-- </plugin> -->
 		</plugins>
 	</reporting>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2020-02-22T11:19:03.686">
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\AbstractEntityManager.java">
+<pmd version="4.2.5" timestamp="2020-03-27T17:32:59.653">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\AbstractEntityManager.java">
 <violation beginline="74" endline="74" begincolumn="43" endcolumn="61" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.db.entity" class="AbstractEntityManager" variable="synchronizationType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'synchronizationType'.
 </violation>
@@ -8,12 +8,12 @@ Avoid unused private fields such as 'synchronizationType'.
 Avoid unused private fields such as 'entityMap'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaCache.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaCache.java">
 <violation beginline="31" endline="33" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.prolobjectlink.db.jpa" class="JpaCache" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
 Avoid unused constructor parameters such as 'persistenceUnitUtil'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaFieldResult.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaFieldResult.java">
 <violation beginline="34" endline="36" begincolumn="22" endcolumn="9" rule="UnnecessaryFinalModifier" ruleset="Basic Rules" package="org.prolobjectlink.db.jpa" class="JpaFieldResult" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnnecessaryFinalModifier" priority="3">
 Unnecessary final modifier in final class
 </violation>
@@ -21,22 +21,22 @@ Unnecessary final modifier in final class
 Unnecessary final modifier in final class
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java">
 <violation beginline="38" endline="38" begincolumn="37" endcolumn="52" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.db.jpa" class="JpaNativeQuery" variable="resultSetMapping" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'resultSetMapping'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaStoredProcedureQuery.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaStoredProcedureQuery.java">
 <violation beginline="42" endline="42" begincolumn="32" endcolumn="48" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.db.jpa" class="JpaStoredProcedureQuery" variable="resultSetMappings" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'resultSetMappings'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\metamodel\JpaIdentifiableType.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\metamodel\JpaIdentifiableType.java">
 <violation beginline="102" endline="102" begincolumn="31" endcolumn="31" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.db.jpa.metamodel" class="JpaIdentifiableType" method="getSupertype" variable="s" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 's'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\metamodel\JpaManagedType.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\metamodel\JpaManagedType.java">
 <violation beginline="173" endline="173" begincolumn="33" endcolumn="43" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="org.prolobjectlink.db.jpa.metamodel" class="JpaManagedType" method="getDeclaredAttribute" variable="elementType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'elementType'.
 </violation>
@@ -74,7 +74,7 @@ Avoid unused local variables such as 'attributeType'.
 Avoid unused local variables such as 'keyType'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\spi\JPAPersistenceProvider.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\spi\JPAPersistenceProvider.java">
 <violation beginline="165" endline="175" begincolumn="17" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.prolobjectlink.db.jpa.spi" class="JPAPersistenceProvider" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
 Avoid unused method parameters such as 'provider'.
 </violation>
@@ -133,22 +133,22 @@ Avoid unused local variables such as 'engine'.
 Avoid unused local variables such as 'parameterMode'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\spi\JPAPersistenceUnitInfo.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\spi\JPAPersistenceUnitInfo.java">
 <violation beginline="291" endline="293" begincolumn="22" endcolumn="9" rule="UnnecessaryFinalModifier" ruleset="Basic Rules" package="org.prolobjectlink.db.jpa.spi" class="JPAPersistenceUnitInfo" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnnecessaryFinalModifier" priority="3">
 Unnecessary final modifier in final class
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java">
 <violation beginline="163" endline="165" begincolumn="57" endcolumn="25" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.db.prolog" class="AbstractDatabaseConsole" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\querylang\jpql\JpqlFactory.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\querylang\jpql\JpqlFactory.java">
 <violation beginline="41" endline="41" begincolumn="39" endcolumn="45" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.db.querylang.jpql" class="JpqlFactory" variable="builder" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'builder'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\querylang\jpql\JpqlParser.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\querylang\jpql\JpqlParser.java">
 <violation beginline="164" endline="164" begincolumn="29" endcolumn="72" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.prolobjectlink.db.querylang.jpql" class="JpqlParser" method="subselectIdentificationVariableDeclaration" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
 Avoid unused private methods such as 'subselectIdentificationVariableDeclaration()'.
 </violation>
@@ -333,7 +333,7 @@ Avoid unused private methods such as 'patternValue()'.
 Avoid unused private methods such as 'trimCharacter()'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\querylang\jpql\JpqlScanner.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\querylang\jpql\JpqlScanner.java">
 <violation beginline="628" endline="628" begincolumn="25" endcolumn="31" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.db.querylang.jpql" class="JpqlScanner" variable="zzAtBOL" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'zzAtBOL'.
 </violation>
@@ -344,7 +344,7 @@ Avoid unused private fields such as 'zzEOFDone'.
 These nested if statements could be combined
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractModelGenerator.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractModelGenerator.java">
 <violation beginline="69" endline="69" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.prolobjectlink.web.application" class="AbstractModelGenerator" variable="MAP" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'MAP'.
 </violation>
@@ -364,7 +364,7 @@ Avoid unused local variables such as 'linkedKeyType'.
 Avoid unused local variables such as 'linkedValueType'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\io\ServerFile.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\io\ServerFile.java">
 <violation beginline="31" endline="31" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="org.prolobjectlink.web.io" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
 Avoid unused imports such as 'java.nio.file.LinkOption'
 </violation>
@@ -372,7 +372,7 @@ Avoid unused imports such as 'java.nio.file.LinkOption'
 Avoid unused imports such as 'java.nio.file.attribute.FileAttribute'
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java">
 <violation beginline="130" endline="132" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.platform" class="AbstractWebControl" method="openBrowser" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
@@ -401,7 +401,7 @@ Avoid empty catch blocks
 Avoid unused local variables such as 'serverArgs'.
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ConnectorsServlet.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ConnectorsServlet.java">
 <violation beginline="85" endline="87" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="ConnectorsServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
@@ -412,17 +412,17 @@ Avoid empty catch blocks
 Avoid empty catch blocks
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DatabaseServlet.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DatabaseServlet.java">
 <violation beginline="85" endline="87" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="DatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java">
 <violation beginline="125" endline="127" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="DeleteDatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\PersistenceServlet.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\PersistenceServlet.java">
 <violation beginline="85" endline="87" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="PersistenceServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
@@ -433,7 +433,7 @@ Avoid empty catch blocks
 Avoid empty catch blocks
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ProviderServlet.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ProviderServlet.java">
 <violation beginline="85" endline="87" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="ProviderServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
@@ -444,7 +444,7 @@ Avoid empty catch blocks
 Avoid empty catch blocks
 </violation>
 </file>
-<file name="D:\Programacion\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\UploadDatabaseServlet.java">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\UploadDatabaseServlet.java">
 <violation beginline="85" endline="87" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="org.prolobjectlink.web.servlet.admin" class="UploadDatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
