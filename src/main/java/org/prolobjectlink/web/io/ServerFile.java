@@ -105,8 +105,8 @@ public class ServerFile {
 
 	/**
 	 * Converts this abstract pathname into a pathname string. The resulting string
-	 * uses the {@link #separator default name-separator character} to separate the
-	 * names in the name sequence.
+	 * uses the separator default name-separator character to separate the names in
+	 * the name sequence.
 	 *
 	 * @return The string form of this abstract pathname
 	 */
@@ -280,7 +280,7 @@ public class ServerFile {
 	 * For a given abstract pathname <i>f</i>, it is guaranteed that
 	 *
 	 * <blockquote><tt>
-	 * new {@link #File(java.net.URI) File}(</tt><i>&nbsp;f</i><tt>.toURI()).equals(</tt><i>&nbsp;f</i><tt>.{@link #getAbsoluteFile() getAbsoluteFile}())
+	 * new File(java.net.URI) File(</tt><i>&nbsp;f</i><tt>.toURI()).equals(</tt><i>&nbsp;f</i><tt>.{@link #getAbsoluteFile() getAbsoluteFile}())
 	 * </tt></blockquote>
 	 *
 	 * so long as the original abstract pathname, the URI, and the new abstract
@@ -306,7 +306,7 @@ public class ServerFile {
 	 * @throws SecurityException If a required system property value cannot be
 	 *                           accessed.
 	 *
-	 * @see #File(java.net.URI)
+	 * @see java.io.File
 	 * @see java.net.URI
 	 * @see java.net.URI#toURL()
 	 * @since 1.4
@@ -643,10 +643,10 @@ public class ServerFile {
 	 * one for each file or directory in the directory. Pathnames denoting the
 	 * directory itself and the directory's parent directory are not included in the
 	 * result. Each resulting abstract pathname is constructed from this abstract
-	 * pathname using the {@link #File(File, String) File(File,&nbsp;String)}
-	 * constructor. Therefore if this pathname is absolute then each resulting
-	 * pathname is absolute; if this pathname is relative then each resulting
-	 * pathname will be relative to the same directory.
+	 * pathname using the File(File, String) File(File,&nbsp;String) constructor.
+	 * Therefore if this pathname is absolute then each resulting pathname is
+	 * absolute; if this pathname is relative then each resulting pathname will be
+	 * relative to the same directory.
 	 *
 	 * <p>
 	 * There is no guarantee that the name strings in the resulting array will
@@ -654,7 +654,7 @@ public class ServerFile {
 	 * appear in alphabetical order.
 	 *
 	 * <p>
-	 * Note that the {@link java.nio.file.Files} class defines the
+	 * Note that the java.nio.file.Files class defines the
 	 * {@link java.nio.file.Files#newDirectoryStream(Path) newDirectoryStream}
 	 * method to open a directory and iterate over the names of the files in the
 	 * directory. This may use less resources when working with very large

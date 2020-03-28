@@ -45,8 +45,8 @@ public class JpaSelection<X> extends JpaTupleElement<X> implements Selection<X> 
 	protected /* final */ Set<Root<?>> roots;
 
 	/**
-	 * @deprecated Use {@link #JpaSelection(String, Class, boolean, Set)} instead to
-	 *             set DISTINCT boolean flag.
+	 * @deprecated Use JpaSelection(String, Class, boolean, Set) instead to set
+	 *             DISTINCT boolean flag.
 	 * @param alias
 	 * @param javaType
 	 * @param expression
@@ -58,8 +58,8 @@ public class JpaSelection<X> extends JpaTupleElement<X> implements Selection<X> 
 	}
 
 	/**
-	 * @deprecated Use {@link #JpaSelection(String, Class, boolean, Set)} instead to
-	 *             set DISTINCT boolean flag.
+	 * @deprecated Use JpaSelection(String, Class, boolean, Set) instead to set
+	 *             DISTINCT boolean flag.
 	 * @param distinct
 	 * @param alias
 	 * @param javaType
