@@ -42,7 +42,8 @@ import org.prolobjectlink.db.jpa.JpaPersistenceUnitUtil;
 import org.prolobjectlink.db.jpa.JpaResultSetMapping;
 import org.prolobjectlink.db.jpa.criteria.JpaCriteriaBuilder;
 import org.prolobjectlink.db.jpa.metamodel.JpaMetamodel;
-import org.prolobjectlink.prolog.PrologTerm;
+
+import io.github.prolobjectlink.prolog.PrologTerm;
 
 /** @author Jose Zalacain @since 1.0 */
 public abstract class AbstractEntityManagerFactory {

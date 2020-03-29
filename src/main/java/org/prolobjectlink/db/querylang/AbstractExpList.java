@@ -24,7 +24,8 @@ package org.prolobjectlink.db.querylang;
 import java.util.Iterator;
 
 import org.prolobjectlink.db.jpa.criteria.JpaAbstractWrapper;
-import org.prolobjectlink.prolog.AbstractIterator;
+
+import io.github.prolobjectlink.prolog.AbstractIterator;
 
 /**
  * 

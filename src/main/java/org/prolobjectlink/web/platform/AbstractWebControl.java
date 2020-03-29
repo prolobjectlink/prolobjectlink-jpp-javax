@@ -45,7 +45,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import org.prolobjectlink.db.DatabaseServer;
-import org.prolobjectlink.prolog.ArrayIterator;
+
+import io.github.prolobjectlink.prolog.ArrayIterator;
 
 /**
  * 

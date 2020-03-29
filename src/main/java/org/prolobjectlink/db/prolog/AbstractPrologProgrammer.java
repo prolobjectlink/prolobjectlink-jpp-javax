@@ -26,8 +26,8 @@ import java.lang.reflect.Field;
 
 import javax.persistence.Id;
 
-import org.prolobjectlink.prolog.ArrayIterator;
-import org.prolobjectlink.prolog.PrologProvider;
+import io.github.prolobjectlink.prolog.ArrayIterator;
+import io.github.prolobjectlink.prolog.PrologProvider;
 
 public abstract class AbstractPrologProgrammer extends AbstractProgrammer implements PrologProgrammer {
 

@@ -35,7 +35,8 @@ import javax.persistence.Id;
 
 import org.prolobjectlink.db.prolog.AbstractPrologProgrammer;
 import org.prolobjectlink.db.prolog.PrologProgrammer;
-import org.prolobjectlink.prolog.PrologProvider;
+
+import io.github.prolobjectlink.prolog.PrologProvider;
 
 public abstract class AbstractViewProgrammer extends AbstractPrologProgrammer implements PrologProgrammer {
 

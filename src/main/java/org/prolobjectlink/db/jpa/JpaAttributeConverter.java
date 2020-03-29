@@ -25,8 +25,9 @@ import javax.persistence.AttributeConverter;
 
 import org.prolobjectlink.db.ObjectConverter;
 import org.prolobjectlink.db.prolog.PrologObjectConverter;
-import org.prolobjectlink.prolog.PrologProvider;
-import org.prolobjectlink.prolog.PrologTerm;
+
+import io.github.prolobjectlink.prolog.PrologProvider;
+import io.github.prolobjectlink.prolog.PrologTerm;
 
 public final class JpaAttributeConverter implements AttributeConverter<Object, PrologTerm> {
 

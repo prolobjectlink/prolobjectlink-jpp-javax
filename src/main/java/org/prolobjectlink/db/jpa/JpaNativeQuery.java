@@ -31,7 +31,8 @@ import javax.persistence.Query;
 import org.prolobjectlink.db.DatabaseEngine;
 import org.prolobjectlink.db.ObjectConverter;
 import org.prolobjectlink.db.util.JavaReflect;
-import org.prolobjectlink.prolog.PrologTerm;
+
+import io.github.prolobjectlink.prolog.PrologTerm;
 
 public final class JpaNativeQuery extends JpaQuery implements Query {
 

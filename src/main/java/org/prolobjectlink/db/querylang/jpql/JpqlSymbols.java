@@ -22,7 +22,8 @@
 package org.prolobjectlink.db.querylang.jpql;
 
 import org.prolobjectlink.db.querylang.SymbolEntry;
-import org.prolobjectlink.prolog.AbstractIterator;
+
+import io.github.prolobjectlink.prolog.AbstractIterator;
 
 /** @author Jose Zalacain @since 1.0 */
 public abstract class JpqlSymbols extends AbstractIterator<SymbolEntry> {

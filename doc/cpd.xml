@@ -1492,8 +1492,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="9" tokens="115">
-<file line="72" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
-<file line="94" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
+<file line="73" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
+<file line="95" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
 <codefragment>
 <![CDATA[
 		ObjectConverter<PrologTerm> converter = database.getConverter();
@@ -1621,8 +1621,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="18" tokens="109">
-<file line="72" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
-<file line="75" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
+<file line="73" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
+<file line="76" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
 <codefragment>
 <![CDATA[
 	}

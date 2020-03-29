@@ -38,15 +38,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.prolobjectlink.logging.LoggerConstants;
 import org.prolobjectlink.logging.LoggerUtils;
-import org.prolobjectlink.prolog.PrologList;
-import org.prolobjectlink.prolog.PrologStructure;
-import org.prolobjectlink.prolog.PrologTerm;
 import org.prolobjectlink.web.entry.ClassesEntry;
 import org.prolobjectlink.web.entry.FieldEntry;
 import org.prolobjectlink.web.function.AssetFunction;
 import org.prolobjectlink.web.function.PathFunction;
 import org.prolobjectlink.web.servlet.AbstractServlet;
 
+import io.github.prolobjectlink.prolog.PrologList;
+import io.github.prolobjectlink.prolog.PrologStructure;
+import io.github.prolobjectlink.prolog.PrologTerm;
 import io.marioslab.basis.template.Template;
 import io.marioslab.basis.template.TemplateContext;
 import io.marioslab.basis.template.TemplateLoader;

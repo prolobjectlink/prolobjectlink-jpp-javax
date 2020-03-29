@@ -29,7 +29,7 @@ import javax.persistence.criteria.CompoundSelection;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Selection;
 
-import org.prolobjectlink.prolog.ArrayIterator;
+import io.github.prolobjectlink.prolog.ArrayIterator;
 
 public class JpaCompoundSelection<X> extends JpaSelection<X> implements CompoundSelection<X> {
 

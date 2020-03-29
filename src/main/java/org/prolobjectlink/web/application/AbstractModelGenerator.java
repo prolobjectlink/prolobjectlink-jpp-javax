@@ -49,12 +49,13 @@ import org.prolobjectlink.db.jpa.spi.JPAPersistenceVersion;
 import org.prolobjectlink.db.util.JavaReflect;
 import org.prolobjectlink.logging.LoggerConstants;
 import org.prolobjectlink.logging.LoggerUtils;
-import org.prolobjectlink.prolog.IndicatorError;
-import org.prolobjectlink.prolog.PrologClause;
-import org.prolobjectlink.prolog.PrologEngine;
-import org.prolobjectlink.prolog.PrologList;
-import org.prolobjectlink.prolog.PrologProvider;
-import org.prolobjectlink.prolog.PrologTerm;
+
+import io.github.prolobjectlink.prolog.IndicatorError;
+import io.github.prolobjectlink.prolog.PrologClause;
+import io.github.prolobjectlink.prolog.PrologEngine;
+import io.github.prolobjectlink.prolog.PrologList;
+import io.github.prolobjectlink.prolog.PrologProvider;
+import io.github.prolobjectlink.prolog.PrologTerm;
 
 public abstract class AbstractModelGenerator extends AbstractWebApplication implements ModelGenerator {
 

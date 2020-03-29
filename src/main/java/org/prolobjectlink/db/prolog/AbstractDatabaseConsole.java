@@ -40,14 +40,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.prolobjectlink.db.DatabaseConsole;
-import org.prolobjectlink.prolog.ArrayIterator;
-import org.prolobjectlink.prolog.PrologIndicator;
-import org.prolobjectlink.prolog.PrologQuery;
-import org.prolobjectlink.prolog.PrologTerm;
 import org.prolobjectlink.web.application.ApplicationGenerator;
 import org.prolobjectlink.web.application.ModelGenerator;
 import org.prolobjectlink.web.application.ModelProcessor;
 import org.prolobjectlink.web.platform.WebServerControl;
+
+import io.github.prolobjectlink.prolog.ArrayIterator;
+import io.github.prolobjectlink.prolog.PrologIndicator;
+import io.github.prolobjectlink.prolog.PrologQuery;
+import io.github.prolobjectlink.prolog.PrologTerm;
 
 public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 

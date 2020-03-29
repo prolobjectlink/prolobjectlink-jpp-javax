@@ -79,9 +79,10 @@ import org.prolobjectlink.db.jpa.JpaResultSetMapping;
 import org.prolobjectlink.db.jpa.JpaStoredProcedureQuery;
 import org.prolobjectlink.db.prolog.PrologObjectConverter;
 import org.prolobjectlink.db.util.JavaReflect;
-import org.prolobjectlink.prolog.PrologEngine;
-import org.prolobjectlink.prolog.PrologProvider;
-import org.prolobjectlink.prolog.PrologTerm;
+
+import io.github.prolobjectlink.prolog.PrologEngine;
+import io.github.prolobjectlink.prolog.PrologProvider;
+import io.github.prolobjectlink.prolog.PrologTerm;
 
 /** @author Jose Zalacain @since 1.0 */
 public abstract class JPAPersistenceProvider implements PersistenceProvider {

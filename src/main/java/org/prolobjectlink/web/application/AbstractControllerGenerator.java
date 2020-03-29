@@ -42,9 +42,10 @@ import org.prolobjectlink.db.DatabaseClass;
 import org.prolobjectlink.db.DynamicClassLoader;
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.db.util.JavaReflect;
-import org.prolobjectlink.prolog.PrologClause;
-import org.prolobjectlink.prolog.PrologEngine;
-import org.prolobjectlink.prolog.PrologProvider;
+
+import io.github.prolobjectlink.prolog.PrologClause;
+import io.github.prolobjectlink.prolog.PrologEngine;
+import io.github.prolobjectlink.prolog.PrologProvider;
 
 public abstract class AbstractControllerGenerator extends AbstractWebApplication implements ControllerGenerator {
 
