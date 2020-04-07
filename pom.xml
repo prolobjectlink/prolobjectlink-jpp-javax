@@ -6,6 +6,7 @@
 	<artifactId>prolobjectlink-jpp-javax</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>prolobjectlink-jpp-javax</name>
+	<packaging>bundle</packaging>
 	<description>JavaX Persistence API (JPA) adaptation of Java Prolog Persistence</description>
 
 	<url>https://prolobjectlink.github.io/${project.name}</url>
@@ -44,7 +45,7 @@
 		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
 		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
 		<url>https://prolobjectlink.github.io/${project.name}</url>
-
+		<tag>v@{project.version}</tag>
 	</scm>
 
 	<ciManagement>
@@ -56,6 +57,23 @@
 		<system>GitHub</system>
 		<url>https://github.com/prolobjectlink/${project.name}/issues</url>
 	</issueManagement>
+	
+	<mailingLists>
+		<mailingList>
+			<name>Developer List</name>
+			<subscribe>prolobjectlink+subscribe@googlegroups.com</subscribe>
+			<unsubscribe>prolobjectlink+unsubscribe@googlegroups.com</unsubscribe>
+			<post>prolobjectlink@googlegroups.com</post>
+			<archive>http://groups.google.com/group/prolobjectlink</archive>
+		</mailingList>
+		<mailingList>
+			<name>Users List</name>
+			<subscribe>prolobjectlink+subscribe@googlegroups.com</subscribe>
+			<unsubscribe>prolobjectlink+unsubscribe@googlegroups.com</unsubscribe>
+			<post>prolobjectlink@googlegroups.com</post>
+			<archive>http://groups.google.com/group/prolobjectlink</archive>
+		</mailingList>
+	</mailingLists>
 
 	<repositories>
 		<repository>
@@ -83,7 +101,7 @@
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/release/</url>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 		<site>
 			<id>website</id>
@@ -97,9 +115,15 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<javax.activation.version>1.1.1</javax.activation.version>
 		<javax.persistence.version>2.1.0</javax.persistence.version>
+		<javax.enterprise.concurrent-api.version>1.0</javax.enterprise.concurrent-api.version>
+		<javax.cache.version>1.1.0</javax.cache.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
 		<javax.mail.version>1.4.7</javax.mail.version>
+		<javax.json.version>1.1.2</javax.json.version>
+		<javax.jms.version>1.1</javax.jms.version>
+		<javax.resource.version>1.5</javax.resource.version>
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
 		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
 		<hsqldb.version>2.3.4</hsqldb.version>
@@ -108,6 +132,9 @@
 		<template.version>1.7</template.version>
 		<jasperreports.version>4.7.0</jasperreports.version>
 		<bsh.version>2.0b5</bsh.version>
+		<ant.version>1.9.4</ant.version>
+
+
 	</properties>
 
 	<dependencies>
@@ -138,13 +165,43 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>${javax.mail.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>${javax.validation.version}</version>
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>javax.json</groupId> -->
+		<!-- <artifactId>javax.json-api</artifactId> -->
+		<!-- <version>${javax.json.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.activation</groupId> -->
+		<!-- <artifactId>activation</artifactId> -->
+		<!-- <version>${javax.activation.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.jms</groupId> -->
+		<!-- <artifactId>jms</artifactId> -->
+		<!-- <version>${javax.jms.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.resource</groupId> -->
+		<!-- <artifactId>connector-api</artifactId> -->
+		<!-- <version>1.5</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.enterprise.concurrent</groupId> -->
+		<!-- <artifactId>javax.enterprise.concurrent-api</artifactId> -->
+		<!-- <version>${javax.enterprise.concurrent-api.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax.cache</groupId> -->
+		<!-- <artifactId>cache-api</artifactId> -->
+		<!-- <version>${javax.cache.version}</version> -->
+		<!-- </dependency> -->
+
 		<!-- <dependency> -->
 		<!-- <groupId>jaxen</groupId> -->
 		<!-- <artifactId>jaxen</artifactId> -->
@@ -193,9 +250,14 @@
 			<version>3.20.0-GA</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.jdt.core.compiler</groupId>
-			<artifactId>ecj</artifactId>
-			<version>4.6.1</version>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>${ant.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant-launcher</artifactId>
+			<version>${ant.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -338,7 +400,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.3.1</version>
+				<version>3.0.3</version>
 				<configuration>
 					<threshold>Normal</threshold>
 					<effort>Default</effort>
@@ -457,6 +519,215 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.18.1</version>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>2.3.7</version>
+				<configuration>
+					<instructions>
+						<Implementation-Title>${project.name}</Implementation-Title>
+						<Implementation-Version>${project.version}</Implementation-Version>
+						<Bundle-DocURL>${project.url}</Bundle-DocURL>
+						<Bundle-Name>Java Prolog Persistence Extension</Bundle-Name>
+						<Export-Package>${project.groupId}.db.*;${project.groupId}.web.*</Export-Package>
+						<Import-Package>javax.script;com.mysql.jdbc;
+							io.marioslab.basis.template; javax.persistence;
+							javax.persistence.criteria; javax.persistence.metamodel;
+							javax.persistence.spi; javax.servlet; javax.servlet.annotation;
+							javax.servlet.http; javax.sql; javax.swing; javax.xml;
+							javax.xml.parsers; javax.xml.transform;
+							javax.xml.transform.stream; javax.xml.validation; org.hsqldb;
+							org.hsqldb.persist; org.hsqldb.server; org.objectweb.asm;
+							org.objectweb.asm.signature; org.objectweb.asm.util;
+							org.postgresql; org.prolobjectlink; org.prolobjectlink.graph;
+							org.prolobjectlink.logging;
+							org.w3c.dom;
+
+							antlr;
+							antlr.collections.impl; com.apple.mrj; com.lowagie.toolbox;
+							com.sun.javadoc; com.sun.jdi; com.sun.jdi.connect;
+							com.sun.jdi.event; com.sun.jdi.request; com.sun.msv.datatype;
+							com.sun.msv.datatype.xsd;
+							com.sun.org.apache.xml.internal.serialize; com.sun.tools.javadoc;
+							groovyjarjarasm.asm; javax.accessibility; javax.activation;
+							javax.annotation.processing; javax.crypto;
+							javax.crypto.interfaces; javax.crypto.spec; javax.imageio;
+							javax.imageio.metadata; javax.imageio.plugins.jpeg;
+							javax.imageio.stream; javax.lang.model; javax.lang.model.element;
+							javax.lang.model.type; javax.lang.model.util; javax.mail;
+							javax.mail.internet; javax.naming; javax.naming.directory;
+							javax.naming.ldap; javax.naming.spi; javax.net; javax.net.ssl;
+							javax.print; javax.print.attribute;
+							javax.print.attribute.standard; javax.security.auth;
+							javax.security.auth.callback; javax.security.auth.login;
+							javax.security.auth.x500; javax.security.cert; javax.sql.rowset;
+							javax.swing.border; javax.swing.event; javax.swing.filechooser;
+							javax.swing.plaf; javax.swing.plaf.basic; javax.swing.table;
+							javax.swing.text; javax.swing.text.html; javax.swing.tree;
+							javax.tools; javax.transaction.xa; javax.xml.bind;
+							javax.xml.bind.util; javax.xml.soap; javax.xml.transform.stax;
+							jxl; jxl.biff; jxl.format; jxl.read.biff; jxl.write;
+							jxl.write.biff; mondrian.olap; mondrian.spi;
+							net.sourceforge.barbecue; net.sourceforge.barbecue.linear.code39;
+							net.sourceforge.barbecue.linear.ean;
+							net.sourceforge.barbecue.output; netscape.ldap;
+							org.apache.avalon.framework.logger; org.apache.batik.bridge;
+							org.apache.batik.dom; org.apache.batik.dom.svg;
+							org.apache.batik.ext.awt.image; org.apache.batik.gvt;
+							org.apache.batik.svggen; org.apache.bsf; org.apache.bsf.util;
+							org.apache.commons.collections.keyvalue;
+							org.apache.commons.collections.list;
+							org.apache.commons.collections.set; org.apache.commons.javaflow;
+							org.apache.crimson.jaxp; org.apache.log; org.apache.log4j;
+							org.apache.oro.text.regex; org.apache.poi.hdgf.extractor;
+							org.apache.poi.hpbf.extractor; org.apache.poi.hslf.extractor;
+							org.apache.poi.hsmf; org.apache.poi.hsmf.datatypes;
+							org.apache.poi.hsmf.extractor; org.apache.poi.hwpf;
+							org.apache.poi.hwpf.extractor; org.apache.poi.sl.usermodel;
+							org.apache.regexp; org.apache.tools.ant;
+							org.apache.tools.ant.taskdefs;
+							org.apache.tools.ant.taskdefs.compilers;
+							org.apache.tools.ant.types; org.apache.tools.ant.types.resources;
+							org.apache.tools.ant.util; org.apache.velocity;
+							org.apache.velocity.app; org.apache.velocity.context;
+							org.apache.xerces.utils.regex; org.apache.xml.resolver;
+							org.apache.xml.resolver.tools; org.apache.xml.serialize;
+							org.apache.xmlbeans.impl.xpath.saxon;
+							org.apache.xmlbeans.impl.xquery.saxon; org.apache.xpath;
+							org.apache.xpath.objects; org.codehaus.groovy.ast;
+							org.codehaus.groovy.control; org.eclipse.core.resources;
+							org.eclipse.core.runtime; org.eclipse.core.runtime.jobs;
+							org.eclipse.core.runtime.preferences; org.eclipse.jdt.core.index;
+							org.eclipse.jface.text; org.eclipse.osgi.util;
+							org.eclipse.text.edits; org.gjt.xpp; org.hibernate;
+							org.hibernate.metadata; org.hibernate.type; org.ietf.jgss;
+							org.jaxen; org.jaxen.dom; org.jaxen.dom4j; org.jaxen.pattern;
+							org.jaxen.saxpath; org.joda.time; org.joda.time.format;
+							org.krysalis.barcode4j; org.krysalis.barcode4j.impl;
+							org.krysalis.barcode4j.impl.codabar;
+							org.krysalis.barcode4j.impl.code128;
+							org.krysalis.barcode4j.impl.code39;
+							org.krysalis.barcode4j.impl.datamatrix;
+							org.krysalis.barcode4j.impl.fourstate;
+							org.krysalis.barcode4j.impl.int2of5;
+							org.krysalis.barcode4j.impl.pdf417;
+							org.krysalis.barcode4j.impl.postnet;
+							org.krysalis.barcode4j.impl.upcean;
+							org.krysalis.barcode4j.output;
+							org.krysalis.barcode4j.output.bitmap;
+							org.krysalis.barcode4j.output.svg; org.krysalis.barcode4j.tools;
+							org.mozilla.javascript; org.mozilla.javascript.optimizer;
+							org.openxmlformats.schemas.officeDocument.x2006.math;
+							org.openxmlformats.schemas.schemaLibrary.x2006.main;
+							org.osgi.service.prefs; org.relaxng.datatype;
+							org.springframework.beans.factory;
+							org.springframework.beans.factory.xml;
+							org.springframework.core.io; org.w3c.dom.svg; org.xmlpull.v1;
+							schemasMicrosoftComOfficePowerpoint;
+							schemasMicrosoftComOfficeWord; weblogic.apache.xml.serialize;
+
+							org.osgi.framework;
+
+							javax.security.sasl; sun.security.util;
+							javax.enterprise.util; javax.management;
+
+							${project.groupId}.*;provide:=true</Import-Package>
+						<Bundle-SymbolicName>${project.groupId}.jpp-javax.plugin;singleton:=true</Bundle-SymbolicName>
+						<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+						<Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
+						<Embed-Directory>target/dependency</Embed-Directory>
+						<Embed-StripGroup>true</Embed-StripGroup>
+						<Embed-Transitive>true</Embed-Transitive>
+					</instructions>
+				</configuration>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>install</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.7.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.rat</groupId>
+				<artifactId>apache-rat-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<excludeSubProjects>false</excludeSubProjects>
+					<numUnapprovedLicenses>0</numUnapprovedLicenses>
+					<licenses>
+						<license
+							implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
+							<licenseFamilyCategory>LGPL2.1</licenseFamilyCategory>
+							<licenseFamilyName>GNU Lesser General Public License (LGPL) 2.1</licenseFamilyName>
+							<notes></notes>
+							<patterns>
+								<pattern>GNU Lesser General Public License</pattern>
+							</patterns>
+						</license>
+					</licenses>
+					<licenseFamilies>
+						<licenseFamily
+							implementation="org.apache.rat.license.GPL2LicenseFamily">
+							<familyName>GNU Lesser General Public License (LGPL) 2.1</familyName>
+						</licenseFamily>
+					</licenseFamilies>
+					<excludes>
+						generated content
+						<exclude>**/.*/**</exclude>
+						<exclude>**/target/**/*</exclude>
+					</excludes>
+					<includes>
+						only check common source files
+						<include>**/src/**/*.apt</include>
+						<include>**/src/**/*.bat</include>
+						<include>**/src/**/*.css</include>
+						<include>**/src/**/*.html</include>
+						<include>**/src/**/*.java</include>
+						<include>**/src/**/*.js</include>
+						<include>**/src/**/*.jsp</include>
+						<include>**/src/**/*.properties</include>
+						<include>**/src/**/*.sh</include>
+						<include>**/src/**/*.txt</include>
+						<include>**/src/**/*.vm</include>
+						<include>**/src/**/*.xml</include>
+					</includes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -510,11 +781,11 @@
 					<outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.codehaus.mojo</groupId> -->
-			<!-- <artifactId>findbugs-maven-plugin</artifactId> -->
-			<!-- <version>2.3.1</version> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.3</version>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
@@ -583,6 +854,20 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>2.18.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.2</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>

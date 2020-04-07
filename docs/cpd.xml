@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
 <duplication lines="103" tokens="522">
-<file line="112" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
-<file line="118" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
+<file line="112" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
+<file line="118" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -112,8 +112,8 @@
 </codefragment>
 </duplication>
 <duplication lines="81" tokens="495">
-<file line="53" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteApplicationServlet.java"/>
-<file line="53" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ExportApplicationServlet.java"/>
+<file line="52" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DeleteApplicationServlet.java"/>
+<file line="52" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\ExportApplicationServlet.java"/>
 <codefragment>
 <![CDATA[
 public class ExportApplicationServlet extends AbstractServlet implements Servlet {
@@ -134,7 +134,7 @@ public class ExportApplicationServlet extends AbstractServlet implements Servlet
 
 		// Engine and context
 		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/org/prolobjectlink/web/html/applications.html");
+		Template template = loader.load("/io/github/prolobjectlink/web/html/applications.html");
 		TemplateContext context = new TemplateContext();
 
 		File webapps = getWebDirectory();
@@ -201,8 +201,8 @@ public class ExportApplicationServlet extends AbstractServlet implements Servlet
 </codefragment>
 </duplication>
 <duplication lines="76" tokens="449">
-<file line="47" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DatabaseServlet.java"/>
-<file line="47" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\UploadDatabaseServlet.java"/>
+<file line="46" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DatabaseServlet.java"/>
+<file line="46" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\UploadDatabaseServlet.java"/>
 <codefragment>
 <![CDATA[
 public class UploadDatabaseServlet extends AbstractServlet implements Servlet {
@@ -218,7 +218,7 @@ public class UploadDatabaseServlet extends AbstractServlet implements Servlet {
 
 		// Engine and context
 		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/org/prolobjectlink/web/html/databases.html");
+		Template template = loader.load("/io/github/prolobjectlink/web/html/databases.html");
 		TemplateContext context = new TemplateContext();
 
 		File db = getDBDirectory();
@@ -285,8 +285,8 @@ public class UploadDatabaseServlet extends AbstractServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="71" tokens="397">
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSServlet.java"/>
 <codefragment>
 <![CDATA[
 public class BootstrapCSSServlet extends HttpServlet implements Servlet {
@@ -364,8 +364,8 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="49" tokens="332">
-<file line="65" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DatabaseServlet.java"/>
-<file line="105" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java"/>
+<file line="64" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DatabaseServlet.java"/>
+<file line="104" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java"/>
 <codefragment>
 <![CDATA[
 		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
@@ -421,9 +421,9 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="29" tokens="326">
-<file line="290" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="334" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="378" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="565" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="609" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="653" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "delete", Type.getMethodDescriptor(Type.VOID_TYPE), null, null);
@@ -451,19 +451,19 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitVarInsn(Opcodes.ALOAD, 0);
-		
+
 		////////////////////////////////////////////////////////////////////////////////
-		
+
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
 ]]>
 </codefragment>
 </duplication>
 <duplication lines="48" tokens="291">
-<file line="64" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\PersistenceServlet.java"/>
-<file line="64" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ProviderServlet.java"/>
+<file line="63" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\PersistenceServlet.java"/>
+<file line="63" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\ProviderServlet.java"/>
 <codefragment>
 <![CDATA[
-		Template template = loader.load("/org/prolobjectlink/web/html/provider.html");
+		Template template = loader.load("/io/github/prolobjectlink/web/html/provider.html");
 		TemplateContext context = new TemplateContext();
 
 		File lib = getLibDirectory();
@@ -514,12 +514,121 @@ public class BootstrapCSSServlet extends HttpServlet implements Servlet {
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="50" tokens="269">
-<file line="45" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\LoginServlet.java"/>
-<file line="45" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ManagerServlet.java"/>
+<duplication lines="48" tokens="263">
+<file line="299" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="377" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
-public class ManagerServlet extends HttpServlet implements Servlet {
+		buffer.append("em.merge(this);");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.getTransaction().commit();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("} catch (Exception e) {");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.getTransaction().rollback();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("e.printStackTrace();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("} finally {");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.close();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("emf.close();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("}");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append("}");
+
+		buffer.append('\n');
+		buffer.append('\n');
+		buffer.append('\t');
+
+		// delete CRUD methods
+		buffer.append("public void delete() {");
+]]>
+</codefragment>
+</duplication>
+<duplication lines="45" tokens="257">
+<file line="299" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="455" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<codefragment>
+<![CDATA[
+		buffer.append("em.remove(em.merge(this));");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.getTransaction().commit();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("} catch (Exception e) {");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.getTransaction().rollback();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("e.printStackTrace();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("} finally {");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.close();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("emf.close();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("}");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append("}");
+
+		buffer.append('\n');
+		buffer.append('\n');
+		buffer.append('}');
+]]>
+</codefragment>
+</duplication>
+<duplication lines="46" tokens="236">
+<file line="46" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\ApplicationServlet.java"/>
+<file line="46" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\UploadApplicationServlet.java"/>
+<codefragment>
+<![CDATA[
+public class UploadApplicationServlet extends AbstractServlet implements Servlet {
 
 	private static final long serialVersionUID = 7313381101418470194L;
 
@@ -532,7 +641,91 @@ public class ManagerServlet extends HttpServlet implements Servlet {
 
 		// Engine and context
 		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/org/prolobjectlink/web/html/manager.html");
+		Template template = loader.load("/io/github/prolobjectlink/web/html/applications.html");
+		TemplateContext context = new TemplateContext();
+
+		File webapps = getWebDirectory();
+		File[] apps = webapps.listFiles();
+		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
+		for (File file : apps) {
+			// check application
+			if (file.isDirectory()) {
+				long size = file.length();
+				String name = file.getName();
+				long modified = file.lastModified();
+				ApplicationEntry e = new ApplicationEntry(name, size, modified);
+				applications.add(e);
+			}
+		}
+
+		// variables
+		context.set("applications", applications);
+
+		// functions
+		context.set("path", new PathFunction("pas", protocol, host));
+		context.set("launch", new LaunchFunction(protocol, host));
+		context.set("asset", new AssetFunction(protocol, host));
+
+		// render
+		template.render(context, resp.getOutputStream());
+
+		// response
+		resp.setStatus(HttpServletResponse.SC_OK);
+	}
+
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="31" tokens="233">
+<file line="75" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DeleteApplicationServlet.java"/>
+<file line="74" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java"/>
+<codefragment>
+<![CDATA[
+		File database = getDBDirectory();
+
+		File[] dbs = database.listFiles();
+		for (File file : dbs) {
+			if (file.isDirectory()) {
+				if (file.getName().equals("hsqldb")) {
+					HSQLFileFilter filter = new HSQLFileFilter(pathInfo);
+					File[] scripts = file.listFiles(filter);
+					for (File x : scripts) {
+						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
+						Files.delete(dbfilepath);
+					}
+				} else if (file.getName().equals("pdb")) {
+					PDBFileFilter filter = new PDBFileFilter(pathInfo);
+					File[] scripts = file.listFiles(filter);
+					for (File x : scripts) {
+						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
+						Files.delete(dbfilepath);
+					}
+				} else if (file.getName().equals("odb")) {
+					ODBFileFilter filter = new ODBFileFilter(pathInfo);
+					File[] scripts = file.listFiles(filter);
+					for (File x : scripts) {
+						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
+						Files.delete(dbfilepath);
+					}
+				}
+			}
+		}
+
+		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
+]]>
+</codefragment>
+</duplication>
+<duplication lines="41" tokens="224">
+<file line="62" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\LoginServlet.java"/>
+<file line="53" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\ManagerServlet.java"/>
+<codefragment>
+<![CDATA[
+		String host = req.getHeader("host");
+
+		// Engine and context
+		TemplateLoader loader = new ClasspathTemplateLoader();
+		Template template = loader.load("/io/github/prolobjectlink/web/html/manager.html");
 		TemplateContext context = new TemplateContext();
 
 		// java virtual machine
@@ -572,102 +765,9 @@ public class ManagerServlet extends HttpServlet implements Servlet {
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="46" tokens="236">
-<file line="47" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ApplicationServlet.java"/>
-<file line="47" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\UploadApplicationServlet.java"/>
-<codefragment>
-<![CDATA[
-public class UploadApplicationServlet extends AbstractServlet implements Servlet {
-
-	private static final long serialVersionUID = 7313381101418470194L;
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		// request information
-		String protocol = req.getScheme();
-		String host = req.getHeader("host");
-
-		// Engine and context
-		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/org/prolobjectlink/web/html/applications.html");
-		TemplateContext context = new TemplateContext();
-
-		File webapps = getWebDirectory();
-		File[] apps = webapps.listFiles();
-		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
-		for (File file : apps) {
-			// check application
-			if (file.isDirectory()) {
-				long size = file.length();
-				String name = file.getName();
-				long modified = file.lastModified();
-				ApplicationEntry e = new ApplicationEntry(name, size, modified);
-				applications.add(e);
-			}
-		}
-
-		// variables
-		context.set("applications", applications);
-
-		// functions
-		context.set("path", new PathFunction("pas", protocol, host));
-		context.set("launch", new LaunchFunction(protocol, host));
-		context.set("asset", new AssetFunction(protocol, host));
-
-		// render
-		template.render(context, resp.getOutputStream());
-
-		// response
-		resp.setStatus(HttpServletResponse.SC_OK);
-	}
-
-}
-]]>
-</codefragment>
-</duplication>
-<duplication lines="31" tokens="233">
-<file line="76" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteApplicationServlet.java"/>
-<file line="75" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java"/>
-<codefragment>
-<![CDATA[
-		File database = getDBDirectory();
-
-		File[] dbs = database.listFiles();
-		for (File file : dbs) {
-			if (file.isDirectory()) {
-				if (file.getName().equals("hsqldb")) {
-					HSQLFileFilter filter = new HSQLFileFilter(pathInfo);
-					File[] scripts = file.listFiles(filter);
-					for (File x : scripts) {
-						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
-						Files.delete(dbfilepath);
-					}
-				} else if (file.getName().equals("pdb")) {
-					PDBFileFilter filter = new PDBFileFilter(pathInfo);
-					File[] scripts = file.listFiles(filter);
-					for (File x : scripts) {
-						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
-						Files.delete(dbfilepath);
-					}
-				} else if (file.getName().equals("odb")) {
-					ODBFileFilter filter = new ODBFileFilter(pathInfo);
-					File[] scripts = file.listFiles(filter);
-					for (File x : scripts) {
-						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
-						Files.delete(dbfilepath);
-					}
-				}
-			}
-		}
-
-		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
-]]>
-</codefragment>
-</duplication>
 <duplication lines="17" tokens="218">
-<file line="361" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="392" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="362" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="393" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryAll", Type.getMethodDescriptor(listType, stringType), null, null);
@@ -691,28 +791,28 @@ public class UploadApplicationServlet extends AbstractServlet implements Servlet
 </codefragment>
 </duplication>
 <duplication lines="37" tokens="208">
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinMapServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSDatatableMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinMapServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryDatatableMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryEasingMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinMapServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSMinServlet.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSMinMapServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSDatatableMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSMinMapServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ChartJSMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ChartJSServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\FontawesomeCSSServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryDatatableMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryEasingMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryMinMapServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\PopperMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\PopperServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkJSMinServlet.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkJSServlet.java"/>
 <codefragment>
 <![CDATA[
 public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
@@ -755,9 +855,50 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 ]]>
 </codefragment>
 </duplication>
+<duplication lines="32" tokens="199">
+<file line="268" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="346" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="424" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<codefragment>
+<![CDATA[
+		buffer.append("public void delete() {");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("Map properties = new HashMap();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append(ppc.getSimpleName() + " pp = new " + ppc.getSimpleName() + "();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("EntityManagerFactory emf = pp.createEntityManagerFactory(\"" + getPersistenceUnit()
+				+ "\", properties);");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("EntityManager em = emf.createEntityManager();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("try {");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.getTransaction().begin();");
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("em.remove(em.merge(this));");
+]]>
+</codefragment>
+</duplication>
 <duplication lines="25" tokens="193">
-<file line="316" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="406" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="591" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="681" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "remove",
@@ -765,9 +906,9 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 //		mv.visitVarInsn(Opcodes.ALOAD, 0);
 //		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "flush",
 //				Type.getMethodDescriptor(Type.VOID_TYPE), true);
-		
+
 		////////////////////////////////////////////////////////////////////////////////
-		
+
 		mv.visitVarInsn(Opcodes.ALOAD, 2);
 		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(EntityManager.class), "getTransaction",
 				Type.getMethodDescriptor(txType), true);
@@ -789,28 +930,28 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="35" tokens="188">
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinMapServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSDatatableMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinMapServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapJSServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ChartJSServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\FontawesomeCSSServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryDatatableMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryEasingMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinMapServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\JQueryServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\PopperServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSMinServlet.java"/>
-<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\ProlobjectlinkJSServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSMinMapServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSDatatableMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSMinMapServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapJSServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ChartJSMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ChartJSServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\FontawesomeCSSMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\FontawesomeCSSServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryDatatableMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryEasingMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryMinMapServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\JQueryServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\PopperMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\PopperServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkCSSServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkJSMinServlet.java"/>
+<file line="80" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\ProlobjectlinkJSServlet.java"/>
 <codefragment>
 <![CDATA[
 		File jquery = new File(getMiscDirectory() + "/js/prolobjectlink.js");
@@ -852,8 +993,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="15" tokens="187">
-<file line="361" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="424" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="362" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="425" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType, stringType, intType, intType), null, null);
@@ -875,8 +1016,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="32" tokens="180">
-<file line="50" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
-<file line="92" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
+<file line="50" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
+<file line="92" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
 <codefragment>
 <![CDATA[
 				String path = "/js/" + file.getName();
@@ -915,8 +1056,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="18" tokens="180">
-<file line="317" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
-<file line="361" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="592" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
+<file line="636" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\EntityClass.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitInsn(Opcodes.POP);
@@ -941,8 +1082,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="18" tokens="179">
-<file line="239" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="375" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="240" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="376" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitVarInsn(Opcodes.ASTORE, 2);
@@ -967,8 +1108,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="36" tokens="177">
-<file line="67" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
-<file line="313" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
+<file line="67" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaFrom.java"/>
+<file line="313" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -1011,9 +1152,9 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="13" tokens="168">
-<file line="137" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="162" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="190" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="138" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="163" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="191" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "update", Type.getMethodDescriptor(Type.VOID_TYPE, objType), null,
@@ -1033,8 +1174,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="14" tokens="167">
-<file line="256" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="302" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="257" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="303" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType, intType, intType),
@@ -1055,8 +1196,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="16" tokens="153">
-<file line="378" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="409" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="379" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="410" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType), true);
@@ -1079,8 +1220,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="28" tokens="151">
-<file line="65" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ApplicationServlet.java"/>
-<file line="106" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\DeleteApplicationServlet.java"/>
+<file line="64" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\ApplicationServlet.java"/>
+<file line="105" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DeleteApplicationServlet.java"/>
 <codefragment>
 <![CDATA[
 		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
@@ -1115,8 +1256,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="28" tokens="150">
-<file line="196" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaCriteriaQuery.java"/>
-<file line="260" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSubQuery.java"/>
+<file line="196" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaCriteriaQuery.java"/>
+<file line="260" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaSubQuery.java"/>
 <codefragment>
 <![CDATA[
 			b.append("SELECT " + alias + " ");
@@ -1151,8 +1292,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="26" tokens="146">
-<file line="56" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
-<file line="83" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<file line="56" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\AbstractMiscGenerator.java"/>
+<file line="83" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
 <codefragment>
 <![CDATA[
 			script = jquery.getCanonicalPath();
@@ -1185,8 +1326,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="15" tokens="144">
-<file line="242" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="409" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="243" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="410" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(listType), true);
@@ -1208,8 +1349,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="12" tokens="143">
-<file line="138" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="361" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="139" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="362" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "queryOne", Type.getMethodDescriptor(objType, stringType), null, null);
@@ -1228,8 +1369,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="14" tokens="140">
-<file line="68" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\ConnectorsServlet.java"/>
-<file line="68" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\PersistenceServlet.java"/>
+<file line="67" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\ConnectorsServlet.java"/>
+<file line="67" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\PersistenceServlet.java"/>
 <codefragment>
 <![CDATA[
 		List<ProviderEntry> providers = new ArrayList<ProviderEntry>();
@@ -1250,8 +1391,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="28" tokens="140">
-<file line="206" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
-<file line="277" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
+<file line="206" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="277" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\AbstractServlet.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -1286,8 +1427,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="11" tokens="133">
-<file line="138" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="256" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="139" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="257" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveAll", Type.getMethodDescriptor(listType), null, null);
@@ -1305,8 +1446,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="10" tokens="131">
-<file line="138" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="216" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="139" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="217" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv = ca.visitMethod(Opcodes.ACC_PUBLIC, "retrieveOne", Type.getMethodDescriptor(objType, intType), null, null);
@@ -1323,8 +1464,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="130">
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaLocate.java"/>
-<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSubstring.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaLocate.java"/>
+<file line="44" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaSubstring.java"/>
 <codefragment>
 <![CDATA[
 		return "JpaSubstring [length=" + length + ", operator=" + operator + ", right=" + right + ", metamodel="
@@ -1352,8 +1493,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="13" tokens="124">
-<file line="150" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="178" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="151" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="179" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 				Type.getMethodDescriptor(Type.VOID_TYPE), true);
@@ -1373,8 +1514,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="24" tokens="123">
-<file line="228" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
-<file line="53" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaPath.java"/>
+<file line="228" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaJoin.java"/>
+<file line="53" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaPath.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -1405,8 +1546,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="122">
-<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaKeys.java"/>
-<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaValues.java"/>
+<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaKeys.java"/>
+<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaValues.java"/>
 <codefragment>
 <![CDATA[
 		return "JpaValues [map=" + map + ", metamodel=" + metamodel + ", distinct=" + distinct + ", expression="
@@ -1434,8 +1575,8 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="13" tokens="121">
-<file line="150" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
-<file line="204" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="151" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
+<file line="205" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\DaoGenerator.java"/>
 <codefragment>
 <![CDATA[
 		mv.visitInsn(Opcodes.POP);
@@ -1454,46 +1595,9 @@ public class ProlobjectlinkJSServlet extends HttpServlet implements Servlet {
 ]]>
 </codefragment>
 </duplication>
-<duplication lines="29" tokens="119">
-<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\LogoutServlet.java"/>
-<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\admin\WelcomeServlet.java"/>
-<codefragment>
-<![CDATA[
-public class WelcomeServlet extends HttpServlet implements Servlet {
-
-	private static final long serialVersionUID = 7313381101418470194L;
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		// request information
-		String protocol = req.getScheme();
-		String host = req.getHeader("host");
-
-		// Engine and context
-		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/org/prolobjectlink/web/html/welcome.html");
-		TemplateContext context = new TemplateContext();
-
-		// functions
-		context.set("path", new PathFunction("pas", protocol, host));
-		context.set("asset", new AssetFunction(protocol, host));
-
-		// render
-		template.render(context, resp.getOutputStream());
-
-		// response
-		resp.setStatus(HttpServletResponse.SC_OK);
-
-	}
-
-}
-]]>
-</codefragment>
-</duplication>
 <duplication lines="9" tokens="115">
-<file line="73" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
-<file line="95" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
+<file line="72" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
+<file line="94" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\JpaNativeQuery.java"/>
 <codefragment>
 <![CDATA[
 		ObjectConverter<PrologTerm> converter = database.getConverter();
@@ -1509,8 +1613,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="17" tokens="114">
-<file line="54" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jdbc\remote\MySQLDriver.java"/>
-<file line="53" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jdbc\remote\PostgreSQLDriver.java"/>
+<file line="54" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jdbc\remote\MySQLDriver.java"/>
+<file line="54" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jdbc\remote\PostgreSQLDriver.java"/>
 <codefragment>
 <![CDATA[
 	public PostgreSQLDriver(String dbhost, String dbport, String dbname, String dbuser, String dbpwd) {
@@ -1534,8 +1638,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="23" tokens="114">
-<file line="168" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\DatabaseDriver.java"/>
-<file line="79" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="168" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\DatabaseDriver.java"/>
+<file line="79" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -1565,8 +1669,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="113">
-<file line="205" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\AbstractServlet.java"/>
-<file line="48" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
+<file line="205" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\AbstractServlet.java"/>
+<file line="48" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\misc\BootstrapCSSDatatableMinServlet.java"/>
 <codefragment>
 <![CDATA[
 	public final File getMiscDirectory() {
@@ -1594,8 +1698,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="19" tokens="109">
-<file line="1465" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\io\ServerFile.java"/>
-<file line="161" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
+<file line="1465" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\io\ServerFile.java"/>
+<file line="161" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\platform\AbstractWebPlatform.java"/>
 <codefragment>
 <![CDATA[
 	public final File getRootDirectory() {
@@ -1621,8 +1725,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="18" tokens="109">
-<file line="73" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
-<file line="76" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\platform\AbstractWebControl.java"/>
+<file line="76" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\prolog\AbstractDatabaseConsole.java"/>
+<file line="75" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\platform\AbstractWebControl.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -1647,10 +1751,10 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="8" tokens="109">
-<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaCollectionJoin.java"/>
-<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaListJoin.java"/>
-<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaMapJoin.java"/>
-<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\db\jpa\criteria\JpaSetJoin.java"/>
+<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaCollectionJoin.java"/>
+<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaListJoin.java"/>
+<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaMapJoin.java"/>
+<file line="38" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\jpa\criteria\JpaSetJoin.java"/>
 <codefragment>
 <![CDATA[
 	public JpaSetJoin(String alias, Class<? extends X> javaType, Expression<X> expression, Metamodel metamodel,
@@ -1665,8 +1769,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="21" tokens="108">
-<file line="36" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\ApplicationEntry.java"/>
-<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\DatabaseEntry.java"/>
+<file line="36" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\entry\ApplicationEntry.java"/>
+<file line="42" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\entry\DatabaseEntry.java"/>
 <codefragment>
 <![CDATA[
 	}
@@ -1694,8 +1798,8 @@ public class WelcomeServlet extends HttpServlet implements Servlet {
 </codefragment>
 </duplication>
 <duplication lines="19" tokens="107">
-<file line="68" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\ApplicationEntry.java"/>
-<file line="75" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\org\prolobjectlink\web\entry\DatabaseEntry.java"/>
+<file line="68" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\entry\ApplicationEntry.java"/>
+<file line="75" path="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\entry\DatabaseEntry.java"/>
 <codefragment>
 <![CDATA[
 		DatabaseEntry other = (DatabaseEntry) obj;
