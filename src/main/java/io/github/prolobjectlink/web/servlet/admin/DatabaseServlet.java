@@ -21,10 +21,7 @@
  */
 package io.github.prolobjectlink.web.servlet.admin;
 
-import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.Servlet;
@@ -59,50 +56,8 @@ public class DatabaseServlet extends AbstractServlet implements Servlet {
 		Template template = loader.load("/io/github/prolobjectlink/web/html/databases.html");
 		TemplateContext context = new TemplateContext();
 
-		File db = getDBDirectory();
-		File[] dbs = db.listFiles();
-		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>(dbs.length);
-		for (File file : dbs) {
-			if (file.isDirectory()) {
-				if (file.getName().equals("hsqldb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
-
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".script");
-						}
-
-					});
-					for (File x : scripts) {
-						String type = "HSQLDB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
-					}
-				} else if (file.getName().equals("pdb")) {
-
-				} else if (file.getName().equals("odb")) {
-					File[] scripts = file.listFiles(new FileFilter() {
-
-						@Override
-						public boolean accept(File arg0) {
-							return arg0.getName().endsWith(".odb");
-						}
-
-					});
-					for (File x : scripts) {
-						String type = "ODB";
-						long size = x.length();
-						long modified = x.lastModified();
-						String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
-						DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-						databases.add(e);
-					}
-				}
-			}
-		}
+		// list applications from abstract servlet
+		List<DatabaseEntry> databases = listDatabases();
 
 		// variables
 		context.set("databases", databases);

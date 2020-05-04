@@ -22,11 +22,14 @@
 package io.github.prolobjectlink.web.servlet;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.Servlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +38,8 @@ import io.github.prolobjectlink.logging.LoggerConstants;
 import io.github.prolobjectlink.logging.LoggerUtils;
 import io.github.prolobjectlink.web.application.AbstractControllerGenerator;
 import io.github.prolobjectlink.web.application.WebApplication;
+import io.github.prolobjectlink.web.entry.ApplicationEntry;
+import io.github.prolobjectlink.web.entry.DatabaseEntry;
 
 public class AbstractServlet extends HttpServlet implements Servlet {
 
@@ -82,7 +87,7 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 		return os;
 	}
 
-	public String getClassPath() {
+	public final String getClassPath() {
 		return System.getenv("java.class.path");
 	}
 
@@ -299,6 +304,77 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 			LoggerUtils.error(getClass(), "Some error occurss on copy", e);
 		}
 		return copied;
+	}
+
+	public final List<ApplicationEntry> listApplications() {
+		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>();
+		File webapps = getWebDirectory();
+		if (webapps != null) {
+			File[] apps = webapps.listFiles();
+			for (File file : apps) {
+				// check application
+				if (file.isDirectory()) {
+					long size = file.length();
+					String name = file.getName();
+					long modified = file.lastModified();
+					ApplicationEntry e = new ApplicationEntry(name, size, modified);
+					applications.add(e);
+				}
+			}
+		}
+		return applications;
+	}
+
+	public final List<DatabaseEntry> listDatabases() {
+		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>();
+		File db = getDBDirectory();
+		if (db != null) {
+			File[] dbs = db.listFiles();
+			for (File file : dbs) {
+				if (file.isDirectory()) {
+					if (file.getName().equals("hsqldb")) {
+						File[] scripts = file.listFiles(new FileFilter() {
+
+							@Override
+							public boolean accept(File arg0) {
+								return arg0.getName().endsWith(".script");
+							}
+
+						});
+						for (File x : scripts) {
+							String type = "HSQLDB";
+							long size = x.length();
+							long modified = x.lastModified();
+							String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
+							DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+							databases.add(e);
+						}
+					} else if (file.getName().equals("pdb")) {
+
+					} else if (file.getName().equals("odb")) {
+						File[] scripts = file.listFiles(new FileFilter() {
+
+							@Override
+							public boolean accept(File arg0) {
+								return arg0.getName().endsWith(".odb");
+							}
+
+						});
+						for (File x : scripts) {
+							String type = "ODB";
+							long size = x.length();
+							long modified = x.lastModified();
+							String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
+							DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+							databases.add(e);
+						}
+					}
+				}
+			}
+		}
+
+		return databases;
+
 	}
 
 }

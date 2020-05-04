@@ -69,11 +69,6 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 	private static final String MANYTOONE = "manyToOne/2";
 	private static final String MANYTOMANY = "manyToMany/2";
 
-	private static final String MAP = "map/2";
-	private static final String SET = "set/1";
-	private static final String LIST = "list/1";
-	private static final String COLLECTION = "collection/1";
-
 	private final PrologProvider provider;
 	private final ContainerFactory factory;
 	private final ObjectConverter<PrologTerm> converter;
@@ -211,6 +206,8 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 					String ftype = "";
 					Class<?> c = null;
 					Class<?> linkedClass = null;
+					Class<?> linkedKeyClass = null;
+					Class<?> linkedValueClass = null;
 
 					assertValidFieldIndicator(field);
 
@@ -222,19 +219,26 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 
 					if (fieldType.hasIndicator("set", 1)) {
 						PrologTerm linkedType = fieldType.getArgument(0);
-						linkedClass = converter.toClass(linkedType);
+						String cn = converter.removeQuotes(linkedType.getFunctor());
+						linkedClass = converter.toClass(cn);
 						c = Set.class;
 					} else if (fieldType.hasIndicator("list", 1)) {
 						PrologTerm linkedType = fieldType.getArgument(0);
-						linkedClass = converter.toClass(linkedType);
+						String cn = converter.removeQuotes(linkedType.getFunctor());
+						linkedClass = converter.toClass(cn);
 						c = List.class;
 					} else if (fieldType.hasIndicator("collection", 1)) {
 						PrologTerm linkedType = fieldType.getArgument(0);
-						linkedClass = converter.toClass(linkedType);
+						String cn = converter.removeQuotes(linkedType.getFunctor());
+						linkedClass = converter.toClass(cn);
 						c = Collection.class;
 					} else if (fieldType.hasIndicator("map", 2)) {
 						PrologTerm linkedKeyType = fieldType.getArgument(0);
 						PrologTerm linkedValueType = fieldType.getArgument(1);
+						String kcn = converter.removeQuotes(linkedKeyType.getFunctor());
+						String vcn = converter.removeQuotes(linkedValueType.getFunctor());
+						linkedKeyClass = converter.toClass(kcn);
+						linkedValueClass = converter.toClass(vcn);
 						c = Map.class;
 					} else {
 						ftype = (String) converter.toObject(fieldType);
@@ -296,7 +300,7 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 				String code = entity.generate();
 				Compiler compiler = new ModelCompiler();
 				try {
-					
+
 					Path javaFile = compiler.saveSource(code, entity.getShortName());
 					Path classFile = compiler.compileSource(javaFile, entity.getShortName());
 					byte[] bytecode = compiler.readBytecode(classFile);

@@ -21,9 +21,7 @@
  */
 package io.github.prolobjectlink.web.servlet.admin;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.Servlet;
@@ -59,19 +57,8 @@ public class ApplicationServlet extends AbstractServlet implements Servlet {
 		Template template = loader.load("/io/github/prolobjectlink/web/html/applications.html");
 		TemplateContext context = new TemplateContext();
 
-		File webapps = getWebDirectory();
-		File[] apps = webapps.listFiles();
-		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
-		for (File file : apps) {
-			// check application
-			if (file.isDirectory()) {
-				long size = file.length();
-				String name = file.getName();
-				long modified = file.lastModified();
-				ApplicationEntry e = new ApplicationEntry(name, size, modified);
-				applications.add(e);
-			}
-		}
+		// list applications from abstract servlet
+		List<ApplicationEntry> applications = listApplications();
 
 		// variables
 		context.set("applications", applications);

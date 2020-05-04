@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2020-04-26T18:34:47.150">
+<pmd version="4.2.5" timestamp="2020-05-08T08:20:52.127">
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\AbstractEntityManager.java">
 <violation beginline="74" endline="74" begincolumn="43" endcolumn="61" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="io.github.prolobjectlink.db.entity" class="AbstractEntityManager" variable="synchronizationType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'synchronizationType'.
@@ -365,23 +365,11 @@ These nested if statements could be combined
 </violation>
 </file>
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\AbstractModelGenerator.java">
-<violation beginline="72" endline="72" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" variable="MAP" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'MAP'.
+<violation beginline="209" endline="209" begincolumn="50" endcolumn="63" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyClass" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'linkedKeyClass'.
 </violation>
-<violation beginline="73" endline="73" begincolumn="37" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" variable="SET" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'SET'.
-</violation>
-<violation beginline="74" endline="74" begincolumn="37" endcolumn="40" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" variable="LIST" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'LIST'.
-</violation>
-<violation beginline="75" endline="75" begincolumn="37" endcolumn="46" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" variable="COLLECTION" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
-Avoid unused private fields such as 'COLLECTION'.
-</violation>
-<violation beginline="236" endline="236" begincolumn="60" endcolumn="72" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
-Avoid unused local variables such as 'linkedKeyType'.
-</violation>
-<violation beginline="237" endline="237" begincolumn="60" endcolumn="74" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
-Avoid unused local variables such as 'linkedValueType'.
+<violation beginline="210" endline="210" begincolumn="50" endcolumn="65" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueClass" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'linkedValueClass'.
 </violation>
 </file>
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\io\ServerFile.java">
@@ -421,6 +409,11 @@ Avoid empty catch blocks
 Avoid unused local variables such as 'serverArgs'.
 </violation>
 </file>
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\AbstractServlet.java">
+<violation beginline="352" endline="354" begincolumn="82" endcolumn="41" rule="EmptyIfStmt" ruleset="Basic Rules" package="io.github.prolobjectlink.web.servlet" class="AbstractServlet" method="listDatabases" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\ConnectorsServlet.java">
 <violation beginline="84" endline="86" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="io.github.prolobjectlink.web.servlet.admin" class="ConnectorsServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
@@ -430,11 +423,6 @@ Avoid empty catch blocks
 </violation>
 <violation beginline="88" endline="90" begincolumn="43" endcolumn="41" rule="EmptyCatchBlock" ruleset="Basic Rules" package="io.github.prolobjectlink.web.servlet.admin" class="ConnectorsServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
-</violation>
-</file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DatabaseServlet.java">
-<violation beginline="84" endline="86" begincolumn="74" endcolumn="33" rule="EmptyIfStmt" ruleset="Basic Rules" package="io.github.prolobjectlink.web.servlet.admin" class="DatabaseServlet" method="doGet" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
-Avoid empty if statements
 </violation>
 </file>
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\admin\DeleteDatabaseServlet.java">

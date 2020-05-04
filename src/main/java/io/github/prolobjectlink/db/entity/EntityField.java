@@ -71,7 +71,7 @@ public class EntityField extends DatabaseField {
 			buffer.append('\n');
 			buffer.append('\t');
 		} else if (isOneToMany()) {
-			buffer.append("@OneToMany");
+			buffer.append("@OneToMany(fetch = FetchType.EAGER)");
 			buffer.append('\n');
 			buffer.append('\t');
 		} else if (isManyToOne()) {
@@ -79,7 +79,7 @@ public class EntityField extends DatabaseField {
 			buffer.append('\n');
 			buffer.append('\t');
 		} else if (isManyToMany()) {
-			buffer.append("@ManyToMany");
+			buffer.append("@ManyToMany(fetch = FetchType.EAGER)");
 			buffer.append('\n');
 			buffer.append('\t');
 		}
