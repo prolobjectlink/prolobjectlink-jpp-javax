@@ -79,7 +79,7 @@ public class ManagerServlet extends AbstractServlet implements Servlet {
 		context.set("plname", factory.getParameter(ScriptEngine.NAME));
 
 		// servlet container
-		context.set("serverversion", "4.1.1");
+		context.set("serverversion", "2.4.3");
 		context.set("servername", "Grizzly");
 
 		// runtime statistics

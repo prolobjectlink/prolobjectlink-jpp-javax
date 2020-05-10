@@ -21,19 +21,32 @@
  */
 package io.github.prolobjectlink.web.servlet;
 
+import static io.github.prolobjectlink.logging.LoggerConstants.IO;
+
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.Servlet;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
 
+import io.github.prolobjectlink.ArrayQueue;
 import io.github.prolobjectlink.logging.LoggerConstants;
 import io.github.prolobjectlink.logging.LoggerUtils;
 import io.github.prolobjectlink.web.application.AbstractControllerGenerator;
@@ -375,6 +388,212 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 
 		return databases;
 
+	}
+
+	/**
+	 * Create backs up application file.
+	 * 
+	 * @param application the path to copy into zip backup file
+	 */
+	public final void createApplicationBackup(String application) {
+
+		File filePtr = null;
+		InputStream in = null;
+		OutputStream out = null;
+		ZipOutputStream zipOut = null;
+		String temp = System.getProperty("java.io.tmpdir");
+
+		try {
+
+			//
+			File zipFile = new File(temp + File.separator + application);
+			if (!zipFile.exists()) {
+				File parent = zipFile.getParentFile();
+				if (parent != null) {
+					parent.mkdirs();
+				}
+			}
+
+			//
+			out = new FileOutputStream(zipFile);
+			zipOut = new ZipOutputStream(out);
+			zipOut.setComment("PAS Application Backup File");
+
+			//
+			Queue<File> queue = new ArrayQueue<File>();
+			String appdir = getWebDirectory().getCanonicalPath();
+
+			queue.offer(new File(appdir + File.separator + application));
+			while (!queue.isEmpty()) {
+				filePtr = queue.poll();
+				if (filePtr.isDirectory()) {
+
+					File[] files = filePtr.listFiles();
+					if (files != null) {
+						for (File file : files) {
+							queue.offer(file);
+						}
+					}
+
+				} else {
+
+					String path = filePtr.getPath();
+					in = new FileInputStream(filePtr);
+					ZipEntry entry = new ZipEntry(path);
+					zipOut.putNextEntry(entry);
+					copy(in, zipOut);
+					zipOut.closeEntry();
+
+				}
+			}
+
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), IO, e);
+		} finally {
+			if (zipOut != null) {
+				try {
+					zipOut.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+		}
+
+	}
+
+	/**
+	 * Create backs up database file.
+	 * 
+	 * @param database the path to copy into zip backup file
+	 */
+	public final void createDatabaseBackup(String type, String database) {
+
+		File filePtr = null;
+		InputStream in = null;
+		OutputStream out = null;
+		ZipOutputStream zipOut = null;
+		String temp = System.getProperty("java.io.tmpdir");
+
+		try {
+
+			//
+			File zipFile = new File(temp + File.separator + database);
+			if (!zipFile.exists()) {
+				File parent = zipFile.getParentFile();
+				if (parent != null) {
+					parent.mkdirs();
+				}
+			}
+
+			//
+			out = new FileOutputStream(zipFile);
+			zipOut = new ZipOutputStream(out);
+			zipOut.setComment("PAS Database Backup File");
+
+			//
+			Queue<File> queue = new ArrayQueue<File>();
+			String dbdir = getDBDirectory().getCanonicalPath();
+
+			if (type.equals("hsqldb")) {
+				queue.offer(new File(dbdir + File.separator + "hsqldb"));
+			} else {
+				queue.offer(new File(dbdir + File.separator + "hsqldb"));
+			}
+
+			while (!queue.isEmpty()) {
+				filePtr = queue.poll();
+				if (filePtr.isDirectory()) {
+
+					File[] files = filePtr.listFiles();
+					if (files != null) {
+						for (File file : files) {
+							queue.offer(file);
+						}
+					}
+
+				} else if (filePtr.getName().contains(database)) {
+
+					String path = filePtr.getPath();
+					in = new FileInputStream(filePtr);
+					ZipEntry entry = new ZipEntry(path);
+					zipOut.putNextEntry(entry);
+					copy(in, zipOut);
+					zipOut.closeEntry();
+
+				}
+			}
+
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), IO, e);
+		} finally {
+			if (zipOut != null) {
+				try {
+					zipOut.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+		}
+
+	}
+
+	public final void copyBackupFile(HttpServletResponse resp, String pathInfo) throws IOException {
+		String temp = System.getProperty("java.io.tmpdir");
+		File zipFile = new File(temp + File.separator + pathInfo);
+
+		ServletOutputStream outputStream = resp.getOutputStream();
+		resp.setContentType(CONTENT_TYPE);
+		resp.setContentLength((int) zipFile.length());
+		resp.setHeader("Content-Disposition", "attachment; filename=" + pathInfo + ".zip");
+
+		byte[] buffer = new byte[8 * 1024]; // 8k buffer
+		FileInputStream input = new FileInputStream(zipFile);
+		DataInputStream inputStream = new DataInputStream(input);
+		int length = 0;
+
+		try {
+			while (((length = inputStream.read(buffer)) != -1)) {
+				outputStream.write(buffer, 0, length);
+			}
+		} catch (Exception e) {
+			StringWriter stringWriter = new StringWriter();
+			PrintWriter printWriter = new PrintWriter(stringWriter);
+			e.printStackTrace(printWriter);
+			resp.setContentType("text/plain");
+			resp.getOutputStream().print(stringWriter.toString());
+		} finally {
+			inputStream.close();
+			outputStream.flush();
+			outputStream.close();
+		}
 	}
 
 }

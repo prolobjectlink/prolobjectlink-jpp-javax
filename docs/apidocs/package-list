@@ -21,7 +21,5 @@ io.github.prolobjectlink.web.entry
 io.github.prolobjectlink.web.function
 io.github.prolobjectlink.web.io
 io.github.prolobjectlink.web.platform
-io.github.prolobjectlink.web.resources
 io.github.prolobjectlink.web.servlet
 io.github.prolobjectlink.web.servlet.admin
-io.github.prolobjectlink.web.servlet.misc

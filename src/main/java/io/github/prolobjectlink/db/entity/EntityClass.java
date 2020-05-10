@@ -241,6 +241,8 @@ public class EntityClass extends DatabaseClass {
 		for (DatabaseField field : fields.values()) {
 			field.generateGetter(buffer);
 			field.generateSetter(buffer);
+			field.generateAdderer(buffer);
+			field.generateRemover(buffer);
 		}
 
 		buffer.append('\t');
@@ -253,7 +255,9 @@ public class EntityClass extends DatabaseClass {
 		buffer.append("return ");
 		buffer.append("\"" + getShortName() + " [");
 		for (DatabaseField field : fields.values()) {
-			buffer.append(" " + field.getName() + "=\"+" + field.getName() + "+\"");
+			if (field.isBasicType()) {
+				buffer.append(" " + field.getName() + "=\"+" + field.getName() + "+\"");
+			}
 		}
 		buffer.append(" ]\";");
 		buffer.append('\n');

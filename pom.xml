@@ -57,7 +57,7 @@
 		<system>GitHub</system>
 		<url>https://github.com/prolobjectlink/${project.name}/issues</url>
 	</issueManagement>
-	
+
 	<mailingLists>
 		<mailingList>
 			<name>Developer List</name>
@@ -115,134 +115,221 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<javax.activation.version>1.1.1</javax.activation.version>
-		<javax.persistence.version>2.1.0</javax.persistence.version>
-		<javax.enterprise.concurrent-api.version>1.0</javax.enterprise.concurrent-api.version>
-		<javax.cache.version>1.1.0</javax.cache.version>
-		<javax.servlet.version>3.1.0</javax.servlet.version>
-		<javax.mail.version>1.4.7</javax.mail.version>
-		<javax.json.version>1.1.2</javax.json.version>
-		<javax.jms.version>1.1</javax.jms.version>
-		<javax.resource.version>1.5</javax.resource.version>
-		<javax.validation.version>1.1.0.Final</javax.validation.version>
-		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
-		<hsqldb.version>2.3.4</hsqldb.version>
-		<mysql.version>5.1.17</mysql.version>
-		<odb.version>2.6.3</odb.version>
-		<template.version>1.7</template.version>
-		<jasperreports.version>4.7.0</jasperreports.version>
-		<bsh.version>2.0b5</bsh.version>
-		<ant.version>1.9.4</ant.version>
-
-
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>io.github.prolobjectlink</groupId>
+			<artifactId>prolobjectlink-jee</artifactId>
+			<version>[1.0-SNAPSHOT, )</version>
+		</dependency>
 		<dependency>
 			<groupId>io.github.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
 			<version>[1.0-SNAPSHOT, )</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>javax.persistence</artifactId>
-			<version>${javax.persistence.version}</version>
-			<scope>provided</scope>
+			<groupId>myfaces</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>1.1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${javax.servlet.version}</version>
-			<scope>provided</scope>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${javax.servlet.version}</version>
-			<scope>provided</scope>
+			<groupId>msv</groupId>
+			<artifactId>msv</artifactId>
+			<version>20050913</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>${javax.mail.version}</version>
+			<groupId>ldapsdk</groupId>
+			<artifactId>ldapsdk</artifactId>
+			<version>4.1</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${javax.validation.version}</version>
+			<groupId>net.sourceforge.barbecue</groupId>
+			<artifactId>barbecue</artifactId>
+			<version>1.5-beta1</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>javax.json</groupId> -->
-		<!-- <artifactId>javax.json-api</artifactId> -->
-		<!-- <version>${javax.json.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.activation</groupId> -->
-		<!-- <artifactId>activation</artifactId> -->
-		<!-- <version>${javax.activation.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.jms</groupId> -->
-		<!-- <artifactId>jms</artifactId> -->
-		<!-- <version>${javax.jms.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.resource</groupId> -->
-		<!-- <artifactId>connector-api</artifactId> -->
-		<!-- <version>1.5</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.enterprise.concurrent</groupId> -->
-		<!-- <artifactId>javax.enterprise.concurrent-api</artifactId> -->
-		<!-- <version>${javax.enterprise.concurrent-api.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.cache</groupId> -->
-		<!-- <artifactId>cache-api</artifactId> -->
-		<!-- <version>${javax.cache.version}</version> -->
-		<!-- </dependency> -->
-
-		<!-- <dependency> -->
-		<!-- <groupId>jaxen</groupId> -->
-		<!-- <artifactId>jaxen</artifactId> -->
-		<!-- <version>1.1.1</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6</version>
+		</dependency>
 		<dependency>
 			<groupId>io.marioslab.basis</groupId>
 			<artifactId>template</artifactId>
-			<version>${template.version}</version>
+			<version>1.7</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>${jasperreports.version}</version>
+			<version>4.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>${hsqldb.version}</version>
+			<version>2.3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.version}</version>
+			<version>5.1.17</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>${postgresql.version}</version>
+			<version>9.1-901-1.jdbc4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.objectdb</groupId>
 			<artifactId>objectdb</artifactId>
-			<version>${odb.version}</version>
+			<version>2.6.3</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>oro</groupId>
+			<artifactId>oro</artifactId>
+			<version>2.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>bsf</groupId>
+			<artifactId>bsf</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml</groupId>
+			<artifactId>classmate</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>logkit</groupId>
+			<artifactId>logkit</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta-regexp</groupId>
+			<artifactId>jakarta-regexp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avalon.framework</groupId>
+			<artifactId>avalon-framework-api</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all-minimal</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>jline</groupId>
+			<artifactId>jline</artifactId>
+			<version>0.9.94</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>batik-bridge</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>batik-svggen</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-asm</artifactId>
+			<version>3.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>3.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>xom</groupId>
+			<artifactId>xom</artifactId>
+			<version>1.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.ibm.icu</groupId>
+					<artifactId>icu4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>eclipse</groupId>
+			<artifactId>eclipse-runtime</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.core</groupId> -->
+		<!-- <artifactId>commands</artifactId> -->
+		<!-- <version>3.3.0-I20070605-0010</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse.core</groupId> -->
+		<!-- <artifactId>resources</artifactId> -->
+		<!-- <version>3.3.0-v20070604</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse</groupId> -->
+		<!-- <artifactId>text</artifactId> -->
+		<!-- <version>3.3.0-v20070606-0010</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.mozilla</groupId>
+			<artifactId>rhino</artifactId>
+			<version>1.7.10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.beanshell</groupId>
 			<artifactId>bsh</artifactId>
-			<version>${bsh.version}</version>
+			<version>2.0b5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.javassist</groupId>
@@ -252,12 +339,18 @@
 		<dependency>
 			<groupId>org.apache.ant</groupId>
 			<artifactId>ant</artifactId>
-			<version>${ant.version}</version>
+			<version>1.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ant</groupId>
 			<artifactId>ant-launcher</artifactId>
-			<version>${ant.version}</version>
+			<version>1.9.4</version>
+		</dependency>
+		<dependency>
+			<groupId>mockobjects</groupId>
+			<artifactId>mockobjects-core</artifactId>
+			<version>0.09</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -265,6 +358,98 @@
 			<version>[4.10, )</version>
 
 		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.barcode4j</groupId>
+			<artifactId>barcode4j</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces</groupId>
+			<artifactId>richfaces</artifactId>
+			<version>4.5.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.3.6</version>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.3.04</version>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis-ext</artifactId>
+			<version>1.3.04</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.reflections</groupId> -->
+		<!-- <artifactId>reflections-parent</artifactId> -->
+		<!-- <version>0.9.8</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>opensymphony</groupId> -->
+		<!-- <artifactId>oscache</artifactId> -->
+		<!-- <version>2.4.1</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>mondrian</groupId> -->
+		<!-- <artifactId>mondrian</artifactId> -->
+		<!-- <version>3.1.1.12687</version> -->
+		<!-- <scope>compile</scope> -->
+		<!-- <optional>true</optional> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.python</groupId> -->
+		<!-- <artifactId>jython-standalone</artifactId> -->
+		<!-- <version>2.5.2</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.atmosphere</groupId> -->
+		<!-- <artifactId>atmosphere-runtime</artifactId> -->
+		<!-- <optional>true</optional> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.jboss.cache</groupId> -->
+		<!-- <artifactId>jbosscache-core</artifactId> -->
+		<!-- <optional>true</optional> -->
+		<!-- <exclusions> -->
+		<!-- <exclusion> -->
+		<!-- <artifactId>jboss-logging-spi</artifactId> -->
+		<!-- <groupId>org.jboss.logging</groupId> -->
+		<!-- </exclusion> -->
+		<!-- </exclusions> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>msv</groupId> -->
+		<!-- <artifactId>relaxngDatatype</artifactId> -->
+		<!-- <version>20030807</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>msv</groupId> -->
+		<!-- <artifactId>xsdlib</artifactId> -->
+		<!-- <version>20030807</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.11</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>gnujaxp</groupId> -->
+		<!-- <artifactId>gnujaxp</artifactId> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
@@ -287,7 +472,6 @@
 		</pluginManagement>
 
 		<plugins>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -531,80 +715,201 @@
 						<Bundle-DocURL>${project.url}</Bundle-DocURL>
 						<Bundle-Name>Java Prolog Persistence Extension</Bundle-Name>
 						<Export-Package>${project.groupId}.db.*;${project.groupId}.web.*</Export-Package>
-						<Import-Package>javax.script;com.mysql.jdbc;
-							io.marioslab.basis.template; javax.persistence;
-							javax.persistence.criteria; javax.persistence.metamodel;
-							javax.persistence.spi; javax.servlet; javax.servlet.annotation;
-							javax.servlet.http; javax.sql; javax.swing; javax.xml;
-							javax.xml.parsers; javax.xml.transform;
-							javax.xml.transform.stream; javax.xml.validation; org.hsqldb;
-							org.hsqldb.persist; org.hsqldb.server; org.objectweb.asm;
-							org.objectweb.asm.signature; org.objectweb.asm.util;
-							org.postgresql; org.prolobjectlink; org.prolobjectlink.graph;
-							org.prolobjectlink.logging;
-							org.w3c.dom;
+						<Import-Package>
+							javax.script;
+							javax.persistence;
+							javax.persistence.criteria;
+							javax.persistence.metamodel;
+							javax.persistence.spi;
+							javax.servlet;
+							javax.servlet.annotation;
+							javax.servlet.http;
+							javax.sql;
+							javax.swing;
+							javax.xml;
+							javax.xml.parsers;
+							javax.xml.transform;
+							javax.xml.transform.stream;
+							javax.xml.validation;
+							javax.security.sasl;
+							javax.enterprise.util;
+							javax.management;
+							javax.xml.bind.annotation;
+							javax.xml.bind.annotation.adapters;
+							javax.enterprise.context;
+							javax.interceptor;
+							javax.activation;
+							javax.annotation.processing;
+							javax.crypto;
+							javax.crypto.interfaces;
+							javax.crypto.spec;
+							javax.imageio;
+							javax.imageio.metadata;
+							javax.imageio.plugins.jpeg;
+							javax.imageio.stream;
+							javax.lang.model;
+							javax.lang.model.element;
+							javax.lang.model.type;
+							javax.lang.model.util;
+							javax.mail;
+							javax.mail.internet;
+							javax.naming;
+							javax.naming.directory;
+							javax.naming.ldap;
+							javax.naming.spi;
+							javax.net;
+							javax.net.ssl;
+							javax.print;
+							javax.print.attribute;
+							javax.print.attribute.standard;
+							javax.security.auth;
+							javax.security.auth.callback;
+							javax.security.auth.login;
+							javax.security.auth.x500;
+							javax.security.cert;
+							javax.sql.rowset;
+							javax.swing.border;
+							javax.swing.event;
+							javax.swing.filechooser;
+							javax.swing.plaf;
+							javax.swing.plaf.basic;
+							javax.swing.table;
+							javax.swing.text;
+							javax.swing.text.html;
+							javax.swing.tree;
+							javax.tools;
+							javax.transaction.xa;
+							javax.xml.bind;
+							javax.xml.bind.util;
+							javax.xml.soap;
+							javax.xml.transform.stax;
+							javax.accessibility;
+							javax.el;
+							javax.jmdns;
+							javax.jms;
+
+							oracle.xml.parser;
+							oracle.xml.parser.v2;
 
 							antlr;
-							antlr.collections.impl; com.apple.mrj; com.lowagie.toolbox;
-							com.sun.javadoc; com.sun.jdi; com.sun.jdi.connect;
-							com.sun.jdi.event; com.sun.jdi.request; com.sun.msv.datatype;
+							antlr.collections.impl;
+
+							com.apple.mrj;
+							com.lowagie.toolbox;
+							com.sun.javadoc;
+							com.sun.jdi;
+							com.sun.jdi.connect;
+							com.sun.jdi.event;
+							com.sun.jdi.request;
+							com.sun.msv.datatype;
 							com.sun.msv.datatype.xsd;
-							com.sun.org.apache.xml.internal.serialize; com.sun.tools.javadoc;
-							groovyjarjarasm.asm; javax.accessibility; javax.activation;
-							javax.annotation.processing; javax.crypto;
-							javax.crypto.interfaces; javax.crypto.spec; javax.imageio;
-							javax.imageio.metadata; javax.imageio.plugins.jpeg;
-							javax.imageio.stream; javax.lang.model; javax.lang.model.element;
-							javax.lang.model.type; javax.lang.model.util; javax.mail;
-							javax.mail.internet; javax.naming; javax.naming.directory;
-							javax.naming.ldap; javax.naming.spi; javax.net; javax.net.ssl;
-							javax.print; javax.print.attribute;
-							javax.print.attribute.standard; javax.security.auth;
-							javax.security.auth.callback; javax.security.auth.login;
-							javax.security.auth.x500; javax.security.cert; javax.sql.rowset;
-							javax.swing.border; javax.swing.event; javax.swing.filechooser;
-							javax.swing.plaf; javax.swing.plaf.basic; javax.swing.table;
-							javax.swing.text; javax.swing.text.html; javax.swing.tree;
-							javax.tools; javax.transaction.xa; javax.xml.bind;
-							javax.xml.bind.util; javax.xml.soap; javax.xml.transform.stax;
-							jxl; jxl.biff; jxl.format; jxl.read.biff; jxl.write;
-							jxl.write.biff; mondrian.olap; mondrian.spi;
-							net.sourceforge.barbecue; net.sourceforge.barbecue.linear.code39;
+							com.sun.org.apache.xml.internal.serialize;
+							com.sun.tools.javadoc;
+							com.sun.jdmk.comm;
+							com.werken.xpath;
+							com.ibm.uvm.tools;
+							com.mysql.jdbc;
+							groovyjarjarasm.asm;
+
+							jxl;
+							jxl.biff;
+							jxl.format;
+							jxl.read.biff;
+							jxl.write;
+							jxl.write.biff;
+
+							mondrian.olap;
+							mondrian.spi;
+
+							net.sourceforge.barbecue;
+							net.sourceforge.barbecue.linear.code39;
 							net.sourceforge.barbecue.linear.ean;
 							net.sourceforge.barbecue.output; netscape.ldap;
-							org.apache.avalon.framework.logger; org.apache.batik.bridge;
-							org.apache.batik.dom; org.apache.batik.dom.svg;
-							org.apache.batik.ext.awt.image; org.apache.batik.gvt;
-							org.apache.batik.svggen; org.apache.bsf; org.apache.bsf.util;
+
+							org.aspectj.bridge;
+							org.aspectj.weaver;
+							org.aspectj.weaver.bcel;
+							org.aspectj.weaver.patterns;
+
+							org.apache.avalon.framework.logger;
+							org.apache.batik.bridge;
+							org.apache.batik.dom;
+							org.apache.batik.dom.svg;
+							org.apache.batik.ext.awt.image;
+							org.apache.batik.gvt;
+							org.apache.batik.svggen;
+							org.apache.bsf;
+							org.apache.bsf.util;
 							org.apache.commons.collections.keyvalue;
 							org.apache.commons.collections.list;
-							org.apache.commons.collections.set; org.apache.commons.javaflow;
-							org.apache.crimson.jaxp; org.apache.log; org.apache.log4j;
-							org.apache.oro.text.regex; org.apache.poi.hdgf.extractor;
-							org.apache.poi.hpbf.extractor; org.apache.poi.hslf.extractor;
-							org.apache.poi.hsmf; org.apache.poi.hsmf.datatypes;
-							org.apache.poi.hsmf.extractor; org.apache.poi.hwpf;
-							org.apache.poi.hwpf.extractor; org.apache.poi.sl.usermodel;
-							org.apache.regexp; org.apache.tools.ant;
+							org.apache.commons.collections.set;
+							org.apache.commons.javaflow;
+							org.apache.crimson.jaxp;
+							org.apache.log; org.apache.log4j;
+							org.apache.oro.text.regex;
+							org.apache.poi.hdgf.extractor;
+							org.apache.poi.hpbf.extractor;
+							org.apache.poi.hslf.extractor;
+							org.apache.poi.hsmf;
+							org.apache.poi.hsmf.datatypes;
+							org.apache.poi.hsmf.extractor;
+							org.apache.poi.hwpf;
+							org.apache.poi.hwpf.extractor;
+							org.apache.poi.sl.usermodel;
+							org.apache.regexp;
+							org.apache.tools.ant;
 							org.apache.tools.ant.taskdefs;
 							org.apache.tools.ant.taskdefs.compilers;
-							org.apache.tools.ant.types; org.apache.tools.ant.types.resources;
-							org.apache.tools.ant.util; org.apache.velocity;
-							org.apache.velocity.app; org.apache.velocity.context;
-							org.apache.xerces.utils.regex; org.apache.xml.resolver;
-							org.apache.xml.resolver.tools; org.apache.xml.serialize;
+							org.apache.tools.ant.types;
+							org.apache.tools.ant.types.resources;
+							org.apache.tools.ant.util;
+							org.apache.velocity;
+							org.apache.velocity.app;
+							org.apache.velocity.context;
+							org.apache.xerces.utils.regex;
+							org.apache.xml.resolver;
+							org.apache.xml.resolver.tools;
+							org.apache.xml.resolver.readers;
+							org.apache.xml.serialize;
 							org.apache.xmlbeans.impl.xpath.saxon;
-							org.apache.xmlbeans.impl.xquery.saxon; org.apache.xpath;
-							org.apache.xpath.objects; org.codehaus.groovy.ast;
-							org.codehaus.groovy.control; org.eclipse.core.resources;
-							org.eclipse.core.runtime; org.eclipse.core.runtime.jobs;
-							org.eclipse.core.runtime.preferences; org.eclipse.jdt.core.index;
-							org.eclipse.jface.text; org.eclipse.osgi.util;
-							org.eclipse.text.edits; org.gjt.xpp; org.hibernate;
-							org.hibernate.metadata; org.hibernate.type; org.ietf.jgss;
-							org.jaxen; org.jaxen.dom; org.jaxen.dom4j; org.jaxen.pattern;
-							org.jaxen.saxpath; org.joda.time; org.joda.time.format;
-							org.krysalis.barcode4j; org.krysalis.barcode4j.impl;
+							org.apache.xmlbeans.impl.xquery.saxon;
+							org.apache.xpath;
+							org.apache.xpath.objects;
+							org.apache.xerces.dom;
+							org.apache.xerces.parsers;
+							org.apache.log.format;
+							org.apache.log.output.io;
+							org.apache.geronimo.osgi.locator;
+
+							org.codehaus.groovy.ast;
+							org.codehaus.groovy.control;
+
+							org.eclipse.core.resources;
+							org.eclipse.core.runtime;
+							org.eclipse.core.runtime.jobs;
+							org.eclipse.core.runtime.preferences;
+							org.eclipse.jdt.core.index;
+							org.eclipse.jface.text;
+							org.eclipse.osgi.util;
+							org.eclipse.text.edits;
+
+							org.gjt.xpp;
+							org.hibernate;
+							org.hibernate.metadata;
+							org.hibernate.type;
+
+							org.ietf.jgss;
+							org.jaxen;
+							org.jaxen.dom;
+							org.jaxen.dom4j;
+							org.jaxen.pattern;
+							org.jaxen.saxpath;
+
+							org.joda.time;
+							org.joda.time.format;
+
+							org.krysalis.barcode4j;
+							org.krysalis.barcode4j.impl;
 							org.krysalis.barcode4j.impl.codabar;
 							org.krysalis.barcode4j.impl.code128;
 							org.krysalis.barcode4j.impl.code39;
@@ -616,23 +921,94 @@
 							org.krysalis.barcode4j.impl.upcean;
 							org.krysalis.barcode4j.output;
 							org.krysalis.barcode4j.output.bitmap;
-							org.krysalis.barcode4j.output.svg; org.krysalis.barcode4j.tools;
-							org.mozilla.javascript; org.mozilla.javascript.optimizer;
+							org.krysalis.barcode4j.output.svg;
+							org.krysalis.barcode4j.tools;
+
+							org.mozilla.javascript;
+							org.mozilla.javascript.optimizer;
+							org.mozilla.javascript.debug;
+
 							org.openxmlformats.schemas.officeDocument.x2006.math;
 							org.openxmlformats.schemas.schemaLibrary.x2006.main;
-							org.osgi.service.prefs; org.relaxng.datatype;
+
 							org.springframework.beans.factory;
 							org.springframework.beans.factory.xml;
-							org.springframework.core.io; org.w3c.dom.svg; org.xmlpull.v1;
-							schemasMicrosoftComOfficePowerpoint;
-							schemasMicrosoftComOfficeWord; weblogic.apache.xml.serialize;
+							org.springframework.core.io;
+							org.w3c.dom.svg;
+							org.xmlpull.v1;
 
+							org.python.core;
+							org.python.util;
+
+							org.osgi.service.prefs;
 							org.osgi.framework;
 
-							javax.security.sasl; sun.security.util;
-							javax.enterprise.util; javax.management;
+							org.hsqldb;
+							org.hsqldb.persist;
+							org.hsqldb.server;
+							org.objectweb.asm;
+							org.objectweb.asm.signature;
+							org.objectweb.asm.util;
+							org.postgresql;
+							org.w3c.dom;
 
-							${project.groupId}.*;provide:=true</Import-Package>
+							schemasMicrosoftComOfficePowerpoint;
+							schemasMicrosoftComOfficeWord;
+							weblogic.apache.xml.serialize;
+
+							sun.security.util;
+							sun.io;
+
+							org.relaxng.datatype;
+							COM.ibm.netrexx.process;
+							netrexx.lang;
+							nu.xom;
+							net.sf.cglib.proxy;
+							tcl.lang;
+
+							com.ibm.icu.text;
+							com.sun.org.apache.xerces.internal.parsers;
+							com.sun.org.apache.xerces.internal.util;
+							com.sun.org.apache.xerces.internal.xni.parser;
+							com.thoughtworks.xstream; groovyjarjarasm.asm.tree.analysis;
+							groovyjarjarasm.asm.util; javax.management.modelmbean;
+							javax.management.remote; javax.servlet.jsp;
+							javax.swing.plaf.metal; javax.swing.undo; jline;
+							org.apache.commons.cli; org.apache.ivy;
+							org.apache.ivy.core.cache; org.apache.ivy.core.event;
+							org.apache.ivy.core.module.descriptor;
+							org.apache.ivy.core.module.id; org.apache.ivy.core.report;
+							org.apache.ivy.core.resolve; org.apache.ivy.core.settings;
+							org.apache.ivy.plugins.resolver; org.fusesource.jansi;
+							com.mockobjects; com.mockobjects.constraint;
+							com.mockobjects.dynamic; groovy.runtime.metaclass;
+							bsh;
+							org.apache.geronimo.osgi.registry.api; org.osgi.util.tracker;
+							com.beust.jcommander; com.opensymphony.oscache.base;
+							com.opensymphony.oscache.general;
+							com.opensymphony.oscache.web.filter;
+							com.sun.msv.datatype.xsd.ngimpl; com.sun.msv.datatype.xsd.regex;
+							com.yahoo.platform.yui.compressor; javax.management.openmbean;
+							javax.portlet; junit.awtui; org.apache.commons.lang.text;
+							org.apache.taglibs.standard.tag.common.fmt; org.atmosphere.cpr;
+							org.atmosphere.handler; org.atmosphere.websocket;
+							org.eclipse.core.boot; org.eclipse.core.internal.boot;
+							org.hibernate.cache; org.hibernate.cache.access;
+							org.hibernate.cfg; org.hibernate.impl; org.hibernate.stat;
+							org.hibernate.transaction; org.iso_relax.dispatcher;
+							org.iso_relax.dispatcher.impl; org.iso_relax.verifier;
+							org.iso_relax.verifier.impl; org.jboss.cache;
+							org.jboss.cache.config; org.jboss.cache.eviction;
+							org.reflections; org.reflections.scanners; org.reflections.util;
+							org.reflections.vfs; org.relaxng.datatype.helpers;
+							org.slf4j.impl; sun.misc;
+
+							io.marioslab.basis.template;
+							${project.groupId}.*;
+
+							provide:=true
+
+						</Import-Package>
 						<Bundle-SymbolicName>${project.groupId}.jpp-javax.plugin;singleton:=true</Bundle-SymbolicName>
 						<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
 						<Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
@@ -727,6 +1103,10 @@
 						<include>**/src/**/*.xml</include>
 					</includes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.2</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -869,6 +1249,24 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-changelog-plugin</artifactId> -->
+			<!-- <version>2.2</version> -->
+			<!-- <reportSets> -->
+			<!-- <reportSet> -->
+			<!-- <id>dual-report</id> -->
+			<!-- <configuration> -->
+			<!-- <type>range</type> -->
+			<!-- <range>30</range> -->
+			<!-- </configuration> -->
+			<!-- <reports> -->
+			<!-- <report>changelog</report> -->
+			<!-- <report>file-activity</report> -->
+			<!-- <report>dev-activity</report> -->
+			<!-- </reports> -->
+			<!-- </reportSet> -->
+			<!-- </reportSets> -->
+			<!-- </plugin> -->
 		</plugins>
 	</reporting>
 

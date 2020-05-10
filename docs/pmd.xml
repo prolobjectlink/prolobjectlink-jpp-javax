@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2020-05-08T08:20:52.127">
+<pmd version="4.2.5" timestamp="2020-05-23T18:52:32.299">
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\db\entity\AbstractEntityManager.java">
 <violation beginline="74" endline="74" begincolumn="43" endcolumn="61" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="io.github.prolobjectlink.db.entity" class="AbstractEntityManager" variable="synchronizationType" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'synchronizationType'.
@@ -365,10 +365,10 @@ These nested if statements could be combined
 </violation>
 </file>
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\application\AbstractModelGenerator.java">
-<violation beginline="209" endline="209" begincolumn="50" endcolumn="63" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyClass" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="225" endline="225" begincolumn="50" endcolumn="63" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedKeyClass" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedKeyClass'.
 </violation>
-<violation beginline="210" endline="210" begincolumn="50" endcolumn="65" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueClass" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+<violation beginline="226" endline="226" begincolumn="50" endcolumn="65" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="io.github.prolobjectlink.web.application" class="AbstractModelGenerator" method="getPersistenceUnits" variable="linkedValueClass" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
 Avoid unused local variables such as 'linkedValueClass'.
 </violation>
 </file>
@@ -410,7 +410,7 @@ Avoid unused local variables such as 'serverArgs'.
 </violation>
 </file>
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpp-javax\src\main\java\io\github\prolobjectlink\web\servlet\AbstractServlet.java">
-<violation beginline="352" endline="354" begincolumn="82" endcolumn="41" rule="EmptyIfStmt" ruleset="Basic Rules" package="io.github.prolobjectlink.web.servlet" class="AbstractServlet" method="listDatabases" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+<violation beginline="365" endline="367" begincolumn="82" endcolumn="41" rule="EmptyIfStmt" ruleset="Basic Rules" package="io.github.prolobjectlink.web.servlet" class="AbstractServlet" method="listDatabases" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
 Avoid empty if statements
 </violation>
 </file>

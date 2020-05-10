@@ -21,13 +21,7 @@
  */
 package io.github.prolobjectlink.web.servlet.admin;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -35,18 +29,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import io.github.prolobjectlink.db.file.HSQLFileFilter;
-import io.github.prolobjectlink.db.file.ODBFileFilter;
-import io.github.prolobjectlink.db.file.PDBFileFilter;
-import io.github.prolobjectlink.web.entry.ApplicationEntry;
-import io.github.prolobjectlink.web.function.AssetFunction;
-import io.github.prolobjectlink.web.function.LaunchFunction;
-import io.github.prolobjectlink.web.function.PathFunction;
 import io.github.prolobjectlink.web.servlet.AbstractServlet;
-import io.marioslab.basis.template.Template;
-import io.marioslab.basis.template.TemplateContext;
-import io.marioslab.basis.template.TemplateLoader;
-import io.marioslab.basis.template.TemplateLoader.ClasspathTemplateLoader;
 
 @WebServlet
 public class ExportApplicationServlet extends AbstractServlet implements Servlet {
@@ -56,77 +39,13 @@ public class ExportApplicationServlet extends AbstractServlet implements Servlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// request information
-		String protocol = req.getScheme();
-		String host = req.getHeader("host");
-
 		String pathInfo = req.getPathInfo();
 		if (pathInfo != null) {
 			pathInfo = pathInfo.substring(1);
 		}
 
-		// Engine and context
-		TemplateLoader loader = new ClasspathTemplateLoader();
-		Template template = loader.load("/io/github/prolobjectlink/web/html/applications.html");
-		TemplateContext context = new TemplateContext();
-
-		File webapps = getWebDirectory();
-		File database = getDBDirectory();
-		File[] apps = webapps.listFiles();
-
-		File[] dbs = database.listFiles();
-		for (File file : dbs) {
-			if (file.isDirectory()) {
-				if (file.getName().equals("hsqldb")) {
-					HSQLFileFilter filter = new HSQLFileFilter(pathInfo);
-					File[] scripts = file.listFiles(filter);
-					for (File x : scripts) {
-						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
-						Files.delete(dbfilepath);
-					}
-				} else if (file.getName().equals("pdb")) {
-					PDBFileFilter filter = new PDBFileFilter(pathInfo);
-					File[] scripts = file.listFiles(filter);
-					for (File x : scripts) {
-						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
-						Files.delete(dbfilepath);
-					}
-				} else if (file.getName().equals("odb")) {
-					ODBFileFilter filter = new ODBFileFilter(pathInfo);
-					File[] scripts = file.listFiles(filter);
-					for (File x : scripts) {
-						Path dbfilepath = FileSystems.getDefault().getPath(x.getCanonicalPath());
-						Files.delete(dbfilepath);
-					}
-				}
-			}
-		}
-
-		List<ApplicationEntry> applications = new ArrayList<ApplicationEntry>(apps.length);
-		for (File file : apps) {
-			// check application
-			if (file.isDirectory()) {
-				long size = file.length();
-				String name = file.getName();
-				long modified = file.lastModified();
-				ApplicationEntry e = new ApplicationEntry(name, size, modified);
-				applications.add(e);
-			}
-		}
-
-		// variables
-		context.set("applications", applications);
-
-		// functions
-		context.set("path", new PathFunction("pas", protocol, host));
-		context.set("launch", new LaunchFunction(protocol, host));
-		context.set("asset", new AssetFunction(protocol, host));
-
-		// render
-		template.render(context, resp.getOutputStream());
-
-		// response
-		resp.setStatus(HttpServletResponse.SC_OK);
+		createApplicationBackup(pathInfo);
+		copyBackupFile(resp, pathInfo);
 	}
 
 }

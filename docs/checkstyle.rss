@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2020 Prolobjectlink Project</copyright>
     <item>
-      <title>File: 332,
-             Errors: 29766,
+      <title>File: 309,
+             Errors: 28147,
              Warnings: 0,
              Infos: 0
       </title>
@@ -81,20 +81,6 @@
                 </td>
                 <td>
                   9
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapJSDatatableMinServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapJSDatatableMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  80
                 </td>
               </tr>
                           <tr>
@@ -295,20 +281,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.JQueryDatatableMinServlet.java">io/github/prolobjectlink/web/servlet/misc/JQueryDatatableMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.querylang.ast.QueryIdent.java">io/github/prolobjectlink/db/querylang/ast/QueryIdent.java</a>
                 </td>
                 <td>
@@ -389,34 +361,6 @@
                 </td>
                 <td>
                   428
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.application.AbstractMiscGenerator.java">io/github/prolobjectlink/web/application/AbstractMiscGenerator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  108
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.application.MiscGenerator.java">io/github/prolobjectlink/web/application/MiscGenerator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  6
                 </td>
               </tr>
                           <tr>
@@ -561,20 +505,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.ProlobjectlinkCSSMinServlet.java">io/github/prolobjectlink/web/servlet/misc/ProlobjectlinkCSSMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  80
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jpa.JpaStoredProcedureQuery.java">io/github/prolobjectlink/db/jpa/JpaStoredProcedureQuery.java</a>
                 </td>
                 <td>
@@ -659,20 +589,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapCSSMinMapServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapCSSMinMapServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jpa.criteria.predicate.JpaLike.java">io/github/prolobjectlink/db/jpa/criteria/predicate/JpaLike.java</a>
                 </td>
                 <td>
@@ -696,7 +612,7 @@
                   0
                 </td>
                 <td>
-                  355
+                  368
                 </td>
               </tr>
                           <tr>
@@ -827,20 +743,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.resources.package-info.java">io/github/prolobjectlink/web/resources/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jpa.criteria.JpaPredicate.java">io/github/prolobjectlink/db/jpa/criteria/JpaPredicate.java</a>
                 </td>
                 <td>
@@ -879,20 +781,6 @@
                 </td>
                 <td>
                   116
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.StyleSheetServlet.java">io/github/prolobjectlink/web/servlet/misc/StyleSheetServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
                 </td>
               </tr>
                           <tr>
@@ -1163,20 +1051,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapCSSServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapCSSServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jpa.criteria.JpaWhere.java">io/github/prolobjectlink/db/jpa/criteria/JpaWhere.java</a>
                 </td>
                 <td>
@@ -1200,7 +1074,7 @@
                   0
                 </td>
                 <td>
-                  158
+                  165
                 </td>
               </tr>
                           <tr>
@@ -1499,6 +1373,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.DatabaseType.java">io/github/prolobjectlink/db/DatabaseType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jpa.criteria.predicate.JpaIsTruePredicate.java">io/github/prolobjectlink/db/jpa/criteria/predicate/JpaIsTruePredicate.java</a>
                 </td>
                 <td>
@@ -1537,20 +1425,6 @@
                 </td>
                 <td>
                   15
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.JavaScriptServlet.java">io/github/prolobjectlink/web/servlet/misc/JavaScriptServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
                 </td>
               </tr>
                           <tr>
@@ -1611,6 +1485,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.application.AbstractMiscellaneousLoader.java">io/github/prolobjectlink/web/application/AbstractMiscellaneousLoader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  108
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.querylang.DeklList.java">io/github/prolobjectlink/db/querylang/DeklList.java</a>
                 </td>
                 <td>
@@ -1621,20 +1509,6 @@
                 </td>
                 <td>
                   2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.ProlobjectlinkCSSServlet.java">io/github/prolobjectlink/web/servlet/misc/ProlobjectlinkCSSServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>
@@ -1760,7 +1634,7 @@
                   0
                 </td>
                 <td>
-                  373
+                  567
                 </td>
               </tr>
                           <tr>
@@ -1873,20 +1747,6 @@
                 </td>
                 <td>
                   8
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.JQueryEasingMinServlet.java">io/github/prolobjectlink/web/servlet/misc/JQueryEasingMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>
@@ -2059,20 +1919,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.JQueryServlet.java">io/github/prolobjectlink/web/servlet/misc/JQueryServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.entity.EntityField.java">io/github/prolobjectlink/db/entity/EntityField.java</a>
                 </td>
                 <td>
@@ -2082,7 +1928,7 @@
                   0
                 </td>
                 <td>
-                  251
+                  231
                 </td>
               </tr>
                           <tr>
@@ -2139,6 +1985,20 @@
                 </td>
                 <td>
                   28
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.ResourceServlet.java">io/github/prolobjectlink/web/servlet/ResourceServlet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
                 </td>
               </tr>
                           <tr>
@@ -2339,34 +2199,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.ChartJSMinServlet.java">io/github/prolobjectlink/web/servlet/misc/ChartJSMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  78
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapCSSDatatableMinServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapCSSDatatableMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  81
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.prolog.AbstractPrologProgrammer.java">io/github/prolobjectlink/db/prolog/AbstractPrologProgrammer.java</a>
                 </td>
                 <td>
@@ -2377,20 +2209,6 @@
                 </td>
                 <td>
                   180
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapJSMinMapServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapJSMinMapServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>
@@ -2675,20 +2493,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.JQueryMinMapServlet.java">io/github/prolobjectlink/web/servlet/misc/JQueryMinMapServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.querylang.jpql.JpqlParser.java">io/github/prolobjectlink/db/querylang/jpql/JpqlParser.java</a>
                 </td>
                 <td>
@@ -2941,20 +2745,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.PopperServlet.java">io/github/prolobjectlink/web/servlet/misc/PopperServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  78
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jdbc.RemoteDriver.java">io/github/prolobjectlink/db/jdbc/RemoteDriver.java</a>
                 </td>
                 <td>
@@ -3049,20 +2839,6 @@
                 </td>
                 <td>
                   16
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.FontawesomeCSSServlet.java">io/github/prolobjectlink/web/servlet/misc/FontawesomeCSSServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>
@@ -3179,6 +2955,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.application.AbstractResourceLoader.java">io/github/prolobjectlink/web/application/AbstractResourceLoader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  182
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jpa.metamodel.JpaListAttribute.java">io/github/prolobjectlink/db/jpa/metamodel/JpaListAttribute.java</a>
                 </td>
                 <td>
@@ -3189,34 +2979,6 @@
                 </td>
                 <td>
                   19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.ChartJSServlet.java">io/github/prolobjectlink/web/servlet/misc/ChartJSServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  78
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapCSSMinServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapCSSMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>
@@ -3454,7 +3216,7 @@
                   0
                 </td>
                 <td>
-                  819
+                  823
                 </td>
               </tr>
                           <tr>
@@ -3543,20 +3305,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.JQueryMinServlet.java">io/github/prolobjectlink/web/servlet/misc/JQueryMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.admin.ExportApplicationServlet.java">io/github/prolobjectlink/web/servlet/admin/ExportApplicationServlet.java</a>
                 </td>
                 <td>
@@ -3566,7 +3314,7 @@
                   0
                 </td>
                 <td>
-                  84
+                  19
                 </td>
               </tr>
                           <tr>
@@ -3580,7 +3328,7 @@
                   0
                 </td>
                 <td>
-                  121
+                  18
                 </td>
               </tr>
                           <tr>
@@ -3833,6 +3581,20 @@
                 </td>
                 <td>
                   623
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.application.ResourceLoader.java">io/github/prolobjectlink/web/application/ResourceLoader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
                 </td>
               </tr>
                           <tr>
@@ -4131,34 +3893,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.ProlobjectlinkJSMinServlet.java">io/github/prolobjectlink/web/servlet/misc/ProlobjectlinkJSMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapJSServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapJSServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  78
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.querylang.Timestamp.java">io/github/prolobjectlink/db/querylang/Timestamp.java</a>
                 </td>
                 <td>
@@ -4411,20 +4145,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.PopperMinServlet.java">io/github/prolobjectlink/web/servlet/misc/PopperMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.function.AssetFunction.java">io/github/prolobjectlink/web/function/AssetFunction.java</a>
                 </td>
                 <td>
@@ -4435,20 +4155,6 @@
                 </td>
                 <td>
                   23
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.FontawesomeCSSMinServlet.java">io/github/prolobjectlink/web/servlet/misc/FontawesomeCSSMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>
@@ -4490,7 +4196,7 @@
                   0
                 </td>
                 <td>
-                  159
+                  162
                 </td>
               </tr>
                           <tr>
@@ -4579,20 +4285,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.ProlobjectlinkJSServlet.java">io/github/prolobjectlink/web/servlet/misc/ProlobjectlinkJSServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.db.jpa.criteria.JpaFalse.java">io/github/prolobjectlink/db/jpa/criteria/JpaFalse.java</a>
                 </td>
                 <td>
@@ -4631,20 +4323,6 @@
                 </td>
                 <td>
                   715
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://prolobjectlink.github.io/prolobjectlink-jpp-javax/checkstyle.html#io.github.prolobjectlink.web.servlet.misc.BootstrapJSMinServlet.java">io/github/prolobjectlink/web/servlet/misc/BootstrapJSMinServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  79
                 </td>
               </tr>
                           <tr>

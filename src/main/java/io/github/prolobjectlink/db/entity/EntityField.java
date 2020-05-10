@@ -21,10 +21,7 @@
  */
 package io.github.prolobjectlink.db.entity;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -98,6 +95,47 @@ public class EntityField extends DatabaseField {
 		buffer.append('\n');
 	}
 
+	@Override
+	public void generateSetter(StringBuilder buffer) {
+		String fieldName = getName();
+		char n = Character.toUpperCase(fieldName.charAt(0));
+		String fname = n + fieldName.substring(1);
+		buffer.append('\t');
+		buffer.append(Modifier.PUBLIC);
+		buffer.append(' ');
+		buffer.append("void");
+		buffer.append(' ');
+		buffer.append("set");
+		buffer.append(fname);
+		buffer.append('(');
+		buffer.append(getType().getSimpleName());
+		if (hasLinkedTypeName()) {
+			buffer.append('<');
+			buffer.append(getLinkedTypeShortName());
+			buffer.append('>');
+		}
+		buffer.append(' ');
+		buffer.append(fieldName);
+		buffer.append(')');
+		buffer.append('{');
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append("this");
+		buffer.append(".");
+		buffer.append(fieldName);
+		buffer.append(' ');
+		buffer.append('=');
+		buffer.append(' ');
+		buffer.append(fieldName);
+		buffer.append(';');
+		buffer.append('\n');
+		buffer.append('\t');
+		buffer.append('}');
+		buffer.append('\n');
+		buffer.append('\n');
+	}
+
 	/**
 	 * Create a field in byte code instruction
 	 * 
@@ -143,63 +181,6 @@ public class EntityField extends DatabaseField {
 			fv.visitAnnotation(Type.getDescriptor(ManyToMany.class), true).visitEnd();
 		}
 		fv.visitEnd();
-	}
-
-	public final boolean isList(Class<?> clazz) {
-		return clazz.isAssignableFrom(List.class);
-	}
-
-	public final boolean isMap(Class<?> clazz) {
-		return clazz.isAssignableFrom(Map.class);
-	}
-
-	public final boolean isSet(Class<?> clazz) {
-		return clazz.isAssignableFrom(Set.class);
-	}
-
-	public final boolean isCollection(Class<?> clazz) {
-		return clazz.isAssignableFrom(Collection.class);
-	}
-
-	@Override
-	public void generateSetter(StringBuilder buffer) {
-		String fieldName = getName();
-		char n = Character.toUpperCase(fieldName.charAt(0));
-		String fname = n + fieldName.substring(1);
-		buffer.append('\t');
-		buffer.append(Modifier.PUBLIC);
-		buffer.append(' ');
-		buffer.append("void");
-		buffer.append(' ');
-		buffer.append("set");
-		buffer.append(fname);
-		buffer.append('(');
-		buffer.append(getType().getSimpleName());
-		if (hasLinkedTypeName()) {
-			buffer.append('<');
-			buffer.append(getLinkedTypeShortName());
-			buffer.append('>');
-		}
-		buffer.append(' ');
-		buffer.append(fieldName);
-		buffer.append(')');
-		buffer.append('{');
-		buffer.append('\n');
-		buffer.append('\t');
-		buffer.append('\t');
-		buffer.append("this");
-		buffer.append(".");
-		buffer.append(fieldName);
-		buffer.append(' ');
-		buffer.append('=');
-		buffer.append(' ');
-		buffer.append(fieldName);
-		buffer.append(';');
-		buffer.append('\n');
-		buffer.append('\t');
-		buffer.append('}');
-		buffer.append('\n');
-		buffer.append('\n');
 	}
 
 	@Override

@@ -21,7 +21,7 @@
  */
 package io.github.prolobjectlink.db.jpa.spi;
 
-import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
+//import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 import static javax.xml.validation.SchemaFactory.newInstance;
 
 import java.io.BufferedInputStream;
@@ -54,6 +54,8 @@ import io.github.prolobjectlink.db.xml.PersistenceXmlParser;
  */
 @Deprecated
 public final class JPAPersistenceXmlParser extends AbstractXmlParser implements XmlParser {
+
+	public static final String W3C_XML_SCHEMA_NS_URI = "http://www.w3.org/2001/XMLSchema";
 
 	/**
 	 * @deprecated Use {@link PersistenceXmlParser} instead.

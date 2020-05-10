@@ -40,10 +40,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import io.github.prolobjectlink.db.DatabaseConsole;
-import io.github.prolobjectlink.db.prolog.PrologDatabaseEngine;
-import io.github.prolobjectlink.db.prolog.PrologDatabaseProvider;
-import io.github.prolobjectlink.db.prolog.PrologProgrammer;
-import io.github.prolobjectlink.db.prolog.PrologProject;
+import io.github.prolobjectlink.logging.LoggerUtils;
 import io.github.prolobjectlink.prolog.ArrayIterator;
 import io.github.prolobjectlink.prolog.PrologIndicator;
 import io.github.prolobjectlink.prolog.PrologQuery;
@@ -210,14 +207,17 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 				control.run(new String[] { arg });
 				control.openBrowser(uri);
 			} else if (m.containsKey("-m")) {
-				stdout.println("Generating web applications models");
+				LoggerUtils.info(getClass(), "Generating web applications models");
+//				stdout.println("Generating web applications models");
 				ModelGenerator g = getModelGeneratorInstance();
 				ModelProcessor processor = new ModelProcessor(g);
 				processor.processModel();
-				stdout.println("Generation OK");
+				LoggerUtils.info(getClass(), "Generation OK");
+//				stdout.println("Generation OK");
 				System.exit(0);
 			} else if (m.containsKey("-j")) {
-				stdout.println("Coding web applications models");
+				LoggerUtils.info(getClass(), "Coding web applications models");
+//				stdout.println("Coding web applications models");
 				String file = m.get("-j");
 				try {
 					JarFile jarFile = new JarFile(file);
@@ -228,7 +228,8 @@ public abstract class AbstractDatabaseConsole implements DatabaseConsole {
 					Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 					System.exit(1);
 				}
-				stdout.println("Coding OK");
+				LoggerUtils.info(getClass(), "Coding OK");
+//				stdout.println("Coding OK");
 				System.exit(0);
 			} else if (m.containsKey("-c")) {
 				stdout.println("Coding applications controllers");

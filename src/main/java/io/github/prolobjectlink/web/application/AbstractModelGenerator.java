@@ -86,16 +86,32 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 	}
 
 	private void assertValidClassIndicator(PrologClause clause) {
+//		if (!clause.hasIndicator("class", 3)) {
+//			throw new IndicatorError("No valid class descriptor predicate " + clause);
+//		}
 		if (!clause.getIndicator().equals(CLASS)) {
 			throw new IndicatorError("No valid class descriptor predicate " + clause);
 		}
 	}
 
-	private void assertValidFieldIndicator(PrologTerm prologTerm) {
-		String indicator = prologTerm.getIndicator();
+	private void assertValidFieldIndicator(PrologTerm t) {
+//		if (!t.hasIndicator("field", 2) &&
+//
+//				!t.hasIndicator("key", 2) &&
+//
+//				!t.hasIndicator("oneToOne", 2) &&
+//
+//				!t.hasIndicator("oneToMany", 2) &&
+//
+//				!t.hasIndicator("manyToOne", 2) &&
+//
+//				!t.hasIndicator("manyToMany", 2)) {
+//			throw new IndicatorError("No valid field descriptor predicate " + t);
+//		}
+		String indicator = t.getIndicator();
 		if (!indicator.equals(FIELD) && !indicator.equals(KEY) && !indicator.equals(ONETOONE)
 				&& !indicator.equals(ONETOMANY) && !indicator.equals(MANYTOONE) && !indicator.equals(MANYTOMANY)) {
-			throw new IndicatorError("No valid field descriptor predicate " + prologTerm);
+			throw new IndicatorError("No valid field descriptor predicate " + t);
 		}
 	}
 

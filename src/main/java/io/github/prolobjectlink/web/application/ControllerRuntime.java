@@ -23,11 +23,14 @@ package io.github.prolobjectlink.web.application;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import io.github.prolobjectlink.db.etc.Settings;
 import io.github.prolobjectlink.logging.LoggerConstants;
@@ -52,7 +55,8 @@ import io.marioslab.basis.template.TemplateLoader.FileTemplateLoader;
 public class ControllerRuntime {
 
 	public static void run(final String protocol, final String host, final int port, final String application,
-			String procedure, Object[] arguments, OutputStream out) throws IOException {
+			String procedure, Object[] arguments, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 
 		PrologProvider provider = new Settings().load().getProvider();
 		File controllerFolder = getControllerFolder(application);
@@ -98,8 +102,11 @@ public class ControllerRuntime {
 				context.set("asset", new AssetFunction(protocol, host));
 				context.set("md5", new MD5Function());
 				context.set("sha", new SHAFunction());
+				context.set("response", response);
+				context.set("request", request);
 
 				// render
+				ServletOutputStream out = response.getOutputStream();
 				template.render(context, out);
 
 			}
