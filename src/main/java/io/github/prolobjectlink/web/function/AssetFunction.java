@@ -23,7 +23,7 @@ package io.github.prolobjectlink.web.function;
 
 import java.util.function.UnaryOperator;
 
-public class AssetFunction implements UnaryOperator<String> {
+public class AssetFunction extends AbstractFunction<String, String> implements UnaryOperator<String> {
 
 	private final String protocol;
 	private final String host;

@@ -28,6 +28,7 @@ import javax.persistence.spi.PersistenceUnitInfo;
 
 import io.github.prolobjectlink.db.jdbc.embedded.HSQLDBFileDriver;
 import io.github.prolobjectlink.db.jdbc.remote.HSQLDBDriver;
+import io.github.prolobjectlink.db.jdbc.remote.MSSQLSERVERDriver;
 import io.github.prolobjectlink.db.jdbc.remote.MySQLDriver;
 import io.github.prolobjectlink.db.jdbc.remote.PostgreSQLDriver;
 import io.github.prolobjectlink.web.application.WebApplication;
@@ -43,6 +44,8 @@ public class DatabaseDriverFactory {
 			driver = new PostgreSQLDriver(properties);
 		} else if (prefix.matches(MySQLDriver.prefix + ".*")) {
 			driver = new MySQLDriver(properties);
+		} else if (prefix.matches(MSSQLSERVERDriver.prefix + ".*")) {
+			driver = new MSSQLSERVERDriver(properties);
 		} else if (prefix.matches(HSQLDBDriver.prefix + ".*")) {
 			driver = new HSQLDBDriver(properties);
 		} else if (prefix.matches(HSQLDBFileDriver.prefix + ".*")) {

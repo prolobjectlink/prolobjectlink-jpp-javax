@@ -25,7 +25,7 @@ import java.util.function.UnaryOperator;
 
 import io.github.prolobjectlink.db.SystemSecurity;
 
-public class SHAFunction implements UnaryOperator<String> {
+public class SHAFunction extends AbstractFunction<String, String> implements UnaryOperator<String> {
 
 	@Override
 	public String apply(String arg0) {

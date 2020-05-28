@@ -34,10 +34,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import io.github.prolobjectlink.db.DatabaseServer;
 import io.github.prolobjectlink.web.entry.ApplicationEntry;
 import io.github.prolobjectlink.web.entry.DatabaseEntry;
 import io.github.prolobjectlink.web.function.AssetFunction;
 import io.github.prolobjectlink.web.function.PathFunction;
+import io.github.prolobjectlink.web.platform.WebServer;
 import io.github.prolobjectlink.web.servlet.AbstractServlet;
 import io.marioslab.basis.template.Template;
 import io.marioslab.basis.template.TemplateContext;
@@ -48,6 +50,14 @@ import io.marioslab.basis.template.TemplateLoader.ClasspathTemplateLoader;
 public class ManagerServlet extends AbstractServlet implements Servlet {
 
 	private static final long serialVersionUID = 7313381101418470194L;
+
+	private final DatabaseServer dbServer;
+	private final WebServer webserver;
+
+	public ManagerServlet(DatabaseServer dbServer, WebServer webserver) {
+		this.webserver = webserver;
+		this.dbServer = dbServer;
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -79,8 +89,12 @@ public class ManagerServlet extends AbstractServlet implements Servlet {
 		context.set("plname", factory.getParameter(ScriptEngine.NAME));
 
 		// servlet container
-		context.set("serverversion", "2.4.3");
-		context.set("servername", "Grizzly");
+		context.set("serverversion", webserver.getVersion());
+		context.set("servername", webserver.getName());
+
+		// database server
+		context.set("dbserverversion", dbServer.getVersion());
+		context.set("dbservername", dbServer.getName());
 
 		// runtime statistics
 		Runtime runtime = Runtime.getRuntime();
@@ -129,7 +143,7 @@ public class ManagerServlet extends AbstractServlet implements Servlet {
 		for (DatabaseEntry databaseEntry : databases) {
 			databaseSize += databaseEntry.getSize();
 		}
-		
+
 		long usedSpacePercent = partitionUsableSize * 100 / partitionTotalSize;
 		long freeSpacePercent = partitionFreeSize * 100 / partitionTotalSize;
 		long appUsedPercent = applicationSize * 100 / partitionTotalSize;

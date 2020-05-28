@@ -24,7 +24,6 @@ package io.github.prolobjectlink.db.jdbc;
 import java.util.Properties;
 
 import io.github.prolobjectlink.db.DatabaseDriver;
-import io.github.prolobjectlink.web.application.WebApplication;
 
 public abstract class RemoteDriver extends DatabaseDriver {
 
@@ -33,8 +32,6 @@ public abstract class RemoteDriver extends DatabaseDriver {
 
 	public RemoteDriver(Properties properties) {
 		super(properties);
-		String url = properties.getProperty(WebApplication.URL);
-		this.dbhost = url.substring(url.indexOf("//") + 2, url.lastIndexOf('/'));
 	}
 
 	public RemoteDriver(String dbdirver, String dbprefix, String dbhost, String dbname, String dbport, String dbuser,

@@ -470,12 +470,17 @@ public class EntityClass extends DatabaseClass {
 		buffer.append('\t');
 		buffer.append('\t');
 		buffer.append('\t');
+		buffer.append('\t');
+		buffer.append('\t');
 		buffer.append("em.getTransaction().rollback();");
 		buffer.append('\n');
 		buffer.append('\t');
 		buffer.append('\t');
 		buffer.append('\t');
+		buffer.append('\t');
 		buffer.append("e.printStackTrace();");
+		buffer.append('\n');
+		buffer.append('\t');
 		buffer.append('\n');
 		buffer.append('\t');
 		buffer.append('\t');

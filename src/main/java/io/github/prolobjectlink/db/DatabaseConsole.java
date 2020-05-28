@@ -23,9 +23,6 @@ package io.github.prolobjectlink.db;
 
 import java.util.Map;
 
-import io.github.prolobjectlink.web.application.ModelGenerator;
-import io.github.prolobjectlink.web.platform.WebServerControl;
-
 /**
  * Represent the database system console.
  * 
@@ -33,34 +30,6 @@ import io.github.prolobjectlink.web.platform.WebServerControl;
  * @since 1.0
  */
 public interface DatabaseConsole {
-
-	/**
-	 * Create an instance of the model generator for the current platform.
-	 * 
-	 * @return an instance of the model generator
-	 * @since 1.0
-	 */
-	public ModelGenerator getModelGeneratorInstance();
-
-	/**
-	 * Return an integer that represent the default port for http web server control
-	 * embedded in the platform.
-	 * 
-	 * @return default http port for web server listening
-	 * @since 1.0
-	 */
-	public int getDefaultHttpPort();
-
-	/**
-	 * Return an instance of the http web server control embedded in the platform.
-	 * The server control is showed in host system try after run invocation and from
-	 * there the server can be started.
-	 * 
-	 * @param port port to web server listening
-	 * @return an instance of the web server control
-	 * @since 1.0
-	 */
-	public WebServerControl getWebServerControl(int port);
 
 	/**
 	 * Create a arguments map from a given string arguments array. Used for convert

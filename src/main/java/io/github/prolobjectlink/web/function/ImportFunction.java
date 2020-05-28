@@ -23,7 +23,7 @@ package io.github.prolobjectlink.web.function;
 
 import java.util.function.UnaryOperator;
 
-public class ImportFunction implements UnaryOperator<String> {
+public class ImportFunction extends AbstractFunction<String, String> implements UnaryOperator<String> {
 
 	private final String root;
 	private final String application;

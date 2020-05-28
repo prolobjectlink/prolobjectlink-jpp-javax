@@ -42,19 +42,24 @@ import io.github.prolobjectlink.prolog.PrologProvider;
 import io.github.prolobjectlink.prolog.PrologQuery;
 import io.github.prolobjectlink.prolog.PrologTerm;
 import io.github.prolobjectlink.prolog.PrologVariable;
+import io.github.prolobjectlink.web.faces.view.ViewContext;
 import io.github.prolobjectlink.web.function.AssetFunction;
+import io.github.prolobjectlink.web.function.ExtendsFunction;
+import io.github.prolobjectlink.web.function.FormFunction;
 import io.github.prolobjectlink.web.function.ImportFunction;
 import io.github.prolobjectlink.web.function.MD5Function;
 import io.github.prolobjectlink.web.function.PathFunction;
 import io.github.prolobjectlink.web.function.SHAFunction;
+import io.github.prolobjectlink.web.logging.WebLoggerUtils;
 import io.marioslab.basis.template.Template;
 import io.marioslab.basis.template.TemplateContext;
 import io.marioslab.basis.template.TemplateLoader;
+import io.marioslab.basis.template.TemplateLoader.ClasspathTemplateLoader;
 import io.marioslab.basis.template.TemplateLoader.FileTemplateLoader;
 
 public class ControllerRuntime {
 
-	public static void run(final String protocol, final String host, final int port, final String application,
+	public static synchronized void run(final String protocol, final String host, final int port, final String application,
 			String procedure, Object[] arguments, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
@@ -80,36 +85,96 @@ public class ControllerRuntime {
 				finalArgs[parameters.length] = x;
 				PrologQuery query = engine.query(provider.newStructure(procedure, finalArgs));
 				Map<String, Object> result = query.oneVariablesResult();
-				PrologTerm[] body = prologClause.getBodyArray();
-				PrologTerm render = body[body.length - 1];
-				PrologTerm[] args = render.getArguments();
-				Object view = converter.toObject(args[0]);
-				String slash = File.separator;
-				String page = WebApplication.ROOT + slash + application + slash + view;
-				File viewPath = getViewFile(page);
+				if (!result.containsKey("PrologException") && !result.containsKey("JavaException")) {
 
-				// Engine and context
-				TemplateLoader loader = new FileTemplateLoader();
-				Template template = loader.load(viewPath.getCanonicalPath());
-				TemplateContext context = new TemplateContext();
+					PrologTerm[] body = prologClause.getBodyArray();
+					PrologTerm render = body[body.length - 1];
+					PrologTerm[] args = render.getArguments();
 
-				// variables
-				context.set(x.getName(), result.get(x.getName()));
+					// Check that render view is a prolog variable
+					if (args[0].isVariable()) {
+						PrologVariable variable = (PrologVariable) args[0].getTerm();
+						for (PrologTerm prologTerm : body) {
+							if (prologTerm.hasIndicator("=", 2)) {
+								PrologTerm left = prologTerm.getArgument(0);
+								if (left.isVariable()) {
+									PrologVariable v = (PrologVariable) left;
+									if (v.getName().equals(variable.getName())) {
+										PrologTerm right = prologTerm.getArgument(1);
+										if (right.isAtom()) {
+											args[0] = right;
+										}
+									}
+								}
+							}
+						}
+					}
 
-				// functions
-				context.set("path", new PathFunction(application, protocol, host));
-				context.set("import", new ImportFunction(getWebLocation(), application));
-				context.set("asset", new AssetFunction(protocol, host));
-				context.set("md5", new MD5Function());
-				context.set("sha", new SHAFunction());
-				context.set("response", response);
-				context.set("request", request);
+					Object view = converter.toObject(args[0]);
+					String slash = File.separator;
+					String page = WebApplication.ROOT + slash + application + slash + view;
+					File viewPath = getViewFile(page);
 
-				// render
-				ServletOutputStream out = response.getOutputStream();
-				template.render(context, out);
+					// Engine and context
+					TemplateLoader loader = new FileTemplateLoader();
+					Template template = loader.load(viewPath.getCanonicalPath());
+					TemplateContext context = new TemplateContext();
+
+					// variables
+					context.set(x.getName(), result.get(x.getName()));
+
+					// context
+					if (result.get(x.getName()) instanceof ViewContext) {
+						ViewContext resultCtx = (ViewContext) result.get(x.getName());
+						for (String variable : resultCtx.getVariables()) {
+							context.set(variable, resultCtx.get(variable));
+						}
+					}
+
+					// functions
+					context.set("path", new PathFunction(application, protocol, host));
+					context.set("extends", new ExtendsFunction(getWebLocation(), application));
+					context.set("import", new ImportFunction(getWebLocation(), application));
+					context.set("asset", new AssetFunction(protocol, host));
+					context.set("form", new FormFunction());
+					context.set("md5", new MD5Function());
+					context.set("sha", new SHAFunction());
+					context.set("response", response);
+					context.set("request", request);
+
+					// render
+					ServletOutputStream out = response.getOutputStream();
+					template.render(context, out);
+
+				} else {
+
+					WebLoggerUtils.error(ControllerRuntime.class, LoggerConstants.RUNTIME_ERROR,
+							(Throwable) result.get("PrologException"));
+					WebLoggerUtils.error(ControllerRuntime.class, LoggerConstants.RUNTIME_ERROR,
+							(Throwable) result.get("JavaException"));
+				}
 
 			}
+		} else {
+
+			// Engine and context
+			TemplateLoader loader = new ClasspathTemplateLoader();
+			Template template = loader.load("/io/github/prolobjectlink/web/html/notfound.html");
+			TemplateContext context = new TemplateContext();
+
+			// functions
+			context.set("path", new PathFunction(application, protocol, host));
+			context.set("import", new ImportFunction(getWebLocation(), application));
+			context.set("asset", new AssetFunction(protocol, host));
+			context.set("md5", new MD5Function());
+			context.set("sha", new SHAFunction());
+			context.set("response", response);
+			context.set("request", request);
+
+			// render
+			ServletOutputStream out = response.getOutputStream();
+			template.render(context, out);
+
 		}
 		engine.dispose();
 	}

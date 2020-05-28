@@ -32,6 +32,7 @@ import org.postgresql.Driver;
 import io.github.prolobjectlink.db.jdbc.RemoteDriver;
 import io.github.prolobjectlink.logging.LoggerConstants;
 import io.github.prolobjectlink.logging.LoggerUtils;
+import io.github.prolobjectlink.web.application.WebApplication;
 
 /**
  * jdbc:postgresql://localhost:5432/MYDATABASE
@@ -49,6 +50,8 @@ public class PostgreSQLDriver extends RemoteDriver {
 	public PostgreSQLDriver(Properties properties) {
 		super(properties);
 		this.dbport = port;
+		String url = properties.getProperty(WebApplication.URL);
+		this.dbhost = url.substring(url.indexOf("//") + 2, url.lastIndexOf('/'));
 	}
 
 	public PostgreSQLDriver(String dbhost, String dbport, String dbname, String dbuser, String dbpwd) {
@@ -71,13 +74,9 @@ public class PostgreSQLDriver extends RemoteDriver {
 		Connection connection = DriverManager.getConnection(url, getDbuser(), getDbpwd());
 		Statement statement = connection.createStatement();
 		boolean connectionOccurs = connection != null;
-		if (statement != null) {
-			statement.executeUpdate("CREATE DATABASE " + getDbname());
-			statement.close();
-		}
-		if (connection != null) {
-			connection.close();
-		}
+		statement.executeUpdate("CREATE DATABASE " + getDbname());
+		statement.close();
+		connection.close();
 		return connectionOccurs;
 	}
 

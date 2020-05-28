@@ -92,6 +92,8 @@ public abstract class AbstractResourceLoader extends AbstractWebApplication impl
 		resources.add("/io/github/prolobjectlink/web/js/prolobjectlink.min.js");
 		resources.add("/io/github/prolobjectlink/web/js/tooltip.min.js");
 		resources.add("/io/github/prolobjectlink/web/js/ext-all.js");
+		resources.add("/io/github/prolobjectlink/web/js/prolog-compiler.js");
+		resources.add("/io/github/prolobjectlink/web/js/yieldprolog.js");
 
 		resources.add("/io/github/prolobjectlink/web/webfonts/fa-brands-400.eot");
 		resources.add("/io/github/prolobjectlink/web/webfonts/fa-brands-400.svg");

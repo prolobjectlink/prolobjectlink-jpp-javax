@@ -27,6 +27,7 @@ import java.util.Properties;
 import org.hsqldb.jdbcDriver;
 
 import io.github.prolobjectlink.db.jdbc.RemoteDriver;
+import io.github.prolobjectlink.web.application.WebApplication;
 
 public final class HSQLDBDriver extends RemoteDriver {
 
@@ -37,6 +38,8 @@ public final class HSQLDBDriver extends RemoteDriver {
 	public HSQLDBDriver(Properties properties) {
 		super(properties);
 		dbprefix = prefix;
+		String url = properties.getProperty(WebApplication.URL);
+		this.dbhost = url.substring(url.indexOf("//") + 2, url.lastIndexOf('/'));
 	}
 
 	public HSQLDBDriver(String dbhost, String dbport, String dbname, String dbuser, String dbpwd) {

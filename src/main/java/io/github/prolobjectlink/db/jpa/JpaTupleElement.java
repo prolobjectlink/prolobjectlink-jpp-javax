@@ -79,13 +79,15 @@ public class JpaTupleElement<X> extends JpaAbstractWrapper implements TupleEleme
 		if (alias == null) {
 			if (other.alias != null)
 				return false;
-		} else if (!alias.equals(other.alias))
+		} else if (!alias.equals(other.alias)) {
 			return false;
+		}
 		if (javaType == null) {
 			if (other.javaType != null)
 				return false;
-		} else if (!javaType.equals(other.javaType))
+		} else if (!javaType.equals(other.javaType)) {
 			return false;
+		}
 		return true;
 	}
 

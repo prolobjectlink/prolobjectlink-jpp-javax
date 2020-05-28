@@ -43,6 +43,8 @@ import io.github.prolobjectlink.db.DynamicClassLoader;
 import io.github.prolobjectlink.db.ObjectConverter;
 import io.github.prolobjectlink.db.entity.EntityClass;
 import io.github.prolobjectlink.db.etc.Settings;
+import io.github.prolobjectlink.db.jdbc.dialect.DialectResolver;
+import io.github.prolobjectlink.db.jdbc.embedded.H2FileDriver;
 import io.github.prolobjectlink.db.jdbc.embedded.HSQLDBFileDriver;
 import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
 import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceUnitInfo;
@@ -122,6 +124,17 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 		Object hbm2ddl = DEFAULT_HBM2DDL;
 		Object sqlshow = DEFAULT_SQLSHOW;
 		Object sqlformat = DEFAULT_SQLFORMAT;
+		Object loggingLevel = DEFAULT_LOGGING_LEVEL;
+		Object ddlgeneration = DEFAULT_DDL_GENERATION;
+
+		Object log = DEFAULT_LOG;
+		Object datacache = DEFAULT_DATACACHE;
+		Object remote_commit_provider = DEFAULT_REMOTE_COMMIT_PROVIDER;
+		Object initialize_eagerly = DEFAULT_INITIALIZE_EAGERLY;
+		Object dynamic_enhancement_agent = DEFAULT_DYNAMIC_ENHANCEMENT_AGENT;
+		Object runtime_unenhanced_classes = DEFAULT_RUNTIME_UNENHANCED_CLASSES;
+		Object synchronize_mappings = DEFAULT_SYNCHRONIZE_MAPPINGS;
+		Object query_sql_cache = DEFAULT_QUERY_SQL_CACHE;
 
 		List<PersistenceUnitInfo> l = new ArrayList<PersistenceUnitInfo>();
 		File appRoot = getWebDirectory();
@@ -165,6 +178,30 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 						LoggerUtils.error(getClass(), LoggerConstants.IO, e);
 					}
 				}
+			} else if (jpaUrl.toString().contains(H2FileDriver.prefix)) {
+				String rectify = jpaUrl.toString().replace(H2FileDriver.prefix, "");
+				if (runOnLinux() || runOnOsX()) {
+					try {
+						String str = getDBDirectory().getCanonicalPath();
+						jpaUrl = new String(H2FileDriver.prefix + str + "/h2db" + rectify).replace(File.separatorChar,
+								'/');
+					} catch (IOException e) {
+						LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+					}
+				} else if (runOnWindows()) {
+					try {
+						File[] roots = File.listRoots();
+						for (File root : roots) {
+							String str = getDBDirectory().getCanonicalPath();
+							if (str.startsWith(root.getCanonicalPath())) {
+								jpaUrl = new String(H2FileDriver.prefix + str + "/h2db" + rectify)
+										.replace(root.getCanonicalPath(), "/").replace(File.separatorChar, '/');
+							}
+						}
+					} catch (IOException e) {
+						LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+					}
+				}
 			}
 
 			String modelPath = appPath + separator + model;
@@ -185,9 +222,29 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 			JPAPersistenceUnitInfo info = new JPAPersistenceUnitInfo(null, schemaVersion, persistenceVersion, appName,
 					transactionType);
 
+			Class<?> ppc = JavaReflect.classForName("" + jpaProvider + "");
+			Class<?> jdbc = JavaReflect.classForName("" + jpaDriver + "");
+			String dialect = DialectResolver.resolve(ppc, jdbc);
+
+			// persistence provider
 			info.setPersistenceProviderClassName("" + jpaProvider + "");
-			// info.setProperty(DATABASE_ACTION, "" + jpaDatabaseAction + "");
-			// info.setProperty(SCRIPT_ACTION, "" + jpaScriptAction + "");
+
+			// openjpa
+			info.setProperty(RUNTIME_UNENHANCED_CLASSES, "" + runtime_unenhanced_classes + "");
+			info.setProperty(DYNAMIC_ENHANCEMENT_AGENT, "" + dynamic_enhancement_agent + "");
+			info.setProperty(REMOTE_COMMIT_PROVIDER, "" + remote_commit_provider + "");
+			info.setProperty(SYNCHRONIZE_MAPPINGS, "" + synchronize_mappings + "");
+			info.setProperty(INITIALIZE_EAGERLY, "" + initialize_eagerly + "");
+			info.setProperty(QUERY_SQL_CACHE, "" + query_sql_cache + "");
+			info.setProperty(DATACACHE, "" + datacache + "");
+			info.setProperty(LOG, "" + log + "");
+
+			// eclipselink
+			info.setProperty(DDL_GENERATION, "" + ddlgeneration + "");
+			info.setProperty(LOGGING_LEVEL, "" + loggingLevel + "");
+			info.setProperty(TARGET_DATABASE, dialect);
+
+			// hibernate
 			info.setProperty(SQLFORMAT, "" + sqlformat + "");
 			info.setProperty(SQLSHOW, "" + sqlshow + "");
 			info.setProperty(HBM2DDL, "" + hbm2ddl + "");
@@ -195,12 +252,11 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 			info.setProperty(USER, "" + jpaUser + "");
 			info.setProperty(PWD, "" + jpaPwd + "");
 			info.setProperty(URL, "" + jpaUrl + "");
+			info.setProperty(DIALECT, dialect);
 
 			Map<String, Class<?>> resolved = new HashMap<String, Class<?>>();
 			Map<String, EntityClass> pending = new HashMap<String, EntityClass>();
 			Map<String, EntityClass> processed = new HashMap<String, EntityClass>();
-
-			Class<?> ppc = JavaReflect.classForName("" + jpaProvider + "");
 
 			for (PrologClause clause : modelEngine) {
 
@@ -320,7 +376,10 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 					Path javaFile = compiler.saveSource(code, entity.getShortName());
 					Path classFile = compiler.compileSource(javaFile, entity.getShortName());
 					byte[] bytecode = compiler.readBytecode(classFile);
-					Class<?> cls = loader.defineClass(name, bytecode);
+					Class<?> cls = loader.lookupClass(name);
+					if (cls == null) {
+						cls = loader.defineClass(name, bytecode);
+					}
 
 					info.addManagedClassName(name);
 					info.addManagedClass(bytecode);

@@ -89,6 +89,11 @@ public class HSQLServer extends AbstractWebPlatform implements DatabaseServer {
 	}
 
 	@Override
+	public String getVersion() {
+		return server.getProductVersion();
+	}
+
+	@Override
 	public String getName() {
 		return server.getProductName();
 	}

@@ -22,8 +22,6 @@
 package io.github.prolobjectlink.web.servlet.admin;
 
 import java.io.IOException;
-import java.security.Security;
-import java.util.Random;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
@@ -36,7 +34,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import io.github.prolobjectlink.db.SystemSecurity;
+import org.apache.commons.lang.RandomStringUtils;
+
 import io.github.prolobjectlink.web.function.AssetFunction;
 import io.github.prolobjectlink.web.function.PathFunction;
 import io.marioslab.basis.template.Template;
@@ -57,8 +56,8 @@ public class LoginServlet extends HttpServlet implements Servlet {
 		String host = req.getHeader("host");
 
 		HttpSession session = req.getSession();
-		// String sessionKey = Security.randomCharString().toLowerCase();
-		String sessionKey = SystemSecurity.sha1("prolobjectlink").toLowerCase();
+		String sessionKey = RandomStringUtils.random(64).toLowerCase();
+		System.out.println(sessionKey);
 		session.setAttribute("login.authenticated", sessionKey);
 
 		// Engine and context
@@ -97,6 +96,11 @@ public class LoginServlet extends HttpServlet implements Servlet {
 		// response
 		resp.setStatus(HttpServletResponse.SC_OK);
 
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 
 }

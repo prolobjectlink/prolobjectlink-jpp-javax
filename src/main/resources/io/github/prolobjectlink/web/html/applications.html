@@ -28,7 +28,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="Jose Zalacain">
 
   <title>Prolobjectlink Application Server</title>
 
@@ -62,7 +62,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path("information") }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -117,11 +117,25 @@
           <span>Provider</span></a>
       </li>
       
+      <!-- Nav Item - Library -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path("libraries") }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Libraries</span></a>
+      </li>
+      
       <!-- Nav Item - Configuration -->
       <li class="nav-item">
         <a class="nav-link" href="{{ path("configuration") }}">
           <i class="fas fa-fw fa-table"></i>
           <span>Settings</span></a>
+      </li>
+      
+      <!-- Nav Item - Users -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path("users") }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Users</span></a>
       </li>
       
       <!-- Nav Item - Logs -->
@@ -318,6 +332,10 @@
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logs
                 </a>
+                <a class="dropdown-item" href="{{ path("about") }}">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  About
+                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -444,15 +462,27 @@
           </button>
         </div>
         <div class="modal-body">
-		<form class="user">
-            <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter File Location">
-            </div>
-        </form>
+		<form enctype="multipart/form-data" action="{{ path("uploadapp") }}" method="post">
+	<table cellspacing="0" cellpadding="3">
+		<tbody>
+			<tr>
+				<td class="row-right">
+				<td class="row-left">
+				<input type="file" size="40" name="deployWar">
+				</td>
+			</tr>
+			<tr>
+				<td class="row-right">   </td>
+				<td class="row-left">
+				<input type="submit" value="Upload">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>
 		</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{{ path("uploadapp") }}">Upload</a>
         </div>
       </div>
     </div>

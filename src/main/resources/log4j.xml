@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  prolobjectlink-jpp-javax
+  %%
+  Copyright (C) 2012 - 2019 Prolobjectlink Project
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation, either version 2.1 of the
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Lesser Public License for more details.
+  
+  You should have received a copy of the GNU General Lesser Public
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  #L%
+  -->
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+	<!--
+		| For more configuration infromation and examples see the Jakarta
+		Log4j | owebsite: http://jakarta.apache.org/log4j
+	-->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+
+	<!-- ============================== -->
+	<!-- Append messages to the console -->
+	<!-- ============================== -->
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="ERROR" />
+		<!--		<param name="Threshold" value="DEBUG" />-->
+		<param name="Target" value="System.out" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+
+	<!-- =========================== -->
+	<!-- Append messages to the file -->
+	<!-- =========================== -->
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="ERROR" />
+		<!--		<param name="Threshold" value="DEBUG" />-->
+		<param name="File" value="persistence.log" />
+		<param name="Append" value="false" />
+		<param name="MaxFileSize" value="3096KB" />
+		<param name="MaxBackupIndex" value="1" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<appender-ref ref="CONSOLE" />
+<!--		<appender-ref ref="FILE" />-->
+	</root>
+
+</log4j:configuration>

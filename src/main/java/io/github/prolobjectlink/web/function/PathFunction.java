@@ -23,7 +23,7 @@ package io.github.prolobjectlink.web.function;
 
 import java.util.function.UnaryOperator;
 
-public class PathFunction implements UnaryOperator<String> {
+public class PathFunction extends AbstractFunction<String, String> implements UnaryOperator<String> {
 
 	private final String application;
 	private final String protocol;

@@ -21,28 +21,16 @@
  */
 package io.github.prolobjectlink.web.servlet.admin;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import io.github.prolobjectlink.logging.LoggerConstants;
-import io.github.prolobjectlink.logging.LoggerUtils;
-import io.github.prolobjectlink.prolog.PrologList;
-import io.github.prolobjectlink.prolog.PrologStructure;
-import io.github.prolobjectlink.prolog.PrologTerm;
 import io.github.prolobjectlink.web.entry.ClassesEntry;
-import io.github.prolobjectlink.web.entry.FieldEntry;
 import io.github.prolobjectlink.web.function.AssetFunction;
 import io.github.prolobjectlink.web.function.PathFunction;
 import io.github.prolobjectlink.web.servlet.AbstractServlet;
@@ -68,40 +56,7 @@ public class ModelServlet extends AbstractServlet implements Servlet {
 		Template template = loader.load("/io/github/prolobjectlink/web/html/model.html");
 		TemplateContext context = new TemplateContext();
 
-		File webapps = getWebDirectory();
-		File[] apps = webapps.listFiles();
-		List<ClassesEntry> classes = new ArrayList<ClassesEntry>();
-		for (File file : apps) {
-			// check application
-			if (file.isDirectory()) {
-				String appname = file.getCanonicalPath();
-				File model = new File(appname + "/model.pl");
-				ScriptEngineManager manager = new ScriptEngineManager();
-				ScriptEngine engine = manager.getEngineByName("Prolog");
-				try {
-					engine.eval(new FileReader(model));
-					engine.eval("?-findall(Name/Type/Fields,entity(Name,Type,Fields),List)");
-					Object object = engine.get("List");
-					Object[] array = (Object[]) object;
-					for (Object terna : array) {
-						PrologTerm term = (PrologTerm) terna;
-						String name = term.getArgument(0).getArgument(0).getFunctor();
-						ClassesEntry e = new ClassesEntry(file.getName(), "" + name + "");
-						PrologList list = (PrologList) term.getArgument(1);
-						for (PrologTerm field : list) {
-							PrologStructure s = (PrologStructure) field;
-							String fieldName = s.getArgument(0).getFunctor();
-							String typeName = s.getArgument(1).getFunctor();
-							FieldEntry f = new FieldEntry(fieldName, typeName);
-							e.addField(f);
-						}
-						classes.add(e);
-					}
-				} catch (ScriptException e) {
-					LoggerUtils.error(getClass(), LoggerConstants.SYNTAX_ERROR, e);
-				}
-			}
-		}
+		List<ClassesEntry> classes = listModels();
 
 		// variables
 		context.set("classes", classes);

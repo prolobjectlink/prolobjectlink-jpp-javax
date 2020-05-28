@@ -21,42 +21,70 @@
  */
 package io.github.prolobjectlink.web.servlet;
 
+import static io.github.prolobjectlink.db.XmlParser.XML;
 import static io.github.prolobjectlink.logging.LoggerConstants.IO;
+import static io.github.prolobjectlink.prolog.PrologLogger.FILE_NOT_FOUND;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Queue;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import javax.persistence.spi.PersistenceProvider;
+import javax.persistence.spi.PersistenceUnitInfo;
+import javax.persistence.spi.PersistenceUnitTransactionType;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.servlet.Servlet;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
 import io.github.prolobjectlink.ArrayQueue;
+import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
+import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceUnitInfo;
+import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceVersion;
+import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceXmlParser;
+import io.github.prolobjectlink.db.util.JavaReflect;
 import io.github.prolobjectlink.logging.LoggerConstants;
 import io.github.prolobjectlink.logging.LoggerUtils;
+import io.github.prolobjectlink.prolog.PrologList;
+import io.github.prolobjectlink.prolog.PrologStructure;
+import io.github.prolobjectlink.prolog.PrologTerm;
 import io.github.prolobjectlink.web.application.AbstractControllerGenerator;
 import io.github.prolobjectlink.web.application.WebApplication;
 import io.github.prolobjectlink.web.entry.ApplicationEntry;
+import io.github.prolobjectlink.web.entry.ClassesEntry;
 import io.github.prolobjectlink.web.entry.DatabaseEntry;
+import io.github.prolobjectlink.web.entry.FieldEntry;
+import io.github.prolobjectlink.web.entry.LibraryEntry;
+import io.github.prolobjectlink.web.etc.UserManagement;
 
-public class AbstractServlet extends HttpServlet implements Servlet {
+public abstract class AbstractServlet extends HttpServlet implements Servlet {
 
 	protected static final String CONTENT_TYPE = "application/x-download";
+	private static final String SALT = "LVbjyjFASEHoGvuGVaEdbXPwdltkwkvU";
 	private static final long serialVersionUID = 4877024796708886136L;
 	protected static final long MAX_IO_BUFFER_SIZE = Long.MAX_VALUE;
 	protected static final int IO_BUFFER_SIZE = 4 * 1024;
@@ -280,6 +308,13 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 		return appRoot;
 	}
 
+	public final File getDistDirectory() {
+		String folder = getCurrentPath();
+		File plk = new File(folder);
+		File pdk = plk.getParentFile();
+		return pdk.getParentFile();
+	}
+
 	public final String getCurrentPath() {
 		Class<?> c = AbstractControllerGenerator.class;
 		ProtectionDomain d = c.getProtectionDomain();
@@ -292,6 +327,43 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 			return false;
 		}
 		return true;
+	}
+
+	public final String getLicense() {
+		FileReader reader = null;
+		BufferedReader buffer = null;
+		StringBuilder b = new StringBuilder();
+		try {
+			File in = new File(getDistDirectory().getCanonicalPath() + File.separator + "LICENSE.md");
+			reader = new FileReader(in);
+			buffer = new BufferedReader(reader);
+			String line = buffer.readLine();
+			while (line != null) {
+				b.append(line);
+				line = buffer.readLine();
+			}
+		} catch (FileNotFoundException e) {
+			LoggerUtils.error(getClass(), FILE_NOT_FOUND, e);
+		} catch (IOException e) {
+			LoggerUtils.error(getClass(), IO, e);
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+			if (buffer != null) {
+				try {
+					buffer.close();
+				} catch (IOException e) {
+					LoggerUtils.error(getClass(), IO, e);
+				}
+			}
+		}
+
+		return b.toString();
 	}
 
 	public final synchronized long copy(InputStream in, OutputStream out) {
@@ -342,51 +414,171 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 		List<DatabaseEntry> databases = new ArrayList<DatabaseEntry>();
 		File db = getDBDirectory();
 		if (db != null) {
-			File[] dbs = db.listFiles();
-			for (File file : dbs) {
-				if (file.isDirectory()) {
-					if (file.getName().equals("hsqldb")) {
-						File[] scripts = file.listFiles(new FileFilter() {
+			if (db != null) {
+				File[] dbs = db.listFiles();
+				for (File file : dbs) {
+					if (file.isDirectory()) {
+						if (file.getName().equals("hsqldb")) {
+							File[] scripts = file.listFiles(new FileFilter() {
 
-							@Override
-							public boolean accept(File arg0) {
-								return arg0.getName().endsWith(".script");
+								@Override
+								public boolean accept(File arg0) {
+									return arg0.getName().endsWith(".script");
+								}
+
+							});
+							for (File x : scripts) {
+								String type = "HSQLDB";
+								long size = x.length();
+								long modified = x.lastModified();
+								String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
+								DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+								databases.add(e);
 							}
+						} else if (file.getName().equals("pdb")) {
 
-						});
-						for (File x : scripts) {
-							String type = "HSQLDB";
-							long size = x.length();
-							long modified = x.lastModified();
-							String name = x.getName().substring(0, x.getName().lastIndexOf(".script"));
-							DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-							databases.add(e);
-						}
-					} else if (file.getName().equals("pdb")) {
+						} else if (file.getName().equals("h2db")) {
+							File[] scripts = file.listFiles(new FileFilter() {
 
-					} else if (file.getName().equals("odb")) {
-						File[] scripts = file.listFiles(new FileFilter() {
+								@Override
+								public boolean accept(File arg0) {
+									return arg0.getName().endsWith(".h2.db");
+								}
 
-							@Override
-							public boolean accept(File arg0) {
-								return arg0.getName().endsWith(".odb");
+							});
+							for (File x : scripts) {
+								String type = "H2";
+								long size = x.length();
+								long modified = x.lastModified();
+								String name = x.getName().substring(0, x.getName().lastIndexOf(".h2.db"));
+								DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+								databases.add(e);
 							}
+						} else if (file.getName().equals("odb")) {
+							File[] scripts = file.listFiles(new FileFilter() {
 
-						});
-						for (File x : scripts) {
-							String type = "ODB";
-							long size = x.length();
-							long modified = x.lastModified();
-							String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
-							DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
-							databases.add(e);
+								@Override
+								public boolean accept(File arg0) {
+									return arg0.getName().endsWith(".odb");
+								}
+
+							});
+							for (File x : scripts) {
+								String type = "ODB";
+								long size = x.length();
+								long modified = x.lastModified();
+								String name = x.getName().substring(0, x.getName().lastIndexOf(".odb"));
+								DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+								databases.add(e);
+							}
 						}
 					}
 				}
 			}
 		}
-
 		return databases;
+
+	}
+
+	public final List<LibraryEntry> listLibraries() {
+		List<LibraryEntry> list = new ArrayList<LibraryEntry>();
+		File libfolder = getLibDirectory();
+		if (libfolder != null) {
+			File[] libraries = libfolder.listFiles();
+			for (File file : libraries) {
+				String name = file.getName();
+				long size = file.getTotalSpace();
+				LibraryEntry e = new LibraryEntry(name, size);
+				list.add(e);
+			}
+		}
+		return list;
+	}
+
+	public final long librariesSize() {
+		long size = 0;
+		File libfolder = getLibDirectory();
+		if (libfolder != null) {
+			File[] libraries = libfolder.listFiles();
+			for (File file : libraries) {
+				size += file.getUsableSpace();
+			}
+		}
+		return size;
+	}
+
+	public final List<ClassesEntry> listModels() throws IOException {
+		List<ClassesEntry> classes = new ArrayList<ClassesEntry>();
+		File webapps = getWebDirectory();
+		if (webapps != null) {
+			File[] apps = webapps.listFiles();
+			for (File file : apps) {
+				// check application
+				if (file.isDirectory()) {
+					String appname = file.getCanonicalPath();
+					File model = new File(appname + "/model.pl");
+					ScriptEngineManager manager = new ScriptEngineManager();
+					ScriptEngine engine = manager.getEngineByName("Prolog");
+					try {
+						engine.eval(new FileReader(model));
+						engine.eval("?-findall(Name/Type/Fields,entity(Name,Type,Fields),List)");
+						Object object = engine.get("List");
+						Object[] array = (Object[]) object;
+						for (Object terna : array) {
+							PrologTerm term = (PrologTerm) terna;
+							String name = term.getArgument(0).getArgument(0).getFunctor();
+							ClassesEntry e = new ClassesEntry(file.getName(), "" + name + "");
+							PrologList list = (PrologList) term.getArgument(1);
+							for (PrologTerm field : list) {
+								PrologStructure s = (PrologStructure) field;
+								String fieldName = s.getArgument(0).getFunctor();
+								String typeName = s.getArgument(1).getFunctor();
+								FieldEntry f = new FieldEntry(fieldName, typeName);
+								e.addField(f);
+							}
+							classes.add(e);
+						}
+					} catch (ScriptException e) {
+						LoggerUtils.error(getClass(), LoggerConstants.SYNTAX_ERROR, e);
+					}
+				}
+			}
+		}
+		return classes;
+	}
+
+	public final PersistenceUnitInfo listProperties(String database) {
+		URL persistenceXml = Thread.currentThread().getContextClassLoader().getResource(XML);
+		Map<String, PersistenceUnitInfo> persistenceUnits = new JPAPersistenceXmlParser()
+				.parsePersistenceXml(persistenceXml);
+		for (Entry<String, PersistenceUnitInfo> entry : persistenceUnits.entrySet()) {
+			if (entry.getKey().equalsIgnoreCase(database)) {
+				PersistenceUnitInfo info = entry.getValue();
+				String pcls = info.getPersistenceProviderClassName();
+				Class<?> pc = JavaReflect.classForName(pcls);
+				Object object = JavaReflect.newInstance(pc);
+				assert object instanceof PersistenceProvider;
+				return info;
+			}
+		}
+
+		PersistenceUnitTransactionType transactionType = PersistenceUnitTransactionType.RESOURCE_LOCAL;
+		JPAPersistenceSchemaVersion schemaVersion = new JPAPersistenceSchemaVersion("2.0", "UTF-8");
+		JPAPersistenceVersion persistenceVersion = new JPAPersistenceVersion(
+
+				"2.0",
+
+				"http://java.sun.com/xml/ns/persistence",
+
+				"http://www.w3.org/2001/XMLSchema-instance",
+
+				"http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+
+		);
+
+		return new JPAPersistenceUnitInfo(persistenceXml, schemaVersion,
+
+				persistenceVersion, "empty", transactionType);
 
 	}
 
@@ -401,7 +593,7 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 		InputStream in = null;
 		OutputStream out = null;
 		ZipOutputStream zipOut = null;
-		String temp = System.getProperty("java.io.tmpdir");
+		String temp = getTempDir();
 
 		try {
 
@@ -437,7 +629,8 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 
 				} else {
 
-					String path = filePtr.getPath();
+					String x = getWebDirectory().getPath() + File.separator;
+					String path = filePtr.getPath().replace(x, "");
 					in = new FileInputStream(filePtr);
 					ZipEntry entry = new ZipEntry(path);
 					zipOut.putNextEntry(entry);
@@ -486,7 +679,7 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 		InputStream in = null;
 		OutputStream out = null;
 		ZipOutputStream zipOut = null;
-		String temp = System.getProperty("java.io.tmpdir");
+		String temp = getTempDir();
 
 		try {
 
@@ -527,7 +720,8 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 
 				} else if (filePtr.getName().contains(database)) {
 
-					String path = filePtr.getPath();
+					String x = getWebDirectory().getPath() + File.separator;
+					String path = filePtr.getPath().replace(x, "");
 					in = new FileInputStream(filePtr);
 					ZipEntry entry = new ZipEntry(path);
 					zipOut.putNextEntry(entry);
@@ -566,7 +760,7 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 	}
 
 	public final void copyBackupFile(HttpServletResponse resp, String pathInfo) throws IOException {
-		String temp = System.getProperty("java.io.tmpdir");
+		String temp = getTempDir();
 		File zipFile = new File(temp + File.separator + pathInfo);
 
 		ServletOutputStream outputStream = resp.getOutputStream();
@@ -594,6 +788,38 @@ public class AbstractServlet extends HttpServlet implements Servlet {
 			outputStream.flush();
 			outputStream.close();
 		}
+	}
+
+	public void addUser(String user, String pwd) {
+		UserManagement management = new UserManagement();
+		management = management.load();
+		// code
+		management.put(user, pwd);
+		management.save();
+	}
+
+	public String findUser(String user) {
+		UserManagement management = new UserManagement();
+		management = management.load();
+		return (String) management.get(user);
+	}
+
+	public void removeUser(String user) {
+		UserManagement management = new UserManagement();
+		management = management.load();
+		management.remove(user);
+		management.save();
+	}
+
+	public Set<Entry<Object, Object>> listUsers() {
+		UserManagement management = new UserManagement();
+		management = management.load();
+		return management.entrySet();
+	}
+
+	public String retrieveUserSalt() {
+//		return RandomStringUtils.random(64);
+		return SALT;
 	}
 
 }
