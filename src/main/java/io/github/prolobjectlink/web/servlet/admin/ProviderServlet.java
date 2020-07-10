@@ -83,9 +83,11 @@ public class ProviderServlet extends AbstractServlet implements Servlet {
 						}
 					} catch (ClassNotFoundException e) {
 						// do nothing
-					} catch (java.lang.NoClassDefFoundError e) {
+					} catch (NoClassDefFoundError e) {
 						// do nothing
-					} catch (java.lang.IllegalAccessError e) {
+					} catch (IllegalAccessError e) {
+						// do nothing
+					} catch (SecurityException e) {
 						// do nothing
 					}
 				}

@@ -44,6 +44,7 @@ import io.github.prolobjectlink.db.ObjectConverter;
 import io.github.prolobjectlink.db.entity.EntityClass;
 import io.github.prolobjectlink.db.etc.Settings;
 import io.github.prolobjectlink.db.jdbc.dialect.DialectResolver;
+import io.github.prolobjectlink.db.jdbc.embedded.DerbyDriver;
 import io.github.prolobjectlink.db.jdbc.embedded.H2FileDriver;
 import io.github.prolobjectlink.db.jdbc.embedded.HSQLDBFileDriver;
 import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
@@ -195,6 +196,30 @@ public abstract class AbstractModelGenerator extends AbstractWebApplication impl
 							String str = getDBDirectory().getCanonicalPath();
 							if (str.startsWith(root.getCanonicalPath())) {
 								jpaUrl = new String(H2FileDriver.prefix + str + "/h2db" + rectify)
+										.replace(root.getCanonicalPath(), "/").replace(File.separatorChar, '/');
+							}
+						}
+					} catch (IOException e) {
+						LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+					}
+				}
+			}else if (jpaUrl.toString().contains(DerbyDriver.prefix)) {
+				String rectify = jpaUrl.toString().replace(DerbyDriver.prefix, "");
+				if (runOnLinux() || runOnOsX()) {
+					try {
+						String str = getDBDirectory().getCanonicalPath();
+						jpaUrl = new String(DerbyDriver.prefix + str + "/derby" + rectify).replace(File.separatorChar,
+								'/');
+					} catch (IOException e) {
+						LoggerUtils.error(getClass(), LoggerConstants.IO, e);
+					}
+				} else if (runOnWindows()) {
+					try {
+						File[] roots = File.listRoots();
+						for (File root : roots) {
+							String str = getDBDirectory().getCanonicalPath();
+							if (str.startsWith(root.getCanonicalPath())) {
+								jpaUrl = new String(DerbyDriver.prefix + str + "/derby" + rectify)
 										.replace(root.getCanonicalPath(), "/").replace(File.separatorChar, '/');
 							}
 						}

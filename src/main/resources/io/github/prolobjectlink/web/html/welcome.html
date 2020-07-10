@@ -55,7 +55,7 @@
           <div class="masthead-content text-white py-5 py-md-0">
             <h1 class="mb-3">Prolobjectlink</h1>
             <h2 class="mb-3"><strong>Application Server</strong></h2>
-            <form class="user">
+            <form class="user" id="entityForm" action="{{ path("login") }}" method="post">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
@@ -70,6 +70,7 @@
                     <a href="{{ path("manager") }}" class="btn btn-light btn-user btn-block">
                       Login
                     </a>
+                    <input type="submit" id="Login" value="Login" />
                   </form>
           </div>
         </div>

@@ -486,6 +486,22 @@
 		<!-- <artifactId>gnujaxp</artifactId> -->
 		<!-- <version>1.0.0</version> -->
 		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.12.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>10.12.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbynet</artifactId>
+			<version>10.12.1.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -882,6 +898,7 @@
 							org.apache.commons.collections.set;
 							org.apache.commons.javaflow;
 							org.apache.crimson.jaxp;
+							org.apache.derby.jdbc;
 							org.apache.log; org.apache.log4j;
 							org.apache.oro.text.regex;
 							org.apache.poi.hdgf.extractor;

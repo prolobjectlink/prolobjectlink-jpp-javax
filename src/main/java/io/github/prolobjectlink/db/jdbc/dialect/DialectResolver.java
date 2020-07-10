@@ -35,11 +35,10 @@ public class DialectResolver {
 				return "MySQL";
 			} else if (driver == org.postgresql.Driver.class) {
 				return "PostgreSQL";
+			} else if (driver == org.apache.derby.jdbc.EmbeddedDriver.class
+					|| driver == org.apache.derby.jdbc.ClientDriver.class) {
+				return "Derby";
 			}
-
-//			else if (driver == org.apache.derby.jdbc.EmbeddedDriver.class||driver=org.apache.derby.jdbc.ClientDriver.class) {
-//             return  "Derby"
-//			} 
 
 		} else if (provider == org.hibernate.jpa.HibernatePersistenceProvider.class) {
 
@@ -53,11 +52,10 @@ public class DialectResolver {
 				return "org.hibernate.dialect.MySQLInnoDBDialect";
 			} else if (driver == org.postgresql.Driver.class) {
 				return "org.hibernate.dialect.PostgreSQLDialect";
+			} else if (driver == org.apache.derby.jdbc.EmbeddedDriver.class
+					|| driver == org.apache.derby.jdbc.ClientDriver.class) {
+				return "org.hibernate.dialect.DerbyDialect";
 			}
-
-//			else if (driver == org.apache.derby.jdbc.EmbeddedDriver.class||driver=org.apache.derby.jdbc.ClientDriver.class) {
-//             return  "org.hibernate.dialect.DerbyDialect"
-//			}
 
 		} else if (provider == org.apache.openjpa.persistence.PersistenceProviderImpl.class) {
 			// do nothig

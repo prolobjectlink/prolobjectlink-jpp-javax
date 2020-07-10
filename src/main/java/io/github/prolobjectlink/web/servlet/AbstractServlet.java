@@ -471,6 +471,16 @@ public abstract class AbstractServlet extends HttpServlet implements Servlet {
 								DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
 								databases.add(e);
 							}
+						} else if (file.getName().equals("derby")) {
+							File[] scripts = file.listFiles();
+							for (File x : scripts) {
+								String type = "Derby";
+								long size = x.length();
+								long modified = x.lastModified();
+								String name = x.getName();
+								DatabaseEntry e = new DatabaseEntry(type, name, size, modified);
+								databases.add(e);
+							}
 						}
 					}
 				}
